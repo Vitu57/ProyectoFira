@@ -17,7 +17,7 @@
               <input id="email" maxlength="40" class="form-control mb-2" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" size="20" type="text" /><br>
             </div>
             <div class="form-group required">
-              <input  id="last_name" maxlength="40"  class="form-control mb-2" placeholder="Contrasenya" name="password" size="20" type="password" /><br>
+              <input  id="pass" maxlength="40"  class="form-control mb-2" placeholder="Contrasenya" name="pass" size="20" type="password" /><br>
             </div>
           </div>
             <input class="btn btn-info btn" type="submit" name="submit" value="Entrar">
