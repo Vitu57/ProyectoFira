@@ -27,7 +27,7 @@
         if (!empty($stmt) && $row_cnt == 1) {
             session_start();
             $_SESSION['nombre'] = $nom;
-            header("Location: ../home.php");
+            header("Location: ../vista/home.php");
         }else{
         	 echo "<script type='text/javascript'>alert('Usuari o contrasenya incorrectes')</script>";
              header('Refresh:0; url = ../index.php?us=' . $myusername);
