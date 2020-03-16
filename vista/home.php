@@ -6,8 +6,8 @@
 <body>
 
 <?php
-include "../conexion.php";
-include "../header.php";
+include "../services/conexion.php";
+//include "../services/header.php";
 
 //consulta para saber los datos del usuario logeado y el tipo
 $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari=1";
@@ -19,7 +19,9 @@ $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id
 		    $nom_tipus=$casos['nom_tipus'];	
 
 echo "<h3>Benvingut ".$nom." ".$cognom."</h3>";
-echo "<a href='../logout.php'><h3>Tanca la sessió</h3></a>";
+
+//logout
+echo "<a href='../services/logout.php'><h3>Tanca la sessió</h3></a>";
 
 echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 
