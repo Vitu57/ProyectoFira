@@ -12,12 +12,17 @@
     </header>
     <main>
         <div class="text-center p-5" >
-        <form action="#" method="POST">
+        <form action="services/index.proc.php" method="POST">
             <div class="form-group required">
-              <input id="email" maxlength="40" class="form-control mb-2" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" size="20" type="text" /><br>
+              <input id="username" maxlength="40" class="form-control mb-2" placeholder="Usuari" name="username" value="<?php 
+                        if (isset($_GET['us'])) {
+                            $user=$_GET['us'];
+                            echo "$user";
+                        }
+                    ?>" size="20" type="text" /><br>
             </div>
             <div class="form-group required">
-              <input  id="pass" maxlength="40"  class="form-control mb-2" placeholder="Contrasenya" name="pass" size="20" type="password" /><br>
+              <input  id="password" maxlength="40"  class="form-control mb-2" placeholder="Contrasenya" name="password" size="20" type="password" /><br>
             </div>
           </div>
             <input class="btn btn-info btn" type="submit" name="submit" value="Entrar">
