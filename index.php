@@ -1,3 +1,7 @@
+<?php
+header("Location: ../vista/login.php");
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

@@ -30,7 +30,7 @@
             header("Location: ../vista/home.php");
         }else{
         	 echo "<script type='text/javascript'>alert('Usuari o contrasenya incorrectes')</script>";
-             header('Refresh:0; url = ../index.php?us=' . $myusername);
+            header('Refresh:0; url = ../vista/login.php?us=' . $myusername);
         }
     }
 }
