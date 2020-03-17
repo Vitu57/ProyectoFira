@@ -7,7 +7,7 @@
 
 <?php
 include "../services/conexion.php";
-//include "../services/header.php";
+include "../services/header.php";
 
 //consulta para saber los datos del usuario logeado y el tipo
 $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari=1";

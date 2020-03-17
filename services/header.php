@@ -10,7 +10,7 @@
     if (isset($_SESSION['nombre'])) {
         $usernom=$_SESSION['nombre'];
     } else {
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
     ?>
 	</div> 
