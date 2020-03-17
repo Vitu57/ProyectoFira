@@ -1,3 +1,11 @@
+<?php
+//Si la sesión está iniciada redirigirá al home
+session_start();
+if(isset($_SESSION['nombre'])){
+    header("Location: home.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +16,7 @@
 
 </head>
 <body>
-  <script src="/js/code_login.js"></script>
+  <script src="../js/code_login.js"></script>
 <link href="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,17 +30,25 @@
   </div>
 
     <!-- Formulario login -->
-    <form action="../services/index.proc.php" method="POST">
+
+   
+    <form action="../services/index.proc.php" method="POST" onsubmit="return validar_login();">
       <input type="text" id="username" class="fadeIn second" placeholder="Usuari" name="username" value="<?php 
-      if (isset($_GET['us'])) {
-          $user=$_GET['us'];
+      if (isset($_REQUEST['us'])) {
+          $user=$_REQUEST['us'];
           echo $user;
       }
   ?>">
       <input type="text" id="password" class="fadeIn third" name="password" placeholder="Contrasenya">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
-
+<!--Si está definido el nombre de usuario significa que se ha equivocado de contraseña, por lo cual, se marcará en rojo-->
+    <?php
+if(isset($_REQUEST['us'])){
+    echo "<script type='text/javascript'>error_pass();</script>";
+    
+}
+?>
     <!-- Texto Extra -->
     <div id="formFooter">
       <a class="underlineHover" href="#">Si no t'enrecordes de la contrasenya, contacta amb administració</a>
