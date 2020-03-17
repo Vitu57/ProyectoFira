@@ -12,13 +12,11 @@ include "../services/header.php";
 //consulta para saber los datos del usuario logeado y el tipo
 $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari=1";
 			$exe=mysqli_query($conn,$consulta);
-			$casos=mysqli_fetch_array($exe);
-		    $nom=$casos['nom_usuari'];
-		    $cognom=$casos['cognom_usuari'];	
+			$casos=mysqli_fetch_array($exe);	
 		    $tipus_user=$casos['id_tipus_usuari'];
 		    $nom_tipus=$casos['nom_tipus'];	
 
-echo "<h3>Benvingut ".$nom." ".$cognom."</h3>";
+echo "<h3>Benvingut ".$usernom." ".$usercognom."</h3>";
 
 //logout
 echo "<a href='../services/logout.php'><h3>Tanca la sessió</h3></a>";

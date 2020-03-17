@@ -9,6 +9,7 @@
     session_start();
     if (isset($_SESSION['nombre'])) {
         $usernom=$_SESSION['nombre'];
+		$usercognom=$_SESSION['cognom'];
     } else {
         header("Location: ../index.php");
     }
