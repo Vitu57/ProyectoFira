@@ -18,6 +18,7 @@
             while ($row = mysqli_fetch_array($res)) {
                 $nom = $row["nom_usuari"];
 				$cognom = $row["cognom_usuari"];
+                $id = $row["id_usuari"];
             }
             $row_cnt = mysqli_num_rows($res);
         }else{
@@ -29,6 +30,7 @@
             session_start();
             $_SESSION['nombre'] = $nom;
 			$_SESSION['cognom'] = $cognom;
+            $_SESSION['id'] = $id;
             header("Location: ../vista/home.php");
         }else{
         	 echo "<script type='text/javascript'>alert('Usuari o contrasenya incorrectes')</script>";
@@ -36,4 +38,3 @@
         }
     }
 }
-
