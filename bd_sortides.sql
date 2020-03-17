@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2020 a las 18:47:19
+-- Tiempo de generación: 17-03-2020 a las 13:04:15
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -36,7 +36,8 @@ CREATE TABLE `tbl_activitat` (
   `ambit_activitat` enum('Nacional','Internacional') COLLATE utf8_spanish_ci NOT NULL,
   `jornada_activitat` enum('Mati','Tarda','Sencera') COLLATE utf8_spanish_ci NOT NULL,
   `objectiu_activitat` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id_contacte_activitat` int(11) NOT NULL
+  `id_contacte_activitat` int(11) NOT NULL,
+  `id_sortida` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -138,8 +139,7 @@ CREATE TABLE `tbl_sortida` (
   `n_vetlladors` int(11) NOT NULL,
   `profes_a_part` int(11) NOT NULL,
   `id_clase` int(11) NOT NULL,
-  `id_transport` int(11) NOT NULL,
-  `id_activitat` int(11) NOT NULL
+  `id_transport` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -195,7 +195,8 @@ CREATE TABLE `tbl_usuari` (
 --
 ALTER TABLE `tbl_activitat`
   ADD PRIMARY KEY (`id_activitat`),
-  ADD KEY `FK_activitat` (`id_contacte_activitat`);
+  ADD KEY `FK_activitat` (`id_contacte_activitat`),
+  ADD KEY `FK_sortida_activitat` (`id_sortida`);
 
 --
 -- Indices de la tabla `tbl_asistencia`
@@ -242,8 +243,7 @@ ALTER TABLE `tbl_preus`
 ALTER TABLE `tbl_sortida`
   ADD PRIMARY KEY (`id_sortida`),
   ADD KEY `FK_sortida1` (`id_clase`),
-  ADD KEY `FK_sortida2` (`id_transport`),
-  ADD KEY `FK_sortida3` (`id_activitat`);
+  ADD KEY `FK_sortida2` (`id_transport`);
 
 --
 -- Indices de la tabla `tbl_tipus_usuari`
@@ -344,7 +344,8 @@ ALTER TABLE `tbl_usuari`
 -- Filtros para la tabla `tbl_activitat`
 --
 ALTER TABLE `tbl_activitat`
-  ADD CONSTRAINT `FK_activitat` FOREIGN KEY (`id_contacte_activitat`) REFERENCES `tbl_contacte_activitat` (`id_contacte_activitat`);
+  ADD CONSTRAINT `FK_activitat` FOREIGN KEY (`id_contacte_activitat`) REFERENCES `tbl_contacte_activitat` (`id_contacte_activitat`),
+  ADD CONSTRAINT `FK_sortida_activitat` FOREIGN KEY (`id_sortida`) REFERENCES `tbl_sortida` (`id_sortida`);
 
 --
 -- Filtros para la tabla `tbl_asistencia`
@@ -364,8 +365,7 @@ ALTER TABLE `tbl_clase`
 --
 ALTER TABLE `tbl_sortida`
   ADD CONSTRAINT `FK_sortida1` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`),
-  ADD CONSTRAINT `FK_sortida2` FOREIGN KEY (`id_transport`) REFERENCES `tbl_transport` (`id_transport`),
-  ADD CONSTRAINT `FK_sortida3` FOREIGN KEY (`id_activitat`) REFERENCES `tbl_activitat` (`id_activitat`);
+  ADD CONSTRAINT `FK_sortida2` FOREIGN KEY (`id_transport`) REFERENCES `tbl_transport` (`id_transport`);
 
 --
 -- Filtros para la tabla `tbl_transport`
