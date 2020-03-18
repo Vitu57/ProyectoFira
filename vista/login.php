@@ -39,7 +39,7 @@ if(isset($_SESSION['nombre'])){
           echo $user;
       }
   ?>">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Contrasenya">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contrasenya">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 <!--Si está definido el nombre de usuario significa que se ha equivocado de contraseña, por lo cual, se marcará en rojo-->
