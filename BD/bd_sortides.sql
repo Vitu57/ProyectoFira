@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-03-2020 a las 17:55:40
+-- Tiempo de generación: 17-03-2020 a las 19:58:01
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -81,7 +81,7 @@ INSERT INTO `tbl_asistencia` (`id_asistencia`, `estado_asistencia`, `id_usuario`
 
 CREATE TABLE `tbl_clase` (
   `id_clase` int(11) NOT NULL,
-  `nom_classe` enum('1-2PRI','1-4PRIM','1AF','1BATX','1EAS','1ESO','1PRIM','2BATX','2ESO','2PRIM','3-4ESO/1BATX','3-4PRI','3ESO','3PRIM','4ESO','4PRIM','5PRIM','6PRIM','CAFEM','CAI','EAS','EDIN','P3','P3-P4','P3-P4-P5','P4','P5') COLLATE utf8_spanish_ci NOT NULL,
+  `nom_classe` enum('1-2PRI','1-4PRIM','1AF','1BATX','1EAS','1ESO','1PRIM','2BATX','2ESO','2PRIM','3-4ESO/1BATX','3-4PRI','3ESO','3PRIM','4ESO','4PRIM','5PRIM','6PRIM','CAFEM','CAI','EAS','EDIN','P3','P3-P4','P3-P4-P5','P4','P5','PERSONAL') COLLATE utf8_spanish_ci NOT NULL,
   `id_etapa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -117,7 +117,8 @@ INSERT INTO `tbl_clase` (`id_clase`, `nom_classe`, `id_etapa`) VALUES
 (25, 'EDIN', 7),
 (26, '1AF', 7),
 (27, 'CAFEM', 6),
-(28, 'CAI', 6);
+(28, 'CAI', 6),
+(29, 'PERSONAL', 8);
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,7 @@ INSERT INTO `tbl_contacte_activitat` (`id_contacte_activitat`, `persona_contacte
 
 CREATE TABLE `tbl_etapa` (
   `id_etapa` int(11) NOT NULL,
-  `nom_etapa` enum('BATX','CFGM','CFGS','ESO','ESO/BATX','INF','PRIM') COLLATE utf8_spanish_ci NOT NULL
+  `nom_etapa` enum('BATX','CFGM','CFGS','ESO','ESO/BATX','INF','PRIM','PERSONAL') COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -162,7 +163,8 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nom_etapa`) VALUES
 (4, 'ESO/BATX'),
 (5, 'BATX'),
 (6, 'CFGM'),
-(7, 'CFGS');
+(7, 'CFGS'),
+(8, 'PERSONAL');
 
 -- --------------------------------------------------------
 
@@ -311,13 +313,13 @@ CREATE TABLE `tbl_usuari` (
 --
 
 INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `computable`, `id_clase`, `id_tipus_usuari`) VALUES
-(1, 'MCarpallo', '1234', 'Mario', 'Carpallo', 'si', 1, 2),
-(2, 'JArcedo', '1234', 'Jaime', 'Arcedo', 'no', 2, 2),
-(3, 'VPerez', '1234', 'Victor', 'Perez', 'alumne', 3, 7),
-(4, 'SRueda', '1234', 'Sergio', 'Rueda', 'alumne', 4, 7),
-(5, 'Junevo', '1234', 'Jose', 'Nuevo', 'alumne', 5, 7),
-(6, 'JMellado', '1234', 'Jesus', 'Mellado', 'alumne', 1, 7),
-(7, 'JPerez', '1234', 'Juanma', 'Perez', 'alumne', 2, 7);
+(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'si', 1, 2),
+(2, 'JArcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Arcedo', 'no', 2, 2),
+(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'alumne', 3, 7),
+(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'alumne', 4, 7),
+(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'alumne', 5, 7),
+(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'alumne', 1, 7),
+(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'alumne', 2, 7);
 
 --
 -- Índices para tablas volcadas
@@ -419,7 +421,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT de la tabla `tbl_clase`
 --
 ALTER TABLE `tbl_clase`
-  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_contacte_activitat`
@@ -431,7 +433,7 @@ ALTER TABLE `tbl_contacte_activitat`
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
 --
 ALTER TABLE `tbl_etapa`
-  MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_nom_transport`
