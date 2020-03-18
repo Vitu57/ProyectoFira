@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 16:40:28
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.3
+-- Tiempo de generación: 18-03-2020 a las 22:57:46
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -321,11 +321,11 @@ INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `c
 (5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'alumne', 5, 7),
 (6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'alumne', 1, 7),
 (7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'alumne', 2, 7),
-(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'no', 29, 8),
-(9, 'Secretaria', '81dc9bdb52d04dc20036dbd8313ed055', 'Secre', 'Secre', 'no', 29, 8),
-(10, 'Cocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Cocina', 'Cocina', 'no', 29, 8),
-(11, 'Enfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Enfermeria', 'Enfermeria', 'no', 29, 8),
-(12, 'Direccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Direccion', 'Direccion', 'no', 29, 8);
+(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'no', 29, 1),
+(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'no', 29, 3),
+(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'no', 29, 4),
+(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'no', 29, 5),
+(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'no', 29, 6);
 
 --
 -- Índices para tablas volcadas
