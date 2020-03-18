@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-03-2020 a las 19:58:01
+-- Tiempo de generación: 18-03-2020 a las 16:40:28
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -264,7 +264,8 @@ INSERT INTO `tbl_tipus_usuari` (`id_tipus_usuari`, `nom_tipus`, `descripcio`, `e
 (4, 'Cocina', NULL, NULL),
 (5, 'Enfermeria', NULL, NULL),
 (6, 'Directores', NULL, NULL),
-(7, 'Alumno', NULL, NULL);
+(7, 'Alumno', NULL, NULL),
+(8, 'Personal', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,12 +315,17 @@ CREATE TABLE `tbl_usuari` (
 
 INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `computable`, `id_clase`, `id_tipus_usuari`) VALUES
 (1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'si', 1, 2),
-(2, 'JArcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Arcedo', 'no', 2, 2),
+(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'no', 2, 2),
 (3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'alumne', 3, 7),
 (4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'alumne', 4, 7),
 (5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'alumne', 5, 7),
 (6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'alumne', 1, 7),
-(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'alumne', 2, 7);
+(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'alumne', 2, 7),
+(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'no', 29, 8),
+(9, 'Secretaria', '81dc9bdb52d04dc20036dbd8313ed055', 'Secre', 'Secre', 'no', 29, 8),
+(10, 'Cocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Cocina', 'Cocina', 'no', 29, 8),
+(11, 'Enfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Enfermeria', 'Enfermeria', 'no', 29, 8),
+(12, 'Direccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Direccion', 'Direccion', 'no', 29, 8);
 
 --
 -- Índices para tablas volcadas
@@ -457,7 +463,7 @@ ALTER TABLE `tbl_sortida`
 -- AUTO_INCREMENT de la tabla `tbl_tipus_usuari`
 --
 ALTER TABLE `tbl_tipus_usuari`
-  MODIFY `id_tipus_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_tipus_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_transport`
@@ -469,7 +475,7 @@ ALTER TABLE `tbl_transport`
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
