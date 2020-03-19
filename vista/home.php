@@ -46,21 +46,27 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="separator"></div>
-  
-  
+    
 <?php
+
 //ifs que según el tipo de usuario mostrará una tabla u otra
 if ($tipus_user==1) {
+    
 ?>
-<div id='myBtn2'>
-    <a href="../vista/excursiones.php"><h3>Ver Excursiones</h3></a>
-</div>
+<a href="../vista/Excursions.php"><h2>Veure Excursions</h2></a>
+
 </div>
 
-<button id="myBtn">
-   <h3>Excursiones</h3>
+</div>
+<button id='myBtn'>
+   <h2>Excursions</h2>
+
 </button>
 
+<button id='myBtn2'>
+
+<div class="d-flex justify-content-center" style="margin-top: 51px;">
+      
 
 <!-- The Modal -->
 <div id="myModal2" class="modal">
@@ -68,71 +74,71 @@ if ($tipus_user==1) {
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close2">&times;</span>
-    <a href="../vista/usuarios.php"><h3>Ver Usuarios</h3></a>
-  </div>
+   
+
+    <a href="../vista/usuarios.php"><h2>Veure usuaris</h2></a>
 
 </div>
-<button id="myBtn">
-    <h3>Usuarios</h3>
+</div>
+      <h2>Usuaris</h2>
 </button>
-
 <?php
 }else if($tipus_user==2){
 ?>
 
-<a href="../vista/excursiones_profesores.php"><h2>Ver Excursiones</h2></a>
+<a href="../vista/excursiones_profesores.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
       <button id="myBtn">
-       <h3>Excursiones</h3>
+       <h3>Excursions</h3>
      </button>
+
 <?php
 }else if($tipus_user==3){       
     ?>
-<a href="../vista/excursiones_secretaria.php"><h2>Ver Excursiones</h2></a>
+<a href="../vista/excursiones_secretaria.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
 <button id="myBtn">
-    <h3>Excursiones</h3>
+    <h3>Excursions</h3>
   </button>
 <?php
 }else if($tipus_user==4){
 ?>
-<a href="../vista/excursiones_cocina.php"><h2>Ver Excursiones</h2></a>
+<a href="../vista/excursiones_cocina.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
 <button id="myBtn">
-    <h3>Excursiones</h3>
+    <h3>Excursions</h3>
   </button>
 <?php
 }else if($tipus_user==5 || $tipus_user==6){
 ?>
-<a href="../vista/excursiones_enf_dir.php"><h2>Ver Excursiones</h2></a>
+<a href="../vista/excursiones_enf_dir.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
 <button id="myBtn">
-    <h3>Excursiones</h3>
+    <h3>Excursions</h3>
   </button>
 <?php
 }else if($tipus_user==7){
 ?>
-<a href="../vista/excursiones_alu.php"><h2>Ver Excursiones</h2></a>
+<a href="../vista/excursiones_alu.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
 <button id="myBtn">
-    <h3>Excursiones</h3>
+    <h3>Excursions</h3>
   </button>
 <?php
 }
-//fin de la tabla
-echo "</button>";
 ?>
  </div>
+
 <div class="footer">
   <img src="../img/logo-centro-footer.svg">
 </div>
