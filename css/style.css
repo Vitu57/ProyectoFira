@@ -1,3 +1,6 @@
+body.home{
+  background-color:#071334;
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
