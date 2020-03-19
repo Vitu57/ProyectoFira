@@ -51,12 +51,9 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 <?php
 //ifs que según el tipo de usuario mostrará una tabla u otra
 if ($tipus_user==1) {
-    
 ?>
 <div id='myBtn2'>
-<a href="../vista/excursiones.php"><h3>Ver Excursiones</h3></a>
-
-
+    <a href="../vista/excursiones.php"><h3>Ver Excursiones</h3></a>
 </div>
 </div>
 
@@ -72,16 +69,16 @@ if ($tipus_user==1) {
   <div class="modal-content">
     <span class="close2">&times;</span>
     <a href="../vista/usuarios.php"><h3>Ver Usuarios</h3></a>
-    </div>
+  </div>
 
 </div>
 <button id="myBtn">
-      <h3>Usuarios</h3>
+    <h3>Usuarios</h3>
 </button>
 
 <?php
 }else if($tipus_user==2){
-    ?>
+?>
 
 <a href="../vista/excursiones_profesores.php"><h2>Ver Excursiones</h2></a>
 
@@ -101,9 +98,29 @@ if ($tipus_user==1) {
     <h3>Excursiones</h3>
   </button>
 <?php
-}else {
+}else if($tipus_user==4){
 ?>
-<a href="../vista/excursiones.php"><h2>Ver Excursiones</h2></a>
+<a href="../vista/excursiones_cocina.php"><h2>Ver Excursiones</h2></a>
+
+</div>
+</div>
+<button id="myBtn">
+    <h3>Excursiones</h3>
+  </button>
+<?php
+}else if($tipus_user==5 || $tipus_user==6){
+?>
+<a href="../vista/excursiones_enf_dir.php"><h2>Ver Excursiones</h2></a>
+
+</div>
+</div>
+<button id="myBtn">
+    <h3>Excursiones</h3>
+  </button>
+<?php
+}else if($tipus_user==7){
+?>
+<a href="../vista/excursiones_alu.php"><h2>Ver Excursiones</h2></a>
 
 </div>
 </div>
@@ -112,10 +129,8 @@ if ($tipus_user==1) {
   </button>
 <?php
 }
-
 //fin de la tabla
 echo "</button>";
-
 ?>
  </div>
 <div class="footer">
