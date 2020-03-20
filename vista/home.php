@@ -44,28 +44,34 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span id="close" class="close">&times;</span>
     <div class="separator"></div>
-    
+  
+
+
+
+
+
+
 <?php
 
 //ifs que según el tipo de usuario mostrará una tabla u otra
 if ($tipus_user==1) {
     
 ?>
-<a href="../vista/Excursions.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/Excursions.php"><h2>Veure excursions</h2></a>
 
 </div>
 
 </div>
-<button id='myBtn'>
+<button id='myBtn' class="myBtn">
    <h2>Excursions</h2>
 
 </button>
 
-<button id='myBtn2'>
 
-<div class="d-flex justify-content-center" style="margin-top: 51px;">
+
+
       
 
 <!-- The Modal -->
@@ -73,65 +79,98 @@ if ($tipus_user==1) {
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close2">&times;</span>
-   
+    <span id="close2" class="close">&times;</span>
+    <div class="separator"></div>
 
-    <a href="../vista/usuarios.php"><h2>Veure usuaris</h2></a>
+    <a class="none" href="../vista/usuarios.php"><h2>Veure usuaris</h2></a>
 
 </div>
 </div>
+<button id="myBtn2" class="myBtn">
       <h2>Usuaris</h2>
 </button>
+
+
+
+
+
+
+
+
 <?php
 }else if($tipus_user==2){
 ?>
 
-<a href="../vista/excursiones_profesores.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_profesores.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
-      <button id="myBtn">
+      <button id="myBtn" class="myBtn">
        <h3>Excursions</h3>
      </button>
+
+
+
+
+
+
 
 <?php
 }else if($tipus_user==3){       
     ?>
-<a href="../vista/excursiones_secretaria.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_secretaria.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
-<button id="myBtn">
+<button id="myBtn" class="myBtn">
     <h3>Excursions</h3>
   </button>
+
+
+
+
+
+
 <?php
 }else if($tipus_user==4){
 ?>
-<a href="../vista/excursiones_cocina.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_cocina.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
-<button id="myBtn">
+<button id="myBtn" class="myBtn">
     <h3>Excursions</h3>
   </button>
+
+
+
+
+
+
 <?php
 }else if($tipus_user==5 || $tipus_user==6){
 ?>
-<a href="../vista/excursiones_enf_dir.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_enf_dir.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
-<button id="myBtn">
+<button id="myBtn" class="myBtn">
     <h3>Excursions</h3>
   </button>
+
+
+
+
+
+
 <?php
 }else if($tipus_user==7){
 ?>
-<a href="../vista/excursiones_alu.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_alu.php"><h2>Veure Excursions</h2></a>
 
 </div>
 </div>
-<button id="myBtn">
+<button id="myBtn" class="myBtn">
     <h3>Excursions</h3>
   </button>
 <?php
@@ -144,4 +183,3 @@ if ($tipus_user==1) {
 </div>
 </body>
 </html>
-
