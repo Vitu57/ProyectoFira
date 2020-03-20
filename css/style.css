@@ -105,3 +105,22 @@ a.none{
 .txthead{
   float: right ;
 }
+.divcalendario{
+  align-items: center;
+  background-color: white;
+  height: 76%;
+  width: 19%;
+  position: absolute; 
+  float:left;
+  margin-top: 2px!important;
+  border-right:#009eff 4px solid;
+
+}
+.vanilla-calendar{
+  margin-left: 1%!important;
+  width: 19%;
+  position: absolute; 
+  float:left;
+  margin-top: 2px!important;
+
+}

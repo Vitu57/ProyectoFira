@@ -39,6 +39,10 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 ?>
 </div>
 <!-- Trigger/Open The Modal -->
+<div class="divcalendario">
+<div id="myCalendar" class="vanilla-calendar">
+</div>
+</div>
 <div class="d-flex justify-content-center" style="margin-top: 51px;">
       
    
@@ -182,8 +186,7 @@ if ($tipus_user==1) {
 }
 ?>
  </div>
-<div id="myCalendar" class="vanilla-calendar" style="position: relative; margin-top:150px; margin-right:40px;">
-</div>
+
 <div class="footer">
   <img src="../images/logo_fje.svg">
 </div>
