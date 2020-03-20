@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2020 a las 15:57:20
+-- Tiempo de generación: 20-03-2020 a las 18:09:42
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -174,7 +174,7 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nom_etapa`) VALUES
 
 CREATE TABLE `tbl_lista_profesores` (
   `id_lista_profesores` int(11) NOT NULL,
-  `nombre_profesor` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `id_profesor` int(11) NOT NULL,
   `id_excursion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -182,10 +182,11 @@ CREATE TABLE `tbl_lista_profesores` (
 -- Volcado de datos para la tabla `tbl_lista_profesores`
 --
 
-INSERT INTO `tbl_lista_profesores` (`id_lista_profesores`, `nombre_profesor`, `id_excursion`) VALUES
-(1, 'MCarpallo', 1),
-(2, 'SGimenez', 2),
-(3, 'DLarrea', 2);
+INSERT INTO `tbl_lista_profesores` (`id_lista_profesores`, `id_profesor`, `id_excursion`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 28, 2),
+(4, 29, 1);
 
 -- --------------------------------------------------------
 
@@ -412,7 +413,8 @@ ALTER TABLE `tbl_etapa`
 -- Indices de la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
-  ADD PRIMARY KEY (`id_lista_profesores`);
+  ADD PRIMARY KEY (`id_lista_profesores`),
+  ADD KEY `FK_Lista_profe` (`id_profesor`);
 
 --
 -- Indices de la tabla `tbl_nom_transport`
@@ -495,7 +497,7 @@ ALTER TABLE `tbl_etapa`
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
-  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_nom_transport`
@@ -556,6 +558,12 @@ ALTER TABLE `tbl_asistencia`
 --
 ALTER TABLE `tbl_clase`
   ADD CONSTRAINT `FK_etapa` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`);
+
+--
+-- Filtros para la tabla `tbl_lista_profesores`
+--
+ALTER TABLE `tbl_lista_profesores`
+  ADD CONSTRAINT `FK_Lista_profe` FOREIGN KEY (`id_profesor`) REFERENCES `tbl_usuari` (`id_usuari`);
 
 --
 -- Filtros para la tabla `tbl_sortida`
