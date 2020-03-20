@@ -140,7 +140,7 @@ if ($tipus_user==1) {
  </div>
 
 <div class="footer">
-  <img src="../img/logo-centro-footer.svg">
+  <img src="../images/logo_fje.svg">
 </div>
 </body>
 </html>
