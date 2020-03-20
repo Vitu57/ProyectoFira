@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 22:57:46
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 20-03-2020 a las 15:57:20
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -169,6 +169,27 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nom_etapa`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_lista_profesores`
+--
+
+CREATE TABLE `tbl_lista_profesores` (
+  `id_lista_profesores` int(11) NOT NULL,
+  `nombre_profesor` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `id_excursion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_lista_profesores`
+--
+
+INSERT INTO `tbl_lista_profesores` (`id_lista_profesores`, `nombre_profesor`, `id_excursion`) VALUES
+(1, 'MCarpallo', 1),
+(2, 'SGimenez', 2),
+(3, 'DLarrea', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_nom_transport`
 --
 
@@ -204,12 +225,23 @@ CREATE TABLE `tbl_preus` (
   `preu_fixe` int(11) NOT NULL,
   `preu_sense_topal` int(11) NOT NULL,
   `preu_amb_topal` int(11) NOT NULL,
-  `preru_gestio` int(11) NOT NULL,
+  `preu_gestio` int(11) NOT NULL,
   `overhead` int(3) NOT NULL,
   `total_facturar` int(11) NOT NULL,
   `pagament_fraccionat` enum('si','no') COLLATE utf8_spanish_ci NOT NULL,
   `observacio_fraccionat` varchar(100) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_preus`
+--
+
+INSERT INTO `tbl_preus` (`id_preus`, `cost_substitucio`, `cost_activitat_individual`, `cost_extra_activitat_profe`, `cost_global_activitat`, `cost_final`, `preu_fixe`, `preu_sense_topal`, `preu_amb_topal`, `preu_gestio`, `overhead`, `total_facturar`, `pagament_fraccionat`, `observacio_fraccionat`) VALUES
+(1, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
+(2, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
+(3, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
+(4, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
+(5, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo');
 
 -- --------------------------------------------------------
 
@@ -223,22 +255,27 @@ CREATE TABLE `tbl_sortida` (
   `inici_sortida` date NOT NULL,
   `final_sortida` date NOT NULL,
   `observacions_sortida` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `numero_alumnes` int(3) NOT NULL,
   `n_vetlladors` int(11) NOT NULL,
+  `n_acompanyants` int(2) NOT NULL,
   `profes_a_part` int(11) NOT NULL,
+  `profesor_asignat` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `id_lista_profesores` int(11) NOT NULL,
   `id_clase` int(11) NOT NULL,
-  `id_transport` int(11) NOT NULL
+  `id_transport` int(11) NOT NULL,
+  `id_precios` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_sortida`
 --
 
-INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `n_vetlladors`, `profes_a_part`, `id_clase`, `id_transport`) VALUES
-(1, 'R-P-0015', '0000-00-00', '0000-00-00', 'Una salida muy chachi pistachi', 3, 2, 1, 1),
-(2, 'R-P-0012', '0000-00-00', '0000-00-00', 'Una salida muy chachi', 2, 0, 2, 2),
-(3, 'R-P-0035', '0000-00-00', '0000-00-00', 'Una salida muy pistachi', 5, 4, 3, 3),
-(4, 'R-P-0014', '0000-00-00', '0000-00-00', 'Una salida muy chachi pistachi', 3, 2, 4, 4),
-(5, 'R-P-0055', '0000-00-00', '0000-00-00', 'Una salida muy marabitupenda', 3, 2, 5, 5);
+INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_lista_profesores`, `id_clase`, `id_transport`, `id_precios`) VALUES
+(1, 'R-P-0015', '2020-03-20', '2020-03-23', 'Una salida muy chachi pistachi', 50, 3, 0, 2, 'MCarpallo', 1, 1, 1, 1),
+(2, 'R-P-0012', '0000-00-00', '0000-00-00', 'Una salida muy chachi', 60, 2, 2, 0, 'JCarcedo', 1, 21, 2, 5),
+(3, 'R-P-0035', '0000-00-00', '0000-00-00', 'Una salida muy pistachi', 0, 5, 3, 4, 'SGimenez', 1, 3, 3, 2),
+(4, 'R-P-0014', '0000-00-00', '0000-00-00', 'Una salida muy chachi pistachi', 0, 3, 5, 2, 'JCarcedo', 1, 4, 4, 3),
+(5, 'R-P-0055', '0000-00-00', '0000-00-00', 'Una salida muy marabitupenda', 0, 3, 0, 2, 'MCarpallo', 1, 10, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -275,6 +312,8 @@ INSERT INTO `tbl_tipus_usuari` (`id_tipus_usuari`, `nom_tipus`, `descripcio`, `e
 
 CREATE TABLE `tbl_transport` (
   `id_transport` int(11) NOT NULL,
+  `hora_sortida` varchar(6) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_arribada` varchar(6) COLLATE utf8_spanish_ci NOT NULL,
   `cost_transport` int(5) NOT NULL,
   `codi_contacte` int(6) NOT NULL,
   `comentaris_transport` text COLLATE utf8_spanish_ci NOT NULL,
@@ -285,12 +324,12 @@ CREATE TABLE `tbl_transport` (
 -- Volcado de datos para la tabla `tbl_transport`
 --
 
-INSERT INTO `tbl_transport` (`id_transport`, `cost_transport`, `codi_contacte`, `comentaris_transport`, `id_nom_transport`) VALUES
-(1, 0, 1, 'Coche de san fernando lalalala', 1),
-(2, 10, 1, 'Tren chuchu', 2),
-(3, 25, 1, 'Autocar al battle royale', 3),
-(4, 100, 1, 'Avion contaminador', 4),
-(5, 3, 1, 'Coronavirus Coronavirus', 5);
+INSERT INTO `tbl_transport` (`id_transport`, `hora_sortida`, `hora_arribada`, `cost_transport`, `codi_contacte`, `comentaris_transport`, `id_nom_transport`) VALUES
+(1, '02:00', '09:00', 0, 1, 'Coche de san fernando lalalala', 1),
+(2, '00:00:', '00:00:', 10, 1, 'Tren chuchu', 2),
+(3, '00:00:', '00:00:', 25, 1, 'Autocar al battle royale', 3),
+(4, '00:00:', '00:00:', 100, 1, 'Avion contaminador', 4),
+(5, '00:00:', '00:00:', 3, 1, 'Coronavirus Coronavirus', 5);
 
 -- --------------------------------------------------------
 
@@ -304,6 +343,7 @@ CREATE TABLE `tbl_usuari` (
   `contrasenya` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `nom_usuari` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `cognom_usuari` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `siei` enum('si','no') COLLATE utf8_spanish_ci NOT NULL,
   `computable` enum('si','no','alumne') COLLATE utf8_spanish_ci NOT NULL,
   `id_clase` int(11) NOT NULL,
   `id_tipus_usuari` int(11) NOT NULL
@@ -313,19 +353,21 @@ CREATE TABLE `tbl_usuari` (
 -- Volcado de datos para la tabla `tbl_usuari`
 --
 
-INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `computable`, `id_clase`, `id_tipus_usuari`) VALUES
-(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'si', 1, 2),
-(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'no', 2, 2),
-(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'alumne', 3, 7),
-(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'alumne', 4, 7),
-(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'alumne', 5, 7),
-(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'alumne', 1, 7),
-(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'alumne', 2, 7),
-(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'no', 29, 1),
-(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'no', 29, 3),
-(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'no', 29, 4),
-(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'no', 29, 5),
-(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'no', 29, 6);
+INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `siei`, `computable`, `id_clase`, `id_tipus_usuari`) VALUES
+(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'no', 'si', 1, 2),
+(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'no', 'no', 2, 2),
+(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'no', 'alumne', 3, 7),
+(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'no', 'alumne', 4, 7),
+(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'no', 'alumne', 5, 7),
+(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'si', 'alumne', 21, 7),
+(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'si', 'alumne', 21, 7),
+(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'si', 'no', 29, 1),
+(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'si', 'no', 29, 3),
+(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'si', 'no', 29, 4),
+(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'si', 'no', 29, 5),
+(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'si', 'no', 29, 6),
+(28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'no', 'no', 21, 2),
+(29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'no', 'si', 21, 2);
 
 --
 -- Índices para tablas volcadas
@@ -367,6 +409,12 @@ ALTER TABLE `tbl_etapa`
   ADD PRIMARY KEY (`id_etapa`);
 
 --
+-- Indices de la tabla `tbl_lista_profesores`
+--
+ALTER TABLE `tbl_lista_profesores`
+  ADD PRIMARY KEY (`id_lista_profesores`);
+
+--
 -- Indices de la tabla `tbl_nom_transport`
 --
 ALTER TABLE `tbl_nom_transport`
@@ -384,7 +432,9 @@ ALTER TABLE `tbl_preus`
 ALTER TABLE `tbl_sortida`
   ADD PRIMARY KEY (`id_sortida`),
   ADD KEY `FK_sortida1` (`id_clase`),
-  ADD KEY `FK_sortida2` (`id_transport`);
+  ADD KEY `FK_sortida2` (`id_transport`),
+  ADD KEY `FK_listaprofes` (`id_lista_profesores`),
+  ADD KEY `FK_Precios` (`id_precios`);
 
 --
 -- Indices de la tabla `tbl_tipus_usuari`
@@ -442,6 +492,12 @@ ALTER TABLE `tbl_etapa`
   MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
+--
+ALTER TABLE `tbl_lista_profesores`
+  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_nom_transport`
 --
 ALTER TABLE `tbl_nom_transport`
@@ -451,7 +507,7 @@ ALTER TABLE `tbl_nom_transport`
 -- AUTO_INCREMENT de la tabla `tbl_preus`
 --
 ALTER TABLE `tbl_preus`
-  MODIFY `id_preus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_preus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sortida`
@@ -475,7 +531,7 @@ ALTER TABLE `tbl_transport`
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas
@@ -505,6 +561,8 @@ ALTER TABLE `tbl_clase`
 -- Filtros para la tabla `tbl_sortida`
 --
 ALTER TABLE `tbl_sortida`
+  ADD CONSTRAINT `FK_Precios` FOREIGN KEY (`id_precios`) REFERENCES `tbl_preus` (`id_preus`),
+  ADD CONSTRAINT `FK_listaprofes` FOREIGN KEY (`id_lista_profesores`) REFERENCES `tbl_lista_profesores` (`id_lista_profesores`),
   ADD CONSTRAINT `FK_sortida1` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`),
   ADD CONSTRAINT `FK_sortida2` FOREIGN KEY (`id_transport`) REFERENCES `tbl_transport` (`id_transport`);
 
