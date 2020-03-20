@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!--Calendario-->
+  <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="calendar/css/vanilla-calendar-min.css">
+  <script src="calendar/js/vanilla-calendar-min.js"></script>
 </head>
 <body class="home" onload="modal(); modal2();">
   
@@ -177,9 +182,68 @@ if ($tipus_user==1) {
 }
 ?>
  </div>
-
+<div id="myCalendar" class="vanilla-calendar" style="position: relative; margin-top:150px; margin-right:40px;">
+</div>
 <div class="footer">
   <img src="../images/logo_fje.svg">
 </div>
 </body>
+<!-- Script del calendario -->
+<script>
+            let pastDates = true, availableDates = false, availableWeekDays = false
+
+            let calendar = new VanillaCalendar({
+                selector: "#myCalendar",
+                onSelect: (data, elem) => {
+                    console.log(data, elem)
+                }
+            })
+
+            let btnPastDates = document.querySelector('[name=pastDates]')
+            btnPastDates.addEventListener('click', () => {
+                pastDates = !pastDates
+                calendar.set({pastDates: pastDates})
+                btnPastDates.innerText = `${(pastDates ? 'Disable' : 'Enable')} past dates`
+            })
+
+            let btnAvailableDates = document.querySelector('[name=availableDates]')
+            btnAvailableDates.addEventListener('click', () => {
+                availableDates = !availableDates
+                btnAvailableDates.innerText = `${(availableDates ? 'Clear available dates' : 'Set available dates')}`
+                if (!availableDates) {
+                    calendar.set({availableDates: [], datesFilter: false})
+                    return
+                }
+                let dates = () => {
+                    let result = []
+                    for (let i = 1; i < 15; ++i) {
+                        if (i % 2) continue
+                        let date = new Date(new Date().getTime() + (60 * 60 * 24 * 1000) * i)
+                        result.push({date: `${String(date.getFullYear())}-${String(date.getMonth() + 1).padStart(2, 0)}-${String(date.getDate()).padStart(2, 0)}`})
+                    }
+                    return result
+                }
+                calendar.set({availableDates: dates(), availableWeekDays: [], datesFilter: true})
+            })
+
+            let btnAvailableWeekDays = document.querySelector('[name=availableWeekDays]')
+            btnAvailableWeekDays.addEventListener('click', () => {
+                availableWeekDays = !availableWeekDays
+                btnAvailableWeekDays.innerText = `${(availableWeekDays ? 'Clear available weekdays' : 'Set available weekdays')}`
+                if (!availableWeekDays) {
+                    calendar.set({availableWeekDays: [], datesFilter: false})
+                    return
+                }
+                let days = [{
+                    day: 'Dilluns'
+                }, {
+                    day: 'Dimarts'
+                }, {
+                    day: 'Dimecres'
+                }, {
+                    day: 'Divendres'
+                }]
+                calendar.set({availableWeekDays: days, availableDates: [], datesFilter: true})
+            })
+</script>
 </html>
