@@ -6,7 +6,7 @@
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body class="home" onload="modal(); modal2();">
+<body class="home">
   
 
 <?php
@@ -19,7 +19,7 @@ include "../services/header.php";
   ?>
 </div>
 <div class="footer">
-  <img src="../img/logo-centro-footer.svg">
+ <img src="../images/logo_fje.svg">
 </div>
 </body>
 </html>
