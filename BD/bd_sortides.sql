@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2020 a las 13:22:43
+-- Tiempo de generación: 21-03-2020 a las 19:32:31
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -264,19 +264,20 @@ CREATE TABLE `tbl_sortida` (
   `id_lista_profesores` int(11) NOT NULL,
   `id_clase` int(11) NOT NULL,
   `id_transport` int(11) NOT NULL,
-  `id_precios` int(11) NOT NULL
+  `id_precios` int(11) NOT NULL,
+  `comanda_menu` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_sortida`
 --
 
-INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_lista_profesores`, `id_clase`, `id_transport`, `id_precios`) VALUES
-(1, 'R-P-0015', '2020-03-20', '2020-03-23', 'Una salida muy chachi pistachi', 50, 3, 0, 2, 'MCarpallo', 1, 1, 1, 1),
-(2, 'R-P-0012', '0000-00-00', '0000-00-00', 'Una salida muy chachi', 60, 2, 2, 0, 'JCarcedo', 1, 21, 2, 5),
-(3, 'R-P-0035', '0000-00-00', '0000-00-00', 'Una salida muy pistachi', 0, 5, 3, 4, 'SGimenez', 1, 3, 3, 2),
-(4, 'R-P-0014', '0000-00-00', '0000-00-00', 'Una salida muy chachi pistachi', 0, 3, 5, 2, 'JCarcedo', 1, 4, 4, 3),
-(5, 'R-P-0055', '0000-00-00', '0000-00-00', 'Una salida muy marabitupenda', 0, 3, 0, 2, 'MCarpallo', 1, 10, 5, 4);
+INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_lista_profesores`, `id_clase`, `id_transport`, `id_precios`, `comanda_menu`) VALUES
+(1, 'R-P-0015', '2020-03-20', '2020-03-23', 'Una salida muy chachi pistachi', 50, 3, 0, 2, 'MCarpallo', 1, 1, 1, 1, 0),
+(2, 'R-P-0012', '0000-00-00', '0000-00-00', 'Una salida muy chachi', 60, 2, 2, 0, 'JCarcedo', 1, 21, 2, 5, 0),
+(3, 'R-P-0035', '0000-00-00', '0000-00-00', 'Una salida muy pistachi', 0, 5, 3, 4, 'SGimenez', 1, 3, 3, 2, 0),
+(4, 'R-P-0014', '0000-00-00', '0000-00-00', 'Una salida muy chachi pistachi', 0, 3, 5, 2, 'JCarcedo', 1, 4, 4, 3, 0),
+(5, 'R-P-0055', '0000-00-00', '0000-00-00', 'Una salida muy marabitupenda', 0, 3, 0, 2, 'MCarpallo', 1, 10, 5, 4, 0);
 
 -- --------------------------------------------------------
 
