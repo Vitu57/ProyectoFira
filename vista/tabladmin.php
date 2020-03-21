@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script type="text/javascript" src="../js/ajax.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
 <?php
 	//Estos campos se necesitan en la consulta, asi que si no los recibe los pone vacios
 
@@ -47,17 +56,26 @@
 				echo "<td>".$nsiei[0]."</td>";
 			}
 			//Ahora necesitamos saber el nombre de profesores que van a venir (Profesores de las clases que van a la salida)
-			$conprof="select nombre_profesor from tbl_lista_profesores where id_excursion='".$exe[10]."'";
+			$conprof="select tbl_usuari.nom_usuari,tbl_usuari.cognom_usuari from tbl_lista_profesores inner join tbl_usuari on tbl_lista_profesores.id_profesor=tbl_usuari.id_usuari where tbl_lista_profesores.id_excursion='".$exe[10]."'";
 			$qprof=mysqli_query($conn,$conprof);
 			echo "<td>";
 			while ($mprof=mysqli_fetch_array($qprof)) {
-				echo $mprof[0]."<br>";	
+				echo $mprof[0]." ".$mprof[1]."<br>";	
 			}
 			echo "</td>";
 			//Por ultimo, necesitamos saber que profesores de los anteriores son computables
-
+			$conprof="select tbl_usuari.nom_usuari,tbl_usuari.cognom_usuari from tbl_lista_profesores inner join tbl_usuari on tbl_lista_profesores.id_profesor=tbl_usuari.id_usuari where tbl_lista_profesores.id_excursion='".$exe[10]."' and tbl_usuari.computable='si'";
+			$qprof=mysqli_query($conn,$conprof);
+			echo "<td>";
+			while ($mprof=mysqli_fetch_array($qprof)) {
+				echo $mprof[0]." ".$mprof[1]."<br>";	
+			}
+			?>
+			
+		<?php
 		echo "</tr>";
-		
 	}
 	echo "</table>";
 ?>
+</body>
+</html>
