@@ -26,6 +26,7 @@
 		<th>SIEI</th>
 		<th>Profesores</th>
 		<th>Profesores Computables</th>
+		<th>Ver mas</th>
 		";
 	//Primero hacemos una consulta para saber las excursiones
 	
@@ -71,7 +72,15 @@
 				echo $mprof[0]." ".$mprof[1]."<br>";	
 			}
 			?>
-			
+			<td>
+				<button id="myBtn" onclick="abrirform();">Abrir formulario</button>
+					<div id="myModal" class="modal">
+						 <div class="modal-content">
+						 	<span class="close">&times;</span>
+						 	<p>holiii</p>
+						  </div>
+						</div>
+			</td>
 		<?php
 		echo "</tr>";
 	}
