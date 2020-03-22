@@ -4,6 +4,9 @@
   <title>Excursions</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body class="home">
   
@@ -61,6 +64,7 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
    <th scope="col">Lloc</th>
    <th scope="col">Jornada</th>
    <th scope='col'>Ambit</th>
+   <th scope='col'>Contacto</th>
 
 
   </tr>
@@ -99,9 +103,10 @@ echo "<tr>";
 
 
 $cont=0;
+$contContacte=0;
 
     //consulta para saber los datos de las actividades de cada salida
-$consulta2="SELECT * FROM tbl_activitat WHERE id_sortida='$id_sortida'";
+$consulta2="SELECT * FROM tbl_activitat INNER JOIN tbl_contacte_activitat ON tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat WHERE id_sortida='$id_sortida'";
       $exe2=mysqli_query($conn,$consulta2);
      while ($casos2=mysqli_fetch_array($exe2)){
        
@@ -113,10 +118,14 @@ $consulta2="SELECT * FROM tbl_activitat WHERE id_sortida='$id_sortida'";
         $llocAct[$cont]=$casos2['lloc_activitat'];
         $jorAct[$cont]=$casos2['jornada_activitat'];
         $ambAct[$cont]=$casos2['ambit_activitat'];
+        $personaContacte[$cont]=$casos2['persona_contacte'];
+        $webContacte[$cont]=$casos2['web_contacte'];
+        $telfContacte[$cont]=$casos2['telefon_contacte'];
+        $emailContacte[$cont]=$casos2['email_contacte'];
 
       }
 
-
+      $contContacte=$contContacte+1;
 
     //Si hay mas de una se utilizan los for para mostrar el número de actividades que hay en la salida 
     echo "<td>";
@@ -157,8 +166,74 @@ $consulta2="SELECT * FROM tbl_activitat WHERE id_sortida='$id_sortida'";
     echo "</td>";
 
 
-    
-     }
+?>
+<td>
+
+<!-- Button trigger modal -->
+<button type="button" onclick="modal(); modal2();" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Contacte
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contacte</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <?php
+        echo "<h4>Persona de Contacte:</h4>";
+echo "<p>".$personaContacte[$contContacte]."</p><br>";
+echo "<h4>Web de Contacte:</h4>";
+echo "<p>".$webContacte[$contContacte]."</p><br>";
+echo "<h4>Telefon de Contacte:</h4>";
+echo "<p>".$telfContacte[$contContacte]."</p><br>";
+echo "<h4>Email de Contacte:</h4>";
+echo "<p>".$emailContacte[$contContacte]."</p><br>";
+      ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php
+ /*
+    for ($i=1; $i <= $cont ; $i++) { 
+           if ($cont>1) {   
+    echo $i."- <button type='button' class='btn btn-success openBtn'>Contacte</button> <br>";
+     }else{
+     echo "<button  type='button' class='btn btn-success openBtn''>Contacte</button>";
+   }
+ }
+ */
+echo "</td>";
+  }
+
+
+     /*         
+echo "<h4>Persona de Contacte:</h4>";
+echo "<p>".$personaContacte[$contContacte]."</p><br>";
+echo "<h4>Web de Contacte:</h4>";
+echo "<p>".$webContacte[$contContacte]."</p><br>";
+echo "<h4>Telefon de Contacte:</h4>";
+echo "<p>".$telfContacte[$contContacte]."</p><br>";
+echo "<h4>Email de Contacte:</h4>";
+echo "<p>".$emailContacte[$contContacte]."</p><br>";
+*/
+?>
+
+
+
+
 
 echo "</tr>";
    
