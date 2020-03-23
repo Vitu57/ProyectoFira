@@ -68,7 +68,8 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 if ($tipus_user==1) {
     
 ?>
-<a class="none" href="../vista/Excursions.php"><h2>Veure excursions</h2></a>
+
+<a class="none" href="../vista/Excursions.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 
@@ -91,7 +92,7 @@ if ($tipus_user==1) {
     <span id="close2" class="close">&times;</span>
     <div class="separator"></div>
 
-    <a class="none" href="../vista/usuarios.php"><h2>Veure usuaris</h2></a>
+    <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" class="myBtn"><h4>Veure usuaris</h4></button></a>
 
 </div>
 </div>
@@ -110,7 +111,7 @@ if ($tipus_user==1) {
 }else if($tipus_user==2){
 ?>
 
-<a class="none" href="../vista/excursiones_profesores.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_profesores.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 </div>
@@ -127,7 +128,7 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==3){       
     ?>
-<a class="none" href="../vista/excursiones_secretaria.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_secretaria.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 </div>
@@ -143,7 +144,7 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==4){
 ?>
-<a class="none" href="../vista/excursiones_cocina.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_cocina.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 </div>
@@ -159,7 +160,7 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==5 || $tipus_user==6){
 ?>
-<a class="none" href="../vista/excursiones_enf_dir.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_enf_dir.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 </div>
@@ -175,7 +176,7 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==7){
 ?>
-<a class="none" href="../vista/excursiones_alu.php"><h2>Veure Excursions</h2></a>
+<a class="none" href="../vista/excursiones_alu.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 </div>

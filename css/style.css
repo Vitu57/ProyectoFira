@@ -78,7 +78,12 @@ a.none{
   background-color: orange; 
   opacity: 0.9;
 }
-
+#myBtnModal{
+  height: 5rem;
+  background-color: #0966ce;
+  border:1px solid black;
+  padding-top: 1.5rem;
+}
 
 
 .header {
