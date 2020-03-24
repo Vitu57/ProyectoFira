@@ -69,7 +69,7 @@ if ($tipus_user==1) {
     
 ?>
 
-<a class="none" href="../vista/Excursions.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 

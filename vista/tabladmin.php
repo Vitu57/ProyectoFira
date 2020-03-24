@@ -13,7 +13,7 @@
 	//$clase=$_REQUEST['clase'];
 	//$profe=$_REQUEST['profes'];
 	//Creamos la tabla
-	echo "<table>
+	echo "<table  class='table table-bordered'>
 		<tr><th>Codigo</th>
 		<th>Inicio</th>
 		<th>Fin</th>
@@ -73,13 +73,125 @@
 			}
 			?>
 			<td>
-				<button id="myBtn" onclick="abrirform();">Abrir formulario</button>
-					<div id="myModal" class="modal">
-						 <div class="modal-content">
-						 	<span class="close">&times;</span>
-						 	<p>holiii</p>
-						  </div>
-						</div>
+				<?php
+					echo $exe[10];
+				?>
+				<button id="myBtn" onclick="abrirform1();">Ver actividades</button>
+				<div id="myModal" class="modal">
+					 <div class="modal-content">
+					 	<span class="close">&times;</span>
+					 	<?php
+
+					 		$consultactividades="select tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_sortida='".$exe[10]."'";
+					 		$queryactividades=mysqli_query($conn,$consultactividades);
+					 			echo "<table>
+										<tr>
+											<th>Actividad</th>
+											<th>Lugar</th>
+											<th>Tipo</th>
+											<th>Ambito</th>
+											<th>Jornada</th>
+											<th>Objetivo</th>
+											<th>Persona de contacto</th>
+											<th>Web</th>
+											<th>Telefono</th>
+											<th>Email</th>";
+								echo "</tr>";
+								
+					 		while ($act=mysqli_fetch_array($queryactividades)) {
+					 			echo "<tr>
+									<td>".$act[0]."</td>
+									<td>".$act[1]."</td>
+									<td>".$act[2]."</td>
+									<td>".$act[3]."</td>
+									<td>".$act[4]."</td>
+									<td>".$act[5]."</td>
+									<td>".$act[6]."</td>
+									<td>".$act[7]."</td>
+									<td>".$act[8]."</td>
+									<td>".$act[9]."</td>
+									</tr>";
+					 		}
+					 		echo "</table>";
+					 	?>
+					</div>
+				</div>
+				<button id="myBtn2" onclick="abrirform2();">Ver precios</button>
+				<div id="myModal2" class="modal">
+					 <div class="modal-content">
+					 	<span class="close2">&times;</span>
+					 	<?php
+					 		$consultaprecios="select tbl_preus.* from tbl_preus inner join tbl_sortida on tbl_sortida.id_precios=tbl_preus.id_preus where tbl_sortida.id_sortida='".$exe[10]."'";
+					 		$queryprecios=mysqli_query($conn,$consultaprecios);
+					 			echo "<table>
+										<tr>
+											<th>Coste Substitucion</th>
+											<th>Coste Actividad individual</th>
+											<th>Coste Extra Actividad Profe</th>
+											<th>Coste Global Actividad</th>
+											<th>Coste final</th>
+											<th>Precio fijo</th>
+											<th>Precio sin Topal</th>
+											<th>^Precio Con Topal</th>
+											<th>Precio de gestion</th>
+											<th>Overhead</th>
+											<th>Total a facturar</th>
+											<th>Pago fraccionado</th>
+											<th>Observaciones</th>";
+								echo "</tr>";
+								
+					 		while ($pre=mysqli_fetch_array($queryprecios)) {
+					 			echo "<tr>
+									<td>".$pre[1]."</td>
+									<td>".$pre[2]."</td>
+									<td>".$pre[3]."</td>
+									<td>".$pre[4]."</td>
+									<td>".$pre[5]."</td>
+									<td>".$pre[6]."</td>
+									<td>".$pre[7]."</td>
+									<td>".$pre[8]."</td>
+									<td>".$pre[9]."</td>
+									<td>".$pre[10]."</td>
+									<td>".$pre[11]."</td>
+									<td>".$pre[12]."</td>
+									<td>".$pre[13]."</td>
+									</tr>";
+					 		}
+					 		echo "</table>";
+					 	?>
+					</div>
+				</div>
+				<button id="myBtn3" onclick="abrirform3();">Ver transportes</button>
+				<div id="myModal3" class="modal">
+					 <div class="modal-content">
+					 	<span class="close3">&times;</span>
+					 	<?php
+					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
+					 		echo $consultatransporte;
+					 		echo "<table>
+										<tr>
+											<th>Hora sortida</th>
+											<th>Hora arribada</th>
+											<th>Coste transporte</th>
+											<th>Codigo contacto</th>
+											<th>Comentarios</th>
+											<th>Transporte</th>";
+								echo "</tr>";
+							$querytransporte=mysqli_query($conn,$consultatransporte);
+							while ($tra=mysqli_fetch_array($querytransporte)) {
+								echo "<tr>
+									<td>".$tra[0]."</td>
+									<td>".$tra[1]."</td>
+									<td>".$tra[2]."</td>
+									<td>".$tra[3]."</td>
+									<td>".$tra[4]."</td>
+									<td>".$tra[5]."</td>
+								</tr>";
+					 		}
+					 		echo "</table>";
+					 	?>
+					</div>
+				</div>
 			</td>
 		<?php
 		echo "</tr>";
