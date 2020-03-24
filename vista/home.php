@@ -111,7 +111,7 @@ if ($tipus_user==1) {
 }else if($tipus_user==2){
 ?>
 
-<a class="none" href="../vista/excursiones_profesores.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
 
 </div>
 </div>

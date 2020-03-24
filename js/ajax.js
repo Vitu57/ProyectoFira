@@ -193,3 +193,77 @@ function FiltroCocina(){
     CrearTabla();
 }
 //----------------------------------------------------------------------------------------------------------------------------------
+
+function CrearTablaProfes(){
+    //Fecha de hoy
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    //---------------------
+    divResultado = document.getElementById('resultado');
+    var estado_filtro = document.getElementById("btn_filtro").value;
+    var ajax2=objetoAjax();
+    ajax2.open("GET", "../services/consulta_profes.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send(null);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<table class="table table-bordered" style="text-align:center"><thead>';
+        tabla +='<tr><th>Inici Sortida</th><th>Hora Sortida</th><th>Final Sortida</th><th>Hora Arribada</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Transport</th><th>Actividades</th><th>Alumnes</th>';
+        for(var i=0;i<respuesta.length;i++) {
+            if(estado_filtro==1){
+                if(respuesta[i].inici_sortida==today){
+                    tabla += '<tr>';
+                    
+                    tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[i].hora_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[i].hora_arribada+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
+                    tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_transport+ '</td>';
+                    tabla += '<td>Info actividad</td>';
+                    tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
+                    tabla += '</tr>';
+                    
+                    
+                }
+            }else{
+                if(respuesta[i].inici_sortida>=today){
+                    tabla += '<tr>';
+                    
+                    tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[i].hora_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[i].hora_arribada+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
+                    tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_transport+ '</td>';
+                    tabla += '<td>Info actividad</td>';
+                    tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
+                    tabla += '</tr>';
+                    
+                }
+            }
+        }
+            tabla+='</thead></table>';
+            divResultado.innerHTML=tabla;
+    }
+    }
+}
+function FiltroProfes(){
+    var estado_filtro = document.getElementById("btn_filtro").value;
+    if (estado_filtro==0){
+        document.getElementById("btn_filtro").style.backgroundColor="green";
+        document.getElementById("btn_filtro").value=1;
+    }else{
+        document.getElementById("btn_filtro").style.backgroundColor="white";
+        document.getElementById("btn_filtro").value=0;
+    }
+    CrearTablaProfes();
+}
