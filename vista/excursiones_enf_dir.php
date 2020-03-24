@@ -42,7 +42,7 @@ echo "<h3 class='txthead2'>Benvingut ".$nom." ".$cognom."</h3>";
 echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 
 
-//Tabla con todas las salidas y actividades
+//Tabla con todas las salidas
 ?>
 </div>
 <table style="color: white; text-align: center;" class="table">
@@ -63,8 +63,6 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 <?php
 
 $fecha_actual = date('Y-m-d');
-
-echo $fecha_actual;
 
     //consulta para saber los datos de las salidas y el transporte
 $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_transport ON tbl_transport.id_transport=tbl_sortida.id_transport INNER JOIN tbl_nom_transport ON tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_clase=tbl_etapa.id_etapa where tbl_sortida.inici_sortida > '$fecha_actual' ORDER BY tbl_sortida.inici_sortida";
