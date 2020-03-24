@@ -9,6 +9,7 @@
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
 
   <title>Excursiones</title>
 </head>
@@ -60,7 +61,7 @@
           </div>
           <div class="form-group col-md-3">
               <label for="inputState">Lista de profesores</label>
-              <select name="lista_prof" id="lista_prof" class="form-control tipus">
+              <select multiple size="6" name="lista_prof" id="lista_prof" class="form-control tipus">
                 <option value="0">Escollir...</option>
               </select>
             </div>
@@ -84,6 +85,7 @@
           </div>
         </div>
           <div id="clone">
+          <div class="tabcontent" id="fila0">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputAddress2">Nom activitat</label>
@@ -138,9 +140,13 @@
             </div>
           </div>
         </div>
+      </div>
           <div class="form-row">
             <div class="form-group">
               <button onclick="clone(); return false" class="btn btn-success" >Afegir</button>
+            </div>
+            <div class="tab" id="buttonPages">
+            <button id="first" class="tablinks" onclick="openTab(event,0); return false;">1</button>
             </div>
             </div>
           <!--Transport-->
