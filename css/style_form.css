@@ -1,0 +1,57 @@
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color:#071334;
+  height: 100%;
+}
+
+.body_design{
+    background-color:#071334; 
+    width: 100%;
+    height: 100%;
+}
+
+.main{
+  height: 1000px;
+}
+
+.end {
+  position: relative;
+  left: 0;
+  bottom: 0%;
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  text-align: center;
+  -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.75);
+}
+
+.end_copy{
+  bottom:0;
+  padding-top: 3px;
+}
+
+.btn_env{
+  border: 1px solid black;
+}
+
+.div_form{
+  position: relative;
+  top:5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  background-color: #E6E6FA; 
+  border-radius: 1em; 
+  -webkit-box-shadow: 0px -1px 16px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 16px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 16px 0px rgba(0,0,0,0.75);
+}
+
+.checkbx{
+  font-weight: 300;
+}
+
