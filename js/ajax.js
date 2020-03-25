@@ -226,7 +226,7 @@ function CrearTablaProfes(){
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_transport+ '</td>';
-                    tabla += '<td>Info actividad</td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
                     tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
                     tabla += '</tr>';
                     
@@ -244,7 +244,7 @@ function CrearTablaProfes(){
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_transport+ '</td>';
-                    tabla += '<td>Info actividad</td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
                     tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
                     tabla += '</tr>';
                     
@@ -253,6 +253,8 @@ function CrearTablaProfes(){
         }
             tabla+='</thead></table>';
             divResultado.innerHTML=tabla;
+            
+
     }
     }
 }
@@ -266,6 +268,52 @@ function FiltroProfes(){
         document.getElementById("btn_filtro").value=0;
     }
     CrearTablaProfes();
+}
+
+
+function modal_profes(actividad){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+    
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/consulta_actividad.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("actividad="+actividad);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+        tabla +='<tr><th>Activitat</th><th>Lloc</th><th>Tipus</th><th>Ambit</th><th>Jornada</th><th>Objectiu</th>';
+        
+            tabla += '<tr>';
+                    
+                    tabla += '<td>' + respuesta[0].nom_activitat+ '</td>';
+                    tabla += '<td>' + respuesta[0].lloc_activitat+ '</td>';
+                    tabla += '<td>' + respuesta[0].tipus_activitat+ '</td>';
+                    tabla += '<td>' + respuesta[0].ambit_activitat+ '</td>';
+                    tabla += '<td>' + respuesta[0].jornada_activitat+ '</td>';
+                    tabla += '<td>' + respuesta[0].objectiu_activitat+ '</td>';
+                    
+                    tabla += '</tr>';
+        
+        tabla+='</thead></table>';
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+}
 }
 //--------------------------------------------------------------------
 //Funciones para modales de juanma
