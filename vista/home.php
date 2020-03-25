@@ -40,9 +40,34 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 </div>
 <!-- Trigger/Open The Modal -->
 <div class="divcalendario">
-<div id="myCalendar" class="vanilla-calendar">
+  <div id="resultadosalida">
+  <table id="tabla_calendario" class="table table-hover text-center" style="font-size:10px; display:none;">
+  <thead>
+    <tr>
+      <th width="20%" scope="col">Codi de sortida</th>
+      <th width="10%" scope="col">Clase Assisteix</th>
+      <th width="15%" scope="col">Profesor Asignat</th>
+      <th width="15%" scope="col">Número Alumnes</th>
+      <th width="15%" scope="col">Inici sortida</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="codi_sortida_cal"></td>
+      <td id="clase_cal"></td>
+      <td id="Profe_asignat_cal"></td>
+      <td id="num_alu_cal"></td>
+      <td width="20%" id="inici_sortida_cal"></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+<div id="myCalendar" class="vanilla-calendar" style="width:98%; margin-top:70%;">
 </div>
 </div>
+
+
+
 <div class="d-flex justify-content-center" style="margin-top: 51px;">
       
    
