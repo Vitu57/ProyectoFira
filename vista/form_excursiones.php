@@ -5,26 +5,29 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../images/logo_pag.ico">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/style_form.css">
   <!-- JQuery -->
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Excursiones</title>
+  <title>Afegir Sortida</title>
 </head>
 
-<body>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <form action="form_excursiones.php" class="needs-validation">
+<body class="body_design">
+    <button class="btn" style="position: absolute; right: 5px;top:5px;"><a href="home.php">Tornar</a></button>
+        <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
+        <form action="form_excursiones.php" class="needs-validation">
         <div class="card rounded-0">
           <div class="card-header">
             <!--Sortida-->
             <h3 class="mb-0">Sortida</h3>
           </div>
         </div>
-        <div class="form-row">
+        <div class="form-row" style="margin-top: 15px;">
           <div class="form-group col-md-4">
             <label for="inputEmail4">Codi sortida</label>
             <input name="codi_sortida" type="email" class="form-control" id="inputEmail4" placeholder="">
@@ -77,16 +80,21 @@
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
+            <div style="margin-left:490px; margin-top:10px;">
+                <button class="btn btn-info" disabled>Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="MostrarActivitat(); return false;">Següent</button>
+            </div>
         </div>
+		</div>
         <!--Activitat-->
+        <div id="activitat" class="text-center border border-light p-5 div_form" style="display:none;">
         <div class="card rounded-0">
           <div class="card-header">
             <h3 class="mb-0">Activitat</h3>
           </div>
         </div>
           <div id="clone">
-          <div class="tabcontent" id="fila0">
-          <div class="form-row">
+		  <div class="tabcontent" id="fila0">
+          <div class="form-row" style="margin-top: 15px;">
             <div class="form-group col-md-4">
               <label for="inputAddress2">Nom activitat</label>
               <input name="nom_activitat" type="text" class="form-control" id="nom_activitat0" placeholder="">
@@ -140,22 +148,27 @@
             </div>
           </div>
         </div>
-      </div>
-          <div class="form-row">
+		</div>
+          <div class="form-row" style="margin-top: 10px;">
             <div class="form-group">
-              <button onclick="clone(); return false" class="btn btn-success" >Afegir</button>
+              <button onclick="clone(); return false" class="btn btn-success" >Afegir Activitat</button>
             </div>
-            <div class="tab" id="buttonPages">
-            <button id="first" class="tablinks" onclick="openTab(event,0); return false;">1</button>
+			<div class="tab" id="buttonPages" style="margin-left: 5px;">
+                            <button id="first" class="tablinks" onclick="openTab(event,0); return false;">1</button>
             </div>
             </div>
+            <div style="margin-left:490px; margin-top:10px;">
+                <button class="btn btn-info" onclick="ActivitatEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="ActivitatSeg(); return false;">Següent</button>
+            </div>
+        </div>
           <!--Transport-->
+          <div id="transport" class="text-center border border-light p-5 div_form" style="display:none;">
           <div class="card rounded-0">
             <div class="card-header">
               <h3 class="mb-0">Transport</h3>
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" style="margin-top: 15px;">
             <div class="form-group col-md-4">
               <label for="inputAddress2">Nom del transport</label>
               <input type="text" class="form-control" id="inputAddress2" placeholder="">
@@ -181,14 +194,18 @@
             <label for="exampleFormControlTextarea1">Comentaris</label>
             <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
+          <div style="margin-left:490px; margin-top:10px;">
+                <button class="btn btn-info" onclick="TransportEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="TransportSeg(); return false;">Següent</button>
+            </div>
         </div>
         <!--Costes-->
+        <div id="costes" class="text-center border border-light p-5 div_form" style="display:none;">
         <div class="card rounded-0">
             <div class="card-header">
               <h3 class="mb-0">Costos</h3>
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" style="margin-top: 15px;">
           <div class="form-group col-md-6">
               <label for="inputEmail4">Cost substitució</label>
               <input name="cost_transport" type="number" class="form-control" id="inputEmail4" placeholder="">
@@ -244,18 +261,17 @@
             <label for="exampleFormControlTextarea1">Observacions</label>
             <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-            
-
           </div>
-        </div>
-
-        <div class="form-group">
-        </div>
-        <button type="submit" class="btn btn-primary">Desar</button>
-      </form>
-    </div>
-  </div>
+            <div style="margin-left:400px; margin-top:10px;">
+                <button class="btn btn-info" onclick="CostesEnrere(); return false;">Enrere</button><button type="submit" class="btn btn-info" style="margin-left: 20px;">Afegir sortida</button>
+            </div>
+          </div>
+        <!--<button type="submit" class="btn btn-info btn-block">Afegir Sortida</button> -->
+        </form>
+        </div><br>
   <script type="text/javascript" src="../js/codigo.js"></script>
+<div class="footer" style="position: absolute; bottom: 0;">
+  <img src="../images/logo_fje.svg">
+</div>
 </body>
-
 </html>
