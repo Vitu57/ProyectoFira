@@ -13,7 +13,16 @@
 include "../services/conexion.php";
 include "../services/header.php";
 ?>
-<div class="tablas" style="background-color: rgba(255,255,255,1);">
+<div class="tablas" id="resultado" style="background-color: rgba(255,255,255,1);">
+	<form action="#" method="POST" onsubmit="filtrar();return false">
+		Fecha: <input type="text" name="fecha" id="fecha">
+		Clase: <input type="text" name="clase" id="clase">
+		Profesor: <input type="text" name="profe" id="profe">
+		<input type="submit" name="submit" value="Filtrar">
+	</form>
+	<form action="#" method="POST" onsubmit="vertodo();return false">
+		<input type="submit" name="submit" value="Ver todos">
+	</form>
   <?php
     include "tabladmin.php";
   ?>

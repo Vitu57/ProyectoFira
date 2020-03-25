@@ -7,12 +7,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+	
 <?php
+include "../services/conexion.php";
+//Estos son los valores que tiene el filtro, si no los encuentra los pone vacios
+if(isset($_REQUEST['fecha'])){
+	$fecha=$_REQUEST['fecha'];
+}else{
+	$fecha="";
+}
+if(isset($_REQUEST['clase'])){
+	$clase=$_REQUEST['clase'];
+}else{
+	$clase="";
+}
+if(isset($_REQUEST['profe'])){
+	$profe=$_REQUEST['profe'];
+}else{
+	$profe="";
+}
 	//Estos campos se necesitan en la consulta, asi que si no los recibe los pone vacios
-
-	//$clase=$_REQUEST['clase'];
-	//$profe=$_REQUEST['profes'];
-	//Creamos la tabla
 	echo "<table  class='table table-bordered'>
 		<tr><th>Codigo</th>
 		<th>Inicio</th>
@@ -30,7 +44,7 @@
 		";
 	//Primero hacemos una consulta para saber las excursiones
 	
-	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase";
+	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
 	//ejecutamos la consulta
 	$consulta=mysqli_query($conn,$consultaexcursion);
 	//Por cada resultado, metemos en una variable de tipo array
