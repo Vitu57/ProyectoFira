@@ -3,6 +3,7 @@
 <head>
   <title>Home</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!--Calendario-->
@@ -94,13 +95,13 @@ if ($tipus_user==1) {
     
 ?>
 
-<a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" class="myBtn"><h4>Veure sortides</h4></button></a>
 
 </div>
 
 </div>
 <button id='myBtn' class="myBtn">
-   <h2>Excursions</h2>
+   <h2>Sortides</h2>
 
 </button>
 
@@ -136,12 +137,12 @@ if ($tipus_user==1) {
 }else if($tipus_user==2){
 ?>
 
-<a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
 
 </div>
 </div>
       <button id="myBtn" class="myBtn">
-       <h3>Excursions</h3>
+       <h3>Sortides</h3>
      </button>
 
 
@@ -153,12 +154,12 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==3){       
     ?>
-<a class="none" href="../vista/excursiones_secretaria.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/excursiones_secretaria.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
 
 </div>
 </div>
 <button id="myBtn" class="myBtn">
-    <h3>Excursions</h3>
+    <h3>Sortides</h3>
   </button>
 
 
@@ -169,12 +170,12 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==4){
 ?>
-<a class="none" href="../vista/excursiones_cocina.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/excursiones_cocina.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
 
 </div>
 </div>
 <button id="myBtn" class="myBtn">
-    <h3>Excursions</h3>
+    <h3>Sortides</h3>
   </button>
 
 
@@ -185,12 +186,12 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==5 || $tipus_user==6){
 ?>
-<a class="none" href="../vista/excursiones_enf_dir.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/excursiones_enf_dir.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
 
 </div>
 </div>
 <button id="myBtn" class="myBtn">
-    <h3>Excursions</h3>
+    <h3>Sortides</h3>
   </button>
 
 
@@ -201,12 +202,12 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==7){
 ?>
-<a class="none" href="../vista/excursiones_alu.php"><button id="myBtnModal" class="myBtn"><h4>Veure excursions</h4></button></a>
+<a class="none" href="../vista/excursiones_alu.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
 
 </div>
 </div>
 <button id="myBtn" class="myBtn">
-    <h3>Excursions</h3>
+    <h3>Sortides</h3>
   </button>
 <?php
 }
