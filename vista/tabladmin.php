@@ -5,6 +5,9 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
 	
@@ -28,19 +31,21 @@ if(isset($_REQUEST['profe'])){
 }
 	//Estos campos se necesitan en la consulta, asi que si no los recibe los pone vacios
 	echo "<table  class='table table-bordered'>
+		<thead class='thead-dark'>
 		<tr><th>Codigo</th>
-		<th>Inicio</th>
-		<th>Fin</th>
-		<th>Clase</th>
-		<th>Etapa</th>
-		<th>Acompañantes</th>
-		<th>Alumnos</th>
-		<th>Profesor asignado</th>
-		<th>Vetlladors</th>
-		<th>SIEI</th>
-		<th>Profesores</th>
-		<th>Profesores Computables</th>
-		<th>Ver mas</th>
+		<th scope='col'>Inicio</th>
+		<th scope='col'>Fin</th>
+		<th scope='col'>Clase</th>
+		<th scope='col'>Etapa</th>
+		<th scope='col'>Acompañantes</th>
+		<th scope='col'>Alumnos</th>
+		<th scope='col'>Profesor asignado</th>
+		<th scope='col'>Vetlladors</th>
+		<th scope='col'>SIEI</th>
+		<th scope='col'>Profesores</th>
+		<th scope='col'>Profesores Computables</th>
+		<th scope='col'>Ver mas</th>
+		</thead>
 		";
 	//Primero hacemos una consulta para saber las excursiones
 	
@@ -90,7 +95,7 @@ if(isset($_REQUEST['profe'])){
 				<?php
 					echo $exe[10];
 				?>
-				<button id="myBtn" onclick="abrirform1();">Ver actividades</button>
+				<button style="margin-left: 10px;" id="myBtn" class="btn btn-info" onclick="abrirform1();">Ver actividades</button>
 				<div id="myModal" class="modal">
 					 <div class="modal-content">
 					 	<span class="close">&times;</span>
@@ -130,7 +135,7 @@ if(isset($_REQUEST['profe'])){
 					 	?>
 					</div>
 				</div>
-				<button id="myBtn2" onclick="abrirform2();">Ver precios</button>
+				<button style="margin-left: 24px; margin-top: 2px;" id="myBtn2" class="btn btn-info" onclick="abrirform2();">Ver precios</button>
 				<div id="myModal2" class="modal">
 					 <div class="modal-content">
 					 	<span class="close2">&times;</span>
@@ -175,7 +180,7 @@ if(isset($_REQUEST['profe'])){
 					 	?>
 					</div>
 				</div>
-				<button id="myBtn3" onclick="abrirform3();">Ver transportes</button>
+				<button style="margin-left: 24px; margin-top: 2px;" id="myBtn3" class="btn btn-info" onclick="abrirform3();">Ver transportes</button>
 				<div id="myModal3" class="modal">
 					 <div class="modal-content">
 					 	<span class="close3">&times;</span>
