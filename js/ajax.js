@@ -435,3 +435,47 @@ function vertodo(){
         }
     }
 }
+
+
+//Funcion que filtra resultados de las excursioned de secretaria
+function filtrar_secretaria(){
+    divResultado = document.getElementById('resultado');
+    var profe = document.getElementById("profe").value;
+    var clase = document.getElementById("clase").value;
+    var fecha = document.getElementById("fecha").value;
+     var jornada = document.getElementById("jornada").value;
+      var etapa = document.getElementById("etapa").value;
+       var codi = document.getElementById("codi").value;
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'sortides_secretaria.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada+"&etapa="+etapa+"&codi="+codi);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+function vertodo_secretaria(){
+    divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'sortides_secretaria.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send();
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
