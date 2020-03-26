@@ -92,8 +92,6 @@
             <h3 class="mb-0">Activitat</h3>
           </div>
         </div>
-          <div id="clone">
-		  <div class="tabcontent" id="fila0">
           <div class="form-row" style="margin-top: 15px;">
             <div class="form-group col-md-4">
               <label for="inputAddress2">Nom activitat</label>
@@ -147,15 +145,9 @@
               </div>
             </div>
           </div>
-        </div>
-		</div>
+        
+		
           <div class="form-row" style="margin-top: 10px;">
-            <div class="form-group">
-              <button onclick="clone(); return false" class="btn btn-success" >Afegir Activitat</button>
-            </div>
-			<div class="tab" id="buttonPages" style="margin-left: 5px;">
-                            <button id="first" class="tablinks" onclick="openTab(event,0); return false;">1</button>
-            </div>
             </div>
             <div style="margin-left:490px; margin-top:10px;">
                 <button class="btn btn-info" onclick="ActivitatEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="ActivitatSeg(); return false;">Següent</button>

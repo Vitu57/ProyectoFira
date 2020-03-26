@@ -1,4 +1,3 @@
-var num = 0;
 window.onload = select_etapa;
 
 function objetoAjax() {
@@ -45,13 +44,13 @@ function select_etapa() {
 
 }
 
-function select_enum(id) {
+function select_enum() {
     /*código a implementar*/
     var lista = [];
     var accion = [];
-    lista[1] = document.getElementById("tipus_activitat"+id+"");
-    lista[2] = document.getElementById("ambit_activitat"+id+"");
-    lista[3] = document.getElementById("jornada_activitat"+id+"");
+    lista[1] = document.getElementById("tipus_activitat");
+    lista[2] = document.getElementById("ambit_activitat");
+    lista[3] = document.getElementById("jornada_activitat");
     var ajax3 = objetoAjax();
     var option;
     accion[1]="tipus_activitat";
@@ -102,81 +101,6 @@ function select_curs() {
     }
 
 }
-function clone(){
-num++;
-var clone;
-    clone = '<div class="tabcontent" id="fila'+num+'">'+
-            '<div class="form-row">'+
-            '<div class="form-group col-md-4">'+
-              '<label for="inputAddress2">Nom activitat</label>'+
-              '<input name="nom_activitat" type="text" class="form-control" id="nom_activitat'+num+'" placeholder="">'+
-            '</div>'+
-            '<div class="form-group col-md-4">'+
-              '<label for="inputAddress2">Lloc activitat</label>'+
-              '<input name="lloca_activitat" type="text" class="form-control" id="lloc_activitat'+num+'" placeholder="">'+
-            '</div>'+
-            '<div class="form-group col-md-3">'+
-              '<label for="inputState">Tipus de activitat</label>'+
-              '<select name="tipus_act" id="tipus_act'+num+'" class="form-control tipus_act">'+
-                '<option selected>Choose...</option>'+
-                '<option>...</option>'+
-              '</select>'+
-            '</div>'+
-            '<div class="form-group col-md-3">'+
-              '<label for="inputState">Ambit activitat</label>'+
-              '<select name="ambit" id="ambit_activitat'+num+'" class="form-control ambit">'+
-                '<option selected>Choose...</option>'+
-                '<option>...</option>'+
-              '</select>'+
-            '</div>'+
-            '<div class="form-group col-md-3">'+
-              '<label for="inputState">Jornada de activitat</label>'+
-              '<select id="jornada_activitat'+num+'" class="form-control jornada">'+
-                '<option selected>Choose...</option>'+
-                '<option>...</option>'+
-              '</select>'+
-            '</div>'+
-            '<div class="form-group col-md-4">'+
-              '<label for="inputAddress2">Objectiu activitat</label>'+
-              '<input type="text" class="form-control" id="obj_activitat'+num+'" placeholder="">'+
-            '</div>'+
-            '<div class="form-row">'+
-              '<div class="form-group col-md-3">'+
-                '<label for="inputAddress2">Persona de contacte</label>'+
-                '<input type="text" class="form-control" id="pers_contacte'+num+'" placeholder="">'+
-              '</div>'+
-              '<div class="form-group col-md-3">'+
-                '<label for="inputAddress">Telefón de contacte </label>'+
-                '<input type="number" class="form-control" id="tlf_contacte'+num+'" placeholder="">'+
-              '</div>'+
-              '<div class="form-group col-md-3">'+
-                '<label for="inputAddress2">Web de contacte</label>'+
-                '<input type="text" class="form-control" id="web_contacte'+num+'" placeholder="">'+
-              '</div>'+
-              '<div class="form-group col-md-3">'+
-                '<label for="inputAddress2">Email de contacte</label>'+
-                '<input type="text" class="form-control" id="email_contacte'+num+'" placeholder="">'+
-              '</div>'+
-            '</div>'+
-          '</div>'+
-          '<div class="form-row" id="boton'+num+'">'+
-            '<div class="form-group">'+
-              '<button onclick="borrar('+num+'); return false;" class="btn btn-danger" >Esborrar</button>'+
-            '</div>'+
-            '</div>'+
-            '</div>';
-          document.getElementById("clone").insertAdjacentHTML( 'beforeend', clone );
-          var boton = '<button id="buttonPage'+num+'" class="tablinks" onclick="openTab(event,'+num+'); return false;">'+(num+1)+'</button>';
-          document.getElementById("buttonPages").insertAdjacentHTML( 'beforeend', boton);         
-}
-
-function borrar(id){
-    document.getElementById('fila'+id).remove();
-    document.getElementById('buttonPage'+id).remove();
-    document.getElementById('fila0').style.display = "block";
-    document.getElementById('first').className += " active";
-
-}
 
 
 function openTab(evt, tabName, subTab, idform) {
@@ -196,7 +120,7 @@ function openTab(evt, tabName, subTab, idform) {
     }
   
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById('fila'+tabName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
   }
   
