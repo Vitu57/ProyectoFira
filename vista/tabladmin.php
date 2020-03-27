@@ -55,19 +55,17 @@ if(isset($_REQUEST['profe'])){
 		";
 	//Primero hacemos una consulta para saber las excursiones
 	
-	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
+	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida,tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_activitat.id_activitat from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase inner join tbl_activitat on tbl_sortida.id_sortida=tbl_activitat.id_sortida where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
 	//ejecutamos la consulta
 	$consulta=mysqli_query($conn,$consultaexcursion);
 	//Por cada resultado, metemos en una variable de tipo array
 	
 	while ($exe=mysqli_fetch_array($consulta)) {
-		$consultactividades="select tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_sortida='".$exe[10]."'";
-			$queryactividades=mysqli_query($conn,$consultactividades);
-			$act=mysqli_fetch_array($queryactividades);
+		
 		//Formamos la tabla
 		echo "<tr>
 			<td>".$exe[0]."</td>
-			<td>".$act[0]."</td>
+			<td>".$exe[11]."</td>
 			<td>".$exe[1]."</td>
 			<td>".$exe[2]."</td>
 			<td>".$exe[3]."</td>
@@ -101,13 +99,13 @@ if(isset($_REQUEST['profe'])){
 				echo $mprof[0]." ".$mprof[1]."<br>";	
 			}
 			
-					echo "<td>".$act[1]."</td>
-							<td>".$act[2]."</td>
-							<td>".$act[3]."</td>
-							<td>".$act[4]."</td>
-							<td>".$act[5]."</td>";
+				echo "<td>".$exe[12]."</td>
+				<td>".$exe[13]."</td>
+				<td>".$exe[14]."</td>
+				<td>".$exe[15]."</td>
+				<td>".$exe[16]."</td>";
 			?>
-			<td class="float-left">
+			<td style="text-align: left;" class="float-left">
 				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn" onclick="abrirform1();">Ver contacto</button>
 				<div id="myModal" class="modal">
 					 <div class="modal-content">
@@ -122,12 +120,14 @@ if(isset($_REQUEST['profe'])){
 											<th>Telefono</th>
 											<th>Email</th>";
 								echo "</tr>";
-								
+									$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";
+									$querycontacto=mysqli_query($conn,$consultacontacto);
+									$con=mysqli_fetch_array($querycontacto);
 						 			echo "<tr>
-									<td>".$act[6]."</td>
-									<td>".$act[7]."</td>
-									<td>".$act[8]."</td>
-									<td>".$act[9]."</td>
+									<td>".$con[0]."</td>
+									<td>".$con[1]."</td>
+									<td>".$con[2]."</td>
+									<td>".$con[3]."</td>
 									</tr>";
 					 		
 					 		echo "</table>";
@@ -185,7 +185,6 @@ if(isset($_REQUEST['profe'])){
 					 	<span class="close3">&times;</span>
 					 	<?php
 					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
-					 		echo $consultatransporte;
 					 		echo "<table>
 										<tr>
 											<th>Hora sortida</th>
