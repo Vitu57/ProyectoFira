@@ -107,7 +107,7 @@ if(isset($_REQUEST['profe'])){
 							<td>".$act[4]."</td>
 							<td>".$act[5]."</td>";
 			?>
-			<td class="float-left">
+			<td style="text-align: left;" class="float-left">
 				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn" onclick="abrirform1();">Ver contacto</button>
 				<div id="myModal" class="modal">
 					 <div class="modal-content">
