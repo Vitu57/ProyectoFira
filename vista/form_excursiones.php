@@ -80,7 +80,14 @@
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-            <div style="margin-left:490px; margin-top:10px;">
+            <div></div>
+            <div style="margin-left: -650px; margin-top: 20%;">
+                <button class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
+                <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
+                <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
+                <button class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>
+            </div>
+            <div style="margin-left:490px; margin-top:-5.5%;">
                 <button class="btn btn-info" disabled>Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="MostrarActivitat(); return false;">Següent</button>
             </div>
         </div>
@@ -95,29 +102,29 @@
           <div class="form-row" style="margin-top: 15px;">
             <div class="form-group col-md-4">
               <label for="inputAddress2">Nom activitat</label>
-              <input name="nom_activitat" type="text" class="form-control" id="nom_activitat" placeholder="">
+              <input name="nom_activitat" type="text" class="form-control" id="nom_activitat0" placeholder="">
             </div>
             <div class="form-group col-md-4">
               <label for="inputAddress2">Lloc activitat</label>
-              <input name="lloc_activitat" type="text" class="form-control" id="lloc_activitat" placeholder="">
+              <input name="lloc_activitat" type="text" class="form-control" id="lloc_activitat0" placeholder="">
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Tipus de activitat</label>
-              <select name="tipus_act" id="tipus_activitat" class="form-control tipus_act">
+              <select name="tipus_act" id="tipus_activitat0" class="form-control tipus_act">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Ambit activitat</label>
-              <select name="ambit" id="ambit_activitat" class="form-control ambit">
+              <select name="ambit" id="ambit_activitat0" class="form-control ambit">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Jornada de activitat</label>
-              <select id="jornada_activitat" class="form-control jornada">
+              <select id="jornada_activitat0" class="form-control jornada">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
@@ -129,19 +136,19 @@
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Persona de contacte</label>
-                <input type="text" class="form-control" id="pers_contacte" placeholder="">
+                <input type="text" class="form-control" id="pers_contacte0" placeholder="">
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress">Telefón de contacte </label>
-                <input type="number" class="form-control" id="tlf_contacte" placeholder="">
+                <input type="number" class="form-control" id="tlf_contacte0" placeholder="">
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Web de contacte</label>
-                <input type="text" class="form-control" id="web_contacte" placeholder="">
+                <input type="text" class="form-control" id="web_contacte0" placeholder="">
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Email de contacte</label>
-                <input type="text" class="form-control" id="email_contacte" placeholder="">
+                <input type="text" class="form-control" id="email_contacte0" placeholder="">
               </div>
             </div>
           </div>
@@ -149,7 +156,13 @@
 		
           <div class="form-row" style="margin-top: 10px;">
             </div>
-            <div style="margin-left:490px; margin-top:10px;">
+            <div style="margin-left: -500px; margin-top:10px;">
+                <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="ActivitatEnrere(); return false;">1</button>
+                <button class="btn btn-secondary active" title="Activitat" style="margin-right: 2px;" onclick="return false">2</button>
+                <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="ActivitatSeg(); return false;">3</button>
+                <button class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionActivitat4(); return false;">4</button>
+            </div>
+            <div style="margin-left:490px; margin-top:-5.5%;">
                 <button class="btn btn-info" onclick="ActivitatEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="ActivitatSeg(); return false;">Següent</button>
             </div>
         </div>
@@ -186,7 +199,13 @@
             <label for="exampleFormControlTextarea1">Comentaris</label>
             <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-          <div style="margin-left:490px; margin-top:10px;">
+          <div style="margin-left: -500px; margin-top:10px;">
+                <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionTransport(); return false;">1</button>
+                <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="TransportEnrere(); return false;">2</button>
+                <button class="btn btn-secondary active" title="Transport" style="margin-right: 2px;" onclick="return false">3</button>
+                <button class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="TransportSeg(); return false;">4</button>
+          </div>
+          <div style="margin-left:490px; margin-top:-5.5%">
                 <button class="btn btn-info" onclick="TransportEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="TransportSeg(); return false;">Següent</button>
             </div>
         </div>
@@ -254,7 +273,13 @@
             <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
           </div>
-            <div style="margin-left:400px; margin-top:10px;">
+            <div style="margin-left: -500px; margin-top:10px;">
+                <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionCostes1(); return false;">1</button>
+                <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="PaginacionCostes2   (); return false;">2</button>
+                <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;"  onclick="CostesEnrere(); return false;">3</button>
+                <button class="btn btn-secondary active" title="Costos" style="margin-right: 2px;" onclick="return false">4</button>
+            </div>
+            <div style="margin-left:400px; margin-top:-5.5%;">
                 <button class="btn btn-info" onclick="CostesEnrere(); return false;">Enrere</button><button type="submit" class="btn btn-info" style="margin-left: 20px;">Afegir sortida</button>
             </div>
           </div>
