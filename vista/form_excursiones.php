@@ -95,29 +95,29 @@
           <div class="form-row" style="margin-top: 15px;">
             <div class="form-group col-md-4">
               <label for="inputAddress2">Nom activitat</label>
-              <input name="nom_activitat" type="text" class="form-control" id="nom_activitat0" placeholder="">
+              <input name="nom_activitat" type="text" class="form-control" id="nom_activitat" placeholder="">
             </div>
             <div class="form-group col-md-4">
               <label for="inputAddress2">Lloc activitat</label>
-              <input name="lloc_activitat" type="text" class="form-control" id="lloc_activitat0" placeholder="">
+              <input name="lloc_activitat" type="text" class="form-control" id="lloc_activitat" placeholder="">
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Tipus de activitat</label>
-              <select name="tipus_act" id="tipus_activitat0" class="form-control tipus_act">
+              <select name="tipus_act" id="tipus_activitat" class="form-control tipus_act">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Ambit activitat</label>
-              <select name="ambit" id="ambit_activitat0" class="form-control ambit">
+              <select name="ambit" id="ambit_activitat" class="form-control ambit">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Jornada de activitat</label>
-              <select id="jornada_activitat0" class="form-control jornada">
+              <select id="jornada_activitat" class="form-control jornada">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
@@ -129,19 +129,19 @@
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Persona de contacte</label>
-                <input type="text" class="form-control" id="pers_contacte0" placeholder="">
+                <input type="text" class="form-control" id="pers_contacte" placeholder="">
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress">Telefón de contacte </label>
-                <input type="number" class="form-control" id="tlf_contacte0" placeholder="">
+                <input type="number" class="form-control" id="tlf_contacte" placeholder="">
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Web de contacte</label>
-                <input type="text" class="form-control" id="web_contacte0" placeholder="">
+                <input type="text" class="form-control" id="web_contacte" placeholder="">
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Email de contacte</label>
-                <input type="text" class="form-control" id="email_contacte0" placeholder="">
+                <input type="text" class="form-control" id="email_contacte" placeholder="">
               </div>
             </div>
           </div>
