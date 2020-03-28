@@ -114,42 +114,21 @@ echo "<tr>";
        echo "<td>".$nomAct."</td>";
        echo "<td>".$llocAct."</td>";
        echo "<td>".$jorAct."</td><td>";       
-?>
+ ?>
 
-<!-- Button trigger modal -->
-<button type="button" onclick="modal(); modal2();" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-Contacte
-</button>
+ <!-- Botón para la modal de contacto-->      
+<button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria" onclick="modal_secretaria('<?php echo $personaContacte; ?>','<?php echo $webContacte; ?>','<?php echo $telfContacte; ?>','<?php echo $emailContacte; ?>');">Veure contacte</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Contacte</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<!-- Modal del contacto--> 
+<div id="resultado2" class="modalmask" style="display:none;">
 
-        <?php 
-echo "<h4>Persona de Contacte:</h4>";
-echo "<p>".$personaContacte."</p><br>";
-echo "<h4>Web de Contacte:</h4>";
-echo "<p>".$webContacte."</p><br>";
-echo "<h4>Telefon de Contacte:</h4>";
-echo "<p>".$telfContacte."</p><br>";
-echo "<h4>Email de Contacte:</h4>";
-echo "<p>".$emailContacte."</p><br>";
-      ?>
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Close" class="close" id="close">X</a>
+        <h2 id="tituloResultado">TITULO</h2>
+        <div id="contenidoResultado">contenido resultado</div>
       </div>
     </div>
-  </div>
-</div>
-
 <?php
-
 echo "</td>";
 echo "</tr>";  
   
