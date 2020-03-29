@@ -37,6 +37,8 @@ function select_etapa() {
             etapa.innerHTML = option;
             select_curs(etapa);
             select_enum();
+            select_professor();
+            select_transport();
         }
     }
 
@@ -59,7 +61,7 @@ function select_enum() {
             option = "";
             for (var j = 0; j < respuesta.length; j++) {
                 option += '<option>' + respuesta[j] + '</option>';
-                console.log(option)
+                console.log(option);
             }
             lista.innerHTML = option;
             console.log(lista.innerHTML = option);
@@ -86,7 +88,7 @@ function select_enum2() {
             option = "";
             for (var j = 0; j < respuesta.length; j++) {
                 option += '<option>' + respuesta[j] + '</option>';
-                console.log(option)
+                console.log(option);
             }
             lista.innerHTML = option;
             console.log(lista.innerHTML = option);
@@ -113,7 +115,7 @@ function select_enum3() {
             option = "";
             for (var j = 0; j < respuesta.length; j++) {
                 option += '<option>' + respuesta[j] + '</option>';
-                console.log(option)
+                console.log(option);
             }
             lista.innerHTML = option;
             console.log(lista.innerHTML = option);
@@ -142,6 +144,67 @@ function select_curs() {
         }
     }
 
+}
+
+//Devuelve los profesores ordenados por apellido de la base de datos y los muestra en un multiselect
+function select_professor() {
+    /*código a implementar*/
+    var lista = document.getElementById("lista_prof");
+    var ajax3 = objetoAjax();
+    var option;
+    ajax3.open("POST", "../services/consulta_form_sortides.php", true);
+    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajax3.send("accion="+"professor");
+    ajax3.onreadystatechange = function () {
+        if (ajax3.readyState == 4 && ajax3.status == 200) {
+            var respuesta=JSON.parse(this.responseText);
+            for (var i = 0; i < respuesta.length; i++) {
+            option += '<option>' + respuesta[i].nom_usuari+' '+respuesta[i].cognom_usuari+ '</option>';
+            }
+            lista.innerHTML=option;
+        }
+    }
+
+}
+// devuelve y muestra los tipos de transporte en un select
+function select_transport() {
+    var transport = document.getElementById("tipus_transport");
+    var ajax3 = objetoAjax();
+    var option;
+    ajax3.open("POST", "../services/consulta_form_sortides.php", true);
+    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajax3.send("accion="+"transport");
+    ajax3.onreadystatechange = function () {
+        if (ajax3.readyState == 4 && ajax3.status == 200) {
+            var respuesta=JSON.parse(this.responseText);
+            for (var i = 0; i < respuesta.length; i++) {
+            option += '<option>' + respuesta[i].nom_transport+'</option>';
+            console.log(option);
+            }
+            transport.innerHTML=option;
+        }
+    }
+
+}
+
+function sendProf(sel){
+    var ajax3 = objetoAjax();
+    ajax3.open("POST", "../services/insert_form_sortides.php", true);
+    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    var values = [], i, j, cur;
+    for (i = 0, j = sel.options.length; i < j; i++) {
+        cur = sel.options[i];
+        if (cur.selected) {
+            values.push(encodeURIComponent(cur.value));
+        }
+    }
+    if (values.length) {
+        values = encodeURIComponent(sel.name) + "=" + values.join("&" + encodeURIComponent(sel.name) + "=");
+    } else {
+        values = null;
+    }
+    alert(values)
+    xmlhttp.send(values);
 }
 
 
