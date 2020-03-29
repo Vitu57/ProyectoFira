@@ -154,7 +154,7 @@ if ($tipus_user==1) {
 <?php
 }else if($tipus_user==3){       
     ?>
-<a class="none" href="../vista/excursiones_secretaria.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
+<a class="none" href="../vista/sortides_secretaria.php"><button id="myBtnModal" class="myBtn"><h4>Veure Sortides</h4></button></a>
 
 </div>
 </div>

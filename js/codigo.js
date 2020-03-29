@@ -229,30 +229,60 @@ function openTab(evt, tabName, idform) {
     evt.currentTarget.className += " active";
 }
 
-//Muestra las paginas del formulario
-function MostrarActivitat() {
-    document.getElementById('sortides').style.display = "none";
-    document.getElementById('activitat').style.display = "block";
-}
-function ActivitatEnrere() {
+  //Muestra las paginas del formulario
+  function MostrarActivitat(){
+   document.getElementById('sortides').style.display = "none";
+   document.getElementById('activitat').style.display = "block";
+  }
+  function ActivitatEnrere(){
     document.getElementById('sortides').style.display = "block";
     document.getElementById('activitat').style.display = "none";
-}
-function ActivitatSeg() {
+  }
+  function ActivitatSeg(){
     document.getElementById('activitat').style.display = "none";
-    document.getElementById('transport').style.display = "block";
-}
-
-function TransportEnrere() {
+    document.getElementById('transport').style.display = "block"; 
+  }
+  
+  function TransportEnrere(){
     document.getElementById('activitat').style.display = "block";
     document.getElementById('transport').style.display = "none";
-}
-function TransportSeg() {
+  }
+  function TransportSeg(){
     document.getElementById('transport').style.display = "none";
-    document.getElementById('costes').style.display = "block";
-}
-
-function CostesEnrere() {
+    document.getElementById('costes').style.display = "block"; 
+  }
+  
+  function CostesEnrere(){
     document.getElementById('transport').style.display = "block";
     document.getElementById('costes').style.display = "none";
-}
+  }
+  
+  function PaginacionSortida3(){
+      document.getElementById('sortides').style.display = "none";
+      document.getElementById('transport').style.display = "block";
+  }
+  
+  function PaginacionSortida4(){
+      document.getElementById('sortides').style.display = "none";
+      document.getElementById('costes').style.display = "block"; 
+  }
+  
+  function PaginacionActivitat4(){
+      document.getElementById('costes').style.display = "block";
+      document.getElementById('activitat').style.display = "none";
+  }
+  
+  function PaginacionTransport(){
+      document.getElementById('sortides').style.display = "block";
+      document.getElementById('transport').style.display = "none";
+  }
+  
+  function PaginacionCostes1(){
+      document.getElementById('sortides').style.display = "block";
+      document.getElementById('costes').style.display = "none"; 
+  }
+  
+  function PaginacionCostes2(){
+      document.getElementById('activitat').style.display = "block";
+      document.getElementById('costes').style.display = "none";
+  }

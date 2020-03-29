@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home</title>
+  <title>Sortides</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -34,7 +34,7 @@ include "../services/header.php";
 
 		<?php
 
-	$consulta="SELECT nom_etapa  FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
+	$consulta="SELECT nom_etapa FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
 	$exe=mysqli_query($conn,$consulta);
     while ($casos=mysqli_fetch_array($exe)){
 

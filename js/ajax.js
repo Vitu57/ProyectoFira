@@ -315,6 +315,36 @@ function modal_profes(actividad){
     }
 }
 }
+
+function modal_secretaria(persona, web, telf, email){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+                  
+                    tabla = '<h4>Persona de contacte</h4>';
+                    tabla += '<p>' + persona + '</p>';
+                    tabla += '<h4>Web de contacte</h4>';
+                    tabla += '<p>' + web +'</p>';
+                    tabla += '<h4>Telefon de contacte</h4>';
+                    tabla += '<p>' + telf + '</p>';
+                    tabla += '<h4>Email de contacte</h4>';
+                    tabla += '<p>' + email + '</p>';
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+
 //--------------------------------------------------------------------
 //Funciones para modales de juanma
 function abrirform1(){
