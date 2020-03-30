@@ -436,83 +436,90 @@ function modal_secretaria(persona, web, telf, email){
 
 //--------------------------------------------------------------------
 //Funciones para modales de juanma
-function abrirform1(){
-    var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    
-      modal.style.display = "block";
-    
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
+function abrirform1(persona, web, telf, email){
+    var modal = document.getElementById("resultado2");
+     modal.style.display = "block";
+     var span = document.getElementById("close");
+  document.getElementById("tituloResultado").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+                  
+                    tabla = '<h4>Persona de contacte</h4>';
+                    tabla += '<p>' + persona + '</p>';
+                    tabla += '<h4>Web de contacte</h4>';
+                    tabla += '<p>' + web +'</p>';
+                    tabla += '<h4>Telefon de contacte</h4>';
+                    tabla += '<p>' + telf + '</p>';
+                    tabla += '<h4>Email de contacte</h4>';
+                    tabla += '<p>' + email + '</p>';
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
 }
-function abrirform2(){
-    var modal = document.getElementById("myModal2");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn2");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close2")[0];
-
-    // When the user clicks the button, open the modal 
-    
-      modal.style.display = "block";
-    
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
+function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
+    var modal = document.getElementById("resultado2");
+     modal.style.display = "block";
+     var span = document.getElementById("close");
+  document.getElementById("tituloResultado").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+                  
+                    tabla = '<h4>Cost substitucio</h4>';
+                    tabla += '<p>' + a+ '</p>';
+                    tabla += '<h4>Cost activitat individual</h4>';
+                    tabla += '<p>' + b+ '</p>';
+                    tabla += '<h4>Cost extra activitat profe</h4>';
+                    tabla += '<p>' + c+ '</p>';
+                    tabla += '<h4>Cost global activitat</h4>';
+                    tabla += '<p>' + d+ '</p>';
+                    tabla += '<h4>Cost final</h4>';
+                    tabla += '<p>' + e+ '</p>';
+                    tabla += '<h4>Preu fixe</h4>';
+                    tabla += '<p>' + f+ '</p>';
+                    tabla += '<h4>Preu sense topal</h4>';
+                    tabla += '<p>' + g+ '</p>';
+                    tabla += '<h4>Preu amb topal</h4>';
+                    tabla += '<p>' + h+ '</p>';
+                    tabla += '<h4>Preu gestio</h4>';
+                    tabla += '<p>' + i+ '</p>';
+                    tabla += '<h4>Overhead</h4>';
+                    tabla += '<p>' + j+ '</p>';
+                    tabla += '<h4>Total a facturar</h4>';
+                    tabla += '<p>' + k+ '</p>';
+                    tabla += '<h4>Pagament fraccionat</h4>';
+                    tabla += '<p>' + l+ '</p>';
+                    tabla += '<h4>Observacio fraccionat</h4>';
+                    tabla += '<p>' + m+ '</p>';
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
 }
-function abrirform3(){
-    var modal = document.getElementById("myModal3");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn3");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close3")[0];
-
-    // When the user clicks the button, open the modal 
-    
-      modal.style.display = "block";
-    
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
+function abrirform3(a,b,c,d,e,f){
+    var modal = document.getElementById("resultado2");
+     modal.style.display = "block";
+     var span = document.getElementById("close");
+  document.getElementById("tituloResultado").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+                    tabla = '<h4>nombre del transporte</h4>';
+                    tabla += '<p>' + f + '</p>';
+                    tabla += '<h4>Hora de salida</h4>';
+                    tabla += '<p>' + a + '</p>';
+                    tabla += '<h4>Hora llegada</h4>';
+                    tabla += '<p>' + b +'</p>';
+                    tabla += '<h4>Coste del transporte</h4>';
+                    tabla += '<p>' + c + '</p>';
+                    tabla += '<h4>Codigo del contacto</h4>';
+                    tabla += '<p>' + d + '</p>';
+                    tabla += '<h4>Comentaris del transport</h4>';
+                    tabla += '<p>' + e + '</p>';
+                    
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
 }
 
 //Funcion que filtra resultados de las excursioned de administracion
@@ -555,6 +562,25 @@ function vertodo(){
     }
 }
 
+
+//Funcion que elimina una excursion
+function eliminar(id_s,id_a,id_p,id_c,id_t){
+    divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/eliminar_sortida.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("id_s="+id_s+"&id_a="+id_a+"&id_p="+id_p+"&id_c="+id_c+"&id_t="+id_t);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+           divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
 
 //Funcion que filtra resultados de las excursioned de secretaria
 function filtrar_secretaria(){
