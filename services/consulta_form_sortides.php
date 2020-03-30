@@ -48,8 +48,10 @@ $select=[];
         }
         print json_encode($select);
 }elseif($accion == "professor"){
-$query = "SELECT `nom_usuari`, `cognom_usuari`, `id_usuari` FROM `tbl_usuari` WHERE `id_tipus_usuari`= 2 ORDER BY `cognom_usuari`";
+$id_etapa_prof=$_REQUEST['id_clase'];
+$query = "SELECT `nom_usuari`, `cognom_usuari`, `id_usuari` FROM `tbl_usuari` WHERE `id_tipus_usuari`= 2 AND id_clase = ? ORDER BY `cognom_usuari`";
  if ($stmt = mysqli_prepare($conn, $query)){
+            mysqli_stmt_bind_param($stmt, "s", $id_etapa_prof);
             mysqli_stmt_execute($stmt);
             $res = mysqli_stmt_get_result($stmt);
             $professor=array();

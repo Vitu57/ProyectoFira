@@ -38,7 +38,7 @@ function select_etapa() {
             etapa.innerHTML = option;
             select_curs();
             select_enum();
-            select_professor();
+            //select_professor();
             select_transport();
         }
     }
@@ -154,19 +154,25 @@ function select_curs() {
 //Devuelve los profesores ordenados por apellido de la base de datos y los muestra en un multiselect
 function select_professor() {
     /*código a implementar*/
+    curs = document.getElementById("curs").value;
     var lista = document.getElementById("lista_prof");
     var ajax3 = objetoAjax();
     var option;
     ajax3.open("POST", "../services/consulta_form_sortides.php", true);
     ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    ajax3.send("accion=professor");
+    ajax3.send("accion=professor&id_clase="+curs);
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             var respuesta=JSON.parse(this.responseText);
+            if (respuesta.length === 0){
+                option = '<option value="0">No hi ha professors</option>';
+                lista.innerHTML=option;
+            } else {
             for (var i = 0; i < respuesta.length; i++) {
             option += '<option value="'+respuesta[i].id_usuari+'">' + respuesta[i].nom_usuari+' '+respuesta[i].cognom_usuari+ '</option>';
             }
             lista.innerHTML=option;
+        }
         }
     }
 

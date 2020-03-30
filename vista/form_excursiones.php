@@ -49,7 +49,7 @@
           </div>
           <div class="form-group col-md-3">
             <label for="inputState">Curs</label>
-            <select name="curs" id="curs" class="form-control">
+            <select name="curs" id="curs" class="form-control" onchange="select_professor(); return false;">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
