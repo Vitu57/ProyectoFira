@@ -182,8 +182,8 @@ function select_transport() {
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             var respuesta=JSON.parse(this.responseText);
-            for (var i = 0; i < respuesta.length; i++) {
             option += '<option value="0">Escollir una opció</option>';
+            for (var i = 0; i < respuesta.length; i++) {
             option += '<option value="' + respuesta[i].id_nom_transport+'">' + respuesta[i].nom_transport+'</option>';
             console.log(option);
             }
