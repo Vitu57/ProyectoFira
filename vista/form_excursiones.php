@@ -20,7 +20,7 @@
 <body class="body_design">
     <button class="btn" style="position: absolute; right: 5px;top:5px;"><a href="home.php">Tornar</a></button>
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
-        <form action="form_excursiones.php" class="needs-validation">
+        <form action="#" class="needs-validation" id="form_exc" onsubmit="insert_excursion(); return false">
         <div class="card rounded-0">
           <div class="card-header">
             <!--Sortida-->
@@ -30,15 +30,15 @@
         <div class="form-row" style="margin-top: 15px;">
           <div class="form-group col-md-4">
             <label for="inputEmail4">Codi sortida</label>
-            <input name="codi_sortida" type="email" class="form-control" id="inputEmail4" placeholder="">
+            <input name="codi_sortida" type="text" class="form-control" id="codi_sortida" placeholder="">
           </div>
           <div class="form-group col-md-4">
             <label for="inputCity">Inici sortida</label>
-            <input name="inici_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="">
+            <input name="inici_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="inici_sortida">
           </div>
           <div class="form-group col-md-4">
             <label for="inputCity">Final sortida</label>
-            <input name="final_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="">
+            <input name="final_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="final_sortida">
           </div>
           <div class="form-group col-md-3">
             <label for="inputState">Etapa</label>
@@ -56,29 +56,37 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputAddress2">Número de alumnes</label>
-            <input type="number" class="form-control" id="inputAddress2" placeholder="">
+            <input type="number" class="form-control" id="num_alumnes" placeholder="">
           </div>
           <div class="form-group col-md-4">
             <label for="inputAddress2">Número de professors</label>
-            <input type="number" class="form-control" id="inputAddress2" placeholder="">
+            <input type="number" class="form-control" id="num_professors" placeholder="">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputAddress2">Professor asignat</label>
+            <input type="text" class="form-control" id="professor_asignat" placeholder="">
           </div>
           <div class="form-group col-md-3">
               <label for="inputState">Lista de profesores</label>
-              <select multiple size="6" name="lista_prof[]" id="lista_prof" class="form-control tipus" onchange="sendProf(this);>
+              <select multiple size="6" name="lista_prof[]" id="lista_prof" class="form-control tipus">
                 <option value="0">Escollir...</option>
               </select>
             </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">num. vetlladors</label>
-            <input name="num_vetlladors" type="number" class="form-control" id="inputEmail4" placeholder="">
+            <input name="num_vetlladors" type="number" class="form-control" id="num_vetlladors" placeholder="">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">num. acompanyants</label>
+            <input name="" type="number" class="form-control" id="num_acomp" placeholder="">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">professors a part</label>
-            <input name="prof_apart" type="number" class="form-control" id="inputEmail4" placeholder="">
+            <input name="prof_apart" type="number" class="form-control" id="prof_apart" placeholder="">
           </div>
           <div class="form-group col-md-12">
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
-            <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
             <div></div>
             <div style="margin-left: -650px; margin-top: 20%;">
@@ -110,14 +118,14 @@
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Tipus de activitat</label>
-              <select name="tipus_act" id="tipus_activitat0" class="form-control tipus_act">
+              <select name="tipus_act" id="tipus_activitat" class="form-control tipus_act">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputState">Ambit activitat</label>
-              <select name="ambit" id="ambit_activitat0" class="form-control ambit">
+              <select name="ambit" id="ambit_activitat" class="form-control ambit">
                 <option selected>Choose...</option>
                 <option>...</option>
               </select>
@@ -131,7 +139,7 @@
             </div>
             <div class="form-group col-md-12">
               <label for="inputAddress2">Objectiu activitat</label>
-              <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea name="comentaris" class="form-control" id="comentaris_objectiu" rows="3"></textarea>
             </div>
             <div class="form-row">
               <div class="form-group col-md-3">
@@ -148,7 +156,7 @@
               </div>
               <div class="form-group col-md-3">
                 <label for="inputAddress2">Email de contacte</label>
-                <input type="text" class="form-control" id="email_contacte" placeholder="">
+                <input type="email" class="form-control" id="email_contacte" placeholder="">
               </div>
             </div>
           </div>
@@ -174,10 +182,6 @@
             </div>
           </div>
           <div class="form-row" style="margin-top: 15px;">
-            <div class="form-group col-md-4">
-              <label for="inputAddress2">Nom del transport</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="">
-            </div>
             <div class="form-group col-md-3">
               <label for="inputState">Tipus de transport</label>
               <select id="tipus_transport" class="form-control">
@@ -185,19 +189,27 @@
                 <option>...</option>
               </select>
             </div>
-            <div class="form-group col-md-6">
-              <label for="inputEmail4">Cost</label>
-              <input name="cost_transport" type="number" class="form-control" id="inputEmail4" placeholder="">
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Cost del transport</label>
+              <input name="" type="number" class="form-control" id="cost_transport" placeholder="">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Hora de sortida</label>
+              <input name="" type="time" class="form-control" id="hora_sortida" placeholder="">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Hora d'arribada</label>
+              <input name="" type="time" class="form-control" id="hora_arribada" placeholder="" value="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Codi de contacte</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="codi_contacte" type="number" class="form-control" id="codi_contacte" placeholder="">
             </div>
 
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Comentaris</label>
-            <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="comentaris" class="form-control" id="comentaris_transport" rows="3"></textarea>
           </div>
           <div style="margin-left: -500px; margin-top:10px;">
                 <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionTransport(); return false;">1</button>
@@ -219,47 +231,47 @@
           <div class="form-row" style="margin-top: 15px;">
           <div class="form-group col-md-6">
               <label for="inputEmail4">Cost substitució</label>
-              <input name="cost_transport" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="cost_substitucio" type="number" class="form-control" id="cost_substitucio" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Cost activitat individual</label>
-              <input name="cost_transport" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="cost_act_ind" type="number" class="form-control" id="cost_act_ind" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Cost extra de activitat professor</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="cost_ext_act_prof" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Cost global activitat</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="cost_glob_act" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Cost final</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="cost_final" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Preu fixe</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="preu_fixe" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Preu sense topal</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="preu_sense_topal" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Preu amb topal</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="preu_amb_topal" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Preu gestió</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="preu_gestio" type="number" class="form-control" id="preu_gestio" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Overhead</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="overhead" type="number" class="form-control" id="overhead" placeholder="">
             </div>
             <div class="form-group col-md-6">
               <label for="inputEmail4">Total a facturar</label>
-              <input name="codi_contacte" type="number" class="form-control" id="inputEmail4" placeholder="">
+              <input name="" type="number" class="form-control" id="total_facturar" placeholder="">
             </div>
             <div class="form-group col-md-3">
             <label for="inputState">Fraccionat</label>
@@ -270,7 +282,7 @@
           </div>
           <div class="form-group col-md-12">
             <label for="exampleFormControlTextarea1">Observacions</label>
-            <textarea name="comentaris" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="" class="form-control" id="observacions_costos" rows="3"></textarea>
           </div>
           </div>
             <div style="margin-left: -500px; margin-top:10px;">

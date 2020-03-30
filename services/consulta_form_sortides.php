@@ -20,7 +20,7 @@ if($accion == "etapa"){
 
 }elseif($accion == "curso"){
    $id_etapa=$_REQUEST['nom_etapa'];
-   $query = "SELECT * FROM `tbl_clase` WHERE id_etapa = (SELECT id_etapa FROM `tbl_etapa` WHERE nom_etapa = ?)";
+   $query = "SELECT * FROM `tbl_clase` WHERE id_etapa = ?";
         //Ejecutar consulta segura
         if ($stmt = mysqli_prepare($conn, $query)){
          mysqli_stmt_bind_param($stmt, "s", $id_etapa);
@@ -48,7 +48,7 @@ $select=[];
         }
         print json_encode($select);
 }elseif($accion == "professor"){
-$query = "SELECT `nom_usuari`, `cognom_usuari` FROM `tbl_usuari` WHERE `id_tipus_usuari`= 2 ORDER BY `cognom_usuari`";
+$query = "SELECT `nom_usuari`, `cognom_usuari`, `id_usuari` FROM `tbl_usuari` WHERE `id_tipus_usuari`= 2 ORDER BY `cognom_usuari`";
  if ($stmt = mysqli_prepare($conn, $query)){
             mysqli_stmt_execute($stmt);
             $res = mysqli_stmt_get_result($stmt);
