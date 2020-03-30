@@ -128,7 +128,7 @@ if ($tipus_user==1) {
 
 </div>
 </div>
-<button id="myBtn2" class="myBtn">
+<button id="myBtn2" class="myBtn" style="margin-left:1%;">
       <h2>Usuaris</h2>
 </button>
 
