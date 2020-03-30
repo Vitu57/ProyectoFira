@@ -95,10 +95,10 @@ if ($tipus_user==1) {
     
 ?>
 
-    <div style="width: 40%;">
+    <div>
 <a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" class="myBtn"><h4>Veure sortides</h4></button></a>
     </div>
-    <div style="width: 74%;">
+    <div>
 <a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal" class="myBtn"><h4>Afegir Sortida</h4></button></a>
     </div>
 </div>
