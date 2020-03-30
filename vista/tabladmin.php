@@ -32,7 +32,8 @@ if(isset($_REQUEST['profe'])){
 	//Estos campos se necesitan en la consulta, asi que si no los recibe los pone vacios
 	echo "<table  class='table table-bordered text-center' style='background-color: rgba(255,255,255,1);'>
 	<thead class='thead-dark'>
-		<tr><th scope='col'>Codigo</th>
+		<tr><th scope='col'>Opciones</th>
+		<th scope='col'>Codigo</th>
 		<th scope='col'>Salida</th>
 		<th scope='col'>Inicio</th>
 		<th scope='col'>Fin</th>
@@ -55,7 +56,7 @@ if(isset($_REQUEST['profe'])){
 		";
 	//Primero hacemos una consulta para saber las excursiones
 	
-	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida,tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_activitat.id_activitat from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase inner join tbl_activitat on tbl_sortida.id_sortida=tbl_activitat.id_sortida where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
+	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida,tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_activitat.id_activitat,tbl_sortida.id_precios,tbl_activitat.id_contacte_activitat,tbl_sortida.id_transport from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase inner join tbl_activitat on tbl_sortida.id_sortida=tbl_activitat.id_sortida where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
 	//ejecutamos la consulta
 	$consulta=mysqli_query($conn,$consultaexcursion);
 	//Por cada resultado, metemos en una variable de tipo array
@@ -64,6 +65,10 @@ if(isset($_REQUEST['profe'])){
 		
 		//Formamos la tabla
 		echo "<tr>
+			<td>";
+			?>
+			<button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria" onclick="eliminar('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');">Eliminar</button>
+			<?php  echo "</td>
 			<td>".$exe[0]."</td>
 			<td>".$exe[11]."</td>
 			<td>".$exe[1]."</td>
@@ -106,110 +111,42 @@ if(isset($_REQUEST['profe'])){
 				<td>".$exe[16]."</td>";
 			?>
 			<td style="text-align: left;" class="float-left">
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn" onclick="abrirform1();">Ver contacto</button>
-				<div id="myModal" class="modal">
-					 <div class="modal-content">
-					 	<span class="close">&times;</span>
-					 	<?php
 
-					 		
-					 			echo "<table>
-										<tr>
-											<th>Persona de contacto</th>
-											<th>Web</th>
-											<th>Telefono</th>
-											<th>Email</th>";
-								echo "</tr>";
-									$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";
-									$querycontacto=mysqli_query($conn,$consultacontacto);
-									$con=mysqli_fetch_array($querycontacto);
-						 			echo "<tr>
-									<td>".$con[0]."</td>
-									<td>".$con[1]."</td>
-									<td>".$con[2]."</td>
-									<td>".$con[3]."</td>
-									</tr>";
-					 		
-					 		echo "</table>";
-					 	?>
-					</div>
-				</div>
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn2" onclick="abrirform2();">Ver precios</button>
-				<div id="myModal2" class="modal">
-					 <div class="modal-content">
-					 	<span class="close2">&times;</span>
-					 	<?php
-					 		$consultaprecios="select tbl_preus.* from tbl_preus inner join tbl_sortida on tbl_sortida.id_precios=tbl_preus.id_preus where tbl_sortida.id_sortida='".$exe[10]."'";
-					 		$queryprecios=mysqli_query($conn,$consultaprecios);
-					 			echo "<table>
-										<tr>
-											<th>Coste Substitucion</th>
-											<th>Coste Actividad individual</th>
-											<th>Coste Extra Actividad Profe</th>
-											<th>Coste Global Actividad</th>
-											<th>Coste final</th>
-											<th>Precio fijo</th>
-											<th>Precio sin Topal</th>
-											<th>^Precio Con Topal</th>
-											<th>Precio de gestion</th>
-											<th>Overhead</th>
-											<th>Total a facturar</th>
-											<th>Pago fraccionado</th>
-											<th>Observaciones</th>";
-								echo "</tr>";
-								
-					 		while ($pre=mysqli_fetch_array($queryprecios)) {
-					 			echo "<tr>
-									<td>".$pre[1]."</td>
-									<td>".$pre[2]."</td>
-									<td>".$pre[3]."</td>
-									<td>".$pre[4]."</td>
-									<td>".$pre[5]."</td>
-									<td>".$pre[6]."</td>
-									<td>".$pre[7]."</td>
-									<td>".$pre[8]."</td>
-									<td>".$pre[9]."</td>
-									<td>".$pre[10]."</td>
-									<td>".$pre[11]."</td>
-									<td>".$pre[12]."</td>
-									<td>".$pre[13]."</td>
-									</tr>";
-					 		}
-					 		echo "</table>";
-					 	?>
-					</div>
-				</div>
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn3" onclick="abrirform3();">Ver transportes</button>
-				<div id="myModal3" class="modal">
-					 <div class="modal-content">
-					 	<span class="close3">&times;</span>
-					 	<?php
+				<?php
+				$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";
+				$querycontacto=mysqli_query($conn,$consultacontacto);
+				$con=mysqli_fetch_array($querycontacto);
+
+				?>
+
+				<button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');">Veure contacte</button>
+
+				<?php
+					 $consultaprecios="select tbl_preus.* from tbl_preus inner join tbl_sortida on tbl_sortida.id_precios=tbl_preus.id_preus where tbl_sortida.id_sortida='".$exe[10]."'";
+					 $queryprecios=mysqli_query($conn,$consultaprecios);
+					 $pre=mysqli_fetch_array($queryprecios);
+
+				?>
+
+				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn2" onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');">Ver precios</button>
+
+				<?php
 					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
-					 		echo "<table>
-										<tr>
-											<th>Hora sortida</th>
-											<th>Hora arribada</th>
-											<th>Coste transporte</th>
-											<th>Codigo contacto</th>
-											<th>Comentarios</th>
-											<th>Transporte</th>";
-								echo "</tr>";
-							$querytransporte=mysqli_query($conn,$consultatransporte);
-							while ($tra=mysqli_fetch_array($querytransporte)) {
-								echo "<tr>
-									<td>".$tra[0]."</td>
-									<td>".$tra[1]."</td>
-									<td>".$tra[2]."</td>
-									<td>".$tra[3]."</td>
-									<td>".$tra[4]."</td>
-									<td>".$tra[5]."</td>
-								</tr>";
-					 		}
-					 		echo "</table>";
-					 	?>
-					</div>
-				</div>
+					 		$querytransporte=mysqli_query($conn,$consultatransporte);
+					 		$tra=mysqli_fetch_array($querytransporte);
+				?>
+				
+				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn3" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');">Ver transportes</button>
+				
 			</td>
+			<div id="resultado2" class="modalmask" style="display:none;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Close" class="close" id="close">X</a>
+        <h2 id="tituloResultado">TITULO</h2>
+        <div id="contenidoResultado">contenido resultado</div>
+      </div>
+</div>
 		<?php
 		echo "</tr>";
 	}
