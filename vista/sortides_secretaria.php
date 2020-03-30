@@ -6,14 +6,14 @@
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body class="home">
-  
+<body class="home" style="text-align: center; padding: 3%;"> 
 
 <?php
 include "../services/conexion.php";
 include "../services/header.php";
 ?>
 <div class="tablas" id="resultado" style="background-color: rgba(255,255,255,1);">
+	<br><br>
 	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
 		Codi: <select name="codi" id="codi">
 
@@ -72,13 +72,17 @@ Clase: <select name="clase" id="clase">
 Profesor: <input type="text" name="profe" id="profe">
 		<input type="submit" name="submit" value="Filtrar">
 	</form>
+	<br>
 	<form action="#" method="POST" onsubmit="vertodo_secretaria();return false">
-		<input type="submit" name="submit" value="Ver todos">
+		<input type="submit" name="submit" value="Veure Tots">
 	</form>
+<br>
+<br>
   <?php
     include "tablasecretaria.php";
   ?>
-</div>
+  <br>
+  </div>
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>
