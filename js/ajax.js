@@ -212,21 +212,22 @@ function CrearTablaProfes(){
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
     var tabla='<table class="table table-bordered" style="text-align:center"><thead>';
-        tabla +='<tr><th>Inici Sortida</th><th>Hora Sortida</th><th>Final Sortida</th><th>Hora Arribada</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Transport</th><th>Actividades</th><th>Alumnes</th>';
+        tabla +='<tr><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Transport</th><th>Activitat</th><th>Contacte</th><th>Alumnes</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
                     
+                    tabla += '<td>' + "nombre"+ '</td>';
+                    tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].hora_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].hora_arribada+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
-                    tabla += '<td>' + respuesta[i].nom_transport+ '</td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')">Info+</button></td>';
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte+')">Info+</button></td>';
                     tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
                     tabla += '</tr>';
                     
@@ -235,16 +236,17 @@ function CrearTablaProfes(){
             }else{
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
-                    
+
+                    tabla += '<td>' + "nombre"+ '</td>';
+                    tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].hora_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].hora_arribada+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
-                    tabla += '<td>' + respuesta[i].nom_transport+ '</td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')">Info+</button></td>';
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')">Info+</button></td>';
                     tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
                     tabla += '</tr>';
                     
@@ -307,6 +309,93 @@ function modal_profes(actividad){
                     tabla += '<td>' + respuesta[0].ambit_activitat+ '</td>';
                     tabla += '<td>' + respuesta[0].jornada_activitat+ '</td>';
                     tabla += '<td>' + respuesta[0].objectiu_activitat+ '</td>';
+                    
+                    tabla += '</tr>';
+        
+        tabla+='</thead></table>';
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+}
+}
+
+function modal_profes_transport(transport){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+    
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/consulta_transport.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("transport="+transport);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+        tabla +='<tr><th>Transport</th><th>Sortida</th><th>Arribada</th><th>Comentari</th>';
+        
+            tabla += '<tr>';
+                    
+                    tabla += '<td>' + respuesta[0].nom_transport+ '</td>';
+                    tabla += '<td>' + respuesta[0].hora_sortida+ '</td>';
+                    tabla += '<td>' + respuesta[0].hora_arribada+ '</td>';
+                    tabla += '<td>' + respuesta[0].comentaris_transport+ '</td>';
+                    
+                    
+                    tabla += '</tr>';
+        
+        tabla+='</thead></table>';
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+}
+}
+function modal_profes_contacte(contacte){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+    
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/consulta_contacte.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("contacte="+contacte);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+        tabla +='<tr><th>Persona</th><th>Email</th><th>Telefon</th><th>Web contacte</th>';
+        
+            tabla += '<tr>';
+                    
+                    tabla += '<td>' + respuesta[0].persona_contacte+ '</td>';
+                    tabla += '<td>' + respuesta[0].email_contacte+ '</td>';
+                    tabla += '<td>' + respuesta[0].telefon_contacte+ '</td>';
+                    tabla += '<td>' + respuesta[0].web_contacte+ '</td>';
+                    
                     
                     tabla += '</tr>';
         
