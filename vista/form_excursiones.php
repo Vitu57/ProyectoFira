@@ -72,15 +72,15 @@
                 <option value="0">Escollir...</option>
               </select>
             </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-2">
             <label for="inputEmail4">num. vetlladors</label>
             <input name="num_vetlladors" type="number" class="form-control" id="num_vetlladors" placeholder="">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-2">
             <label for="inputEmail4">num. acompanyants</label>
             <input name="" type="number" class="form-control" id="num_acomp" placeholder="">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-2">
             <label for="inputEmail4">professors a part</label>
             <input name="prof_apart" type="number" class="form-control" id="prof_apart" placeholder="">
           </div>
@@ -88,8 +88,7 @@
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
-            <div></div>
-            <div style="margin-left: -650px; margin-top: 20%;">
+            <div style="margin-left: 1%; margin-top: 2%;">
                 <button class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
                 <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
                 <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
@@ -164,7 +163,7 @@
 		
           <div class="form-row" style="margin-top: 10px;">
             </div>
-            <div style="margin-left: -500px; margin-top:10px;">
+            <div style="margin-left: -77%; margin-top: 2%;">
                 <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="ActivitatEnrere(); return false;">1</button>
                 <button class="btn btn-secondary active" title="Activitat" style="margin-right: 2px;" onclick="return false">2</button>
                 <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="ActivitatSeg(); return false;">3</button>
@@ -211,7 +210,7 @@
             <label for="exampleFormControlTextarea1">Comentaris</label>
             <textarea name="comentaris" class="form-control" id="comentaris_transport" rows="3"></textarea>
           </div>
-          <div style="margin-left: -500px; margin-top:10px;">
+          <div style="margin-left: -76%; margin-top: 2%;">
                 <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionTransport(); return false;">1</button>
                 <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="TransportEnrere(); return false;">2</button>
                 <button class="btn btn-secondary active" title="Transport" style="margin-right: 2px;" onclick="return false">3</button>
@@ -285,7 +284,7 @@
             <textarea name="" class="form-control" id="observacions_costos" rows="3"></textarea>
           </div>
           </div>
-            <div style="margin-left: -500px; margin-top:10px;">
+            <div style="margin-left: -76%; margin-top: 2%;">
                 <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionCostes1(); return false;">1</button>
                 <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="PaginacionCostes2   (); return false;">2</button>
                 <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;"  onclick="CostesEnrere(); return false;">3</button>
