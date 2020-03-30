@@ -31,6 +31,7 @@ function select_etapa() {
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            option += '<option value="0">Escollir una opció</option>';
             for (var i = 0; i < respuesta.length; i++) {
                 option += '<option value="'+respuesta[i].id_etapa+'">' + respuesta[i].nom_etapa + '</option>';
             }
@@ -59,6 +60,7 @@ function select_enum() {
             respuesta = JSON.parse(this.responseText);
             //var myJSON = JSON.stringify(this.responseText);
             option = "";
+            option += '<option value="0">Escollir una opció</option>';
             for (var j = 0; j < respuesta.length; j++) {
                 option += '<option>' + respuesta[j] + '</option>';
                 console.log(option);
@@ -86,6 +88,7 @@ function select_enum2() {
             respuesta = JSON.parse(this.responseText);
             //var myJSON = JSON.stringify(this.responseText);
             option = "";
+            option += '<option value="0">Escollir una opció</option>';
             for (var j = 0; j < respuesta.length; j++) {
                 option += '<option>' + respuesta[j] + '</option>';
                 console.log(option);
@@ -113,6 +116,7 @@ function select_enum3() {
             respuesta = JSON.parse(this.responseText);
             //var myJSON = JSON.stringify(this.responseText);
             option = "";
+            option += '<option value="0">Escollir una opció</option>';
             for (var j = 0; j < respuesta.length; j++) {
                 option += '<option>' + respuesta[j] + '</option>';
                 console.log(option);
@@ -135,6 +139,7 @@ function select_curs() {
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             var respuesta2 = JSON.parse(this.responseText);
+            option += '<option value="0">Escollir una opció</option>';
             for (var i = 0; i < respuesta2.length; i++) {
 
                 option += '<option value="'+respuesta2[i].id_clase+'">' + respuesta2[i].nom_classe + '</option>';
