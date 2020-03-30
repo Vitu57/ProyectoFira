@@ -1,7 +1,7 @@
 <?php
 include("conexion.php");
-//$accion = $_REQUEST['accion'];
-
+mysqli_autocommit($conn,FALSE);
+try {
 //-------------------tbl_activitat_contacte--------------------
    $persona_contacte = $_REQUEST['persona_contacte'];
    $web_contacte = $_REQUEST['web_contacte'];
@@ -125,7 +125,13 @@ $query_profes = "INSERT INTO `tbl_lista_profesores` (`id_profesor`, `id_excursio
       }else{
          echo "Error en la consulta preus";
       }
- 
+
+      mysqli_commit($conn);
+   }catch (Exception $e) {
+      mysqli_rollback($conn);
+    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+    
+}
 
    
 ?>

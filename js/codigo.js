@@ -259,30 +259,13 @@ function insert_excursion() {
     ajax3.onreadystatechange=function() {
 		if (ajax3.readyState==4 && ajax3.status==200) {
             alert("ok")
+            document.getElementById("form_exc").reset();
 
 			} else {
 
             }
 		}
 
-}
-
-function sendProf(){
-    var lista = document.querySelectorAll('#lista_prof option:checked');
-    profes = Array.from(lista).map(el => el.value)
-    var ajax3 = objetoAjax();
-    ajax3.open("POST", "../services/insert_form_sortides.php", true);
-    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    console.log(JSON.stringify(profes));
-    ajax3.send("accion=tbl_prof&profes="+JSON.stringify(profes));
-    ajax3.onreadystatechange=function() {
-		if (ajax3.readyState==4 && ajax3.status==200) {
-            alert("ok")
-
-			} else {
-
-            }
-		}
 }
 
 
