@@ -422,17 +422,83 @@ function modal_secretaria(persona, web, telf, email){
   document.getElementById("comprobarModal").value=0;
 }
                   
-                    tabla = '<h4>Persona de contacte</h4>';
-                    tabla += '<p>' + persona + '</p>';
-                    tabla += '<h4>Web de contacte</h4>';
-                    tabla += '<p>' + web +'</p>';
-                    tabla += '<h4>Telefon de contacte</h4>';
-                    tabla += '<p>' + telf + '</p>';
-                    tabla += '<h4>Email de contacte</h4>';
-                    tabla += '<p>' + email + '</p>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Persona de contacte</th>';
+                    tabla += '<th>Web de contacte</th>';
+                    tabla += '<th>Telefon de contacte</th>';
+                    tabla += '<th>Email de contacte</th></tr>';
+                    tabla += '<td>' + persona + '</td>';  
+                    tabla += '<td>' + web +'</td>';
+                    tabla += '<td>' + telf + '</td>';
+                    tabla += '<td>' + email + '</td></tr><thread></table>';
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
     }
+
+function modal_secretaria2(nom, lloc, tipus, ambit, jornada, objectiu){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+                  
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Activitat</th>';
+                    tabla += '<th>Lloc</th>';
+                    tabla += '<th>Jornada</th>';
+                    tabla += '<th>Tipus</th>';
+                    tabla += '<th>Ambit</th>';
+                    tabla += '<th>Objectiu</th></tr>';
+                    tabla += '<td>' + nom + '</td>';  
+                    tabla += '<td>' + lloc +'</td>';
+                    tabla += '<td>' + jornada + '</td>';
+                    tabla += '<td>' + tipus + '</td>';
+                    tabla += '<td>' + ambit + '</td>';
+                    tabla += '<td>' + objectiu + '</td></tr><thread></table>';
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+
+function modal_secretaria3(nom, sortida, arribada, comentari){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+                  
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Transport</th>';
+                    tabla += '<th>Sortida</th>';
+                    tabla += '<th>Arribada</th>';
+                    tabla += '<th>Comentari</th></tr>';
+                    tabla += '<td>' + nom + '</td>';  
+                    tabla += '<td>' + sortida +'</td>';
+                    tabla += '<td>' + arribada + '</td>';
+                    tabla += '<td>' + comentari + '</td></tr><thread></table>';
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+
 
 //--------------------------------------------------------------------
 //Funciones para modales de juanma
