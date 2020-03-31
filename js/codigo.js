@@ -359,3 +359,101 @@ function openTab(evt, tabName, idform) {
       document.getElementById('activitat').style.display = "block";
       document.getElementById('costes').style.display = "none";
   }
+
+  //Función que valida la inserción de excursiones, si los datos obligatorios
+  //no están rellenos, hace un return false y marca los apartados de color rojo
+  function validar_insercion(){
+    //alert("entra");
+  var ok = 1;
+  var inici_sort = document.getElementById("inici_sortida");
+  var final_sort = document.getElementById("final_sortida");
+  var etapa = document.getElementById("etapa");
+  
+  var curs = document.getElementById("curs");
+  //alert(curs.value);
+  var jornada_act = document.getElementById("jornada_activitat");
+
+  var tipus_transp = document.getElementById("tipus_transport");
+  //alert(inici_sort.value);
+  //alert("console log");
+  //alert(inici_sort.value);
+  if(inici_sort.value == 0){
+      //alert("inici_sort");
+      inici_sort.style.borderColor = "red";
+
+      document.getElementById("btn1-1").style.border = "2px solid red";
+      document.getElementById("btn1-3").style.border = "2px solid red";
+      document.getElementById("btn1-4").style.border = "2px solid red";
+      document.getElementById("btn1-2").style.border = "2px solid red";
+      
+      ok = 0;
+  }
+
+  if(final_sort.value == 0){
+      //alert("final_sort");
+      final_sort.style.borderColor = "red";
+      
+      document.getElementById("btn1-1").style.border = "2px solid red";
+      document.getElementById("btn1-3").style.border = "2px solid red";
+      document.getElementById("btn1-4").style.border = "2px solid red";
+      document.getElementById("btn1-2").style.border = "2px solid red";
+      
+      ok = 0;
+  }
+
+  if(etapa.value == 0){
+      //alert("inicietapa_sort");
+      etapa.style.borderColor = "red";
+      
+      document.getElementById("btn1-1").style.border = "2px solid red";
+      document.getElementById("btn1-3").style.border = "2px solid red";
+      document.getElementById("btn1-4").style.border = "2px solid red";
+      document.getElementById("btn1-2").style.border = "2px solid red";
+
+      ok = 0;
+  }
+
+  if(curs.value == 0){
+      //alert("curs");
+      curs.style.borderColor = "red";
+
+      document.getElementById("btn1-1").style.border = "2px solid red";
+      document.getElementById("btn1-3").style.border = "2px solid red";
+      document.getElementById("btn1-4").style.border = "2px solid red";
+      document.getElementById("btn1-2").style.border = "2px solid red";
+     
+      ok = 0;
+  }
+
+  if(jornada_act.value == 0){
+     // alert("jornada_act");
+      jornada_act.style.borderColor = "red";
+
+      document.getElementById("btn2-1").style.border = "2px solid red";
+      document.getElementById("btn2-3").style.border = "2px solid red";
+      document.getElementById("btn2-4").style.border = "2px solid red";
+      document.getElementById("btn2-2").style.border = "2px solid red";
+      
+      ok = 0;
+  }
+
+  if(tipus_transp.value == 0){
+      //alert("tipus_transp");
+      tipus_transp.style.borderColor = "red";
+      
+      document.getElementById("btn3-1").style.border = "2px solid red";
+      document.getElementById("btn3-3").style.border = "2px solid red";
+      document.getElementById("btn3-4").style.border = "2px solid red";
+      document.getElementById("btn3-2").style.border = "2px solid red";
+
+      ok = 0;
+  }
+
+  if (ok == 1){
+     // insert_excursion();
+      //alert("Insertaría datos");
+
+  }else if(ok = 0){
+      return false;
+  }
+  }

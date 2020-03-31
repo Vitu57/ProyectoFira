@@ -20,7 +20,7 @@
 <body class="body_design">
     <button class="btn" style="position: absolute; right: 5px;top:5px;"><a href="home.php">Tornar</a></button>
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
-        <form action="#" class="needs-validation" id="form_exc" onsubmit="insert_excursion(); return false">
+        <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(); return false">
         <div class="card rounded-0">
           <div class="card-header">
             <!--Sortida-->
@@ -33,22 +33,22 @@
             <input name="codi_sortida" type="text" class="form-control" id="codi_sortida" placeholder="">
           </div>
           <div class="form-group col-md-4">
-            <label for="inputCity">Inici sortida</label>
-            <input name="inici_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="inici_sortida">
+            <label for="inputCity">Inici sortida</label> <label class="text-danger">*</label>
+            <input name="inici_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="inici_sortida" value="0">
           </div>
           <div class="form-group col-md-4">
-            <label for="inputCity">Final sortida</label>
-            <input name="final_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="final_sortida">
+            <label for="inputCity">Final sortida</label> <label class="text-danger">*</label>
+            <input name="final_sortida" min="<?php echo date('Y-m-d')?>" type="date" class="form-control" id="final_sortida" value="0">
           </div>
           <div class="form-group col-md-3">
-            <label for="inputState">Etapa</label>
+            <label for="inputState">Etapa</label> <label class="text-danger">*</label>
             <select name="etapa" id="etapa" class="form-control" onchange="select_curs(); return false;">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
           </div>
           <div class="form-group col-md-3">
-            <label for="inputState">Curs</label>
+            <label for="inputState">Curs</label> <label class="text-danger">*</label>
             <select name="curs" id="curs" class="form-control" onchange="select_professor(); return false;">
               <option selected>Choose...</option>
               <option>...</option>
@@ -89,10 +89,10 @@
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
             <div style="margin-left: 1%; margin-top: 2%;">
-                <button class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
-                <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
-                <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
-                <button class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>
+                <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
+                <button id="btn2-1" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
+                <button id="btn3-1" class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
+                <button id="btn4-1" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>
             </div>
             <div style="margin-left:490px; margin-top:-5.5%;">
                 <button class="btn btn-info" disabled>Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="MostrarActivitat(); return false;">Següent</button>
@@ -130,7 +130,7 @@
               </select>
             </div>
             <div class="form-group col-md-3">
-              <label for="inputState">Jornada de activitat</label>
+              <label for="inputState">Jornada de activitat</label> <label class="text-danger">*</label>
               <select id="jornada_activitat" class="form-control jornada">
                 <option selected>Choose...</option>
                 <option>...</option>
@@ -164,10 +164,10 @@
           <div class="form-row" style="margin-top: 10px;">
             </div>
             <div style="margin-left: -77%; margin-top: 2%;">
-                <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="ActivitatEnrere(); return false;">1</button>
-                <button class="btn btn-secondary active" title="Activitat" style="margin-right: 2px;" onclick="return false">2</button>
-                <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="ActivitatSeg(); return false;">3</button>
-                <button class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionActivitat4(); return false;">4</button>
+                <button id="btn1-2" class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="ActivitatEnrere(); return false;">1</button>
+                <button id="btn2-2" class="btn btn-secondary active" title="Activitat" style="margin-right: 2px;" onclick="return false">2</button>
+                <button id="btn3-2" class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="ActivitatSeg(); return false;">3</button>
+                <button id="btn1-2" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionActivitat4(); return false;">4</button>
             </div>
             <div style="margin-left:490px; margin-top:-5.5%;">
                 <button class="btn btn-info" onclick="ActivitatEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="ActivitatSeg(); return false;">Següent</button>
@@ -182,7 +182,7 @@
           </div>
           <div class="form-row" style="margin-top: 15px;">
             <div class="form-group col-md-3">
-              <label for="inputState">Tipus de transport</label>
+              <label for="inputState">Tipus de transport</label> <label class="text-danger">*</label>
               <select id="tipus_transport" class="form-control">
                 <option selected>Choose...</option>
                 <option>...</option>
@@ -211,10 +211,10 @@
             <textarea name="comentaris" class="form-control" id="comentaris_transport" rows="3"></textarea>
           </div>
           <div style="margin-left: -76%; margin-top: 2%;">
-                <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionTransport(); return false;">1</button>
-                <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="TransportEnrere(); return false;">2</button>
-                <button class="btn btn-secondary active" title="Transport" style="margin-right: 2px;" onclick="return false">3</button>
-                <button class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="TransportSeg(); return false;">4</button>
+                <button id="btn1-3" class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionTransport(); return false;">1</button>
+                <button id="btn2-3" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="TransportEnrere(); return false;">2</button>
+                <button id="btn3-3" class="btn btn-secondary active" title="Transport" style="margin-right: 2px;" onclick="return false">3</button>
+                <button id="btn4-3" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="TransportSeg(); return false;">4</button>
           </div>
           <div style="margin-left:490px; margin-top:-5.5%">
                 <button class="btn btn-info" onclick="TransportEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="TransportSeg(); return false;">Següent</button>
@@ -285,10 +285,10 @@
           </div>
           </div>
             <div style="margin-left: -76%; margin-top: 2%;">
-                <button class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionCostes1(); return false;">1</button>
-                <button class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="PaginacionCostes2   (); return false;">2</button>
-                <button class="btn btn-secondary" title="Transport" style="margin-right: 2px;"  onclick="CostesEnrere(); return false;">3</button>
-                <button class="btn btn-secondary active" title="Costos" style="margin-right: 2px;" onclick="return false">4</button>
+                <button id="btn1-4" class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionCostes1(); return false;">1</button>
+                <button id="btn2-4" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="PaginacionCostes2   (); return false;">2</button>
+                <button id="btn3-4" class="btn btn-secondary" title="Transport" style="margin-right: 2px;"  onclick="CostesEnrere(); return false;">3</button>
+                <button id="btn4-4" class="btn btn-secondary active" title="Costos" style="margin-right: 2px;" onclick="return false">4</button>
             </div>
             <div style="margin-left:400px; margin-top:-5.5%;">
                 <button class="btn btn-info" onclick="CostesEnrere(); return false;">Enrere</button><button type="submit" class="btn btn-info" style="margin-left: 20px;">Afegir sortida</button>
@@ -298,7 +298,7 @@
         </form>
         </div><br>
   <script type="text/javascript" src="../js/codigo.js"></script>
-<div class="footer" style="position: absolute; bottom: 0;">
+<div class="footer page-footer">
   <img src="../images/logo_fje.svg">
 </div>
 </body>
