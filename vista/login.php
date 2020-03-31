@@ -14,13 +14,18 @@ if(isset($_SESSION['nombre'])){
 	<link rel="icon" type="image/png" href="../images/logo_pag.ico">
     <title>Log In</title>
     <link rel="stylesheet" type="text/css" href="../css/style_login.css">
+    <link rel="stylesheet" type="text/css" href="../plugin/toastr/toastr.css">
+
 
 </head>
 <body>
   <script src="../js/code_login.js"></script>
-<link href="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../plugin/toastr/toastr.min.js"></script>
+
+
+
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
