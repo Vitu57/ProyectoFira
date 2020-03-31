@@ -499,6 +499,36 @@ function modal_secretaria3(nom, sortida, arribada, comentari){
             document.getElementById("contenidoResultado").innerHTML=tabla;
     }
 
+function modal_enf_dir(nom, profesor, transport, jornada){
+
+    var modal = document.getElementById("resultado2");
+  
+     modal.style.display = "block";
+     
+     var span = document.getElementById("close");
+    
+
+  document.getElementById("tituloResultado").innerHTML="";
+
+
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+}
+                  
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Activitat</th>';
+                    tabla += '<th>Jornada</th>';
+                    tabla += '<th>Transport</th>';
+                    tabla += '<th>Profesor</th></tr>';
+                    tabla += '<td>' + nom + '</td>';  
+                    tabla += '<td>' + jornada + '</td>';
+                    tabla += '<td>' + transport + '</td>';
+                    tabla += '<td>' + profesor + '</td></tr><thread></table>';
+                    
+            document.getElementById("contenidoResultado").innerHTML=tabla;
+    }
+
 
 //--------------------------------------------------------------------
 //Funciones para modales de juanma
