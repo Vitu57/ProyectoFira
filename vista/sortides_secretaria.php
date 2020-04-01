@@ -12,6 +12,14 @@
 <?php
 include "../services/conexion.php";
 include "../services/header.php";
+
+//Comprobar que solo puedan entrar los usuarios designados
+$tipo=$_SESSION['tipo'];
+
+if ($tipo!=3) {
+	header("location: ../index.php");
+}
+
 ?>
 
 <div class="tablas" id="resultado" style="background-color: rgba(255,255,255,1); border-radius: 15px;">
