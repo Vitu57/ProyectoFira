@@ -59,31 +59,27 @@
             <input type="number" class="form-control" id="num_alumnes" placeholder="">
           </div>
           <div class="form-group col-md-4">
-            <label for="inputAddress2">Número de professors</label>
-            <input type="number" class="form-control" id="num_professors" placeholder="">
-          </div>
-          <div class="form-group col-md-4">
             <label for="inputAddress2">Professor asignat</label>
             <input type="text" class="form-control" id="professor_asignat" placeholder="">
           </div>
-          <div class="form-group col-md-3">
-              <label for="inputState">Lista de profesores</label>
+            <div class="form-group col-md-2">
+            <label for="inputEmail4">Vetlladors</label>
+            <input name="num_vetlladors" type="number" class="form-control" id="num_vetlladors" placeholder="">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputEmail4">Acompanyants</label>
+            <input name="" type="number" class="form-control" id="num_acomp" placeholder="">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputEmail4">Prof. a part</label>
+            <input name="prof_apart" type="number" class="form-control" id="prof_apart" placeholder="">
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputState">Llista de professors</label>
               <select multiple size="6" name="lista_prof[]" id="lista_prof" class="form-control tipus">
                 <option value="0">Escollir...</option>
               </select>
             </div>
-          <div class="form-group col-md-2">
-            <label for="inputEmail4">num. vetlladors</label>
-            <input name="num_vetlladors" type="number" class="form-control" id="num_vetlladors" placeholder="">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputEmail4">num. acompanyants</label>
-            <input name="" type="number" class="form-control" id="num_acomp" placeholder="">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputEmail4">professors a part</label>
-            <input name="prof_apart" type="number" class="form-control" id="prof_apart" placeholder="">
-          </div>
           <div class="form-group col-md-12">
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
