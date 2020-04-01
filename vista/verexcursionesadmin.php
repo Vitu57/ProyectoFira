@@ -25,15 +25,15 @@ if ($tipo!=1) {
 
 ?>
 <div class="tablas" id="resultado">
-	<a href="home.php"><button style="float: left;" class="btn btn-secondary">VOLVER</button></a>
+	<a href="home.php"><button style="float: left;" class="btn btn-secondary">TORNAR</button></a>
 	<form style="text-align: center;background-color: rgba(255,255,255,1); padding-top: 10px;" action="#" method="POST" onsubmit="filtrar();return false">
-		Fecha: <input type="text" name="fecha" id="fecha">
-		Clase: <input type="text" name="clase" id="clase">
-		Profesor: <input type="text" name="profe" id="profe">
+		Data: <input type="text" name="fecha" id="fecha">
+		Classe: <input type="text" name="clase" id="clase">
+		Professor: <input type="text" name="profe" id="profe">
 		<input type="submit" class="btn btn-secondary" name="submit" value="Filtrar">
 	</form>
 	<form style="text-align: center;" action="#" method="POST" onsubmit="vertodo();return false">
-		<input style="margin-bottom: 10px;" type="submit" class="btn btn-secondary" name="submit" value="Ver todos">
+		<input style="margin-bottom: 10px;" type="submit" class="btn btn-secondary" name="submit" value="Veure tots">
 
 	</form>
 	<div style="margin-left: 15px; margin-right: 15px;">

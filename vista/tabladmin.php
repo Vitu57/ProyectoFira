@@ -32,26 +32,26 @@ if(isset($_REQUEST['profe'])){
 	//Estos campos se necesitan en la consulta, asi que si no los recibe los pone vacios
 	echo "<table  class='table table-bordered text-center' style='background-color: rgba(255,255,255,1);'>
 	<thead class='thead-dark'>
-		<tr><th scope='col'>Opciones</th>
-		<th scope='col'>Codigo</th>
-		<th scope='col'>Salida</th>
-		<th scope='col'>Inicio</th>
-		<th scope='col'>Fin</th>
-		<th scope='col'>Clase</th>
+		<tr><th scope='col'>Opcions</th>
+		<th scope='col'>Codi</th>
+		<th scope='col'>Sortida</th>
+		<th scope='col'>Inici</th>
+		<th scope='col'>Final</th>
+		<th scope='col'>Classe</th>
 		<th scope='col'>Etapa</th>
-		<th scope='col'>Acompañantes</th>
-		<th scope='col'>Alumnos</th>
-		<th scope='col'>Profesor asignado</th>
+		<th scope='col'>Acompanyants</th>
+		<th scope='col'>Alumnes</th>
+		<th scope='col'>Professor assignat</th>
 		<th scope='col'>Vetlladors</th>
 		<th scope='col'>SIEI</th>
-		<th scope='col'>Profesores</th>
-		<th scope='col'>Profesores Computables</th>
-		<th scope='col'>Lugar</th>
-		<th scope='col'>Tipo</th>
-		<th scope='col'>Ambito</th>
+		<th scope='col'>Professors</th>
+		<th scope='col'>Professors Computables</th>
+		<th scope='col'>Lloc</th>
+		<th scope='col'>Tipus</th>
+		<th scope='col'>Àmbit</th>
 		<th scope='col'>Jornada</th>
-		<th scope='col'>Objetivo</th>
-		<th scope='col'>Ver mas</th>
+		<th scope='col'>Objectiu</th>
+		<th scope='col'>Veure mes</th>
 		</thead>
 		";
 	//Primero hacemos una consulta para saber las excursiones
@@ -128,7 +128,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn2" onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');">Ver precios</button>
+				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn2" onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');">Veure preus</button>
 
 				<?php
 					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
@@ -136,7 +136,7 @@ if(isset($_REQUEST['profe'])){
 					 		$tra=mysqli_fetch_array($querytransporte);
 				?>
 				
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn3" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');">Ver transportes</button>
+				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn3" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');">Veure transports</button>
 				
 			</td>
 			<div id="resultado2" class="modalmask" style="display:none;">
