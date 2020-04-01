@@ -11,6 +11,15 @@
 <?php
 include "../services/conexion.php";
 include "../services/header.php";
+
+//Comprobar que solo puedan entrar los usuarios designados
+$tipo=$_SESSION['tipo'];
+
+if ($tipo!=2) {
+	header("location: ../index.php");
+}
+
+
 ?>
 <div id="resultado2" class="modalmask" style="display:none;">
 

@@ -15,6 +15,14 @@
 <?php
 include "../services/conexion.php";
 include "../services/header.php";
+
+//Comprobar que solo puedan entrar los usuarios designados
+$tipo=$_SESSION['tipo'];
+
+if ($tipo!=1) {
+	header("location: ../index.php");
+}
+
 ?>
 <div class="tablas" id="resultado">
 	<a href="home.php"><button style="float: left;" class="btn btn-secondary">VOLVER</button></a>

@@ -11,6 +11,14 @@
 <?php
 include "../services/conexion.php";
 include "../services/header.php";
+
+//Comprobar que solo puedan entrar los usuarios designados
+$tipo=$_SESSION['tipo'];
+
+if ($tipo!=4) {
+	header("location: ../index.php");
+}
+
 ?>
     <button class="btn" style="position: absolute; right: 5px;top:5px;"><a href="home.php">Tornar</a></button>
 <!--Mover al css todo lo del style del div siguiente-->
