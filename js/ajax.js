@@ -194,7 +194,14 @@ function FiltroCocina(){
 }
 //----------------------------------------------------------------------------------------------------------------------------------
 
-function CrearTablaProfes(){
+function CrearTablaProfes(filtro){
+
+    var profe = document.getElementById("profe").value;
+    var clase = document.getElementById("clase").value;
+    var fecha = document.getElementById("fecha").value;
+     var jornada = document.getElementById("jornada").value;
+      var etapa = document.getElementById("etapa").value;
+       var codi = document.getElementById("codi").value;
     //Fecha de hoy
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -204,30 +211,45 @@ function CrearTablaProfes(){
     //---------------------
     divResultado = document.getElementById('resultado');
     var estado_filtro = document.getElementById("btn_filtro").value;
-    var ajax2=objetoAjax();
+    
+
+    if (filtro==1) {
+        var ajax2=objetoAjax();
     ajax2.open("GET", "../services/consulta_profes.php", true);
     ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     ajax2.send(null);
+
+}else{
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/consulta_profes.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada+"&etapa="+etapa+"&codi="+codi);
+}
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
+        
     var respuesta=JSON.parse(this.responseText);
+
     var tabla='<table class="table table-bordered" style="text-align:center"><thead>';
-        tabla +='<tr><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Transport</th><th>Activitat</th><th>Contacte</th><th>Alumnes</th>';
+        tabla +='<tr><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Transport</th><th>Activitat</th><th>Contacte</th><th>Alumnes</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
                     
-                    tabla += '<td>' + "nombre"+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
+                    tabla += '<td>' + respuesta[i].profesor_asignat+'</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
+                    tabla += '<td>' + respuesta[i].n_vetlladors+ '</td>';
+                    
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')">Info+</button></td>';
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte+')">Info+</button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')">Info+</button></td>';
                     tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
                     tabla += '</tr>';
                     
@@ -237,13 +259,16 @@ function CrearTablaProfes(){
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
 
-                    tabla += '<td>' + "nombre"+ '</td>';
+                    tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
+                    tabla += '<td>' + respuesta[i].profesor_asignat+'</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
+                    tabla += '<td>' + respuesta[i].n_vetlladors+ '</td>';
+                    
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')">Info+</button></td>';
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
                     tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')">Info+</button></td>';
