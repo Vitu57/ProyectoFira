@@ -450,7 +450,7 @@ function openTab(evt, tabName, idform) {
   }
 
   if (ok == 1){
-     // insert_excursion();
+      insert_excursion();
       //alert("Insertaría datos");
 
   }else if(ok = 0){
