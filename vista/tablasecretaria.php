@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-  <script type="text/javascript" src="../js/ajax.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-	
 <?php
 include "../services/conexion.php";
 //Estos son los valores que tiene el filtro, si no los encuentra los pone vacios
@@ -110,18 +100,18 @@ echo "<tr>";
  ?>
 
  <!-- Botón para la modal de Activitat-->      
-<td><button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria2" onclick="modal_secretaria2('<?php echo $nomAct; ?>','<?php echo $llocAct; ?>','<?php echo $tipusAct; ?>','<?php echo $ambitAct; ?>','<?php echo $jorAct; ?>','<?php echo $objAct; ?>');">Activitat</button>
+<td><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria2" onclick="modal_secretaria2('<?php echo $nomAct; ?>','<?php echo $llocAct; ?>','<?php echo $tipusAct; ?>','<?php echo $ambitAct; ?>','<?php echo $jorAct; ?>','<?php echo $objAct; ?>');"></i>
 
 </td>
 
 <!-- Botón para la modal de Transporte-->      
-<td><button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria3" onclick="modal_secretaria3('<?php echo $nomTransport; ?>','<?php echo $horaSortida; ?>','<?php echo $horaArribada; ?>','<?php echo $comentari; ?>');">Transport</button>
+<td><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria3" onclick="modal_secretaria3('<?php echo $nomTransport; ?>','<?php echo $horaSortida; ?>','<?php echo $horaArribada; ?>','<?php echo $comentari; ?>');"></i>
 
 </td>
 
 <td>
  <!-- Botón para la modal de contacto-->      
-<button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria" onclick="modal_secretaria('<?php echo $personaContacte; ?>','<?php echo $webContacte; ?>','<?php echo $telfContacte; ?>','<?php echo $emailContacte; ?>');">Contacte</button>
+<i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_secretaria('<?php echo $personaContacte; ?>','<?php echo $webContacte; ?>','<?php echo $telfContacte; ?>','<?php echo $emailContacte; ?>');"></i>
 
 <!-- Modal del contacto--> 
 <div id="resultado2" class="modalmask" style="display:none;">
@@ -137,6 +127,3 @@ echo "<tr>";
 <?php 
   
   }
-
-  ?>
-</thead></table>

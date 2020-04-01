@@ -30,25 +30,24 @@ $fecha_actual = date('Y-m-d');
   <table  class='table table-bordered'>
   <thead>
       <tr>
-   <th scope="col">Codi sortida</th>     
+   <th scope="col">Codi</th> 
+   <th scope="col">Etapa</th>    
    <th scope="col">Clase</th>
-   <th scope="col">Inici de la sortida</th>
-   <th scope="col">Final de la sortida</th>
+   <th scope="col">Inici</th>
+   <th scope="col">Final</th>
    <th scope='col'>Hora de sortida</th>
    <th scope='col'>Hora d'arribada</th>
-   <th scope='col'>Activitat</th>
-   <th scope='col'>Profesor asignat</th>
-   <th scope='col'>Numero de vetlladors</th>
-   <th scope='col'>Numero de profesors</th>
-   <th scope='col'>Numero d'alumnes</th>
-   <th scope="col">Jornada</th>
+   <th scope='col'>Vetlladors</th>
+   <th scope='col'>Profesors</th>
+   <th scope='col'>Alumnes</th>
+   <th scope="col">+ Info</th>
 
   </tr>
 
 <?php
 
     //consulta para saber los datos de las salidas y el transporte
-$consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida INNER JOIN tbl_transport ON tbl_transport.id_transport=tbl_sortida.id_transport INNER JOIN tbl_nom_transport ON tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase where tbl_sortida.inici_sortida > '$fecha_actual' and tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%' and tbl_sortida.profesor_asignat like '%".$profe."%'and tbl_activitat.jornada_activitat like '%".$jornada."%' ORDER BY tbl_sortida.inici_sortida";
+$consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida INNER JOIN tbl_transport ON tbl_transport.id_transport=tbl_sortida.id_transport INNER JOIN tbl_nom_transport ON tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa where tbl_sortida.inici_sortida > '$fecha_actual' and tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%' and tbl_sortida.profesor_asignat like '%".$profe."%'and tbl_activitat.jornada_activitat like '%".$jornada."%' ORDER BY tbl_sortida.inici_sortida";
       $exe=mysqli_query($conn,$consulta);
      while ($casos=mysqli_fetch_array($exe)){
 
@@ -65,25 +64,40 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
         $horaArribada=$casos['hora_arribada'];
         $nomClase=$casos['nom_classe'];
         $jornada=$casos['jornada_activitat'];
+        $etapa=$casos['nom_etapa'];
+        $transport=$casos['nom_transport'];
 
 echo "<tr>";
        echo "<td>".$codi."</td>";
+       echo "<td>".$etapa."</td>";
        echo "<td>".$nomClase."</td>";
        echo "<td>".$inici."</td>";
        echo "<td>".$final."</td>";
        echo "<td>".$horaSortida."</td>";
        echo "<td>".$horaArribada."</td>";
-       echo "<td>".$activitat."</td>";
-       echo "<td>".$profesor_asignat."</td>";
        echo "<td>".$vetlladors."</td>";
        echo "<td>".$profe."</td>";
        echo "<td>".$alumnes."</td>";
-       echo "<td>".$jornada."</td>";
-       echo "</tr>";
+?>
+
+<td>
+ <!-- Botón para la modal de contacto-->      
+<i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_enf_dir('<?php echo $activitat; ?>','<?php echo $profesor_asignat; ?>','<?php echo $transport; ?>','<?php echo $jornada; ?>');"></i>
+
+<!-- Modal del contacto--> 
+<div id="resultado2" class="modalmask" style="display:none;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Close" class="close" id="close">X</a>
+        <h2 id="tituloResultado">TITULO</h2>
+        <div id="contenidoResultado">contenido resultado</div>
+      </div>
+    </div>
+</td>
+</tr>
+
+<?php
 }
-
-   
-    ?>
-
+?>
 
 </table>
