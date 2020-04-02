@@ -316,7 +316,7 @@ function versalida(id_sortida){
 
         document.getElementById("tabla_calendario").style.display ="block";
 
-        document.getElementById("codi_sortida_cal").innerHTML = respuesta2.codi_sortida;
+        document.getElementById("codi_sortida_cal").innerHTML = respuesta2.nom_activitat;
         document.getElementById("clase_cal").innerHTML = respuesta2.nom_classe;
         document.getElementById("Profe_asignat_cal").innerHTML = respuesta2.profesor_asignat;
         document.getElementById("num_alu_cal").innerHTML = respuesta2.numero_alumnes;

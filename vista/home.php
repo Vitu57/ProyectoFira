@@ -45,7 +45,7 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
   <table id="tabla_calendario" class="table table-hover text-center" style="font-size:10px; display:none;">
   <thead>
     <tr>
-      <th width="20%" scope="col">Codi de sortida</th>
+      <th width="20%" scope="col">Nom Sortida</th>
       <th width="10%" scope="col">Clase Assisteix</th>
       <th width="15%" scope="col">Profesor Asignat</th>
       <th width="15%" scope="col">Número Alumnes</th>

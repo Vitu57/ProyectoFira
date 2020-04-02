@@ -124,12 +124,13 @@ function CrearTabla(){
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
     var tabla='<table class="table table-bordered" style="text-align:center"><thead>';
-        tabla +='<tr><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th>';
+        tabla +='<tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr></tr>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
+					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
@@ -147,6 +148,7 @@ function CrearTabla(){
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr></tr>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
+					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
