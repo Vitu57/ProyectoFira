@@ -62,9 +62,11 @@ Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
 	</form>
 
 <br>
+  <div class="scrollhori">
   <?php
      include "tabladmin.php";
   ?>
+  </div>
   <br>
   </div>
 <div class="footer">

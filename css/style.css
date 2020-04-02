@@ -201,3 +201,20 @@ a.none{
 .espacio_filtros{
 margin: 1.2%;
 }
+
+/*Barra de scroll horizontal*/
+div.scrollhori{
+background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+div.scrollhori a{
+display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+div.scrollhori a:hover{
+  background-color: #777;
+  }
