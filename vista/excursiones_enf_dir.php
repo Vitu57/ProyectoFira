@@ -3,6 +3,7 @@
 <head>
   <title>Sortides</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
@@ -31,9 +32,9 @@ if ($tipo!=5 AND $tipo!=6) {
   <br><br>
   <form action="#" method="POST" onsubmit="filtrar_enf_dir();return false">
     
-    Data: <input type="text" name="fecha" id="fecha">
+    Data: <input class="espacio_filtros" type="text" name="fecha" id="fecha">
    
-Clase: <select name="clase" id="clase">
+Clase: <select class="espacio_filtros" name="clase" id="clase">
           <option value=""></option>
       <?php
 
@@ -47,7 +48,7 @@ Clase: <select name="clase" id="clase">
 </select>
 
     
-    Jornada: <select name="jornada" id="jornada">
+    Jornada: <select class="espacio_filtros" name="jornada" id="jornada">
       <option value=""></option>
       <?php
 
@@ -60,12 +61,12 @@ Clase: <select name="clase" id="clase">
 ?>
 </select>
 
-Profesor: <input type="text" name="profe" id="profe">
-    <input type="submit" name="submit" value="Filtrar">
+Profesor: <input class="espacio_filtros" type="text" name="profe" id="profe">
+    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Filtrar">
   </form>
   <form action="#" method="POST" onsubmit="vertodo_enf_dir();return false">
-    <br><br>
-    <input type="submit" name="submit" value="Veure tots">
+    <br>
+    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots">
     <br>
   </form>
 <br>

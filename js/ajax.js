@@ -187,7 +187,7 @@ function FiltroCocina(){
         document.getElementById("btn_filtro").style.backgroundColor="green";
         document.getElementById("btn_filtro").value=1;
     }else{
-        document.getElementById("btn_filtro").style.backgroundColor="white";
+        document.getElementById("btn_filtro").style.backgroundColor="#367cb3";
         document.getElementById("btn_filtro").value=0;
     }
     CrearTabla();
@@ -230,14 +230,14 @@ function CrearTablaProfes(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
-    var tabla='<table class="table table-bordered" style="text-align:center"><thead>';
-        tabla +='<tr><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Transport</th><th>Activitat</th><th>Contacte</th><th>Alumnes</th>';
+    var tabla='<table class="table table-bordered" <thread>';
+        tabla +='<tr><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
                     
-                    tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
+                    tabla += '<td style="widjth=2000px;">' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
@@ -246,11 +246,11 @@ function CrearTablaProfes(filtro){
                     tabla += '<td>' + respuesta[i].profesor_asignat+'</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
                     tabla += '<td>' + respuesta[i].n_vetlladors+ '</td>';
-                    
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')">Info+</button></td>';
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')">Info+</button></td>';
-                    tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
+                     tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;"></i></button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;"></i></button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;"></i></button></td>';
+                   
                     tabla += '</tr>';
                     
                     
@@ -268,11 +268,10 @@ function CrearTablaProfes(filtro){
                     tabla += '<td>' + respuesta[i].profesor_asignat+'</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
                     tabla += '<td>' + respuesta[i].n_vetlladors+ '</td>';
-                    
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')">Info+</button></td>';
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')">Info+</button></td>';
-                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')">Info+</button></td>';
-                    tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';
+                    tabla += '<td>' + respuesta[i].numero_alumnes+ '</td>';    
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_transport('+respuesta[i].id_transport+')"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;"></i></button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes('+respuesta[i].id_activitat+')"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;"></i></button></td>';
+                    tabla += '<td><a id="modal_profesores" href=# onclick="modal_profes_contacte('+respuesta[i].id_contacte_activitat+')"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;"></i></button></td>';
                     tabla += '</tr>';
                     
                 }
@@ -291,7 +290,7 @@ function FiltroProfes(){
         document.getElementById("btn_filtro").style.backgroundColor="green";
         document.getElementById("btn_filtro").value=1;
     }else{
-        document.getElementById("btn_filtro").style.backgroundColor="white";
+        document.getElementById("btn_filtro").style.backgroundColor="#367cb3";
         document.getElementById("btn_filtro").value=0;
     }
     CrearTablaProfes();

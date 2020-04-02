@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-  <script type="text/javascript" src="../js/ajax.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body>
-	
 <?php
 include "../services/conexion.php";
 //Estos son los valores que tiene el filtro, si no los encuentra los pone vacios
@@ -67,7 +54,7 @@ if(isset($_REQUEST['profe'])){
 		echo "<tr>
 			<td>";
 			?>
-			<button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria" onclick="eliminar('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');">Eliminar</button>
+			<i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b;" onclick="eliminar('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i>
 			<?php  echo "</td>
 			<td>".$exe[0]."</td>
 			<td>".$exe[11]."</td>
@@ -119,7 +106,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="modal_secretaria" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');">Veure contacte</button>
+				<a href="#"><i class="fas fa-address-book fa-2x" style="color: #634d0f;  margin: 15%;" id="modal_secretaria" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');"></i></a><br>
 
 				<?php
 					 $consultaprecios="select tbl_preus.* from tbl_preus inner join tbl_sortida on tbl_sortida.id_precios=tbl_preus.id_preus where tbl_sortida.id_sortida='".$exe[10]."'";
@@ -128,7 +115,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn2" onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');">Veure preus</button>
+			<a href="#"><i class="fas fa-money-bill-wave fa-2x" style="color: darkgreen; margin: 15%;" id="myBtn2" onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');"></i></a><br>
 
 				<?php
 					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
@@ -136,7 +123,7 @@ if(isset($_REQUEST['profe'])){
 					 		$tra=mysqli_fetch_array($querytransporte);
 				?>
 				
-				<button class="btn btn-info" style="margin-bottom: 7%;" id="myBtn3" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');">Veure transports</button>
+				<a href="#"><i class="fas fa-plane fa-2x" style="color: black; margin: 15%;" id="myBtn3" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');"></i></a>
 				
 			</td>
 			<div id="resultado2" class="modalmask" style="display:none;">
@@ -152,5 +139,3 @@ if(isset($_REQUEST['profe'])){
 	}
 	echo "</table>";
 ?>
-</body>
-</html>

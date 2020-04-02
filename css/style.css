@@ -195,3 +195,9 @@ a.none{
   from {top: -100%; opacity: 0}
   to {top: 0; opacity: 1}
 }
+
+/*Más espacio entre los filtros*/
+
+.espacio_filtros{
+margin: 1.2%;
+}

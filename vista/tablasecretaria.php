@@ -100,18 +100,18 @@ echo "<tr>";
  ?>
 
  <!-- Botón para la modal de Activitat-->      
-<td><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria2" onclick="modal_secretaria2('<?php echo $nomAct; ?>','<?php echo $llocAct; ?>','<?php echo $tipusAct; ?>','<?php echo $ambitAct; ?>','<?php echo $jorAct; ?>','<?php echo $objAct; ?>');"></i>
+<td><a href="#"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria2" onclick="modal_secretaria2('<?php echo $nomAct; ?>','<?php echo $llocAct; ?>','<?php echo $tipusAct; ?>','<?php echo $ambitAct; ?>','<?php echo $jorAct; ?>','<?php echo $objAct; ?>');"></i></a>
 
 </td>
 
 <!-- Botón para la modal de Transporte-->      
-<td><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria3" onclick="modal_secretaria3('<?php echo $nomTransport; ?>','<?php echo $horaSortida; ?>','<?php echo $horaArribada; ?>','<?php echo $comentari; ?>');"></i>
+<td><a href="#"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria3" onclick="modal_secretaria3('<?php echo $nomTransport; ?>','<?php echo $horaSortida; ?>','<?php echo $horaArribada; ?>','<?php echo $comentari; ?>');"></i></a>
 
 </td>
 
 <td>
  <!-- Botón para la modal de contacto-->      
-<i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_secretaria('<?php echo $personaContacte; ?>','<?php echo $webContacte; ?>','<?php echo $telfContacte; ?>','<?php echo $emailContacte; ?>');"></i>
+<a href="#"><i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_secretaria('<?php echo $personaContacte; ?>','<?php echo $webContacte; ?>','<?php echo $telfContacte; ?>','<?php echo $emailContacte; ?>');"></i></a>
 
 <!-- Modal del contacto--> 
 <div id="resultado2" class="modalmask" style="display:none;">
