@@ -127,7 +127,9 @@ function select_enum3() {
 
     }
 }
-function select_curs() {
+// select_curs rellena el lisatdo de cursos recogiondo el valor id 
+// que tiene actualmente etapa y haciendo la respectiva consulta
+function select_curs(clase,profesor) {
     /*código a implementar*/
     var curs = document.getElementById("curs");
     var etapa = document.getElementById("etapa").value;
@@ -142,17 +144,28 @@ function select_curs() {
             option += '<option value="0">Escollir una opció</option>';
             for (var i = 0; i < respuesta2.length; i++) {
 
-                option += '<option value="'+respuesta2[i].id_clase+'">' + respuesta2[i].nom_classe + '</option>';
+                if (clase != undefined && clase != "" && clase == respuesta2[i].id_clase) {
+                    option += '<option selected value="' + respuesta2[i].id_clase + '">' + respuesta2[i].nom_classe + '</option>';
+                    //console.log(option);
+                } else {
+                    option += '<option value="' + respuesta2[i].id_clase + '">' + respuesta2[i].nom_classe + '</option>';
+                }
 
             }
             curs.innerHTML = option;
+            if(profesor != "" && profesor != undefined){
+                select_professor(profesor);
+            }
+            
         }
     }
 
 }
 
 //Devuelve los profesores ordenados por apellido de la base de datos y los muestra en un multiselect
-function select_professor() {
+// recogiendo previamente el valor del id curso del select de curs y hace la consulta para mostrar
+// los profesores asociados a esa id
+function select_professor(profesor) {
     /*código a implementar*/
     curs = document.getElementById("curs").value;
     var lista = document.getElementById("lista_prof");
@@ -160,125 +173,256 @@ function select_professor() {
     var option;
     ajax3.open("POST", "../services/consulta_form_sortides.php", true);
     ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    ajax3.send("accion=professor&id_clase="+curs);
+    ajax3.send("accion=professor&id_clase=" + curs);
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
-            var respuesta=JSON.parse(this.responseText);
-            if (respuesta.length === 0){
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta.length === 0) {
                 option = '<option value="0">No hi ha professors</option>';
-                lista.innerHTML=option;
+                lista.innerHTML = option;
             } else {
-            for (var i = 0; i < respuesta.length; i++) {
-            option += '<option value="'+respuesta[i].id_usuari+'">' + respuesta[i].nom_usuari+' '+respuesta[i].cognom_usuari+ '</option>';
-            }
-            lista.innerHTML=option;
-        }
-        }
-    }
+                for (var i = 0; i < respuesta.length; i++) {
+                   
+                        if (profesor != undefined && profesor != "" && respuesta[i].id_usuari == profesor[i]) {
+                            option += '<option selected value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
+                        } else {
+                            option += '<option value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
+                        }
+                        lista.innerHTML = option;
+                        
+                    
 
-}
-// devuelve y muestra los tipos de transporte en un select
-function select_transport() {
-    var transport = document.getElementById("tipus_transport");
-    var ajax3 = objetoAjax();
-    var option;
-    ajax3.open("POST", "../services/consulta_form_sortides.php", true);
-    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    ajax3.send("accion=transport");
-    ajax3.onreadystatechange = function () {
-        if (ajax3.readyState == 4 && ajax3.status == 200) {
-            var respuesta=JSON.parse(this.responseText);
-            option += '<option value="0">Escollir una opció</option>';
-            for (var i = 0; i < respuesta.length; i++) {
-            option += '<option value="' + respuesta[i].id_nom_transport+'">' + respuesta[i].nom_transport+'</option>';
-            console.log(option);
+                }
             }
-            transport.innerHTML=option;
+
         }
     }
-
 }
-
-function insert_excursion() {
-    //----------------Sortida----------------------
-    var codi_sortida = document.getElementById('codi_sortida').value;
-    var inici_sortida = document.getElementById('inici_sortida').value;
-    var final_sortida = document.getElementById('final_sortida').value;
-    var curs = document.getElementById('curs').value;
-    var num_alumnes = document.getElementById('num_alumnes').value;
-    var num_professors = document.getElementById('num_professors').value;
-    var lista = document.querySelectorAll('#lista_prof option:checked');
-    var profes = Array.from(lista).map(el => el.value)
-    var prof_asignat = document.getElementById('professor_asignat').value;
-    var num_vetlladors = document.getElementById('num_vetlladors').value;
-    var num_acomp = document.getElementById('num_acomp').value;
-    var prof_apart = document.getElementById('prof_apart').value;
-    var comentaris_sort = document.getElementById('comentaris_sort').value;
-    //----------------Activitat----------------------
-    var nom_activitat = document.getElementById('nom_activitat').value;
-    var lloc_activitat = document.getElementById('lloc_activitat').value;
-    var tipus_activitat = document.getElementById('tipus_activitat').value;
-    var ambit_activitat = document.getElementById('ambit_activitat').value;
-    var jornada_activitat = document.getElementById('jornada_activitat').value;
-    var comentaris_objectiu = document.getElementById('comentaris_objectiu').value;
-    var pers_contacte = document.getElementById('pers_contacte').value;
-    var tlf_contacte = document.getElementById('tlf_contacte').value;
-    var web_contacte = document.getElementById('web_contacte').value;
-    var email_contacte = document.getElementById('email_contacte').value;
-    //----------------Transport----------------------
-    var hora_sortida = document.getElementById('hora_sortida').value;
-    var hora_arribada = document.getElementById('hora_arribada').value;
-    var tipus_transport = document.getElementById('tipus_transport').value;
-    var cost_transport = document.getElementById('cost_transport').value;
-    var codi_contacte = document.getElementById('codi_contacte').value;
-    var comentaris_transport = document.getElementById('comentaris_transport').value;
-    //----------------Costos----------------------
-    var cost_substitucio = document.getElementById('cost_substitucio').value;
-    var cost_act_ind = document.getElementById('cost_act_ind').value;
-    var cost_ext_act_prof = document.getElementById('cost_ext_act_prof').value;
-    var cost_glob_act = document.getElementById('cost_glob_act').value;
-    var cost_final = document.getElementById('cost_final').value;
-    var preu_fixe = document.getElementById('preu_fixe').value;
-    var preu_sense_topal = document.getElementById('preu_sense_topal').value;
-    var preu_amb_topal = document.getElementById('preu_amb_topal').value;
-    var preu_gestio = document.getElementById('preu_gestio').value;
-    var overhead = document.getElementById('overhead').value;
-    var total_facturar = document.getElementById('total_facturar').value;
-    var pagament_fraccionat = document.getElementById('fraccionat').value;
-    var observacions_fraccionat = document.getElementById('observacions_costos').value;
-    console.log("persona_contacte="+pers_contacte+"&tlf_contacte="+tlf_contacte+"&web_contacte="+web_contacte+"&email_contacte="+email_contacte+
-    "&cost_substitucio="+cost_substitucio+"&cost_act_ind="+cost_act_ind+"&cost_ext_act_prof="+cost_ext_act_prof+"&cost_glob_act="+cost_glob_act+"&cost_final="+cost_final+
-    "&preu_fixe="+preu_fixe+"&preu_sense_topal="+preu_sense_topal+"&preu_amb_topal="+preu_amb_topal+"&preu_gestio="+preu_gestio+"&overhead="+overhead+
-    "&total_facturar="+total_facturar+"&pagament_fraccionat="+pagament_fraccionat+"&observacions_fraccionat="+observacions_fraccionat+"&hora_sortida="+hora_sortida+"&hora_arribada="+hora_arribada+
-    "&tipus_transport="+tipus_transport+"&cost_transport="+cost_transport+"&codi_contacte="+codi_contacte+"&comentaris_transport="+comentaris_transport+
-    "&codi_sortida="+codi_sortida+"&inici_sortida="+inici_sortida+"&final_sortida="+final_sortida+"&id_clase="+curs+"&num_alumnes="+num_alumnes+
-    "&num_professors="+num_professors+"&prof_asignat="+prof_asignat+"&profes="+JSON.stringify(profes)+"&num_vetlladors="+num_vetlladors+"&num_acomp="+num_acomp+"&prof_apart="+prof_apart+
-    "&comentaris_sort="+comentaris_sort+"&nom_activitat="+nom_activitat+"&lloc_activitat="+lloc_activitat+"&tipus_activitat="+tipus_activitat+"&ambit_activitat="+ambit_activitat+
-    "&jornada_activitat="+jornada_activitat+"&objectiu_activitat="+comentaris_objectiu);
-    var ajax3 = objetoAjax();
-    ajax3.open("POST", "../services/insert_form_sortides.php", true);
-    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    ajax3.send("persona_contacte="+pers_contacte+"&tlf_contacte="+tlf_contacte+"&web_contacte="+web_contacte+"&email_contacte="+email_contacte+
-    "&cost_substitucio="+cost_substitucio+"&cost_act_ind="+cost_act_ind+"&cost_ext_act_prof="+cost_ext_act_prof+"&cost_glob_act="+cost_glob_act+"&cost_final="+cost_final+
-    "&preu_fixe="+preu_fixe+"&preu_sense_topal="+preu_sense_topal+"&preu_amb_topal="+preu_amb_topal+"&preu_gestio="+preu_gestio+"&overhead="+overhead+
-    "&total_facturar="+total_facturar+"&pagament_fraccionat="+pagament_fraccionat+"&observacions_fraccionat="+observacions_fraccionat+"&hora_sortida="+hora_sortida+"&hora_arribada="+hora_arribada+
-    "&tipus_transport="+tipus_transport+"&cost_transport="+cost_transport+"&codi_contacte="+codi_contacte+"&comentaris_transport="+comentaris_transport+
-    "&codi_sortida="+codi_sortida+"&inici_sortida="+inici_sortida+"&final_sortida="+final_sortida+"&id_clase="+curs+"&num_alumnes="+num_alumnes+
-    "&num_professors="+num_professors+"&prof_asignat="+prof_asignat+"&profes="+JSON.stringify(profes)+"&num_vetlladors="+num_vetlladors+"&num_acomp="+num_acomp+"&prof_apart="+prof_apart+
-    "&comentaris_sort="+comentaris_sort+"&nom_activitat="+nom_activitat+"&lloc_activitat="+lloc_activitat+"&tipus_activitat="+tipus_activitat+"&ambit_activitat="+ambit_activitat+
-    "&jornada_activitat="+jornada_activitat+"&objectiu_activitat="+comentaris_objectiu);
-
-    ajax3.onreadystatechange=function() {
-		if (ajax3.readyState==4 && ajax3.status==200) {
-            alert("ok")
-            document.getElementById("form_exc").reset();
-
-			} else {
+    // devuelve y muestra los tipos de transporte en un select
+    function select_transport() {
+        var transport = document.getElementById("tipus_transport");
+        var ajax3 = objetoAjax();
+        var option;
+        ajax3.open("POST", "../services/consulta_form_sortides.php", true);
+        ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax3.send("accion=transport");
+        ajax3.onreadystatechange = function () {
+            if (ajax3.readyState == 4 && ajax3.status == 200) {
+                var respuesta = JSON.parse(this.responseText);
+                option += '<option value="0">Escollir una opció</option>';
+                for (var i = 0; i < respuesta.length; i++) {
+                    option += '<option value="' + respuesta[i].id_nom_transport + '">' + respuesta[i].nom_transport + '</option>';
+                    console.log(option);
+                }
+                transport.innerHTML = option;
 
             }
-		}
+        }
 
-}
+    }
+
+    function insert_excursion() {
+        //----------------Sortida----------------------
+        var codi_sortida = document.getElementById('codi_sortida').value;
+        var inici_sortida = document.getElementById('inici_sortida').value;
+        var final_sortida = document.getElementById('final_sortida').value;
+        var curs = document.getElementById('curs').value;
+        var num_alumnes = document.getElementById('num_alumnes').value;
+        var lista = document.querySelectorAll('#lista_prof option:checked');
+        var profes = Array.from(lista).map(el => el.value)
+        var prof_asignat = document.getElementById('professor_asignat').value;
+        var num_vetlladors = document.getElementById('num_vetlladors').value;
+        var num_acomp = document.getElementById('num_acomp').value;
+        var prof_apart = document.getElementById('prof_apart').value;
+        var comentaris_sort = document.getElementById('comentaris_sort').value;
+        //----------------Activitat----------------------
+        var nom_activitat = document.getElementById('nom_activitat').value;
+        var lloc_activitat = document.getElementById('lloc_activitat').value;
+        var tipus_activitat = document.getElementById('tipus_activitat').value;
+        var ambit_activitat = document.getElementById('ambit_activitat').value;
+        var jornada_activitat = document.getElementById('jornada_activitat').value;
+        var comentaris_objectiu = document.getElementById('comentaris_objectiu').value;
+        var pers_contacte = document.getElementById('pers_contacte').value;
+        var tlf_contacte = document.getElementById('tlf_contacte').value;
+        var web_contacte = document.getElementById('web_contacte').value;
+        var email_contacte = document.getElementById('email_contacte').value;
+        //----------------Transport----------------------
+        var hora_sortida = document.getElementById('hora_sortida').value;
+        var hora_arribada = document.getElementById('hora_arribada').value;
+        var tipus_transport = document.getElementById('tipus_transport').value;
+        var cost_transport = document.getElementById('cost_transport').value;
+        var codi_contacte = document.getElementById('codi_contacte').value;
+        var comentaris_transport = document.getElementById('comentaris_transport').value;
+        //----------------Costos----------------------
+        var cost_substitucio = document.getElementById('cost_substitucio').value;
+        var cost_act_ind = document.getElementById('cost_act_ind').value;
+        var cost_ext_act_prof = document.getElementById('cost_ext_act_prof').value;
+        var cost_glob_act = document.getElementById('cost_glob_act').value;
+        var cost_final = document.getElementById('cost_final').value;
+        var preu_fixe = document.getElementById('preu_fixe').value;
+        var preu_sense_topal = document.getElementById('preu_sense_topal').value;
+        var preu_amb_topal = document.getElementById('preu_amb_topal').value;
+        var preu_gestio = document.getElementById('preu_gestio').value;
+        var overhead = document.getElementById('overhead').value;
+        var total_facturar = document.getElementById('total_facturar').value;
+        var pagament_fraccionat = document.getElementById('fraccionat').value;
+        var observacions_fraccionat = document.getElementById('observacions_costos').value;
+        var ajax3 = objetoAjax();
+        ajax3.open("POST", "../services/insert_form_sortides.php", true);
+        ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax3.send("persona_contacte=" + pers_contacte + "&tlf_contacte=" + tlf_contacte + "&web_contacte=" + web_contacte + "&email_contacte=" + email_contacte +
+            "&cost_substitucio=" + cost_substitucio + "&cost_act_ind=" + cost_act_ind + "&cost_ext_act_prof=" + cost_ext_act_prof + "&cost_glob_act=" + cost_glob_act + "&cost_final=" + cost_final +
+            "&preu_fixe=" + preu_fixe + "&preu_sense_topal=" + preu_sense_topal + "&preu_amb_topal=" + preu_amb_topal + "&preu_gestio=" + preu_gestio + "&overhead=" + overhead +
+            "&total_facturar=" + total_facturar + "&pagament_fraccionat=" + pagament_fraccionat + "&observacions_fraccionat=" + observacions_fraccionat + "&hora_sortida=" + hora_sortida + "&hora_arribada=" + hora_arribada +
+            "&tipus_transport=" + tipus_transport + "&cost_transport=" + cost_transport + "&codi_contacte=" + codi_contacte + "&comentaris_transport=" + comentaris_transport +
+            "&codi_sortida=" + codi_sortida + "&inici_sortida=" + inici_sortida + "&final_sortida=" + final_sortida + "&id_clase=" + curs + "&num_alumnes=" + num_alumnes +
+            "&prof_asignat=" + prof_asignat + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors + "&num_acomp=" + num_acomp + "&prof_apart=" + prof_apart +
+            "&comentaris_sort=" + comentaris_sort + "&nom_activitat=" + nom_activitat + "&lloc_activitat=" + lloc_activitat + "&tipus_activitat=" + tipus_activitat + "&ambit_activitat=" + ambit_activitat +
+            "&jornada_activitat=" + jornada_activitat + "&objectiu_activitat=" + comentaris_objectiu);
+
+        ajax3.onreadystatechange = function () {
+            if (ajax3.readyState == 4 && ajax3.status == 200) {
+                alert("ok")
+                document.getElementById("form_exc").reset();
+
+            } else {
+
+            }
+        }
+
+    }
+        var url = window.location.pathname;
+        if(url.match('form_update_excursiones.php')) {
+            setTimeout(function () { mostrar_excursion() }, 2000);
+        }
+    
+
+    var profesores = [];
+    //rellene los campos del formulario de modificar sortida
+    function mostrar_excursion() {
+
+        //----------------Sortida----------------------
+        var codi_sortida = document.getElementById('codi_sortida');
+        var inici_sortida = document.getElementById('inici_sortida');
+        var final_sortida = document.getElementById('final_sortida');
+        var etapa = document.getElementById('etapa');
+        var curs = document.getElementById('curs');
+        var num_alumnes = document.getElementById('num_alumnes');
+        var lista = document.getElementById('lista_prof');
+        var prof_asignat = document.getElementById('professor_asignat');
+        var num_vetlladors = document.getElementById('num_vetlladors');
+        var num_acomp = document.getElementById('num_acomp');
+        var prof_apart = document.getElementById('prof_apart');
+        var comentaris_sort = document.getElementById('comentaris_sort');
+        //----------------Activitat----------------------
+        var nom_activitat = document.getElementById('nom_activitat');
+        var lloc_activitat = document.getElementById('lloc_activitat');
+        var tipus_activitat = document.getElementById('tipus_activitat');
+        var ambit_activitat = document.getElementById('ambit_activitat');
+        var jornada_activitat = document.getElementById('jornada_activitat');
+        var comentaris_objectiu = document.getElementById('comentaris_objectiu');
+        var pers_contacte = document.getElementById('pers_contacte');
+        var tlf_contacte = document.getElementById('tlf_contacte');
+        var web_contacte = document.getElementById('web_contacte');
+        var email_contacte = document.getElementById('email_contacte');
+        //----------------Transport----------------------
+        var hora_sortida = document.getElementById('hora_sortida');
+        var hora_arribada = document.getElementById('hora_arribada');
+        var tipus_transport = document.getElementById('tipus_transport');
+        var cost_transport = document.getElementById('cost_transport');
+        var codi_contacte = document.getElementById('codi_contacte');
+        var comentaris_transport = document.getElementById('comentaris_transport');
+        //----------------Costos----------------------
+        var cost_substitucio = document.getElementById('cost_substitucio');
+        var cost_act_ind = document.getElementById('cost_act_ind');
+        var cost_ext_act_prof = document.getElementById('cost_ext_act_prof');
+        var cost_glob_act = document.getElementById('cost_glob_act');
+        var cost_final = document.getElementById('cost_final');
+        var preu_fixe = document.getElementById('preu_fixe');
+        var preu_sense_topal = document.getElementById('preu_sense_topal');
+        var preu_amb_topal = document.getElementById('preu_amb_topal');
+        var preu_gestio = document.getElementById('preu_gestio');
+        var overhead = document.getElementById('overhead');
+        var total_facturar = document.getElementById('total_facturar');
+        var pagament_fraccionat = document.getElementById('fraccionat');
+        var observacions_fraccionat = document.getElementById('observacions_costos');
+        var ajax3 = objetoAjax();
+        ajax3.open("POST", "../services/consulta_form_sortides.php", true);
+        ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax3.send("accion=mostrar_update&id_sortida=21");
+        ajax3.onreadystatechange = function () {
+            //vamos configurando los valores de cada campo segun lo que devuelva JSON
+            if (ajax3.readyState == 4 && ajax3.status == 200) {
+                var respuesta = JSON.parse(this.responseText);
+                codi_sortida.value = respuesta[0].codi_sortida;
+                inici_sortida.value = respuesta[0].inici_sortida;
+                final_sortida.value = respuesta[0].final_sortida;
+                //aqui definimos que del listado que tiene etapa cargado seleccione la opcion que contenga el value = id.etapa 
+                etapa.value = respuesta[0].id_etapa;
+                //llamamos a la función select_curs() (manualmente ya que el onchange de etapa no actua si no lo cambia un usuario) 
+                //que recoje el valor actual de etapa y hace la conulta para mostrar la lista de cursos
+                for (var i = 0; i < respuesta.length; i++) {
+                    profesores.push(respuesta[i].id_profesor);
+                    console.log(profesores);
+                }
+                select_curs(respuesta[0].id_clase, profesores);
+                //Aqui le decimos que del listado que tiene el curso seleccione el option que tiene el value = id.clase
+                //curs.value = respuesta[0].id_clase;
+                num_alumnes.value = respuesta[0].numero_alumnes;
+                //se llama a la funcion select_professor que recoja el valor id actual de curso y muestre los profes que hay
+
+               
+
+               
+
+                //bucle que va seleccionando los profesores que hay asignado a la excursion segun el registro
+                /*for (var i = 0; i < respuesta.length; i++) {
+                    for (var j = 0; j < lista.length; j++) {
+                        if(lista.options[j].value == respuesta[i].id_profesor){
+                        lista[j].selected = true;
+                        }
+                    }
+                }*/
+                prof_asignat.value = respuesta[0].profesor_asignat;
+                num_vetlladors.value = respuesta[0].n_vetlladors;
+                num_acomp.value = respuesta[0].n_acompanyants;
+                prof_apart.value = respuesta[0].profes_a_part;
+                comentaris_sort.value = respuesta[0].observacions_sortida;
+                nom_activitat.value = respuesta[0].nom_activitat;
+                lloc_activitat.value = respuesta[0].lloc_activitat;
+                tipus_activitat.value = respuesta[0].tipus_activitat;
+                ambit_activitat.value = respuesta[0].ambit_activitat;
+                jornada_activitat.value = respuesta[0].jornada_activitat;
+                comentaris_objectiu.value = respuesta[0].objectiu_activitat;
+                pers_contacte.value = respuesta[0].persona_contacte;
+                tlf_contacte.value = respuesta[0].telefon_contacte;
+                web_contacte.value = respuesta[0].web_contacte;
+                email_contacte.value = respuesta[0].email_contacte;
+                hora_sortida.value = respuesta[0].hora_sortida;
+                hora_arribada.value = respuesta[0].hora_arribada;
+                tipus_transport.value = respuesta[0].id_nom_transport;
+                cost_transport.value = respuesta[0].cost_transport;
+                codi_contacte.value = respuesta[0].codi_contacte;
+                comentaris_transport.value = respuesta[0].comentaris_transport;
+                cost_substitucio.value = respuesta[0].cost_substitucio;
+                cost_act_ind.value = respuesta[0].cost_activitat_individual;
+                cost_ext_act_prof.value = respuesta[0].cost_extra_activitat_profe;
+                cost_glob_act.value = respuesta[0].cost_global_activitat;
+                cost_final.value = respuesta[0].cost_final;
+                preu_fixe.value = respuesta[0].preu_fixe;
+                preu_sense_topal.value = respuesta[0].preu_sense_topal;
+                preu_amb_topal.value = respuesta[0].preu_amb_topal;
+                preu_gestio.value = respuesta[0].preu_gestio;
+                overhead.value = respuesta[0].overhead;
+                total_facturar.value = respuesta[0].total_facturar;
+                pagament_fraccionat.value = respuesta[0].pagament_fraccionat;
+                observacions_fraccionat.value = respuesta[0].observacio_fraccionat;
+
+
+            }
+
+        }
+    }
 
 
 function openTab(evt, tabName, idform) {

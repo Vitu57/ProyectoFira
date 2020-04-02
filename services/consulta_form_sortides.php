@@ -77,6 +77,39 @@ $query = "SELECT * FROM `tbl_nom_transport`";
         }else{
             echo "Error en la consulta";
         }
+}elseif ($accion == "mostrar_update"){
+    $id_sortida=$_REQUEST['id_sortida'];
+    $query_update = "select tbl_sortida.*,tbl_clase.id_clase,tbl_etapa.id_etapa, tbl_activitat.*, tbl_contacte_activitat.*, tbl_preus.*, tbl_lista_profesores.*, tbl_transport.*
+    from tbl_etapa 
+    inner join tbl_clase 
+    on tbl_etapa.id_etapa=tbl_clase.id_etapa 
+    inner join tbl_sortida 
+    on tbl_clase.id_clase=tbl_sortida.id_clase
+    INNER JOIN tbl_transport
+    on tbl_sortida.id_transport = tbl_transport.id_transport
+    INNER JOIN tbl_lista_profesores
+    on tbl_lista_profesores.id_excursion = tbl_sortida.id_sortida
+    INNER JOIN tbl_preus
+    on tbl_sortida.id_precios = tbl_preus.id_preus
+    inner join tbl_activitat 
+    on tbl_sortida.id_sortida=tbl_activitat.id_sortida
+    INNER JOIN tbl_contacte_activitat
+    ON tbl_activitat.id_contacte_activitat = tbl_contacte_activitat.id_contacte_activitat
+    where tbl_sortida.id_sortida = ?";
+
+    if ($stmt = mysqli_prepare($conn, $query_update)){
+        mysqli_stmt_bind_param($stmt, "s", $id_sortida);
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        $update=array();
+        while($row = mysqli_fetch_assoc($res)){
+        $update[]=$row;
+         }
+        print json_encode($update);
+        
+    }else{
+        echo "Error en la consulta";
+    }
 
 }else{
    echo "ninguna opcion selecionada";
