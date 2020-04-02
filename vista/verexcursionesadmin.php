@@ -11,6 +11,14 @@
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 </head>
 <body class="home" style="text-align: center; padding: 2%;"> 
+<!--Sweet alert cdn(s)-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+
 
 <?php
 include "../services/conexion.php";

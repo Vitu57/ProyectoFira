@@ -54,7 +54,7 @@ if(isset($_REQUEST['profe'])){
 		echo "<tr>
 			<td>";
 			?>
-			<i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b;" onclick="eliminar('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i>
+			<a href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a>
 			<?php  echo "</td>
 			<td>".$exe[0]."</td>
 			<td>".$exe[11]."</td>

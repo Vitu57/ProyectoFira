@@ -105,7 +105,7 @@ function abrirform(){
 }
 
 //COCINA------------------------------------------------------------------------------------------------------
-//Esta funcion Crea la Tabla de visualizaci�n de excursiones de COCINA
+//Esta funcion Crea la Tabla de visualizaci�n de excursiones de COCINA
 function CrearTabla(){
     //Fecha de hoy
     var today = new Date();
@@ -743,4 +743,29 @@ function vertodo_secretaria(){
             divResultado.innerHTML = ajax.responseText
         }
     }
+}
+
+function delete_confirm(id_s,id_a,id_p,id_c,id_t){
+    
+    Swal.fire({
+        title: 'Estás segur/a?',
+        text: "No podrás recuperar res d'aquesta sortida!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar-la!'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Eliminat!',
+            'La sortida ha sigut eliminada correctament.',
+            'success',
+            
+          )
+          eliminar(id_s,id_a,id_p,id_c,id_t);
+        }
+        
+      })
+
 }
