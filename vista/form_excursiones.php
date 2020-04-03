@@ -93,7 +93,7 @@
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
             <div style="margin-left: 1%; margin-top: 2%;">
-                <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
+                <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides" onclick="return false">1</button>
                 <button id="btn2-1" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
                 <button id="btn3-1" class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
                 <button id="btn4-1" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>
