@@ -238,8 +238,8 @@ function CrearTablaProfes(filtro){
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
-                    
-                    tabla += '<td style="widjth=2000px;">' + respuesta[i].nom_activitat+ '</td>';
+                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+                    tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
