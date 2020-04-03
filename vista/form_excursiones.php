@@ -25,7 +25,7 @@
   
 <body class="body_design" onload="select_etapa()">
    <a href="../vista/home.php">
-  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
+  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
         <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(); return false">

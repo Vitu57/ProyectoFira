@@ -289,7 +289,9 @@ function select_professor(profesor) {
 
         ajax3.onreadystatechange = function () {
             if (ajax3.readyState == 4 && ajax3.status == 200) {
-                alert("ok")
+                //alert("ok")
+                mensaje_insert_ok();
+                PaginacionCostes1();
                 document.getElementById("form_exc").reset();
 
             } else {
