@@ -33,7 +33,7 @@ function select_etapa() {
             var respuesta = JSON.parse(this.responseText);
             option += '<option value="0">Escollir una opció</option>';
             for (var i = 0; i < respuesta.length; i++) {
-                option += '<option value="'+respuesta[i].id_etapa+'">' + respuesta[i].nom_etapa + '</option>';
+                option += '<option value="' + respuesta[i].id_etapa + '">' + respuesta[i].nom_etapa + '</option>';
             }
             etapa.innerHTML = option;
             select_curs();
@@ -76,7 +76,7 @@ function select_enum() {
 function select_enum2() {
     /*código a implementar*/
 
-    lista =  document.getElementById("ambit_activitat");;
+    lista = document.getElementById("ambit_activitat");;
     var ajax3 = objetoAjax();
     var option;
     accion = "ambit_activitat";
@@ -129,7 +129,7 @@ function select_enum3() {
 }
 // select_curs rellena el lisatdo de cursos recogiondo el valor id 
 // que tiene actualmente etapa y haciendo la respectiva consulta
-function select_curs(clase,profesor) {
+function select_curs(clase, profesor) {
     /*código a implementar*/
     var curs = document.getElementById("curs");
     var etapa = document.getElementById("etapa").value;
@@ -153,10 +153,10 @@ function select_curs(clase,profesor) {
 
             }
             curs.innerHTML = option;
-            if(profesor != "" && profesor != undefined){
+            if (profesor != "" && profesor != undefined) {
                 select_professor(profesor);
             }
-            
+
         }
     }
 
@@ -167,6 +167,10 @@ function select_curs(clase,profesor) {
 // los profesores asociados a esa id
 function select_professor(profesor) {
     /*código a implementar*/
+    if (profesor == undefined){
+        profesor = "";
+    }
+    console.log("este profesor--> " + profesor);
     curs = document.getElementById("curs").value;
     var lista = document.getElementById("lista_prof");
     var ajax3 = objetoAjax();
@@ -181,20 +185,23 @@ function select_professor(profesor) {
                 option = '<option value="0">No hi ha professors</option>';
                 lista.innerHTML = option;
             } else {
-                for (var i = 0; i < respuesta.length; i++) {
-                   
-                        if (profesor != undefined && profesor != "" && respuesta[i].id_usuari == profesor[i]) {
-                            option += '<option selected value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
-                        } else {
-                            option += '<option value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
-                        }
-                        lista.innerHTML = option;
+                if (profesor != "") {
+                    for (var i = 0; i < respuesta.length; i++) {
                         
-                    
-
+                            if (profesor != undefined && profesor != "" && respuesta[i].id_usuari == profesor[i]) {
+                                option += '<option selected value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
+                            } else {
+                                option += '<option value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
+                            }
+                        
+                    }
+                } else {
+                    for (var i = 0; i < respuesta.length; i++) {
+                        option += '<option value="' + respuesta[i].id_usuari + '">' + respuesta[i].nom_usuari + ' ' + respuesta[i].cognom_usuari + '</option>';
+                    }
                 }
+                lista.innerHTML = option;
             }
-
         }
     }
 }
@@ -282,8 +289,7 @@ function select_professor(profesor) {
 
         ajax3.onreadystatechange = function () {
             if (ajax3.readyState == 4 && ajax3.status == 200) {
-                //alert("ok")
-                mensaje_insert_ok();
+                alert("ok")
                 document.getElementById("form_exc").reset();
 
             } else {
@@ -292,16 +298,98 @@ function select_professor(profesor) {
         }
 
     }
-        var url = window.location.pathname;
-        if(url.match('form_update_excursiones.php')) {
-            setTimeout(function () { mostrar_excursion() }, 2000);
-        }
-    
 
+    function update() {
+        alert("update");
+        var codi_sortida = document.getElementById('codi_sortida');
+        var inici_sortida = document.getElementById('inici_sortida');
+        var final_sortida = document.getElementById('final_sortida');
+        var curs = document.getElementById('curs');
+        var num_alumnes = document.getElementById('num_alumnes');
+        var lista = document.querySelectorAll('#lista_prof option:checked');
+        var profes = Array.from(lista).map(el => el.value)
+        var prof_asignat = document.getElementById('professor_asignat');
+        var num_vetlladors = document.getElementById('num_vetlladors');
+        var num_acomp = document.getElementById('num_acomp');
+        var prof_apart = document.getElementById('prof_apart');
+        var comentaris_sort = document.getElementById('comentaris_sort');
+        //----------------Activitat----------------------
+        var nom_activitat = document.getElementById('nom_activitat');
+        var lloc_activitat = document.getElementById('lloc_activitat');
+        var tipus_activitat = document.getElementById('tipus_activitat');
+        var ambit_activitat = document.getElementById('ambit_activitat');
+        var jornada_activitat = document.getElementById('jornada_activitat');
+        var comentaris_objectiu = document.getElementById('comentaris_objectiu');
+        var pers_contacte = document.getElementById('pers_contacte');
+        var tlf_contacte = document.getElementById('tlf_contacte');
+        var web_contacte = document.getElementById('web_contacte');
+        var email_contacte = document.getElementById('email_contacte');
+        //----------------Transport----------------------
+        var hora_sortida = document.getElementById('hora_sortida');
+        var hora_arribada = document.getElementById('hora_arribada');
+        var tipus_transport = document.getElementById('tipus_transport');
+        var cost_transport = document.getElementById('cost_transport');
+        var codi_contacte = document.getElementById('codi_contacte');
+        var comentaris_transport = document.getElementById('comentaris_transport');
+        //----------------Costos----------------------
+        var cost_substitucio = document.getElementById('cost_substitucio');
+        var cost_act_ind = document.getElementById('cost_act_ind');
+        var cost_ext_act_prof = document.getElementById('cost_ext_act_prof');
+        var cost_glob_act = document.getElementById('cost_glob_act');
+        var cost_final = document.getElementById('cost_final');
+        var preu_fixe = document.getElementById('preu_fixe');
+        var preu_sense_topal = document.getElementById('preu_sense_topal');
+        var preu_amb_topal = document.getElementById('preu_amb_topal');
+        var preu_gestio = document.getElementById('preu_gestio');
+        var overhead = document.getElementById('overhead');
+        var total_facturar = document.getElementById('total_facturar');
+        var pagament_fraccionat = document.getElementById('fraccionat');
+        var observacions_fraccionat = document.getElementById('observacions_costos');
+        var ajax3 = objetoAjax();
+        ajax3.open("POST", "../services/update_form_sortida.php", true);
+        ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax3.send("id_activitat=" + id_activitat + "&id_contacte_activitat=" + id_contacte_activitat + "&persona_contacte=" + pers_contacte.value + "&tlf_contacte=" + tlf_contacte.value + "&web_contacte=" + web_contacte.value + "&email_contacte=" + email_contacte.value +
+            "&id_preus=" + id_preus + "&cost_substitucio=" + cost_substitucio.value + "&cost_act_ind=" + cost_act_ind.value + "&cost_ext_act_prof=" + cost_ext_act_prof.value + "&cost_glob_act=" + cost_glob_act.value + "&cost_final=" + cost_final.value +
+            "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
+            "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
+            "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
+            "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curs.value + "&num_alumnes=" + num_alumnes.value +
+            "&prof_asignat=" + prof_asignat.value + "&id_sortida=" + id_sortida + "&id_del_prof=" + id_sort_prof + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
+            "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
+            "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
+        console.log("id_activitat=" + id_activitat + "&id_contacte_activitat=" + id_contacte_activitat + "&persona_contacte=" + pers_contacte.value + "&tlf_contacte=" + tlf_contacte.value + "&web_contacte=" + web_contacte.value + "&email_contacte=" + email_contacte.value +
+            "&id_preus=" + id_preus + "&cost_substitucio=" + cost_substitucio.value + "&cost_act_ind=" + cost_act_ind.value + "&cost_ext_act_prof=" + cost_ext_act_prof.value + "&cost_glob_act=" + cost_glob_act.value + "&cost_final=" + cost_final.value +
+            "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
+            "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
+            "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
+            "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curs.value + "&num_alumnes=" + num_alumnes.value +
+            "&prof_asignat=" + prof_asignat.value + "&id_sortida" + id_sortida + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
+            "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
+            "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
+
+    }
+
+
+    var url = window.location.pathname;
+    if (url.match('form_update_excursiones.php')) {
+        setTimeout(function () { mostrar_excursion() }, 2000);
+    }
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var id_sortida = getParameterByName('id_excursion');
     var profesores = [];
     //rellene los campos del formulario de modificar sortida
-    function mostrar_excursion() {
+    var id_contacte_activitat;
+    var id_preus;
+    var id_activitat;
+    var id_sort_prof;
 
+    function mostrar_excursion() {
         //----------------Sortida----------------------
         var codi_sortida = document.getElementById('codi_sortida');
         var inici_sortida = document.getElementById('inici_sortida');
@@ -350,7 +438,7 @@ function select_professor(profesor) {
         var ajax3 = objetoAjax();
         ajax3.open("POST", "../services/consulta_form_sortides.php", true);
         ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        ajax3.send("accion=mostrar_update&id_sortida=21");
+        ajax3.send("accion=mostrar_update&id_sortida="+id_sortida);
         ajax3.onreadystatechange = function () {
             //vamos configurando los valores de cada campo segun lo que devuelva JSON
             if (ajax3.readyState == 4 && ajax3.status == 200) {
@@ -372,9 +460,9 @@ function select_professor(profesor) {
                 num_alumnes.value = respuesta[0].numero_alumnes;
                 //se llama a la funcion select_professor que recoja el valor id actual de curso y muestre los profes que hay
 
-               
 
-               
+
+
 
                 //bucle que va seleccionando los profesores que hay asignado a la excursion segun el registro
                 /*for (var i = 0; i < respuesta.length; i++) {
@@ -384,6 +472,10 @@ function select_professor(profesor) {
                         }
                     }
                 }*/
+                id_contacte_activitat = respuesta[0].id_contacte_activitat;
+                id_preus = respuesta[0].id_preus;
+                id_activitat = respuesta[0].id_activitat;
+                id_sort_prof = respuesta[0].id_excursion;
                 prof_asignat.value = respuesta[0].profesor_asignat;
                 num_vetlladors.value = respuesta[0].n_vetlladors;
                 num_acomp.value = respuesta[0].n_acompanyants;
