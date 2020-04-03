@@ -35,7 +35,7 @@ include "conexion.php";
     $observacio_fraccionat = $_REQUEST['observacions_fraccionat'];
     $id_preus = $_REQUEST['id_preus'];
     
-    $update_preus = "UPDATE `tbl_preus` SET `cost_substitucio` = ?, `cost_activitat_individual` = ?, `cost_extra_activitat_profe` = ?, `cost_global_activitat` = ?, `cost_final` = ?, `preu_fixe` = ?, `preu_sense_topal` = ?, `preu_gestio` = ?, `overhead` = ?, `total_facturar` = ?, `pagament_fraccionat` = ?, `observacio_fraccionat` = ? WHERE `tbl_preus`.`id_preus` = ? ";
+    $update_preus = "UPDATE `tbl_preus` SET `cost_substitucio` = ?, `cost_activitat_individual` = ?, `cost_extra_activitat_profe` = ?, `cost_global_activitat` = ?, `cost_final` = ?, `preu_fixe` = ?, `preu_sense_topal` = ?, `preu_amb_topal` = ?, `preu_gestio` = ?, `overhead` = ?, `total_facturar` = ?, `pagament_fraccionat` = ?, `observacio_fraccionat` = ? WHERE `tbl_preus`.`id_preus` = ? ";
     
     if ($stmt = mysqli_prepare($conn, $update_preus)){
        mysqli_stmt_bind_param($stmt, "ssssssssssssss", $cost_substitucio, $cost_act_ind, $cost_ext_act_prof, $cost_glob_act, $cost_final, $preu_fixe, $preu_sense_topal, $preu_amb_topal, $preu_gestio, $overhead, $total_facturar, $pagament_fraccionat, $observacio_fraccionat, $id_preus);
@@ -88,21 +88,37 @@ include "conexion.php";
     }
     
     //-------------------tbl_lista_profes--------------------
-    $id_profes = $_REQUEST['id_profes'];
-    $profes= json_decode($_REQUEST['profes']);
     
-    $update_profes = "UPDATE `tbl_lista_profesores` SET `id_profesor` = ? WHERE `tbl_lista_profesores`.`id_lista_profesores` = ? ";
+    $id_del_prof = $_REQUEST['id_del_prof'];
+    $profes = json_decode($_REQUEST['profes']);
     
-       if ($stmt = mysqli_prepare($conn, $update_profes)){
-          foreach($profes as $profe){
-             $stmt->bind_param('ss', $profe, $id_profes);
-             $stmt->execute();
-          }
-          $res = mysqli_stmt_get_result($stmt);
-       
-       }else{
-          echo "Error en la consulta preus";
-       }
+    if(isset($id_del_prof)){
+      $delete_profes = "DELETE FROM `tbl_lista_profesores` WHERE tbl_lista_profesores.id_excursion = ?";
+      if ($stmt = mysqli_prepare($conn, $delete_profes)){
+         foreach($profes as $profe){
+            $stmt->bind_param('s', $id_del_prof);
+            $stmt->execute();
+         }
+         $res = mysqli_stmt_get_result($stmt);
+      
+      }else{
+         echo "Error en la consulta preus";
+      }
+    }
+
+    $insert_profes = "INSERT INTO `tbl_lista_profesores` (`id_profesor`, `id_excursion`) VALUES (?,?)";
+
+   if ($stmt = mysqli_prepare($conn, $insert_profes)){
+      foreach($profes as $profe){
+         $stmt->bind_param('ss', $profe, $id_sortida);
+         $stmt->execute();
+      }
+      $res = mysqli_stmt_get_result($stmt);
+   
+   }else{
+      echo "Error en la consulta preus";
+   }
+    
     
        
     //-------------------tbl_activitat--------------------
