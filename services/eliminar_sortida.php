@@ -17,15 +17,20 @@ mysqli_query($conn,$e_asistencia);
 //ahora eliminamos la actividad
 $e_actividad="delete from tbl_activitat where id_sortida='".$id_sortida."'";
 mysqli_query($conn,$e_actividad);
-//Seguidamente la sortida
-$e_sortida="delete from tbl_sortida where id_sortida='".$id_sortida."'";
-mysqli_query($conn,$e_sortida);
 //Ahora el contacto
 $e_contacto="delete from tbl_contacte_activitat where id_contacte_activitat='".$id_contacte."'";
+mysqli_query($conn,$e_contacto);
+
+//Por último, la sortida
+$e_sortida="delete from tbl_sortida where id_sortida='".$id_sortida."'";
+mysqli_query($conn,$e_sortida);
 //Luego el transporte
 $e_transporte="delete from tbl_transport where id_transport='".$id_transport."'";
-//Por ultimo los precios
+mysqli_query($conn,$e_transporte);
+//Seguidamente los precios
 $e_precios="delete from tbl_preus where id_preus='".$id_precios."'";
+mysqli_query($conn,$e_precios);
+
 
 header("location:../vista/verexcursionesadmin.php");
 
