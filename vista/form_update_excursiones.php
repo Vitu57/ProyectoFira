@@ -22,7 +22,7 @@
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
 </a>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
-        <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(); return false">
+        <form action="#" class="needs-validation" id="form_exc" onsubmit="update(); return false">
         <div class="card rounded-0">
           <div class="card-header">
             <!--Sortida-->
