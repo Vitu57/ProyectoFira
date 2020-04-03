@@ -5,11 +5,6 @@ $id_activitat=$_REQUEST['id_a'];
 $id_precios=$_REQUEST['id_p'];
 $id_contacte=$_REQUEST['id_c'];
 $id_transport=$_REQUEST['id_t'];
-echo $id_contacte;
-echo $id_precios;
-echo $id_activitat;
-echo $id_sortida;
-echo $id_transport;
 
 //eliminamos primero la asistencia
 $e_asistencia="delete from tbl_asistencia where id_activitat='".$id_activitat."'";
@@ -20,7 +15,9 @@ mysqli_query($conn,$e_actividad);
 //Ahora el contacto
 $e_contacto="delete from tbl_contacte_activitat where id_contacte_activitat='".$id_contacte."'";
 mysqli_query($conn,$e_contacto);
-
+//Eliminamos la lista de profesores que van
+$e_lista="delete from tbl_lista_profesores where id_excursion='".$id_sortida."'";
+mysqli_query($conn,$e_lista);
 //Por último, la sortida
 $e_sortida="delete from tbl_sortida where id_sortida='".$id_sortida."'";
 mysqli_query($conn,$e_sortida);
