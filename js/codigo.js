@@ -282,7 +282,8 @@ function select_professor(profesor) {
 
         ajax3.onreadystatechange = function () {
             if (ajax3.readyState == 4 && ajax3.status == 200) {
-                alert("ok")
+                //alert("ok")
+                mensaje_insert_ok();
                 document.getElementById("form_exc").reset();
 
             } else {
@@ -600,4 +601,26 @@ function openTab(evt, tabName, idform) {
   }else if(ok = 0){
       return false;
   }
+  }
+
+  function mensaje_insert_ok(){
+    toastr["success"]("Ja pots visualitzar la excursió en el apartat corresponent.", "Agregat correctament!")
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+               "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+}
   }

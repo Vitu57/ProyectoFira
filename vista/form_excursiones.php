@@ -15,8 +15,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
   <title>Afegir Sortida</title>
+<!--Enlace css para toastr-->
+  <link rel="stylesheet" type="text/css" href="../plugin/toastr/toastr.css">
 </head>
+<!--Enlace js para toastr-->
+ <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../plugin/toastr/toastr.min.js"></script>
 
+  
 <body class="body_design" onload="select_etapa()">
    <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
