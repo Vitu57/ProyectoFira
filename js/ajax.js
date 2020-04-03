@@ -233,7 +233,7 @@ function CrearTablaProfes(filtro){
     var respuesta=JSON.parse(this.responseText);
 
     var tabla='<table class="table table-bordered" <thread>';
-        tabla +='<tr><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th>';
+        tabla +='<tr><th>Opcions</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
@@ -260,7 +260,7 @@ function CrearTablaProfes(filtro){
             }else{
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
-
+                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
