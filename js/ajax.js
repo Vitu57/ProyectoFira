@@ -568,14 +568,15 @@ function abrirform1(persona, web, telf, email){
   document.getElementById("comprobarModal").value=0;
     }
                   
-                    tabla = '<h4>Persona de contacte</h4>';
-                    tabla += '<p>' + persona + '</p>';
-                    tabla += '<h4>Web de contacte</h4>';
-                    tabla += '<p>' + web +'</p>';
-                    tabla += '<h4>Telefon de contacte</h4>';
-                    tabla += '<p>' + telf + '</p>';
-                    tabla += '<h4>Email de contacte</h4>';
-                    tabla += '<p>' + email + '</p>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Persona de contacte</th>';
+                    tabla += '<th>Web de contacte</th>';
+                    tabla += '<th>Telefon de contacte</th>';
+                    tabla += '<th>Email de contacte</th></tr>';
+                    tabla += '<td>' + persona + '</td>';  
+                    tabla += '<td>' + web + '</td>';
+                    tabla += '<td>' + telf + '</td>';
+                    tabla += '<td>' + email + '</td></tr><thread></table>';       
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
 }
@@ -589,32 +590,33 @@ function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
   document.getElementById("comprobarModal").value=0;
     }
                   
-                    tabla = '<h4>Cost substitucio</h4>';
-                    tabla += '<p>' + a+ '</p>';
-                    tabla += '<h4>Cost activitat individual</h4>';
-                    tabla += '<p>' + b+ '</p>';
-                    tabla += '<h4>Cost extra activitat profe</h4>';
-                    tabla += '<p>' + c+ '</p>';
-                    tabla += '<h4>Cost global activitat</h4>';
-                    tabla += '<p>' + d+ '</p>';
-                    tabla += '<h4>Cost final</h4>';
-                    tabla += '<p>' + e+ '</p>';
-                    tabla += '<h4>Preu fixe</h4>';
-                    tabla += '<p>' + f+ '</p>';
-                    tabla += '<h4>Preu sense topal</h4>';
-                    tabla += '<p>' + g+ '</p>';
-                    tabla += '<h4>Preu amb topal</h4>';
-                    tabla += '<p>' + h+ '</p>';
-                    tabla += '<h4>Preu gestio</h4>';
-                    tabla += '<p>' + i+ '</p>';
-                    tabla += '<h4>Overhead</h4>';
-                    tabla += '<p>' + j+ '</p>';
-                    tabla += '<h4>Total a facturar</h4>';
-                    tabla += '<p>' + k+ '</p>';
-                    tabla += '<h4>Pagament fraccionat</h4>';
-                    tabla += '<p>' + l+ '</p>';
-                    tabla += '<h4>Observacio fraccionat</h4>';
-                    tabla += '<p>' + m+ '</p>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Cost de substitucio</th>';
+                    tabla += '<th>Cost activitat individual</th>';
+                    tabla += '<th>Cost extra activitat profe</th>';
+                    tabla += '<th>Cost global activitat</th>';
+                    tabla += '<th>Cost final</th>';
+                    tabla += '<th>Cost fixe</th>';
+                    tabla += '<th>Preu sense topal</th>';
+                    tabla += '<th>Preu amb topal</th>';
+                    tabla += '<th>Preu gestio</th>';
+                    tabla += '<th>Overhead</th>';
+                    tabla += '<th>Total a facturar</th>';
+                    tabla += '<th>Pagament fraccionat</th>';
+                    tabla += '<th>Observacio</th></tr>';
+                    tabla += '<td>' + a + '</td>';  
+                    tabla += '<td>' + b + '</td>';
+                    tabla += '<td>' + c + '</td>';
+                    tabla += '<td>' + d + '</td>';
+                    tabla += '<td>' + e + '</td>';
+                    tabla += '<td>' + f + '</td>';
+                    tabla += '<td>' + g + '</td>';
+                    tabla += '<td>' + h + '</td>';
+                    tabla += '<td>' + i + '</td>';
+                    tabla += '<td>' + j + '</td>';
+                    tabla += '<td>' + k + '</td>';
+                    tabla += '<td>' + l + '</td>';
+                    tabla += '<td>' + m + '</td></tr><thread></table>'; 
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
 }
@@ -627,18 +629,19 @@ function abrirform3(a,b,c,d,e,f){
   modal.style.display = "none";
   document.getElementById("comprobarModal").value=0;
     }
-                    tabla = '<h4>nombre del transporte</h4>';
-                    tabla += '<p>' + f + '</p>';
-                    tabla += '<h4>Hora de salida</h4>';
-                    tabla += '<p>' + a + '</p>';
-                    tabla += '<h4>Hora llegada</h4>';
-                    tabla += '<p>' + b +'</p>';
-                    tabla += '<h4>Coste del transporte</h4>';
-                    tabla += '<p>' + c + '</p>';
-                    tabla += '<h4>Codigo del contacto</h4>';
-                    tabla += '<p>' + d + '</p>';
-                    tabla += '<h4>Comentaris del transport</h4>';
-                    tabla += '<p>' + e + '</p>';
+                   tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla += '<th>Nombre del transporte</th>';
+                    tabla += '<th>Hora de salida</th>';
+                    tabla += '<th>Hora de llegada</th>';
+                    tabla += '<th>Coste del transporte</th>';
+                    tabla += '<th>Codigo del contacto</th>';
+                    tabla += '<th>Comentarios</th></tr>';
+                    tabla += '<td>' + f + '</td>';  
+                    tabla += '<td>' + a + '</td>';
+                    tabla += '<td>' + b + '</td>';
+                    tabla += '<td>' + c + '</td>';
+                    tabla += '<td>' + d + '</td>';
+                    tabla += '<td>' + e + '</td></tr><thread></table>'; 
                     
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
