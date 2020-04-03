@@ -37,6 +37,7 @@ if(isset($_REQUEST['codi'])){
   <tr>
   
    <th scope='col'>Codi Sortida</th>
+   <th scope='col'>Nom Sortida</th>
    <th scope="col">Etapa</th>
    <th scope="col">Clase</th>
    <th scope="col">Inici</th>
@@ -61,6 +62,7 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
      while ($casos=mysqli_fetch_array($exe)){
 
         $etapa=$casos['nom_etapa'];
+		$nomActivitat=$casos['nom_activitat'];
         $clase=$casos['nom_classe'];
         $profeA=$casos['profesor_asignat'];
         $codi_sortida=$casos['codi_sortida'];
@@ -89,6 +91,7 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
 echo "<tr>";
   
        echo "<td>".$codi_sortida."</td>";
+	   echo "<td>".$nomActivitat."</td>";
        echo "<td>".$etapa."</td>";
        echo "<td>".$clase."</td>";
        echo "<td>".$inici."</td>";

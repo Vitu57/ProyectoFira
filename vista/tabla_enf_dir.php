@@ -30,7 +30,8 @@ $fecha_actual = date('Y-m-d');
   <table  class='table table-bordered'>
   <thead>
       <tr>
-   <th scope="col">Codi</th> 
+   <th scope="col">Codi</th>
+	<th scope="col">Nom Sortida</th>
    <th scope="col">Etapa</th>    
    <th scope="col">Clase</th>
    <th scope="col">Inici</th>
@@ -52,6 +53,7 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
      while ($casos=mysqli_fetch_array($exe)){
 
         $codi=$casos['codi_sortida'];
+		$nomActivitat=$casos['nom_activitat'];
         $nomClase=$casos['nom_classe'];
         $vetlladors=$casos['n_vetlladors'];
         $profesor_asignat=$casos['profesor_asignat'];
@@ -69,6 +71,8 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
 
 echo "<tr>";
        echo "<td>".$codi."</td>";
+	   echo "<td>".$nomActivitat."</td>";
+	   echo "<td>".$etapa."</td>";
        echo "<td>".$etapa."</td>";
        echo "<td>".$nomClase."</td>";
        echo "<td>".$inici."</td>";
