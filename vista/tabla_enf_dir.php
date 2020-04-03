@@ -73,7 +73,6 @@ echo "<tr>";
        echo "<td>".$codi."</td>";
 	   echo "<td>".$nomActivitat."</td>";
 	   echo "<td>".$etapa."</td>";
-       echo "<td>".$etapa."</td>";
        echo "<td>".$nomClase."</td>";
        echo "<td>".$inici."</td>";
        echo "<td>".$final."</td>";
