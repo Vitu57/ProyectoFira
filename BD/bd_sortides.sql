@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2020 a las 16:17:27
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Tiempo de generación: 21-03-2020 a las 13:22:43
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,8 +48,7 @@ INSERT INTO `tbl_activitat` (`id_activitat`, `nom_activitat`, `lloc_activitat`, 
 (1, 'Salida al campo', 'El campo', 'Curricular', 'Nacional', 'Mati', 'Andar', 1, 1),
 (2, 'Salida al cine', 'Splau', 'No curricular', 'Nacional', 'Tarda', 'Ver una peli', 1, 2),
 (3, 'Visita al museo', 'MNAC', 'Curricular', 'Internacional', 'Sencera', 'Ver un museo', 1, 3),
-(4, 'Colonies', 'Can Joval', 'Curricular', 'Nacional', 'Sencera', 'Que se muevan y nos dejen en paz', 1, 4),
-(11, '', '', '', '', 'Tarda', '', 8, 12);
+(4, 'Colonies', 'Can Joval', 'Curricular', 'Nacional', 'Sencera', 'Que se muevan y nos dejen en paz', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -140,14 +139,7 @@ CREATE TABLE `tbl_contacte_activitat` (
 --
 
 INSERT INTO `tbl_contacte_activitat` (`id_contacte_activitat`, `persona_contacte`, `web_contacte`, `telefon_contacte`, `email_contacte`) VALUES
-(1, 'persona de contacto', 'www.webdecontacto.com', 123456789, 'email_contacto@gmail.com'),
-(2, '', '', 0, ''),
-(3, 'Juanma', 'www.juanma123123adwl.com', 622738738, 'email232133123@gmail.com'),
-(4, '', '', 0, ''),
-(5, '', '', 0, ''),
-(6, '', '', 0, ''),
-(7, '', '', 0, ''),
-(8, '', '', 0, '');
+(1, 'persona de contacto', 'www.webdecontacto.com', 123456789, 'email_contacto@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -194,8 +186,7 @@ INSERT INTO `tbl_lista_profesores` (`id_lista_profesores`, `id_profesor`, `id_ex
 (1, 1, 1),
 (2, 2, 2),
 (3, 28, 2),
-(4, 29, 1),
-(5, 2, 7);
+(4, 29, 1);
 
 -- --------------------------------------------------------
 
@@ -251,14 +242,7 @@ INSERT INTO `tbl_preus` (`id_preus`, `cost_substitucio`, `cost_activitat_individ
 (2, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
 (3, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
 (4, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
-(5, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo'),
-(6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'si', ''),
-(7, 23, 21, 23, 42, 323, 123, 543, 231, 123, 10, 1231, 'no', 'Observacion Costos'),
-(8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'si', ''),
-(9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'si', ''),
-(10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'si', ''),
-(11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'si', ''),
-(12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'si', '');
+(5, 5, 1, 2, 4, 3, 4, 5, 3, 2, 23, 5, 'si', 'ejemplo');
 
 -- --------------------------------------------------------
 
@@ -277,24 +261,22 @@ CREATE TABLE `tbl_sortida` (
   `n_acompanyants` int(2) NOT NULL,
   `profes_a_part` int(11) NOT NULL,
   `profesor_asignat` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `id_lista_profesores` int(11) NOT NULL,
   `id_clase` int(11) NOT NULL,
   `id_transport` int(11) NOT NULL,
-  `id_precios` int(11) NOT NULL,
-  `comanda_menu` int(1) NOT NULL
+  `id_precios` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_sortida`
 --
 
-INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_clase`, `id_transport`, `id_precios`, `comanda_menu`) VALUES
-(1, 'R-P-0015', '2020-03-29', '2020-03-23', 'Una salida muy chachi pistachi', 50, 3, 0, 2, 'MCarpallo', 1, 1, 1, 0),
-(2, 'R-P-0012', '2020-03-23', '0000-00-00', 'Una salida muy chachi', 60, 2, 2, 0, 'JCarcedo', 21, 2, 5, 0),
-(3, 'R-P-0035', '2020-03-23', '0000-00-00', 'Una salida muy pistachi', 0, 5, 3, 4, 'SGimenez', 3, 3, 2, 0),
-(4, 'R-P-0014', '2020-03-23', '0000-00-00', 'Una salida muy chachi pistachi', 0, 3, 5, 2, 'JCarcedo', 4, 4, 3, 0),
-(5, 'R-P-0055', '2020-03-24', '0000-00-00', 'Una salida muy marabitupenda', 0, 3, 0, 2, 'MCarpallo', 10, 5, 4, 0),
-(7, 'JJk32', '2020-04-01', '2020-04-01', 'Observacion salida test', 45, 2, 2, 0, 'Mario Carpallo', 27, 7, 7, 0),
-(12, '', '2020-04-06', '2020-04-07', '', 0, 0, 0, 0, '', 8, 12, 12, 0);
+INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_lista_profesores`, `id_clase`, `id_transport`, `id_precios`) VALUES
+(1, 'R-P-0015', '2020-03-20', '2020-03-23', 'Una salida muy chachi pistachi', 50, 3, 0, 2, 'MCarpallo', 1, 1, 1, 1),
+(2, 'R-P-0012', '0000-00-00', '0000-00-00', 'Una salida muy chachi', 60, 2, 2, 0, 'JCarcedo', 1, 21, 2, 5),
+(3, 'R-P-0035', '0000-00-00', '0000-00-00', 'Una salida muy pistachi', 0, 5, 3, 4, 'SGimenez', 1, 3, 3, 2),
+(4, 'R-P-0014', '0000-00-00', '0000-00-00', 'Una salida muy chachi pistachi', 0, 3, 5, 2, 'JCarcedo', 1, 4, 4, 3),
+(5, 'R-P-0055', '0000-00-00', '0000-00-00', 'Una salida muy marabitupenda', 0, 3, 0, 2, 'MCarpallo', 1, 10, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -348,12 +330,7 @@ INSERT INTO `tbl_transport` (`id_transport`, `hora_sortida`, `hora_arribada`, `c
 (2, '00:00:', '00:00:', 10, 1, 'Tren chuchu', 2),
 (3, '00:00:', '00:00:', 25, 1, 'Autocar al battle royale', 3),
 (4, '00:00:', '00:00:', 100, 1, 'Avion contaminador', 4),
-(5, '00:00:', '00:00:', 3, 1, 'Coronavirus Coronavirus', 5),
-(6, '', '', 0, 0, '', 1),
-(7, '15:00', '18:00', 23, 2313, 'Comentario Transporte', 2),
-(10, '', '', 0, 0, '', 2),
-(11, '', '', 0, 0, '', 3),
-(12, '', '', 0, 0, '', 2);
+(5, '00:00:', '00:00:', 3, 1, 'Coronavirus Coronavirus', 5);
 
 -- --------------------------------------------------------
 
@@ -437,8 +414,7 @@ ALTER TABLE `tbl_etapa`
 --
 ALTER TABLE `tbl_lista_profesores`
   ADD PRIMARY KEY (`id_lista_profesores`),
-  ADD KEY `FK_Lista_profe` (`id_profesor`),
-  ADD KEY `FK_listaprofex` (`id_excursion`);
+  ADD KEY `FK_Lista_profe` (`id_profesor`);
 
 --
 -- Indices de la tabla `tbl_nom_transport`
@@ -459,6 +435,7 @@ ALTER TABLE `tbl_sortida`
   ADD PRIMARY KEY (`id_sortida`),
   ADD KEY `FK_sortida1` (`id_clase`),
   ADD KEY `FK_sortida2` (`id_transport`),
+  ADD KEY `FK_listaprofes` (`id_lista_profesores`),
   ADD KEY `FK_Precios` (`id_precios`);
 
 --
@@ -490,7 +467,7 @@ ALTER TABLE `tbl_usuari`
 -- AUTO_INCREMENT de la tabla `tbl_activitat`
 --
 ALTER TABLE `tbl_activitat`
-  MODIFY `id_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_asistencia`
@@ -508,7 +485,7 @@ ALTER TABLE `tbl_clase`
 -- AUTO_INCREMENT de la tabla `tbl_contacte_activitat`
 --
 ALTER TABLE `tbl_contacte_activitat`
-  MODIFY `id_contacte_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_contacte_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
@@ -520,7 +497,7 @@ ALTER TABLE `tbl_etapa`
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
-  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_nom_transport`
@@ -532,13 +509,13 @@ ALTER TABLE `tbl_nom_transport`
 -- AUTO_INCREMENT de la tabla `tbl_preus`
 --
 ALTER TABLE `tbl_preus`
-  MODIFY `id_preus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_preus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sortida`
 --
 ALTER TABLE `tbl_sortida`
-  MODIFY `id_sortida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_sortida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_tipus_usuari`
@@ -550,7 +527,7 @@ ALTER TABLE `tbl_tipus_usuari`
 -- AUTO_INCREMENT de la tabla `tbl_transport`
 --
 ALTER TABLE `tbl_transport`
-  MODIFY `id_transport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_transport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
@@ -586,14 +563,14 @@ ALTER TABLE `tbl_clase`
 -- Filtros para la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
-  ADD CONSTRAINT `FK_Lista_profe` FOREIGN KEY (`id_profesor`) REFERENCES `tbl_usuari` (`id_usuari`),
-  ADD CONSTRAINT `FK_listaprofex` FOREIGN KEY (`id_excursion`) REFERENCES `tbl_sortida` (`id_sortida`);
+  ADD CONSTRAINT `FK_Lista_profe` FOREIGN KEY (`id_profesor`) REFERENCES `tbl_usuari` (`id_usuari`);
 
 --
 -- Filtros para la tabla `tbl_sortida`
 --
 ALTER TABLE `tbl_sortida`
   ADD CONSTRAINT `FK_Precios` FOREIGN KEY (`id_precios`) REFERENCES `tbl_preus` (`id_preus`),
+  ADD CONSTRAINT `FK_listaprofes` FOREIGN KEY (`id_lista_profesores`) REFERENCES `tbl_lista_profesores` (`id_lista_profesores`),
   ADD CONSTRAINT `FK_sortida1` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`),
   ADD CONSTRAINT `FK_sortida2` FOREIGN KEY (`id_transport`) REFERENCES `tbl_transport` (`id_transport`);
 
