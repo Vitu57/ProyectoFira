@@ -108,7 +108,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-				<a href="#"><i class="fas fa-address-book fa-2x" style="color: #634d0f;  margin: 15%;" id="modal_secretaria" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');"></i></a><br>
+				<a href="#" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');"><i class="fas fa-address-book fa-2x" style="color: #634d0f;  margin: 15%;" id="modal_secretaria"></i></a><br>
 
 				<?php
 					 $consultaprecios="select tbl_preus.* from tbl_preus inner join tbl_sortida on tbl_sortida.id_precios=tbl_preus.id_preus where tbl_sortida.id_sortida='".$exe[10]."'";
@@ -117,7 +117,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-			<a href="#"><i class="fas fa-money-bill-wave fa-2x" style="color: darkgreen; margin: 15%;" id="myBtn2" onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');"></i></a><br>
+			<a href="#"  onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');"><i class="fas fa-money-bill-wave fa-2x" style="color: darkgreen; margin: 15%;" id="myBtn2"></i></a><br>
 
 				<?php
 					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
@@ -125,7 +125,7 @@ if(isset($_REQUEST['profe'])){
 					 		$tra=mysqli_fetch_array($querytransporte);
 				?>
 				
-				<a href="#"><i class="fas fa-plane fa-2x" style="color: black; margin: 15%;" id="myBtn3" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');"></i></a>
+				<a href="#" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');"><i class="fas fa-plane fa-2x" style="color: black; margin: 15%;" id="myBtn3"></i></a>
 				
 			</td>
 			<div id="resultado2" class="modalmask" style="display:none;">
