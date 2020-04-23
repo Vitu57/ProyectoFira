@@ -34,13 +34,6 @@ if(isset($_REQUEST['etapa'])){
     //consulta para saber los datos de las salidas, las actividades y el transporte
 $consulta="SELECT DISTINCT tbl_usuari.id_usuari, tbl_usuari.nom_usuari, tbl_usuari.cognom_usuari FROM tbl_usuari INNER JOIN tbl_clase_user ON tbl_usuari.id_usuari=tbl_clase_user.id_usuari INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa where tbl_clase.nom_classe like '%".$clase."%' and tbl_etapa.nom_etapa like '%".$etapa."%' AND tbl_usuari.nom_usuari like '%".$profe."%' and tbl_usuari.id_tipus_usuari=2";
 
-/*
-$consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_usuari.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa where tbl_clase.nom_classe like '%".$clase."%' and tbl_etapa.nom_etapa like '%".$etapa."%' and tbl_usuari.id_tipus_usuari=2";
-
-        $etapa=$casos['nom_etapa'];
-        $clase=$casos['nom_classe'];
-*/
-
 	$exe=mysqli_query($conn,$consulta);
 
      while ($casos=mysqli_fetch_array($exe)){
@@ -66,7 +59,7 @@ $consulta2="SELECT DISTINCT tbl_etapa.nom_etapa FROM tbl_clase_user INNER JOIN t
 }
        echo "</td><td>";
 
-$consulta3="SELECT DISTINCT tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase WHERE tbl_clase_user.id_usuari='$id_profe'";
+$consulta3="SELECT DISTINCT tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase WHERE tbl_clase_user.id_usuari='$id_profe' ORDER BY tbl_clase.id_clase";
 
   $exe3=mysqli_query($conn,$consulta3);
 
@@ -78,10 +71,24 @@ $consulta3="SELECT DISTINCT tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN 
 }
 
  ?>
-       <td><a href="../vista/nueva_clase"><i class="fas fa-plus-circle fa-3x" style="color:#367cb3;"></i></td></a>
-       <td><a href="../vista/borrar_clase"><i class="fas fa-times-circle fa-3x" style="color:#ba1004;"></i></td></a>
+       <td><i class="fas fa-plus-circle fa-3x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_admin_user2(<?php echo $id_profe; ?>)"></i>
+       <td><a onclick="modal_admin_user(<?php echo $id_profe; ?>)" href="#"><i class="fas fa-times-circle fa-3x" style="color:#ba1004;"></i></td></a>
+
+
+<!-- Modal de añadir clase--> 
+<div id="resultado2" class="modalmask" style="display:none;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Close" class="close" id="close">X</a>
+        <h2 id="tituloResultado">TITULO</h2>
+    <div id="contenidoResultado"></div>
+      </div>
+    </div>
+
 
 </tr>
 <?php 
   
+
+
   }
