@@ -688,6 +688,25 @@ function vertodo(){
 }
 
 
+function vertodo2(){
+    divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'admin_prof.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send();
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+
 //Funcion que elimina una excursion
 function eliminar(id_s,id_a,id_p,id_c,id_t){
     divResultado = document.getElementById('resultado');
