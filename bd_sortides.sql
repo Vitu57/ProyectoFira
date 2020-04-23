@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2020 a las 19:01:12
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.3
+-- Tiempo de generación: 23-04-2020 a las 04:07:27
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,10 +45,9 @@ CREATE TABLE `tbl_activitat` (
 --
 
 INSERT INTO `tbl_activitat` (`id_activitat`, `nom_activitat`, `lloc_activitat`, `tipus_activitat`, `ambit_activitat`, `jornada_activitat`, `objectiu_activitat`, `id_contacte_activitat`, `id_sortida`) VALUES
-(2, 'Salida el campo', 'Campo ', 'No curricular', 'Nacional', 'Sencera', 'Pasear', 3, 7),
-(3, 'Visita al CERN', 'CERN', 'Curricular', 'Internacional', 'Sencera', 'Visitar el CERN', 4, 8),
-(4, 'Visita al acuario', 'Acuario', 'Curricular', 'Nacional', 'Mati', 'Veure l\'aquari', 5, 9),
-(5, 'Sortida a la neu', 'Molina', 'No curricular', 'Nacional', 'Sencera', 'Que els alumnes disfrutin de la neu', 6, 10);
+(25, 'Veure pel·lícula', 'Barcelona', 'Curricular', 'Nacional', 'Mati', 'Nem a veure una pel·lícula.', 20, 24),
+(26, 'Montserrat', 'Montserrat', 'Curricular', 'Nacional', 'Tarda', 'Objectiu que volen.', 21, 25),
+(27, 'Mobile Congress', 'Barcelona', 'No curricular', 'Nacional', 'Mati', 'Anar al Mobile World Congress.', 22, 26);
 
 -- --------------------------------------------------------
 
@@ -113,6 +112,32 @@ INSERT INTO `tbl_clase` (`id_clase`, `nom_classe`, `id_etapa`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_clase_user`
+--
+
+CREATE TABLE `tbl_clase_user` (
+  `id_clase_usuari` int(11) NOT NULL,
+  `id_clase` int(11) DEFAULT NULL,
+  `id_usuari` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_clase_user`
+--
+
+INSERT INTO `tbl_clase_user` (`id_clase_usuari`, `id_clase`, `id_usuari`) VALUES
+(1, 20, 1),
+(2, 15, 1),
+(3, 6, 29),
+(4, 10, 28),
+(5, 21, 28),
+(6, 18, 2),
+(7, 24, 28),
+(8, 8, 28);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_contacte_activitat`
 --
 
@@ -129,10 +154,35 @@ CREATE TABLE `tbl_contacte_activitat` (
 --
 
 INSERT INTO `tbl_contacte_activitat` (`id_contacte_activitat`, `persona_contacte`, `web_contacte`, `telefon_contacte`, `email_contacte`) VALUES
-(3, 'persona', 'www.dgdf.com', 123456789, 'kbcbjsd@gmail.com'),
-(4, 'trabajador de CERN', 'cern.com', 214354657, 'cern@gmail.com'),
-(5, 'contacte', 'aqua.com', 987654321, 'aqua@gmail.com'),
-(6, 'instructor', 'lamolina.com', 765432167, 'lamolina@gmail.com');
+(20, 'Alberto', 'www.cinemasplau.com', 677388726, 'cinemasplau@gmail.com'),
+(21, 'Adrian', 'www.montserrat.cat', 677387726, 'montserratadria@gmail.com'),
+(22, 'Klaus', 'www.mobileworld.com', 688736253, 'klausf@mobileworld.com'),
+(24, 'ningu', 'www.test.com', 987654321, 'gmail@mail.com'),
+(25, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(26, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(27, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(28, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(29, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(30, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(31, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(32, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(33, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(34, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(35, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(36, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(37, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(38, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(39, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(40, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(41, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(42, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(43, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(44, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(45, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(46, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(47, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(48, 'pers_contacte', 'web_contacte', 123456789, 'email_contacte'),
+(49, 'fghgfh', 'fghfhgh', 5675433, 'dfgdfg@mail.com');
 
 -- --------------------------------------------------------
 
@@ -176,13 +226,9 @@ CREATE TABLE `tbl_lista_profesores` (
 --
 
 INSERT INTO `tbl_lista_profesores` (`id_lista_profesores`, `id_profesor`, `id_excursion`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 28, 2),
-(4, 29, 1),
-(5, 1, 6),
-(6, 2, 7),
-(7, 28, 8);
+(14, 29, 26),
+(18, 28, 25),
+(19, 1, 24);
 
 -- --------------------------------------------------------
 
@@ -234,10 +280,11 @@ CREATE TABLE `tbl_preus` (
 --
 
 INSERT INTO `tbl_preus` (`id_preus`, `cost_substitucio`, `cost_activitat_individual`, `cost_extra_activitat_profe`, `cost_global_activitat`, `cost_final`, `preu_fixe`, `preu_sense_topal`, `preu_amb_topal`, `preu_gestio`, `overhead`, `total_facturar`, `pagament_fraccionat`, `observacio_fraccionat`) VALUES
-(7, 564, 456, 465564, 654, 54, 564, 54, 564, 654, 54, 546, 'si', 'Observacion'),
-(8, 567, 56, 6, 65, 65, 56, 65, 67, 6, 6, 56, 'si', 'Observaciones '),
-(9, 87, 78, 78, 87, 87, 78, 87, 78, 78, 78, 78, 'si', 'Mes observacions'),
-(10, 10, 10, 101, 10, 1010, 10, 10, 101, 10, 10, 1, 'si', 'Mes obsevacions d\'exemple');
+(24, 1, 20, 5, 21, 54, 234, 23, 2, 23, 23, 123, 'si', 'Res a afegir'),
+(25, 2, 3, 2, 23, 32, 3, 2, 5, 4, 53, 23, 'no', 'Res.'),
+(26, 23, 2, 12, 32, 123, 21, 56, 56, 23, 10, 142, 'no', 'Res.'),
+(28, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'si', 'cap ni una'),
+(29, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 'si', 'srffewf');
 
 -- --------------------------------------------------------
 
@@ -267,10 +314,9 @@ CREATE TABLE `tbl_sortida` (
 --
 
 INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_clase`, `id_transport`, `id_precios`, `comanda_menu`) VALUES
-(7, '1234', '2020-04-03', '2020-04-03', 'Observacion Okay', 4, 2, 2, 1, 'JCarcedo', 2, 7, 7, 0),
-(8, '1', '2020-04-04', '2020-04-06', 'Observacion', 23, 0, 0, 1, 'DLarrea', 21, 8, 8, 0),
-(9, '3', '2020-04-14', '2020-04-14', 'Altres observacions', 10, 6, 5, 2, 'MCarpallo', 1, 9, 9, 0),
-(10, 'S-27', '2020-05-01', '2020-05-03', 'Varis profes', 120, 0, 0, 5, 'MCarpallo', 18, 10, 10, 0);
+(24, 'RP-3444', '2020-04-23', '2020-04-24', 'Sortida al cinema', 43, 2, 2, 1, 'Jesus Mellado', 1, 24, 24, 0),
+(25, 'RP-2213', '2020-04-22', '2020-04-23', 'Sortida al camp', 123, 2, 1, 2, 'Sergio', 21, 25, 25, 0),
+(26, 'RP-4743', '2020-05-04', '2020-05-04', 'Res.', 65, 2, 1, 1, 'Sergio Jimenez', 21, 26, 26, 0);
 
 -- --------------------------------------------------------
 
@@ -290,13 +336,13 @@ CREATE TABLE `tbl_tipus_usuari` (
 --
 
 INSERT INTO `tbl_tipus_usuari` (`id_tipus_usuari`, `nom_tipus`, `descripcio`, `estat`) VALUES
-(1, 'Administracion', NULL, NULL),
-(2, 'Profesores', NULL, NULL),
+(1, 'Administració', NULL, NULL),
+(2, 'Profesors', NULL, NULL),
 (3, 'Secretaria', NULL, NULL),
-(4, 'Cocina', NULL, NULL),
+(4, 'Cuina', NULL, NULL),
 (5, 'Enfermeria', NULL, NULL),
-(6, 'Directores', NULL, NULL),
-(7, 'Alumno', NULL, NULL),
+(6, 'Directors', NULL, NULL),
+(7, 'Alumne', NULL, NULL),
 (8, 'Personal', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -320,10 +366,11 @@ CREATE TABLE `tbl_transport` (
 --
 
 INSERT INTO `tbl_transport` (`id_transport`, `hora_sortida`, `hora_arribada`, `cost_transport`, `codi_contacte`, `comentaris_transport`, `id_nom_transport`) VALUES
-(7, '10:00', '19:00', 10, 123, 'Comentario', 3),
-(8, '08:00', '08:00', 50, 5, 'Salida de mas de un dia', 4),
-(9, '09:00', '17:00', 5, 654, 'Comentarios varios', 3),
-(10, '08:00', '21:00', 20, 9, 'Comentari d\'exemple', 3);
+(24, '09:30', '13:21', 2, 123123, 'Res a afegir.', 5),
+(25, '08:30', '10:00', 23, 144123, 'Res.', 2),
+(26, '09:00', '14:30', 3, 1231, 'Res.', 5),
+(28, '03:01', '13:00', 0, 989, 'ningun comentari', 1),
+(29, '12:12', '12:30', 55, 45, 'dfgdfgfg', 2);
 
 -- --------------------------------------------------------
 
@@ -339,7 +386,6 @@ CREATE TABLE `tbl_usuari` (
   `cognom_usuari` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `siei` enum('si','no') COLLATE utf8_spanish_ci NOT NULL,
   `computable` enum('si','no','alumne') COLLATE utf8_spanish_ci NOT NULL,
-  `id_clase` int(11) NOT NULL,
   `id_tipus_usuari` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -347,21 +393,21 @@ CREATE TABLE `tbl_usuari` (
 -- Volcado de datos para la tabla `tbl_usuari`
 --
 
-INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `siei`, `computable`, `id_clase`, `id_tipus_usuari`) VALUES
-(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'no', 'si', 1, 2),
-(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'no', 'no', 2, 2),
-(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'no', 'alumne', 3, 7),
-(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'no', 'alumne', 4, 7),
-(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'no', 'alumne', 5, 7),
-(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'si', 'alumne', 21, 7),
-(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'si', 'alumne', 21, 7),
-(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'si', 'no', 29, 1),
-(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'si', 'no', 29, 3),
-(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'si', 'no', 29, 4),
-(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'si', 'no', 29, 5),
-(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'si', 'no', 29, 6),
-(28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'no', 'si', 21, 2),
-(29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'no', 'no', 21, 2);
+INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `siei`, `computable`, `id_tipus_usuari`) VALUES
+(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'no', 'si', 2),
+(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'no', 'no', 2),
+(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'no', 'alumne', 7),
+(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'no', 'alumne', 7),
+(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'no', 'alumne', 7),
+(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'si', 'alumne', 7),
+(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'si', 'alumne', 7),
+(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '', 'si', 'no', 1),
+(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'si', 'no', 3),
+(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'si', 'no', 4),
+(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Garcia', 'si', 'no', 5),
+(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'si', 'no', 6),
+(28, 'SJimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Jimenez', 'no', 'si', 2),
+(29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'no', 'no', 2);
 
 --
 -- Índices para tablas volcadas
@@ -389,6 +435,14 @@ ALTER TABLE `tbl_asistencia`
 ALTER TABLE `tbl_clase`
   ADD PRIMARY KEY (`id_clase`),
   ADD KEY `FK_etapa` (`id_etapa`);
+
+--
+-- Indices de la tabla `tbl_clase_user`
+--
+ALTER TABLE `tbl_clase_user`
+  ADD PRIMARY KEY (`id_clase_usuari`),
+  ADD KEY `id_clase` (`id_clase`),
+  ADD KEY `id_usuari` (`id_usuari`);
 
 --
 -- Indices de la tabla `tbl_contacte_activitat`
@@ -449,7 +503,6 @@ ALTER TABLE `tbl_transport`
 --
 ALTER TABLE `tbl_usuari`
   ADD PRIMARY KEY (`id_usuari`),
-  ADD KEY `FK_usuari1` (`id_clase`),
   ADD KEY `FK_usuari2` (`id_tipus_usuari`);
 
 --
@@ -460,13 +513,13 @@ ALTER TABLE `tbl_usuari`
 -- AUTO_INCREMENT de la tabla `tbl_activitat`
 --
 ALTER TABLE `tbl_activitat`
-  MODIFY `id_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_clase`
@@ -475,10 +528,16 @@ ALTER TABLE `tbl_clase`
   MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_clase_user`
+--
+ALTER TABLE `tbl_clase_user`
+  MODIFY `id_clase_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_contacte_activitat`
 --
 ALTER TABLE `tbl_contacte_activitat`
-  MODIFY `id_contacte_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_contacte_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
@@ -490,7 +549,7 @@ ALTER TABLE `tbl_etapa`
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
-  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_lista_profesores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_nom_transport`
@@ -502,13 +561,13 @@ ALTER TABLE `tbl_nom_transport`
 -- AUTO_INCREMENT de la tabla `tbl_preus`
 --
 ALTER TABLE `tbl_preus`
-  MODIFY `id_preus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_preus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sortida`
 --
 ALTER TABLE `tbl_sortida`
-  MODIFY `id_sortida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_sortida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_tipus_usuari`
@@ -520,7 +579,7 @@ ALTER TABLE `tbl_tipus_usuari`
 -- AUTO_INCREMENT de la tabla `tbl_transport`
 --
 ALTER TABLE `tbl_transport`
-  MODIFY `id_transport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_transport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
@@ -553,6 +612,13 @@ ALTER TABLE `tbl_clase`
   ADD CONSTRAINT `FK_etapa` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`);
 
 --
+-- Filtros para la tabla `tbl_clase_user`
+--
+ALTER TABLE `tbl_clase_user`
+  ADD CONSTRAINT `tbl_clase_user_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `tbl_usuari` (`id_usuari`),
+  ADD CONSTRAINT `tbl_clase_user_ibfk_2` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`);
+
+--
 -- Filtros para la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
@@ -577,7 +643,6 @@ ALTER TABLE `tbl_transport`
 -- Filtros para la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  ADD CONSTRAINT `FK_usuari1` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`),
   ADD CONSTRAINT `FK_usuari2` FOREIGN KEY (`id_tipus_usuari`) REFERENCES `tbl_tipus_usuari` (`id_tipus_usuari`);
 COMMIT;
 
