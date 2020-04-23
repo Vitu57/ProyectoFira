@@ -69,7 +69,7 @@ if(isset($_REQUEST['profe'])){
 			<td>".$exe[7]."</td>
 			<td>".$exe[8]."</td>";
 			//A continuacion veremos si hay algun niño especial en esa clase
-			$csiei="select count(id_usuari) from tbl_usuari where computable='alumne' and id_clase='".$exe[9]."' and siei='si'";	
+			$csiei="select count(tbl_usuari.id_usuari) from tbl_usuari inner join tbl_clase_user ON tbl_clase_user.id_usuari=tbl_usuari.id_usuari where computable='alumne' and tbl_clase_user.id_clase='".$exe[9]."' and siei='si'";	
 			$alusiei=mysqli_query($conn,$csiei);
 			$nsiei=mysqli_fetch_array($alusiei);
 			if ($nsiei[0]==0) {
