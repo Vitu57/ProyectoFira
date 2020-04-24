@@ -129,15 +129,14 @@ if ($tipus_user==1) {
 
     <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" class="myBtn"><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
 
+    <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" class="myBtn"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
+
 </div>
+
 </div>
 <button id="myBtn2" class="myBtn" style="margin-left:1%;">
 <i class="fas fa-users fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Usuaris</h2>
 </button>
-
-
-
-
 
 
 
