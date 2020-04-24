@@ -631,9 +631,8 @@ function modal_admin_user2(user){
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
 
-           var tabla = '<h2>Afegir Clase</h2><form action="eliminar_clase_profe.php" method="POST" onsubmit="eliminar_clase_profe();return false>';
+           var tabla = '<h2>Afegir Clase</h2><form action="../services/nova_clase_profe.php" method="POST">';
                     
-
             tabla += '<input type="hidden" name="id_user" value="'+user+'">';
 
                 tabla += '<select name="clase">'; 
@@ -890,4 +889,3 @@ function delete_confirm(id_s,id_a,id_p,id_c,id_t){
       })
 
 }
-
