@@ -123,7 +123,7 @@ function CrearTabla(){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table class="table table-bordered" style="text-align:center"><thead>';
+    var tabla='<table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead>';
         tabla +='<tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
@@ -232,13 +232,14 @@ function CrearTablaProfes(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
-    var tabla='<table class="table table-bordered" <thread>';
-        tabla +='<tr><th>Opcions</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th>';
+    var tabla='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
+        tabla +='<tr><th>Opcions</th><th>Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
                     tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+					tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
@@ -261,6 +262,7 @@ function CrearTablaProfes(filtro){
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
                     tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+					tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
@@ -888,4 +890,43 @@ function delete_confirm(id_s,id_a,id_p,id_c,id_t){
         
       })
 
+}
+
+//Pasar Lista
+function CrearTabla_Lista(id_activitat, clase){
+divResultado = document.getElementById('resultado');
+var ajax2=objetoAjax();
+ajax2.open("POST", "../services/consulta_lista.php", true);
+ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+ajax2.send("id_activitat="+id_activitat+"&clase="+clase);
+ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<table class="table table-bordered" <thread>';
+        tabla +='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><tr><th>Alumne</th><th>Estat</th><th>Assistència</th></tr><tr>';
+        for(var i=0;i<respuesta.length;i++) {
+            tabla += '<tr><td>' + respuesta[i].cognom_usuari+ ', '+ respuesta[i].nom_usuari+'</td>';
+            tabla += '<td>' + respuesta[i].estado_asistencia+'</td>';
+            if (respuesta[i].estado_asistencia=="Absent") {
+		tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="32"; onclick="CheckLista('+respuesta[i].id_usuari+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';
+            }else{
+		tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="40" width="32"; onclick="CheckLista('+respuesta[i].id_usuari+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';	
+            }
+        }
+        tabla+='</thead></table>';
+        divResultado.innerHTML=tabla;
+        }
+}
+}
+
+function CheckLista(id, estado, id_activitat, clase){
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/check_lista.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("id="+id+"&estado="+estado);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+            CrearTabla_Lista(id_activitat, clase);
+        }
+    }
 }

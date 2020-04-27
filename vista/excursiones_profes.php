@@ -93,7 +93,7 @@ Profesor: <input type="text" name="profe" id="profe">
 		<a href="#" onclick='FiltroProfes()'> <button id='btn_filtro' class="btn btn-lg" style=" color: white; background-color:  #367cb3; padding: 0.5%; right: 42%; top:28.6%;" value='0'> Sortides d'avui</button></a>
 	</form>
 
-<div id="resultado" class="tablas" style="overflow-y:auto; position:relative; background-color: rgba(255,255,255,1); margin-top:6%; left: 50%; transform: translateX(-50%);z-index:9;">
+<div id="resultado" class="tablas" style="overflow-y:auto; position:relative; margin-top:6%; left: 50%; transform: translateX(-50%);z-index:9;">
 </div>
 
 <div class="footer">

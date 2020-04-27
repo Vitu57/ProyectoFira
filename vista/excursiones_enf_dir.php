@@ -24,7 +24,7 @@ if ($tipo!=5 AND $tipo!=6) {
 
 ?>
 
-<div class="tablas" id="resultado" style="background-color: rgba(255,255,255,1); border-radius: 20px; padding: 2%;">
+<div class="header" id="resultado" style="border-radius: 20px; padding: 2%;">
 
   <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-left: 2%; color: #071334;" class="btn btn-secondary"></i>

@@ -23,7 +23,7 @@ if ($tipo!=3) {
 
 ?>
 
-<div class="tablas" id="resultado" style="background-color: rgba(255,255,255,1); border-radius: 15px;">
+<div class="header" id="resultado" style="border-radius: 15px;">
 	<div style="padding: 3%">
 	<a href="../vista/home.php">
 	<i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: -1%; color: #071334;" class="btn btn-secondary"></i>

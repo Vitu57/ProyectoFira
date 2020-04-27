@@ -33,7 +33,7 @@ if(isset($_REQUEST['codi'])){
 }
 
 ?>
-  <table  class="table table-bordered" style="text-align:center"><thead>
+  <table  class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead>
   <tr>
   
    <th scope='col'>Codi Sortida</th>

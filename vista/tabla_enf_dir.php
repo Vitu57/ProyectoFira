@@ -27,7 +27,7 @@ if(isset($_REQUEST['jornada'])){
 $fecha_actual = date('Y-m-d');
 
 ?>
-  <table  class='table table-bordered'>
+  <table  class='table table-bordered' style="background-color: rgba(255,255,255,1);">
   <thead>
       <tr>
    <th scope="col">Codi</th>
