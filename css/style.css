@@ -203,6 +203,16 @@ a.none{
 margin: 1.2%;
 }
 
+/* botones filtrado admin */
+.filtrado_admin{
+margin-right:4%; 
+padding: 0.5%; 
+color: white; 
+background-color: #367cb3;
+margin-bottom: 1%;
+margin-top: 0.2%;
+}
+
 /*Barra de scroll horizontal*/
 div.scrollhori{
 background-color: #333;

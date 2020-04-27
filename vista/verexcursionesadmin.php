@@ -54,20 +54,26 @@ if ($tipo!=1) {
 </select>
 
 Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
-		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Filtrar">
+		<input type="submit" class="btn btn-lg filtrado_admin"  name="submit" value="Filtrar">
 	</form>
 	<br>
 	<form action="#" method="POST" onsubmit="vertodo();return false">
-		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots">
+		<input type="submit" class="btn btn-lg filtrado_admin" name="submit" value="Veure tots">
 	</form>
 
 <br>
   <div class="scrollhori">
   <?php
      include "tabladmin.php";
-  ?>
+  ?> 
   </div>
-  <br>
+  <br><br>
+   
+<!-- Exportar a CSV !-->
+   <form action="../services/csv_admin.php" method="POST">
+  	<input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
+  </form>
+
   </div>
 <div class="footer">
  <img src="../images/logo_fje.svg">
