@@ -83,7 +83,13 @@ Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
   <?php
     include "tablasecretaria.php";
   ?>
-  <br>
+  </div>
+   
+<!-- Exportar a CSV !-->
+   <form action="../services/csv_secretaria.php" method="POST">
+  	<input class="btn btn-lg filtrado_admin" style="margin-bottom: 2.5%" type="submit" name="exportarCSV" value="Exportar dades">
+  </form>
+
   </div>
 <div class="footer">
  <img src="../images/logo_fje.svg">
@@ -91,4 +97,3 @@ Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
 </div>
 </body>
 </html>
-

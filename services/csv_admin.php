@@ -26,8 +26,8 @@ if(isset($_POST["exportarCSV"])) {
     
     while ($exe=mysqli_fetch_array($consultax)) {
 
-      echo  $exe[0].";"
-           .$exe[11].";"
+      echo   $exe[0].";"
+            .$exe[11].";"
             .$exe[1].";"
             .$exe[2].";"
             .$exe[3].";"
