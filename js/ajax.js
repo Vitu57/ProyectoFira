@@ -930,3 +930,42 @@ function CheckLista(id, estado, id_activitat, clase){
         }
     }
 }
+
+function mostraralumnos(){
+    var clase=document.getElementById('clases').value;
+    divResultado = document.getElementById('alumnos_clase');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/consulta_alumnos.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("id_clase="+clase);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+function anadirlista(activitat){
+    var alumno=document.getElementById('nombrealumno').value;
+    if (alumno=="") {
+        document.getElementById("nombrealumno").style.borderColor="red";
+    }else{
+        divResultado = document.getElementById('mensaje');
+        ajax=objetoAjax();
+        ajax.open('POST', '../services/anadirlista.php', true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.send("id_alumno="+alumno+"&id_activitat="+activitat);
+        // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+        ajax.onreadystatechange=function() {
+            if (ajax.readyState==4) {
+                // 8. Cambiamos el bloque del paso 2.
+                divResultado.innerHTML = ajax.responseText
+            }
+        }
+    }
+}
