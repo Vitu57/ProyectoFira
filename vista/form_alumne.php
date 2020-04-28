@@ -2,16 +2,13 @@
 include "../services/conexion.php";
 include "../services/header.php";
 if (!$_SESSION['id']) {
-	header("location:login.php");
+  header("location:login.php");
 }
 $id_activitat=$_GET['id_actividad'];
 $clase=$_GET['clase'];
-$consultaexcursion="SELECT nom_clase FROM tbl_transport inner join tbl_nom_transport on tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport where tbl_transport.id_transport=$transport";
-$consulta=mysqli_query($conn,$consultaexcursion);
 ?>
 <!doctype html>
 <html lang="en" style="overflow: hidden; position: fixed;">
-
 <head>
 <!-- js y css para el switch de siei -->
 
@@ -35,40 +32,46 @@ $consulta=mysqli_query($conn,$consultaexcursion);
 <!--Enlace js para toastr-->
  <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../plugin/toastr/toastr.min.js"></script>
+<!--Enlace js para ajax.js-->
+<script type="text/javascript" src="../js/ajax.js"></script>
 
 <body class="body_design">
     <a href="pasarlista.php?id_actividad=<?php echo $id_activitat; ?>&clase=<?php echo $clase; ?>">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
 <div id="usuaris" class="text-center border border-light p-5 mt-5 div_form" style="display: block;">
-<form class="text-center" action="#!">
+<form class="text-center" action="#">
 
 <p class="h4 mb-4">Afegir Alumne</p>
 
 <div class="form-row mb-1">
   <div class="col">
-    <select class="browser-default custom-select mb-2">
-        <option value="" selected disabled>Clase</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+    <select class="browser-default custom-select mb-2" id="clases" onchange="mostraralumnos();">
+      <option value="" selected disabled>Clase</option>
+      <?php
+        $consultaclases="select tbl_clase.id_clase,tbl_clase.nom_classe from tbl_clase where nom_classe!='PERSONAL'";
+        $queryclases=mysqli_query($conn,$consultaclases);
+        while ($clase=mysqli_fetch_array($queryclases)) {
+          echo " <option value=".$clase[0].">".$clase[1]."</option>";
+        }
+      ?>
     </select>
   </div>
 <!-- Password -->
-<div class="col">
-    <select class="browser-default custom-select mb-2">
-        <option value="" selected disabled>Nom i Cognoms</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-  </div>
+<div class="col" id="alumnos_clase">
+  <?php
+    include '../services/consulta_alumnos.php';
+  ?>
+</div>
 </div>
 
 <!-- Sign up button -->
-<button class="btn btn-info mt-4 btn-block" type="submit">Afegir</button>
+<?php
+echo '<button class="btn btn-info mt-4 btn-block" type="submit" id="anadir" onclick="anadirlista('.$id_activitat.');return false;">Afegir</button>'
+?>
+<div id="mensaje">
+  
+</div>
 </form>
 <!-- Default form register -->
 </div>
