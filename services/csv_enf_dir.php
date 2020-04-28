@@ -16,10 +16,11 @@ if(isset($_POST["exportarCSV"])) {
         print "\xEF\xBB\xBF"; 
         
         // Vamos a mostrar en las celdas las columnas que queremos que aparezcan en la primera fila, separadas por ; 
-        echo "Codi;Activitat;Etapa;Clase;Inici Sortida;Final Sortida;Hora Sortida;Hora Arribada;Vetlladors;Profes a Part;Numero d'alumnes;Activitat;Profesor Asignat;Transport;Jornada\n";    
-            
+        echo "Codi;Activitat;Etapa;Clase;Inici Sortida;Final Sortida;Hora Sortida;Hora Arribada;Vetlladors;Profes a Part;Nº d'alumnes;Activitat;Profesor Asignat;Transport;Jornada\n";    
+        
+        $fecha_actual = date('Y-m-d');    
             //consulta para saber los datos de las salidas y el transporte
-$consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida INNER JOIN tbl_transport ON tbl_transport.id_transport=tbl_sortida.id_transport INNER JOIN tbl_nom_transport ON tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa";
+$consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida INNER JOIN tbl_transport ON tbl_transport.id_transport=tbl_sortida.id_transport INNER JOIN tbl_nom_transport ON tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa WHERE tbl_sortida.inici_sortida > '$fecha_actual'";
 
       $exe=mysqli_query($conn,$consulta);
      while ($row=mysqli_fetch_array($exe)){

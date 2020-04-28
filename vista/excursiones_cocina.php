@@ -34,7 +34,11 @@ if ($tipo!=4) {
 
 <div id="resultado" class="tablas" style="overflow-y:auto; position:relative; margin-top:6%; left: 50%; transform: translateX(-50%);z-index:9;">
 </div>
-
+<br>
+<!-- Exportar a CSV !-->
+   <form action="../services/csv_cocina.php" method="POST">
+    <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
+  </form>
 <div class="footer">
   <img src="../images/logo_fje.svg">
 </div>
