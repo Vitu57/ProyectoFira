@@ -50,42 +50,24 @@ $fecha_actual = date('Y-m-d');
     //consulta para saber los datos de las salidas y el transporte
 $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida INNER JOIN tbl_transport ON tbl_transport.id_transport=tbl_sortida.id_transport INNER JOIN tbl_nom_transport ON tbl_transport.id_nom_transport=tbl_nom_transport.id_nom_transport INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa where tbl_sortida.inici_sortida > '$fecha_actual' and tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%' and tbl_sortida.profesor_asignat like '%".$profe."%'and tbl_activitat.jornada_activitat like '%".$jornada."%' ORDER BY tbl_sortida.inici_sortida";
       $exe=mysqli_query($conn,$consulta);
-     while ($casos=mysqli_fetch_array($exe)){
+     while ($row=mysqli_fetch_array($exe)){
 
-        $codi=$casos['codi_sortida'];
-		$nomActivitat=$casos['nom_activitat'];
-        $nomClase=$casos['nom_classe'];
-        $vetlladors=$casos['n_vetlladors'];
-        $profesor_asignat=$casos['profesor_asignat'];
-        $activitat=$casos['nom_activitat'];
-        $profe=$casos['profes_a_part'];
-        $alumnes=$casos['numero_alumnes'];
-        $inici=$casos['inici_sortida'];
-        $final=$casos['final_sortida'];
-        $horaSortida=$casos['hora_sortida'];
-        $horaArribada=$casos['hora_arribada'];
-        $nomClase=$casos['nom_classe'];
-        $jornada=$casos['jornada_activitat'];
-        $etapa=$casos['nom_etapa'];
-        $transport=$casos['nom_transport'];
-
-echo "<tr>";
-       echo "<td>".$codi."</td>";
-	   echo "<td>".$nomActivitat."</td>";
-	   echo "<td>".$etapa."</td>";
-       echo "<td>".$nomClase."</td>";
-       echo "<td>".$inici."</td>";
-       echo "<td>".$final."</td>";
-       echo "<td>".$horaSortida."</td>";
-       echo "<td>".$horaArribada."</td>";
-       echo "<td>".$vetlladors."</td>";
-       echo "<td>".$profe."</td>";
-       echo "<td>".$alumnes."</td>";
+       echo "<tr><td>".$row['codi_sortida']."</td>
+	     <td>".$row['nom_activitat']."</td>
+	     <td>".$row['nom_etapa']."</td>
+       <td>".$row['nom_classe']."</td>
+       <td>".$row['inici_sortida']."</td>
+       <td>".$row['final_sortida']."</td>
+       <td>".$row['hora_sortida']."</td>
+       <td>".$row['hora_arribada']."</td>
+       <td>".$row['n_vetlladors']."</td>
+       <td>".$row['profes_a_part']."</td>
+       <td>".$row['numero_alumnes']."</td>";
 ?>
 
 <td>
  <!-- Botón para la modal de contacto-->      
-<i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_enf_dir('<?php echo $activitat; ?>','<?php echo $profesor_asignat; ?>','<?php echo $transport; ?>','<?php echo $jornada; ?>');"></i>
+<i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_enf_dir('<?php echo $row['nom_activitat']; ?>','<?php echo $row['profesor_asignat']; ?>','<?php echo $row['nom_transport']; ?>','<?php echo $row['jornada_activitat']; ?>');"></i>
 
 <!-- Modal del contacto--> 
 <div id="resultado2" class="modalmask" style="display:none;">

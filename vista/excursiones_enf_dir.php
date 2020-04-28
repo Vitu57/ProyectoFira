@@ -75,7 +75,14 @@ Profesor: <input class="espacio_filtros" type="text" name="profe" id="profe">
     include "tabla_enf_dir.php";
   ?>
   <br>
+ 
+<!-- Exportar a CSV !-->
+   <form action="../services/csv_enf_dir.php" method="POST">
+    <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
+  </form>
+
   </div>
+
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>
