@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2020 a las 14:37:23
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 29-04-2020 a las 19:32:58
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,6 +52,28 @@ INSERT INTO `tbl_activitat` (`id_activitat`, `nom_activitat`, `lloc_activitat`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_alumnes`
+--
+
+CREATE TABLE `tbl_alumnes` (
+  `id_alumne` int(11) NOT NULL,
+  `nom_alumne` varchar(20) NOT NULL,
+  `cognom1_alumne` varchar(20) NOT NULL,
+  `cognom2_alumne` varchar(20) NOT NULL,
+  `id_clase` int(11) NOT NULL,
+  `siei` enum('si','no') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_alumnes`
+--
+
+INSERT INTO `tbl_alumnes` (`id_alumne`, `nom_alumne`, `cognom1_alumne`, `cognom2_alumne`, `id_clase`, `siei`) VALUES
+(1, 'Alumnop3', 'EnBuena', 'BD', 1, 'si');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_asistencia`
 --
 
@@ -61,15 +83,6 @@ CREATE TABLE `tbl_asistencia` (
   `id_usuario` int(11) NOT NULL,
   `id_activitat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `tbl_asistencia`
---
-
-INSERT INTO `tbl_asistencia` (`id_asistencia`, `estado_asistencia`, `id_usuario`, `id_activitat`) VALUES
-(1, 'Absent', 30, 25),
-(7, 'Present', 6, 27),
-(8, 'Present', 7, 27);
 
 -- --------------------------------------------------------
 
@@ -323,7 +336,7 @@ CREATE TABLE `tbl_sortida` (
 --
 
 INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_clase`, `id_transport`, `id_precios`, `comanda_menu`) VALUES
-(24, 'RP-3444', '2020-04-23', '2020-04-24', 'Sortida al cinema', 43, 2, 2, 1, 'Jesus Mellado', 1, 24, 24, 0),
+(24, 'RP-3444', '2020-05-07', '2020-05-07', 'Sortida al cinema', 43, 2, 2, 1, 'Jesus Mellado', 1, 24, 24, 0),
 (25, 'RP-2213', '2020-04-22', '2020-04-23', 'Sortida al camp', 123, 2, 1, 2, 'Sergio', 21, 25, 25, 0),
 (26, 'RP-4743', '2020-05-04', '2020-05-04', 'Res.', 65, 2, 1, 1, 'Sergio Jimenez', 21, 26, 26, 0);
 
@@ -418,7 +431,7 @@ INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `c
 (12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'si', 'no', 29, 6),
 (28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'no', 'si', 21, 2),
 (29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'no', 'no', 21, 2),
-(30, 'Ap3', '81dc9bdb52d04dc20036dbd8313ed055', 'up3', 'cgnm', 'no', 'alumne', 1, 7),
+(30, 'Ap3', '81dc9bdb52d04dc20036dbd8313ed055', 'up3', 'cgnm', 'si', 'alumne', 1, 7),
 (31, 'AP4', '81dc9bdb52d04dc20036dbd8313ed055', 'up4', 'cgnm', 'no', 'alumne', 2, 7);
 
 --
@@ -434,12 +447,19 @@ ALTER TABLE `tbl_activitat`
   ADD KEY `FK_sortida_activitat` (`id_sortida`);
 
 --
+-- Indices de la tabla `tbl_alumnes`
+--
+ALTER TABLE `tbl_alumnes`
+  ADD PRIMARY KEY (`id_alumne`),
+  ADD KEY `FK_clase` (`id_clase`);
+
+--
 -- Indices de la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
   ADD PRIMARY KEY (`id_asistencia`),
-  ADD KEY `FK_asistencia1` (`id_usuario`),
-  ADD KEY `FK_asistencia2` (`id_activitat`);
+  ADD KEY `FK_asistencia2` (`id_activitat`),
+  ADD KEY `FK_asistencia_alumne` (`id_usuario`);
 
 --
 -- Indices de la tabla `tbl_clase`
@@ -529,10 +549,16 @@ ALTER TABLE `tbl_activitat`
   MODIFY `id_activitat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_alumnes`
+--
+ALTER TABLE `tbl_alumnes`
+  MODIFY `id_alumne` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_clase`
@@ -612,11 +638,17 @@ ALTER TABLE `tbl_activitat`
   ADD CONSTRAINT `FK_sortida_activitat` FOREIGN KEY (`id_sortida`) REFERENCES `tbl_sortida` (`id_sortida`);
 
 --
+-- Filtros para la tabla `tbl_alumnes`
+--
+ALTER TABLE `tbl_alumnes`
+  ADD CONSTRAINT `FK_clase` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`);
+
+--
 -- Filtros para la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
-  ADD CONSTRAINT `FK_asistencia1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuari` (`id_usuari`),
-  ADD CONSTRAINT `FK_asistencia2` FOREIGN KEY (`id_activitat`) REFERENCES `tbl_activitat` (`id_activitat`);
+  ADD CONSTRAINT `FK_asistencia2` FOREIGN KEY (`id_activitat`) REFERENCES `tbl_activitat` (`id_activitat`),
+  ADD CONSTRAINT `FK_asistencia_alumne` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_alumnes` (`id_alumne`);
 
 --
 -- Filtros para la tabla `tbl_clase`
@@ -656,7 +688,8 @@ ALTER TABLE `tbl_transport`
 -- Filtros para la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  ADD CONSTRAINT `FK_usuari2` FOREIGN KEY (`id_tipus_usuari`) REFERENCES `tbl_tipus_usuari` (`id_tipus_usuari`);
+  ADD CONSTRAINT `FK_usuari2` FOREIGN KEY (`id_tipus_usuari`) REFERENCES `tbl_tipus_usuari` (`id_tipus_usuari`),
+  ADD CONSTRAINT `tbl_usuari_ibfk_1` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
