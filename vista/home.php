@@ -31,10 +31,16 @@ $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id
         $cognom=$casos['cognom_usuari'];  
         $tipus_user=$casos['id_tipus_usuari'];
         $nom_tipus=$casos['nom_tipus']; 
+
+$_SESSION['nom']=$nom;
+$_SESSION['cognom']=$cognom;
+
 echo "<div class='header'>";
-echo "<h3 class='txthead'><a href='../services/logout.php'>Tanca la sessió</a></h3>";
 
 //logout
+echo "<h3 class='txthead'><a href='../services/logout.php'>Tanca la sessió</a></h3>";
+
+
 echo "<h3 class='txthead2'>Benvingut ".$nom." ".$cognom."</h3>";
 
 echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";

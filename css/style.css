@@ -92,6 +92,15 @@ a.none{
   padding: 20px 10px;
   border-bottom:#009eff 4px solid;
 }
+
+.header2 {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+  border-bottom:#009eff 4px solid;
+  border-radius: 15px;
+}
+
 .footer {
   position: fixed;
   left: 0;
@@ -229,3 +238,14 @@ display: inline-block;
 div.scrollhori a:hover{
   background-color: #777;
   }
+
+/*Imagenes del formulario de añadir profes a clases*/  
+.img_form{
+width: 10%;
+}
+
+.form_admin_profes{
+  margin:5%;
+}
+
+

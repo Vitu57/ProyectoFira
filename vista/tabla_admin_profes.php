@@ -6,10 +6,15 @@ if(isset($_REQUEST['clase'])){
 }else{
 	$clase="";
 }
-if(isset($_REQUEST['profe'])){
-	$profe=$_REQUEST['profe'];
+if(isset($_REQUEST['nom_profe'])){
+	$nom_profe=$_REQUEST['nom_profe'];
 }else{
-	$profe="";
+	$nom_profe="";
+}
+if(isset($_REQUEST['nom_profe'])){
+  $cog_profe=$_REQUEST['cog_profe'];
+}else{
+  $cog_profe="";
 }
 if(isset($_REQUEST['etapa'])){
   $etapa=$_REQUEST['etapa'];
@@ -17,22 +22,32 @@ if(isset($_REQUEST['etapa'])){
   $etapa="";
 }
 
+
+//Comprueba que no hay errores
+if (isset($_REQUEST['error'])) {
+  if ($_REQUEST['error']==1) {
+   echo "<p style='margin-top:1%; color:red;'>El profesor ha de tenir com a minim una clase</p>";
+  }else{
+   echo "<p style='margin-top:1%; color:red;'>El profesor ja está asignat a la clase</p>";
+  }
+}
+
 ?>
   <table  class="table table-bordered" style="text-align:center"><thead>
   <tr>
 
-   <th scope='col'>Nom</th>
+   <th scope='col'>Profesors</th>
    <th scope="col">Etapes</th>
    <th scope="col">Clases</th>
-   <th scope='col'>Afegir clases</th>
-   <th scope='col'>Eliminar clases</th>
+   <th scope='col'>Afegir clase a profesor</th>
+   <th scope='col'>Eliminar clase de profesor</th>
 
   </tr>
 
 <?php
 
     //consulta para saber los datos de las salidas, las actividades y el transporte
-$consulta="SELECT DISTINCT tbl_usuari.id_usuari, tbl_usuari.nom_usuari, tbl_usuari.cognom_usuari FROM tbl_usuari INNER JOIN tbl_clase_user ON tbl_usuari.id_usuari=tbl_clase_user.id_usuari INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa where tbl_clase.nom_classe like '%".$clase."%' and tbl_etapa.nom_etapa like '%".$etapa."%' AND tbl_usuari.nom_usuari like '%".$profe."%' and tbl_usuari.id_tipus_usuari=2 ORDER BY tbl_usuari.id_usuari";
+$consulta="SELECT DISTINCT tbl_usuari.id_usuari, tbl_usuari.nom_usuari, tbl_usuari.cognom_usuari FROM tbl_usuari INNER JOIN tbl_clase_user ON tbl_usuari.id_usuari=tbl_clase_user.id_usuari INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase INNER JOIN tbl_etapa ON tbl_clase.id_etapa=tbl_etapa.id_etapa where tbl_clase.nom_classe like '%".$clase."%' and tbl_etapa.nom_etapa like '%".$etapa."%' AND tbl_usuari.nom_usuari like '%".$nom_profe."%' AND tbl_usuari.cognom_usuari like '%".$cog_profe."%' and tbl_usuari.id_tipus_usuari=2 ORDER BY tbl_usuari.id_usuari";
 
 	$exe=mysqli_query($conn,$consulta);
 
@@ -71,8 +86,69 @@ $consulta3="SELECT DISTINCT tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN 
 }
 
  ?>
-       <td><i class="fas fa-plus-circle fa-3x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_admin_user2(<?php echo $id_profe; ?>)"></i>
-       <td><a onclick="modal_admin_user(<?php echo $id_profe; ?>)" href="#"><i class="fas fa-times-circle fa-3x" style="color:#ba1004;"></i></td></a>
+       <td style="width: 25%;">
+       
+
+  <form action="../services/nova_clase_profe.php" method="POST">
+
+<select class="form_admin_profes" name="clase">
+<?php
+
+
+$consultaadmin="SELECT nom_classe FROM tbl_clase WHERE nom_classe!='personal'";
+
+//ejecutamos la consulta
+$consulta=mysqli_query($conn,$consultaadmin);
+
+while($rows = mysqli_fetch_assoc($consulta)){
+
+echo "<option>".$rows['nom_classe']."</option>";
+}    
+
+
+echo "</select><input type='hidden' name='id_user' value='$id_profe'>";
+
+?>   
+          
+   <input type="image" src="../images/plus_circle.png" class="img_form" name="añadir">
+       
+             </form></td>
+
+      <td style="width: 25%;">
+        
+
+  <form action="../services/eliminar_clase_profe.php" method="POST">
+
+<select class="form_admin_profes" name="clase">
+<?php
+
+ $consultaadmin="SELECT DISTINCT tbl_clase.id_clase, tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase WHERE tbl_clase_user.id_usuari='$id_profe'";
+//ejecutamos la consulta
+$consulta4=mysqli_query($conn,$consultaadmin);
+while($rows = mysqli_fetch_array($consulta4)){
+
+
+$consultaadmin2="SELECT tbl_clase.id_clase FROM tbl_clase";
+//ejecutamos la consulta
+$consulta5=mysqli_query($conn,$consultaadmin2);
+
+
+while($case = mysqli_fetch_array($consulta5)){
+    
+if ($case['id_clase']==$rows['id_clase']) {
+
+echo "<option>".$rows['nom_classe']."</option>";
+}    
+}
+}
+
+echo "</select><input type='hidden' name='id_user' value='$id_profe'>";
+
+?>   
+          
+   <input type="image" src="../images/mal_check.png" class="img_form" name="añadir">
+       
+             </form></td>
 
 
 <!-- Modal de añadir clase--> 

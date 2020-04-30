@@ -29,6 +29,11 @@ $consulta="SELECT id_clase_usuari FROM tbl_clase_user WHERE id_usuari='$id' AND 
 $consulta="INSERT INTO tbl_clase_user (id_clase, id_usuari) VALUES ('$id_clase', '$id')";
 
 	$exe=mysqli_query($conn,$consulta);
-}	
 
 	header("location: ../vista/admin_prof.php");
+
+}else{
+    header("location: ../vista/admin_prof.php?error=2");
+}	
+
+	
