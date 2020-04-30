@@ -1,7 +1,7 @@
 
 <div class='header2'><div style='padding:2%;'>
 
-<h3 class='txthead'><a style='color:black;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-door-open fa-2x'></i></a></h3>
+<h3 class='txthead'><a style='color:#d60909;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-door-open fa-2x'></i></a></h3>
 
 	<div style="padding: 2%; text-align: left;">
 	<a href="../vista/home.php">
