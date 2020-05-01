@@ -158,3 +158,58 @@ function secretaria(){
                 
             document.getElementById("contenidoResultado").innerHTML=mensaje;
 }
+
+
+function admin_prof(){
+
+    var modal = document.getElementById("resultado2");
+     modal.style.display = "block";
+     var span = document.getElementById("close");
+  document.getElementById("tituloResultado").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+    }
+                  
+                   var mensaje = "Aquesta és la pàgina d'administració de profesors.<br>"; 
+                       mensaje += "Aqui podràs assignar i treure classes als professors.<br>";  
+                
+            document.getElementById("contenidoResultado").innerHTML=mensaje;
+}
+
+function admin_prof2(){
+
+    var modal = document.getElementById("resultado3");
+     modal.style.display = "block";
+     var span = document.getElementById("close2");
+  document.getElementById("tituloResultado3").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal3").value=0;
+    }
+                  
+                     var mensaje = "Selecciona la clase que vols afegir y prem el botó + per afegir-la <i style='margin:1.3%;' class='fas fa-arrow-down'></i>"; 
+                       mensaje += "Selecciona la clase que vols eliminar y prem el botó x per eliminar-la  <i style='margin:1%;' class='fas fa-arrow-down'></i>";
+                
+            document.getElementById("contenidoResultado3").innerHTML=mensaje;
+}
+
+function admin_prof3(){
+
+    var modal = document.getElementById("resultado4");
+     modal.style.display = "block";
+     var span = document.getElementById("close4");
+  document.getElementById("tituloResultado4").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal4").value=0;
+    }
+                  
+                      var mensaje = "- Utilitza el filtre si vols filtrar per alguna cosa en concret.<br>"; 
+                          mensaje += "- Prem el botó veure tots per veure a tots els profesors.<br>";
+
+            document.getElementById("contenidoResultado4").innerHTML=mensaje;
+}
+
+
+
