@@ -20,6 +20,7 @@
 				$cognom = $row["cognom_usuari"];
                 $id = $row["id_usuari"];
                 $id_tipo = $row["id_tipus_usuari"];
+                $cont_visitas = $row["cont_visitas"];
             }
             $row_cnt = mysqli_num_rows($res);
         }else{
@@ -29,10 +30,19 @@
         //Comprobar que el usuario está registrado
         if (!empty($stmt) && $row_cnt == 1) {
             session_start();
+
+            $cont_visitas+=1;
             $_SESSION['nombre'] = $nom;
 			$_SESSION['cognom'] = $cognom;
             $_SESSION['id'] = $id;
             $_SESSION['tipo'] = $id_tipo;
+            $_SESSION['cont_visitas'] = $cont_visitas;
+
+        
+$upd_cont_visitas="UPDATE tbl_usuari SET cont_visitas='$cont_visitas' WHERE id_usuari='$id'";
+$exe=mysqli_query($conn,$upd_cont_visitas);
+      $casos=mysqli_fetch_array($exe);    
+
             header("Location: ../vista/home.php");
         }else{
             header('Refresh:0; url = ../vista/login.php?us=' . $myusername);

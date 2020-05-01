@@ -16,7 +16,7 @@ if ($_SESSION['cont_visitas']==1){
 
 echo "<body class='home' onload='admin_prof();' style='text-align: center; padding: 2%;'>";
 
-//Modal de visita guiada
+//Modales de visita guiada
 ?>
 <div id="resultado2" class="modalmask" style="display:none; margin-top: -32.5%; width: 28%; margin-left: 25%;">
 
@@ -27,10 +27,10 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
       </div>
 </div>
 
-<div id="resultado3" class="modalmask" style="display:none;  margin-top: -13.5%; width: 60%; margin-left: 23%;;">
+<div id="resultado3" class="modalmask" style="display:none;  margin-top: -14%; width: 22%; margin-left: 39.5%;;">
 
       <div class="modalbox movedown" id="resultadoContent3">
-        <a href="#close2" title="Close2" class="close" id="close2" style="color:black; background-color:#f1f1f1; margin-right:3%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#close2" title="Close2" class="close" id="close2" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado3">TITULO</h2>
         <div id="contenidoResultado3">contenido resultado</div>
       </div>
@@ -39,11 +39,22 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
 <div id="resultado4" class="modalmask" style="display:none;  margin-top: -22.5%; width: 34%; margin-left: 22.2%;">
 
       <div class="modalbox movedown" id="resultadoContent4">
-       <a href="#close4" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof2();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+       <a href="#close4" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof2(); admin_prof4();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado4">TITULO</h2>
         <div id="contenidoResultado4">contenido resultado</div>
       </div>
 </div>
+
+
+<div id="resultado5" class="modalmask" style="display:none;  margin-top: -14%; width: 22%; margin-left: 61.3%;;">
+
+      <div class="modalbox movedown" id="resultadoContent3">
+        <a href="#close5" title="Close5" class="close" id="close5" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultado5">TITULO</h2>
+        <div id="contenidoResultado5">contenido resultado</div>
+      </div>
+</div>
+
 
 <?php
 
