@@ -1,20 +1,3 @@
-function objetoAjax(){
-    var xmlhttp=false;
-    try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-        try {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (E) {
-            xmlhttp = false;
-        }
-    }
-    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-      xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-}
-
 
 function benvinguda(){
 
@@ -172,7 +155,7 @@ function admin_prof(){
     }
                   
                    var mensaje = "Aquesta és la pàgina d'administració de profesors.<br>"; 
-                       mensaje += "Aqui podràs assignar i treure classes als professors.<br>";  
+                       mensaje += "Aqui podràs assignar i treure clases als professors.<br>";  
                 
             document.getElementById("contenidoResultado").innerHTML=mensaje;
 }
@@ -228,4 +211,37 @@ function admin_prof4(){
 }
 
 
+function cocina_vis(){
 
+    var modal = document.getElementById("resultado2");
+     modal.style.display = "block";
+     var span = document.getElementById("close");
+  document.getElementById("tituloResultado").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+    }
+                  
+                   var mensaje = "Aquesta és la pàgina d'administració de sortides.<br>"; 
+                       mensaje += "Aqui podràs veure totes les sortides i marcar quines comandes estan fetes y quines no.<br>";  
+                
+            document.getElementById("contenidoResultado").innerHTML=mensaje;
+
+}
+
+function cocina_vis3(){
+
+    var modal = document.getElementById("resultado4");
+     modal.style.display = "block";
+     var span = document.getElementById("close4");
+  document.getElementById("tituloResultado4").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal4").value=0;
+    }
+                  
+                   var mensaje = "<i style='margin-right:3%;' class='fas fa-arrow-left'></i>Fes click a exportar dades per descarregar <br> un excel amb totes les sortides."; 
+                
+            document.getElementById("contenidoResultado4").innerHTML=mensaje;
+
+}

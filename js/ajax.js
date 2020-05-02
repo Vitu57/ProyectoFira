@@ -188,12 +188,68 @@ function FiltroCocina(){
     if (estado_filtro==0){
         document.getElementById("btn_filtro").style.backgroundColor="green";
         document.getElementById("btn_filtro").value=1;
+        
     }else{
         document.getElementById("btn_filtro").style.backgroundColor="#367cb3";
         document.getElementById("btn_filtro").value=0;
+        
     }
     CrearTabla();
 }
+
+//Primera visita cocina
+function FiltroCocinaPrimeraVisita(){
+    var estado_filtro = document.getElementById("btn_filtro").value;
+    if (estado_filtro==0){
+        document.getElementById("btn_filtro").style.backgroundColor="green";
+        document.getElementById("btn_filtro").value=1;
+        cocina_vis4();
+    }else{
+        document.getElementById("btn_filtro").style.backgroundColor="#367cb3";
+        document.getElementById("btn_filtro").value=0;
+        cocina_vis2();
+    }
+    CrearTabla();
+}
+
+
+function cocina_vis2(){
+
+    var modal = document.getElementById("resultado3");
+     modal.style.display = "block";
+     var span = document.getElementById("close3");
+  document.getElementById("tituloResultado3").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal3").value=0;
+    }
+                  
+                   var mensaje = "Fes click a sortides d'avui per veure <i style='margin-left:3%;' class='fas fa-arrow-right'></i> <br> les sortides que es farán al dia d'avui.";  
+                
+            document.getElementById("contenidoResultado3").innerHTML=mensaje;
+
+}
+
+function cocina_vis4(){
+
+    var modal = document.getElementById("resultado3");
+     modal.style.display = "block";
+     var span = document.getElementById("close3");
+  document.getElementById("tituloResultado3").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal3").value=0;
+    }
+                  
+    var mensaje = "Fes click una altra vegada per <i style='margin-left:3%;' class='fas fa-arrow-right'></i> <br> veure totes les sortides.";  
+                
+            document.getElementById("contenidoResultado3").innerHTML=mensaje;
+
+}
+
+
+
+
 //----------------------------------------------------------------------------------------------------------------------------------
 
 function CrearTablaProfes(filtro){
