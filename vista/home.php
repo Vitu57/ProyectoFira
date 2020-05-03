@@ -5,7 +5,6 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
-  <script type="text/javascript" src="../js/primera_visita.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!--Calendario-->
   <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
@@ -14,11 +13,12 @@
   <script src="calendar/js/vanilla-calendar-min.js"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 </head>
+<body class="home" onload="modal(); modal2();">
+  
 
 <?php
 include "../services/conexion.php";
 include "../services/header.php";
-
 
 //Pasamos el id del usuario desde el login
 $id=$_SESSION['id'];
@@ -31,56 +31,27 @@ $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id
         $cognom=$casos['cognom_usuari'];  
         $tipus_user=$casos['id_tipus_usuari'];
         $nom_tipus=$casos['nom_tipus']; 
-        $cont_visitas=$casos['cont_visitas'];
-
-
-//Comprueba si es la primera vez que entra el usuario
-if ($cont_visitas==1) {
-
-//comprueba si el usuario es admin
-if ($tipus_user==1) {
-
-echo "<body class='home' onload='modal(); modal2(); benvinguda();'>";
-
-}else{
-
-echo "<body class='home' onload='modal(); benvinguda2();'>";
-}
-
-//Modal de visita guiada
-?>
-<div id="resultado2" class="modalmask" style="display:none; margin-top: -5%; width: 30%; margin-left: 12%;">
-
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof3();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultado">TITULO</h2>
-        <div id="contenidoResultado">contenido resultado</div>
-      </div>
-</div>
-
-<?php
-
-}else{
-
-echo "<body class='home' onload='modal(); modal2();'>";
-
-}
-
-
 echo "<div class='header'>";
 
+echo "<h1 style='text-align: left; float:left; width:45%;'></h1><h2 style='text-align: center; float:left; width:10%; color:#0062ae;'>".$nom_tipus."</h1>";
+echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout.php' style='text-decoration:none;'><img src='../images/icon-logout.svg' style='margin-left:2%; margin-top:-1%;'></a></h3>";
+
 //logout
-echo "<h3 class='txthead'><a href='../services/logout.php'>Tanca la sessió</a></h3>";
 
 
-echo "<h3 class='txthead2'>Benvingut ".$nom." ".$cognom."</h3>";
-
-echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 ?>
 </div>
-<!-- Trigger/Open The Modal -->
-<div class="divcalendario">
-  <div id="resultadosalida">
+<input type="hidden" name="botonvisible" id="botonvisible" value="0">
+<div id="cambiocalendar"><div onclick="cambiarboton()"
+class="button-calendar" style="position:absolute;"></div></div>
+
+<!-- The Modal -->
+<div id="modalCalendar" class="modalCalendar">
+  <div class="modal-content-calendar">
+    <div class="notificaciones" > <h2 class="txtnotificaciones">NOTIFICACIONS SORTIDES</p></div>
+    
+      
+      <div id="resultadosalida">
   <table id="tabla_calendario" class="table table-hover text-center" style="font-size:10px; display:none;">
   <thead>
     <tr>
@@ -104,7 +75,10 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
   </div>
 <div id="myCalendar" class="vanilla-calendar" style="width:98%; margin-top:70%;">
 </div>
+    </div>
+  
 </div>
+
 
 
 
@@ -117,7 +91,7 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:#ff8433!important;">
     <span id="close" class="close far fa-times-circle fa-2x text-white" style="z-index:1;"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Sortides</h3>
     
     <div class="separator" style="background-color:white;">
@@ -127,11 +101,13 @@ echo "<h1 style='text-align: center;'>".$nom_tipus."</h1>";
 
 
 
+
+
 <?php
 
 //ifs que según el tipo de usuario mostrará una tabla u otra
 if ($tipus_user==1) {
-
+    
 ?>
 
 <div style="float:left;">
@@ -145,13 +121,11 @@ if ($tipus_user==1) {
 </div>
 
 </div>
-
-<div onclick="admin1();">
-<button  id='myBtn' class="myBtn">
+<button id='myBtn' class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
 
 </button>
-</div>
+
 
 
 
@@ -161,7 +135,7 @@ if ($tipus_user==1) {
 <div id="myModal2" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content"  style="background-color:#ff7a32!important;">
     <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
     <div class="separator" style="background-color:white;"></div>
 
@@ -172,11 +146,9 @@ if ($tipus_user==1) {
 </div>
 
 </div>
-<div onclick="admin2();">
-<button id="myBtn2" class="myBtn" style="margin-left:1%;">
+<button id="myBtn2" class="myBtn" >
 <i class="fas fa-users fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Usuaris</h2>
 </button>
-</div>
 
 
 
@@ -194,11 +166,6 @@ if ($tipus_user==1) {
 
 </div>
 </div>
-<?php
-if ($cont_visitas==1) {
-echo "<div onclick='profesores()''>";
-}
-?>
       <button id="myBtn" class="myBtn">
       <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
      </button>
@@ -217,11 +184,6 @@ echo "<div onclick='profesores()''>";
 
 </div>
 </div>
-<?php
-if ($cont_visitas==1) {
-echo "<div onclick='secretaria()''>";
-}
-?>
 <button id="myBtn" class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
   </button>
@@ -238,11 +200,6 @@ echo "<div onclick='secretaria()''>";
 
 </div>
 </div>
-<?php
-if ($cont_visitas==1) {
-echo "<div onclick='cocina()''>";
-}
-?>
 <button id="myBtn" class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
   </button>
@@ -259,14 +216,6 @@ echo "<div onclick='cocina()''>";
 
 </div>
 </div>
-
-
-<?php
-//Comprueba si es la primera vez que entra el usuario
-if ($cont_visitas==1) {
-echo "<div onclick='enf_dir()''>";
-}
-?>
 <button id="myBtn" class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
   </button>

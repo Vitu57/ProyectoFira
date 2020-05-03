@@ -928,3 +928,15 @@ function anadirlista(activitat){
         }
     }
 }
+function cambiarboton(){
+    var valor = document.getElementById("botonvisible").value;
+    if (valor==0) {
+        document.getElementById("cambiocalendar").innerHTML='<div onclick="cambiarboton()" class="button-calendar2" style="position:absolute;"></div>';
+        document.getElementById('modalCalendar').style.display='block';
+        document.getElementById("botonvisible").value=1;
+    }else{
+        document.getElementById("cambiocalendar").innerHTML='<div onclick="cambiarboton()" class="button-calendar" style="position:absolute;"></div>';
+        document.getElementById('modalCalendar').style.display='none';
+        document.getElementById("botonvisible").value=0;
+    }
+}
