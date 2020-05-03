@@ -89,11 +89,12 @@ $consulta3="SELECT DISTINCT tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN 
        <td style="width: 25%;">
        
 
-  <form action="../services/nova_clase_profe.php" method="POST">
+  <form action="#add" onsubmit="nova_clase_profe(<?php echo $id_profe; ?>); return false" method="POST">
 
-<select class="form_admin_profes" name="clase">
+
 <?php
 
+echo "<select class='form_admin_profes' id='clase_profe".$id_profe."' name='clase'>";
 
 $consultaadmin="SELECT nom_classe FROM tbl_clase WHERE nom_classe!='personal'";
 
@@ -102,11 +103,14 @@ $consulta=mysqli_query($conn,$consultaadmin);
 
 while($rows = mysqli_fetch_assoc($consulta)){
 
+
+
 echo "<option>".$rows['nom_classe']."</option>";
+
 }    
 
 
-echo "</select><input type='hidden' name='id_user' value='$id_profe'>";
+echo "</select>";
 
 ?>   
           
@@ -116,13 +120,13 @@ echo "</select><input type='hidden' name='id_user' value='$id_profe'>";
 
       <td style="width: 25%;">
         
+  <form action="#elim" onsubmit="eliminar_clase_profe(<?php echo $id_profe; ?>); return false" method="POST">
 
-  <form action="../services/eliminar_clase_profe.php" method="POST">
-
-<select class="form_admin_profes" name="clase">
 <?php
+echo $id_profe;
+echo "<select class='form_admin_profes' id='elim_clase_profe".$id_profe."' name='clase'>";
 
- $consultaadmin="SELECT DISTINCT tbl_clase.id_clase, tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase WHERE tbl_clase_user.id_usuari='$id_profe'";
+ $consultaadmin="SELECT DISTINCT tbl_clase.id_clase, tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase INNER JOIN tbl_etapa ON tbl_etapa.id_etapa=tbl_clase.id_etapa WHERE tbl_clase_user.id_usuari='$id_profe' ORDER BY tbl_etapa.id_etapa";
 //ejecutamos la consulta
 $consulta4=mysqli_query($conn,$consultaadmin);
 while($rows = mysqli_fetch_array($consulta4)){
@@ -142,25 +146,12 @@ echo "<option>".$rows['nom_classe']."</option>";
 }
 }
 
-echo "</select><input type='hidden' name='id_user' value='$id_profe'>";
 
 ?>   
           
    <input type="image" src="../images/mal_check.png" class="img_form" name="añadir">
        
              </form></td>
-
-
-<!-- Modal de añadir clase--> 
-<div id="resultado2" class="modalmask" style="display:none;">
-
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close">X</a>
-        <h2 id="tituloResultado">TITULO</h2>
-    <div id="contenidoResultado"></div>
-      </div>
-    </div>
-
 
 </tr>
 <?php 

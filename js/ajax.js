@@ -940,3 +940,42 @@ function cambiarboton(){
         document.getElementById("botonvisible").value=0;
     }
 }
+
+//Añadir y eliminar clases de profes
+function nova_clase_profe(profe){
+     divResultado = document.getElementById('resultado');
+     var clase = document.getElementById("clase_profe"+profe).value;
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/nova_clase_profe.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("id_user="+profe+"&clase="+clase);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+function eliminar_clase_profe(profe){
+  divResultado = document.getElementById('resultado');
+     var clase = document.getElementById("elim_clase_profe"+profe).value;  
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/eliminar_clase_profe.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("id_user="+profe+"&clase="+clase);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}

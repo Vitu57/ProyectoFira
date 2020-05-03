@@ -12,6 +12,8 @@
 include "../services/conexion.php";
 include "../services/header.php";
 
+echo "<div id='resultado'>";
+
 if ($_SESSION['cont_visitas']==1){
 
 echo "<body class='home' onload='admin_prof();' style='text-align: center; padding: 2%;'>";
@@ -77,7 +79,7 @@ include "../vista/header_vista.php";
 
 <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Administració Profesors</h1>
 
-<div class="tablas" id="resultado" style="background-color: rgba(255,255,255,1); border-radius: 15px;">
+<div class="tablas" style="background-color: rgba(255,255,255,1); border-radius: 15px;">
 	<div style="padding: 3%">
 
 	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
@@ -125,6 +127,7 @@ Cognoms Profesor: <input type="text" name="cog_profe" class="espacio_filtros" id
 
 <div class="footer">
  <img src="../images/logo_fje.svg">
+</div>
 </div>
 </div>
 </body>
