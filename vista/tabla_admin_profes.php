@@ -123,7 +123,6 @@ echo "</select>";
   <form action="#elim" onsubmit="eliminar_clase_profe(<?php echo $id_profe; ?>); return false" method="POST">
 
 <?php
-echo $id_profe;
 echo "<select class='form_admin_profes' id='elim_clase_profe".$id_profe."' name='clase'>";
 
  $consultaadmin="SELECT DISTINCT tbl_clase.id_clase, tbl_clase.nom_classe FROM tbl_clase_user INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_clase_user.id_clase INNER JOIN tbl_etapa ON tbl_etapa.id_etapa=tbl_clase.id_etapa WHERE tbl_clase_user.id_usuari='$id_profe' ORDER BY tbl_etapa.id_etapa";
