@@ -979,3 +979,103 @@ function eliminar_clase_profe(profe){
         }
     }
 }
+
+//Mostrar y ocultar columnas tabla admin
+function Mostrar_Profesores(fila){
+    var estado_filtro = document.getElementById("btn_profes").value;
+    if (estado_filtro==0){
+        document.getElementById('btn_profes').style.backgroundColor = 'green';
+        document.getElementById('btn_profes').style.color = 'white';
+        document.getElementById('btn_profes').value = 1;
+        document.getElementById('proasignat').style.display = 'table-cell';
+        document.getElementById('vetllador').style.display = 'table-cell';
+        document.getElementById('profesors').style.display = 'table-cell';
+        document.getElementById('profesors_comp').style.display = 'table-cell';
+        document.getElementById('profesors_comp').style.display = 'table-cell';
+        var i=0;
+        while(i<=fila){
+            document.getElementById('profas'+i).style.display = 'table-cell';
+            document.getElementById('prof'+i).style.display = 'table-cell';
+            document.getElementById('prof_comp'+i).style.display = 'table-cell';
+            document.getElementById('vet'+i).style.display = 'table-cell';
+            i++;
+        }
+    }else{
+        document.getElementById('btn_profes').style.backgroundColor = 'white';
+        document.getElementById('btn_profes').style.color = '#0099CC';
+        document.getElementById('btn_profes').value = 0;
+        document.getElementById('proasignat').style.display = 'none';
+        document.getElementById('vetllador').style.display = 'none';
+        document.getElementById('profesors').style.display = 'none';
+        document.getElementById('profesors_comp').style.display = 'none';
+        document.getElementById('profesors_comp').style.display = 'none';
+        var i=0;
+        while(i<=fila){
+            document.getElementById('profas'+i).style.display = 'none';
+            document.getElementById('prof'+i).style.display = 'none';
+            document.getElementById('prof_comp'+i).style.display = 'none';
+            document.getElementById('vet'+i).style.display = 'none';
+            i++;
+        }
+    }
+}
+
+function Mostrar_Alumnes(fila){
+    var estado_filtro = document.getElementById("btn_al").value;
+    if (estado_filtro==0){
+        document.getElementById('btn_al').style.backgroundColor = 'green';
+        document.getElementById('btn_al').style.color = 'white';
+        document.getElementById('btn_al').value = 1;
+        document.getElementById('acompanyants').style.display = 'table-cell';
+        document.getElementById('alumnes').style.display = 'table-cell';
+        var i=0;
+        while(i<=fila){
+            document.getElementById('al'+i).style.display = 'table-cell';
+            document.getElementById('al'+i).style.width = '3%';
+            document.getElementById('acom'+i).style.display = 'table-cell';
+            document.getElementById('acom'+i).style.width = '3%';
+            i++;
+        }
+    }else{
+        document.getElementById('btn_al').style.backgroundColor = 'white';
+        document.getElementById('btn_al').style.color = '#0099CC';
+        document.getElementById('btn_al').value = 0;
+        document.getElementById('acompanyants').style.display = 'none';
+        document.getElementById('alumnes').style.display = 'none';
+        var i=0;
+        while(i<=fila){
+            document.getElementById('al'+i).style.display = 'none';
+            document.getElementById('acom'+i).style.display = 'none';
+            i++;
+        }
+    }
+}
+function Mostrar_Tipus(fila){
+    var estado_filtro = document.getElementById("btn_tipus").value;
+    if (estado_filtro==0){
+        document.getElementById('btn_tipus').style.backgroundColor = 'green';
+        document.getElementById('btn_tipus').style.color = 'white';
+        document.getElementById('btn_tipus').value = 1;
+        document.getElementById('ambit').style.display = 'table-cell';
+        document.getElementById('tipus').style.display = 'table-cell';
+        var i=0;
+        while(i<=fila){
+            document.getElementById('tipus'+i).style.display = 'table-cell';
+            document.getElementById('ambit'+i).style.display = 'table-cell';
+            i++;
+        }
+    }else{
+        document.getElementById('btn_tipus').style.backgroundColor = 'white';
+        document.getElementById('btn_tipus').style.color = '#0099CC';
+        document.getElementById('btn_tipus').value = 0;
+        document.getElementById('ambit').style.display = 'none';
+        document.getElementById('tipus').style.display = 'none';
+        var i=0;
+        while(i<=fila){
+            document.getElementById('tipus'+i).style.display = 'none';
+            document.getElementById('ambit'+i).style.display = 'none';
+            i++;
+        }
+    }
+}
+//------------------------------------------

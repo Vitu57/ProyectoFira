@@ -3,6 +3,7 @@
 <head>
   <title>Home</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -55,26 +56,29 @@ if ($tipo!=1) {
 
 Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
 		<input type="submit" class="btn btn-lg filtrado_admin"  name="submit" value="Filtrar">
+		<button class="btn btn-lg filtrado_admin" name="submit" value="Veure tots" action="#" method="POST" onclick="vertodo();return false">
+		Veure Tots</button>
 	</form>
-	<br>
-	<form action="#" method="POST" onsubmit="vertodo();return false">
-		<input type="submit" class="btn btn-lg filtrado_admin" name="submit" value="Veure tots">
-	</form>
-
-<br>
-  <div class="scrollhori">
+            <br><br><br><br>
+  <div id="resultadohed" class="scrollhori">
   <?php
      include "tabladmin.php";
   ?> 
   </div>
+<!-- Mostrar mas !-->
+<div style="position: absolute; top: 22.5%; right:5.5%;">
+    <button id="btn_profes" class="btn_mos" onclick="Mostrar_Profesores(<?php echo $cont; ?>); return false;" value="0">Profesors i Vetlladors</button>
+<button id="btn_al" class="btn_mos" onclick="Mostrar_Alumnes(<?php echo $cont; ?>); return false;" value="0">Alumnes i Acompanyants</button>
+<button id="btn_tipus"class="btn_mos" onclick="Mostrar_Tipus(<?php echo $cont; ?>); return false;" value="0">Tipus i Ambit</button>
+</div>
   <br><br>
-   
+  
 <!-- Exportar a CSV !-->
    <form action="../services/csv_admin.php" method="POST">
   	<input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
   </form>
+ 
 
-  </div>
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>

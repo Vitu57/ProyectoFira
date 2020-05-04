@@ -1,6 +1,7 @@
 <?php
 include "../services/conexion.php";
 //Estos son los valores que tiene el filtro, si no los encuentra los pone vacios
+$cont=0;
 if(isset($_REQUEST['fecha'])){
 	$fecha=$_REQUEST['fecha'];
 }else{
@@ -26,19 +27,20 @@ if(isset($_REQUEST['profe'])){
 		<th scope='col'>Final</th>
 		<th scope='col'>Classe</th>
 		<th scope='col'>Etapa</th>
-		<th scope='col'>Acompanyants</th>
-		<th scope='col'>Alumnes</th>
-		<th scope='col'>Professor assignat</th>
-		<th scope='col'>Vetlladors</th>
-		<th scope='col'>SIEI</th>
-		<th scope='col'>Professors</th>
-		<th scope='col'>Professors Computables</th>
-		<th scope='col'>Lloc</th>
-		<th scope='col'>Tipus</th>
-		<th scope='col'>Àmbit</th>
-		<th scope='col'>Jornada</th>
-		<th scope='col'>Objectiu</th>
-		<th scope='col'>Veure mes</th>
+                <th scope='col'>Jornada</th>
+		<th id='acompanyants' style='display:none;' scope='col'>Acompanyants</th>
+		<th id='alumnes' style='display:none;' scope='col' >Alumnes</th>
+		<th id='proasignat' style='display:none;' scope='col'>Professor assignat</th>
+		<th id='vetllador' style='display:none;' scope='col'>Vetlladors</th>
+		<th id='siei' style='display:none;' scope='col'>SIEI</th>
+		<th id='profesors' style='display:none;' scope='col'>Professors</th>
+		<th id='profesors_comp' style='display:none;' scope='col'>Professors Computables</th>
+		<th id='lloc' scope='col'>Lloc</th>
+		<th id='tipus' style='display:none;' scope='col'>Tipus</th>
+		<th id='ambit' style='display:none;' scope='col'>Àmbit</th>
+		
+		<th id='objectiu' scope='col'>Objectiu</th>
+		<th scope='col'>Mostrar més</th>
 		</thead>
 		";
 	//Primero hacemos una consulta para saber las excursiones
@@ -52,35 +54,39 @@ if(isset($_REQUEST['profe'])){
 		
 		//Formamos la tabla
 		echo "<tr>
-			<td>";
+			<td style='width: 5%;'>";
 			?>
-			<a href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a><br>
+			<a title='Eliminar Sortida' href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a><br>
 			<?php  echo "
-			<a href='form_update_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-pencil-alt fa-2x' id='modificar' style='color:#3F7FBF;'></i></a>
+			<a title='Modificar Sortida' href='form_update_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-pencil-alt fa-2x' id='modificar' style='color:#3F7FBF;'></i></a><br>";
+                        ?>
+                        <a title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>' )"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
+                        <?php echo "
 			</td>
-			<td>".$exe[0]."</td>
-			<td>".$exe[11]."</td>
-			<td>".$exe[1]."</td>
-			<td>".$exe[2]."</td>
-			<td>".$exe[3]."</td>
-			<td>".$exe[4]."</td>
-			<td>".$exe[5]."</td>
-			<td>".$exe[6]."</td>
-			<td>".$exe[7]."</td>
-			<td>".$exe[8]."</td>";
+			<td style='width: 6%;'>".$exe[0]."</td>
+			<td style='width: 12%;'>".$exe[11]."</td>
+			<td style='width: 7%;'>".$exe[1]."</td>
+			<td style='width: 7%;'>".$exe[2]."</td>
+			<td style='width: 7%;'>".$exe[3]."</td>
+			<td style='width: 7%;'>".$exe[4]."</td>
+                        <td style='width: 8%;'>".$exe[15]."</td>
+			<td id='acom".$cont."' style='display:none;'>".$exe[5]."</td>
+			<td id='al".$cont."' style='display:none;'>".$exe[6]."</td>
+			<td id='profas".$cont."' style='display:none;'>".$exe[7]."</td>
+			<td id='vet".$cont."' style='display:none;'>".$exe[8]."</td>";
 			//A continuacion veremos si hay algun niño especial en esa clase
-			$csiei="select count(tbl_usuari.id_usuari) from tbl_usuari inner join tbl_clase_user ON tbl_clase_user.id_usuari=tbl_usuari.id_usuari where computable='alumne' and tbl_clase_user.id_clase='".$exe[9]."' and siei='si'";	
+			$csiei="select count(tbl_alumnes.id_alumne) from tbl_alumnes inner join tbl_clase ON tbl_clase.id_clase=tbl_alumnes.id_alumne where tbl_alumnes.id_clase='".$exe[9]."' and siei='si'";	
 			$alusiei=mysqli_query($conn,$csiei);
 			$nsiei=mysqli_fetch_array($alusiei);
 			if ($nsiei[0]==0) {
-				echo "<td>No</td>";
+				echo "<td id='siei".$cont."' style='display:none;'>No</td>";
 			}else{
-				echo "<td>".$nsiei[0]."</td>";
+				echo "<td id='siei".$cont."' style='display:none;'>".$nsiei[0]."</td>";
 			}
 			//Ahora necesitamos saber el nombre de profesores que van a venir (Profesores de las clases que van a la salida)
 			$conprof="select tbl_usuari.nom_usuari,tbl_usuari.cognom_usuari from tbl_lista_profesores inner join tbl_usuari on tbl_lista_profesores.id_profesor=tbl_usuari.id_usuari where tbl_lista_profesores.id_excursion='".$exe[10]."'";
 			$qprof=mysqli_query($conn,$conprof);
-			echo "<td>";
+			echo "<td id='prof".$cont."' style='display:none;'>";
 			while ($mprof=mysqli_fetch_array($qprof)) {
 				echo $mprof[0]." ".$mprof[1]."<br>";	
 			}
@@ -88,18 +94,17 @@ if(isset($_REQUEST['profe'])){
 			//Por ultimo, necesitamos saber que profesores de los anteriores son computables
 			$conprof="select tbl_usuari.nom_usuari,tbl_usuari.cognom_usuari from tbl_lista_profesores inner join tbl_usuari on tbl_lista_profesores.id_profesor=tbl_usuari.id_usuari where tbl_lista_profesores.id_excursion='".$exe[10]."' and tbl_usuari.computable='si'";
 			$qprof=mysqli_query($conn,$conprof);
-			echo "<td>";
+			echo "<td id='prof_comp".$cont."' style='display:none;'>";
 			while ($mprof=mysqli_fetch_array($qprof)) {
 				echo $mprof[0]." ".$mprof[1]."<br>";	
 			}
 			
-				echo "<td>".$exe[12]."</td>
-				<td>".$exe[13]."</td>
-				<td>".$exe[14]."</td>
-				<td>".$exe[15]."</td>
-				<td>".$exe[16]."</td>";
+				echo "<td id='lloc".$cont."'>".$exe[12]."</td>
+				<td id='tipus".$cont."' style='display:none;'>".$exe[13]."</td>
+				<td id='ambit".$cont."' style='display:none;'>".$exe[14]."</td>
+				<td id='obj".$cont."'>".$exe[16]."</td>";
 			?>
-			<td style="text-align: left;" class="float-left">
+			<td style="width: 5%;">
 
 				<?php
 				$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";
@@ -138,6 +143,7 @@ if(isset($_REQUEST['profe'])){
 </div>
 		<?php
 		echo "</tr>";
+                $cont++;
 	}
 	echo "</table>";
 ?>
