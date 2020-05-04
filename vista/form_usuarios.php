@@ -25,65 +25,73 @@
  <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../plugin/toastr/toastr.min.js"></script>
 
-<body class="body_design">
+<body class="body_design" onload="select_tipus_usuari();">
    <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
 <div id="usuaris" class="text-center border border-light p-5 mt-5 div_form" style="display: block;">
-<form class="text-center" action="#!">
+<form class="text-center" action="#" autocomplete="off" onsubmit="return validar_form_users();" >
 
 <p class="h4 mb-4">Afegir Usuaris</p>
 
-<div class="form-row mb-4">
+<div class="form-row mb-1">
     <div class="col">
-        <!-- First name -->
-        <input type="text" id="Nombreusu" class="form-control" placeholder="Nom">
+        <!-- Nombre-->
+        <input type="text" id="nombreusu" class="form-control" placeholder="Nom *" autocomplete="off">
     </div>
     <div class="col">
-        <!-- Last name -->
-        <input type="text" id="apellidosusu" class="form-control" placeholder="Cognoms">
+        <!-- Apellidos -->
+        <input type="text" id="apellidosusu" class="form-control mb-4" placeholder="Cognoms *" autocomplete="off">
+        <small id="numapellidos" class="form-text text-danger d-none">
+    Has de posar 2 cognoms com a máxim.
+  </small>
     </div>
+    
 </div>
 
-<!-- E-mail -->
+<!-- E-mail/user -->
 <div class="form-row mb-1">
   <div class="col">
-    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <input type="text" id="mailusu" class="form-control mb-4" placeholder="Usuari *" autocomplete="off">
+    <small id="usuarioexistente" class="form-text text-danger d-none">
+    Aquest usuari ja existeix.
+  </small>
   </div>
-<!-- Password -->
+<!-- Tipo usuario -->
+<div class="col d-none" id="divclass">
+    <select class="browser-default custom-select mb-2" id="selectclass">
+    </select>
+  </div>
 <div class="col">
-    <select class="browser-default custom-select mb-2">
-        <option value="" selected disabled>Tipus Usuari</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+    <select class="browser-default custom-select mb-2" id="tipususu">
     </select>
   </div>
 </div>
 
 <div class="form-row">
+<!-- Contraseña -->
+
   <div class="col">
-  <input type="password" id="passwd1" class="form-control" placeholder="Contrasenya" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+  <input type="password" id="passwd1" class="form-control" placeholder="Contrasenya *" aria-describedby="defaultRegisterFormPasswordHelpBlock" autocomplete="off">
   <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
     Com a mínim 4 dígits.
   </small>
   </div>
-<!-- Password -->
+<!-- Confirmación Contraseña -->
 <div class="col">
-<input type="password" id="passwd2" class="form-control" placeholder="Repeteix Contrasenya" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-
+<input type="password" id="passwd2" class="form-control" placeholder="Repeteix Contrasenya *" aria-describedby="defaultRegisterFormPasswordHelpBlock" autocomplete="off">
+<small id="passdiferente" class="form-text mb-4 text-danger d-none">
+    La contrasenya no es la mateixa.
+  </small>
   </div>
 </div>
-
-
 
 <div class="form-row mb-3>">
 <!-- Siei si o no-->
   <div class="col">
-  <label>Preparació Alumnes SIEI</label>
+  <label>Preparació Alumnes SIEI/Alumne SIEI</label>
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" id="sieiusu" value="1">
       <span class="slider round"></span>
     </label>
   </div>
@@ -91,17 +99,18 @@
   <div class="col">
   <label>Professor Computable</label>
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" id="computableusu" value="1">
       <span class="slider round"></span>
     </label>
   </div>
 </div>
+<input type="hidden" value="ok" id="okusuario"/>
 <!-- Sign up button -->
 <button class="btn btn-info mt-4 btn-block" type="submit">Afegir</button>
 </form>
 <!-- Default form register -->
 </div>
-  <script type="text/javascript" src="../js/codigo.js"></script>
+  <script type="text/javascript" src="../js/codigo2.js"></script>
 <div class="footer page-footer">
   <img src="../images/logo_fje.svg">
 </div>
