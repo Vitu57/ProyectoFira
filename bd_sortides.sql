@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2020 a las 19:32:58
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.3
+-- Tiempo de generación: 05-05-2020 a las 21:02:04
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -69,7 +69,11 @@ CREATE TABLE `tbl_alumnes` (
 --
 
 INSERT INTO `tbl_alumnes` (`id_alumne`, `nom_alumne`, `cognom1_alumne`, `cognom2_alumne`, `id_clase`, `siei`) VALUES
-(1, 'Alumnop3', 'EnBuena', 'BD', 1, 'si');
+(1, 'Alumnop3', 'EnBuena', 'BD', 1, 'si'),
+(7, 'AlumneX', 'CognomX', '-', 6, 'si'),
+(8, 'Alumne Y ', 'Cognom1', 'Cognom2', 10, 'no'),
+(10, 'Jordi', 'Evole', 'Garcia', 3, 'no'),
+(12, 'Alejandro', 'Martinez', 'Garcia', 3, 'no');
 
 -- --------------------------------------------------------
 
@@ -230,6 +234,29 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nom_etapa`) VALUES
 (6, 'CFGM'),
 (7, 'CFGS'),
 (8, 'PERSONAL');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_galeria`
+--
+
+CREATE TABLE `tbl_galeria` (
+  `id_galeria` int(11) NOT NULL,
+  `nom_imatge` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `desc_imatge` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `img_path` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `id_sortida` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_galeria`
+--
+
+INSERT INTO `tbl_galeria` (`id_galeria`, `nom_imatge`, `desc_imatge`, `img_path`, `id_sortida`) VALUES
+(89, 'asdasdasdasd', '', 'exc_Mobile_Congress/17092017-DSC08285.jpg', 26),
+(90, 'sdfsdfgsdfg', '', 'exc_Mobile_Congress/tour-cusco-y-machu-picchu-en-tren-4-dias-pisac.jpg', 26),
+(91, 'salida x', '', 'exc_Mobile_Congress/machu-picchu-2.jpg', 26);
 
 -- --------------------------------------------------------
 
@@ -432,7 +459,8 @@ INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `c
 (28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'no', 'si', 21, 2),
 (29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'no', 'no', 21, 2),
 (30, 'Ap3', '81dc9bdb52d04dc20036dbd8313ed055', 'up3', 'cgnm', 'si', 'alumne', 1, 7),
-(31, 'AP4', '81dc9bdb52d04dc20036dbd8313ed055', 'up4', 'cgnm', 'no', 'alumne', 2, 7);
+(31, 'AP4', '81dc9bdb52d04dc20036dbd8313ed055', 'up4', 'cgnm', 'no', 'alumne', 2, 7),
+(44, 'mgarrido', '81dc9bdb52d04dc20036dbd8313ed055', 'marta', 'garrido', 'no', 'si', 3, 2);
 
 --
 -- Índices para tablas volcadas
@@ -487,6 +515,13 @@ ALTER TABLE `tbl_contacte_activitat`
 --
 ALTER TABLE `tbl_etapa`
   ADD PRIMARY KEY (`id_etapa`);
+
+--
+-- Indices de la tabla `tbl_galeria`
+--
+ALTER TABLE `tbl_galeria`
+  ADD PRIMARY KEY (`id_galeria`),
+  ADD KEY `id_sortida` (`id_sortida`);
 
 --
 -- Indices de la tabla `tbl_lista_profesores`
@@ -552,7 +587,7 @@ ALTER TABLE `tbl_activitat`
 -- AUTO_INCREMENT de la tabla `tbl_alumnes`
 --
 ALTER TABLE `tbl_alumnes`
-  MODIFY `id_alumne` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_alumne` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_asistencia`
@@ -583,6 +618,12 @@ ALTER TABLE `tbl_contacte_activitat`
 --
 ALTER TABLE `tbl_etapa`
   MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_galeria`
+--
+ALTER TABLE `tbl_galeria`
+  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
@@ -624,7 +665,7 @@ ALTER TABLE `tbl_transport`
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Restricciones para tablas volcadas
@@ -662,6 +703,12 @@ ALTER TABLE `tbl_clase`
 ALTER TABLE `tbl_clase_user`
   ADD CONSTRAINT `tbl_clase_user_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `tbl_usuari` (`id_usuari`),
   ADD CONSTRAINT `tbl_clase_user_ibfk_2` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`);
+
+--
+-- Filtros para la tabla `tbl_galeria`
+--
+ALTER TABLE `tbl_galeria`
+  ADD CONSTRAINT `tbl_galeria_ibfk_1` FOREIGN KEY (`id_sortida`) REFERENCES `tbl_sortida` (`id_sortida`);
 
 --
 -- Filtros para la tabla `tbl_lista_profesores`
