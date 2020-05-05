@@ -36,11 +36,11 @@ if (isset($_REQUEST['error'])) {
   <table  class="table table-bordered" style="text-align:center"><thead>
   <tr>
 
-   <th scope='col'>Profesors</th>
+   <th scope='col'>Professors</th>
    <th scope="col">Etapes</th>
    <th scope="col">Clases</th>
-   <th scope='col'>Afegir clase a profesor</th>
-   <th scope='col'>Eliminar clase de profesor</th>
+   <th scope='col'>Afegir clase a professor</th>
+   <th scope='col'>Eliminar clase de professor</th>
 
   </tr>
 

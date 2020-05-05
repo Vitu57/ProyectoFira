@@ -1,8 +1,8 @@
 <?php
 //Si la sesión está iniciada redirigirá al home
 session_start();
-if(isset($_SESSION['id'])){
-    header("Location: home.php");
+if(isset($_SESSION['id_pares'])){
+    header("Location: home_pares.php");
 }
 ?>
 
@@ -38,7 +38,7 @@ if(isset($_SESSION['id'])){
     <!-- Formulario login -->
 
    
-    <form action="../services/index.proc.php" method="POST" onsubmit="return validar_login();">
+    <form action="../services/index_pares.proc.php" method="POST" onsubmit="return validar_login();">
       <input type="text" id="username" class="fadeIn second" placeholder="Usuari" name="username" value="<?php 
       if (isset($_REQUEST['us'])) {
           $user=$_REQUEST['us'];

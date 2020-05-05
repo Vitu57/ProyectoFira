@@ -22,6 +22,7 @@ include "../services/header.php";
 
 //Pasamos el id del usuario desde el login
 $id=$_SESSION['id'];
+$cont_visitas=$_SESSION['cont_visitas'];
 
 //consulta para saber los datos del usuario logeado y el tipo
 $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
@@ -30,9 +31,7 @@ $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id
         $nom=$casos['nom_usuari'];
         $cognom=$casos['cognom_usuari'];  
         $tipus_user=$casos['id_tipus_usuari'];
-        $nom_tipus=$casos['nom_tipus']; 
-        $cont_visitas=$casos['cont_visitas'];
-
+        $nom_tipus=$casos['nom_tipus'];         
 
 //Comprueba si es la primera vez que entra el usuario
 if ($cont_visitas==1) {

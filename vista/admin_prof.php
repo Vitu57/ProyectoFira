@@ -77,7 +77,7 @@ include "../vista/header_vista.php";
 
 ?>
 
-<h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Administració Profesors</h1>
+<h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Administració Professors</h1>
 
 <div class="tablas" style="background-color: rgba(255,255,255,1); border-radius: 15px;">
 	<div style="padding: 3%">
