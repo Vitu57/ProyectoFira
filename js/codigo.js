@@ -19,7 +19,13 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-
+function exist(campo){
+    if (campo == null || typeof campo == 'undefined' ){
+        return "hola";
+    }else{
+        return "adios";
+    }
+}
 function select_etapa() {
     /*código a implementar*/
     var etapa = document.getElementById("etapa");
@@ -228,64 +234,74 @@ function select_professor(profesor) {
 
     }
 
+    //----------------Sortida----------------------
+    var codi_sortida = document.getElementById('codi_sortida');
+    var inici_sortida = document.getElementById('inici_sortida');
+    var final_sortida = document.getElementById('final_sortida');
+    var num_alumnes = document.getElementById('num_alumnes');
+    var prof_asignat = document.getElementById('professor_asignat');
+    var num_vetlladors = document.getElementById('num_vetlladors');
+    var num_acomp = document.getElementById('num_acomp');
+    var prof_apart = document.getElementById('prof_apart');
+    var comentaris_sort = document.getElementById('comentaris_sort');
+    //----------------Activitat----------------------
+    var nom_activitat = document.getElementById('nom_activitat');
+    var lloc_activitat = document.getElementById('lloc_activitat');
+    var tipus_activitat = document.getElementById('tipus_activitat');
+    var ambit_activitat = document.getElementById('ambit_activitat');
+    var jornada_activitat = document.getElementById('jornada_activitat');
+    var comentaris_objectiu = document.getElementById('comentaris_objectiu');
+    var pers_contacte = document.getElementById('pers_contacte');
+    var tlf_contacte = document.getElementById('tlf_contacte');
+    var web_contacte = document.getElementById('web_contacte');
+    var email_contacte = document.getElementById('email_contacte');
+    //----------------Transport----------------------
+    var hora_sortida = document.getElementById('hora_sortida');
+    var hora_arribada = document.getElementById('hora_arribada');
+    var tipus_transport = document.getElementById('tipus_transport');
+    var cost_transport = document.getElementById('cost_transport');
+    var codi_contacte = document.getElementById('codi_contacte');
+    var comentaris_transport = document.getElementById('comentaris_transport');
+    //----------------Costos----------------------
+    var cost_substitucio = document.getElementById('cost_substitucio');
+    var cost_act_ind = document.getElementById('cost_act_ind');
+    var cost_ext_act_prof = document.getElementById('cost_ext_act_prof');
+    var cost_glob_act = document.getElementById('cost_glob_act');
+    var cost_final = document.getElementById('cost_final');
+    var preu_fixe = document.getElementById('preu_fixe');
+    var preu_sense_topal = document.getElementById('preu_sense_topal');
+    var preu_amb_topal = document.getElementById('preu_amb_topal');
+    var preu_gestio = document.getElementById('preu_gestio');
+    var overhead = document.getElementById('overhead');
+    var total_facturar = document.getElementById('total_facturar');
+    var pagament_fraccionat = document.getElementById('fraccionat');
+    var observacions_fraccionat = document.getElementById('observacions_costos');
+
     function insert_excursion() {
-        //----------------Sortida----------------------
-        var codi_sortida = document.getElementById('codi_sortida').value;
-        var inici_sortida = document.getElementById('inici_sortida').value;
-        var final_sortida = document.getElementById('final_sortida').value;
-        var curs = document.getElementById('curs').value;
-        var num_alumnes = document.getElementById('num_alumnes').value;
         var lista = document.querySelectorAll('#lista_prof option:checked');
-        var profes = Array.from(lista).map(el => el.value)
-        var prof_asignat = document.getElementById('professor_asignat').value;
-        var num_vetlladors = document.getElementById('num_vetlladors').value;
-        var num_acomp = document.getElementById('num_acomp').value;
-        var prof_apart = document.getElementById('prof_apart').value;
-        var comentaris_sort = document.getElementById('comentaris_sort').value;
-        //----------------Activitat----------------------
-        var nom_activitat = document.getElementById('nom_activitat').value;
-        var lloc_activitat = document.getElementById('lloc_activitat').value;
-        var tipus_activitat = document.getElementById('tipus_activitat').value;
-        var ambit_activitat = document.getElementById('ambit_activitat').value;
-        var jornada_activitat = document.getElementById('jornada_activitat').value;
-        var comentaris_objectiu = document.getElementById('comentaris_objectiu').value;
-        var pers_contacte = document.getElementById('pers_contacte').value;
-        var tlf_contacte = document.getElementById('tlf_contacte').value;
-        var web_contacte = document.getElementById('web_contacte').value;
-        var email_contacte = document.getElementById('email_contacte').value;
-        //----------------Transport----------------------
-        var hora_sortida = document.getElementById('hora_sortida').value;
-        var hora_arribada = document.getElementById('hora_arribada').value;
-        var tipus_transport = document.getElementById('tipus_transport').value;
-        var cost_transport = document.getElementById('cost_transport').value;
-        var codi_contacte = document.getElementById('codi_contacte').value;
-        var comentaris_transport = document.getElementById('comentaris_transport').value;
-        //----------------Costos----------------------
-        var cost_substitucio = document.getElementById('cost_substitucio').value;
-        var cost_act_ind = document.getElementById('cost_act_ind').value;
-        var cost_ext_act_prof = document.getElementById('cost_ext_act_prof').value;
-        var cost_glob_act = document.getElementById('cost_glob_act').value;
-        var cost_final = document.getElementById('cost_final').value;
-        var preu_fixe = document.getElementById('preu_fixe').value;
-        var preu_sense_topal = document.getElementById('preu_sense_topal').value;
-        var preu_amb_topal = document.getElementById('preu_amb_topal').value;
-        var preu_gestio = document.getElementById('preu_gestio').value;
-        var overhead = document.getElementById('overhead').value;
-        var total_facturar = document.getElementById('total_facturar').value;
-        var pagament_fraccionat = document.getElementById('fraccionat').value;
-        var observacions_fraccionat = document.getElementById('observacions_costos').value;
+        var curso = document.getElementById('curs').value;
+        var profes = Array.from(lista).map(el => el.value) 
         var ajax3 = objetoAjax();
         ajax3.open("POST", "../services/insert_form_sortides.php", true);
         ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        ajax3.send("persona_contacte=" + pers_contacte + "&tlf_contacte=" + tlf_contacte + "&web_contacte=" + web_contacte + "&email_contacte=" + email_contacte +
-            "&cost_substitucio=" + cost_substitucio + "&cost_act_ind=" + cost_act_ind + "&cost_ext_act_prof=" + cost_ext_act_prof + "&cost_glob_act=" + cost_glob_act + "&cost_final=" + cost_final +
-            "&preu_fixe=" + preu_fixe + "&preu_sense_topal=" + preu_sense_topal + "&preu_amb_topal=" + preu_amb_topal + "&preu_gestio=" + preu_gestio + "&overhead=" + overhead +
-            "&total_facturar=" + total_facturar + "&pagament_fraccionat=" + pagament_fraccionat + "&observacions_fraccionat=" + observacions_fraccionat + "&hora_sortida=" + hora_sortida + "&hora_arribada=" + hora_arribada +
-            "&tipus_transport=" + tipus_transport + "&cost_transport=" + cost_transport + "&codi_contacte=" + codi_contacte + "&comentaris_transport=" + comentaris_transport +
-            "&codi_sortida=" + codi_sortida + "&inici_sortida=" + inici_sortida + "&final_sortida=" + final_sortida + "&id_clase=" + curs + "&num_alumnes=" + num_alumnes +
-            "&prof_asignat=" + prof_asignat + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors + "&num_acomp=" + num_acomp + "&prof_apart=" + prof_apart +
-            "&comentaris_sort=" + comentaris_sort + "&nom_activitat=" + nom_activitat + "&lloc_activitat=" + lloc_activitat + "&tipus_activitat=" + tipus_activitat + "&ambit_activitat=" + ambit_activitat +
-            "&jornada_activitat=" + jornada_activitat + "&objectiu_activitat=" + comentaris_objectiu);
+        ajax3.send("persona_contacte=" + pers_contacte.value + "&tlf_contacte=" + tlf_contacte.value + "&web_contacte=" + web_contacte.value + "&email_contacte=" + email_contacte.value +
+            "&cost_substitucio=" + cost_substitucio.value + "&cost_act_ind=" + cost_act_ind.value + "&cost_ext_act_prof=" + cost_ext_act_prof.value + "&cost_glob_act=" + cost_glob_act.value + "&cost_final=" + cost_final.value +
+            "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
+            "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
+            "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
+            "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curso + "&num_alumnes=" + num_alumnes.value +
+            "&prof_asignat=" + prof_asignat.value + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
+            "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
+            "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
+        console.log("persona_contacte=" + pers_contacte.value + "&tlf_contacte=" + tlf_contacte.value + "&web_contacte=" + web_contacte.value + "&email_contacte=" + email_contacte.value +
+        "&cost_substitucio=" + cost_substitucio.value + "&cost_act_ind=" + cost_act_ind.value + "&cost_ext_act_prof=" + cost_ext_act_prof.value + "&cost_glob_act=" + cost_glob_act.value + "&cost_final=" + cost_final.value +
+        "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
+        "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
+        "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
+        "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curso + "&num_alumnes=" + num_alumnes.value +
+        "&prof_asignat=" + prof_asignat.value + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
+        "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
+        "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value)
 
         ajax3.onreadystatechange = function () {
             if (ajax3.readyState == 4 && ajax3.status == 200) {
@@ -302,51 +318,9 @@ function select_professor(profesor) {
     }
 
     function update() {
-        alert("update");
-        var codi_sortida = document.getElementById('codi_sortida');
-        var inici_sortida = document.getElementById('inici_sortida');
-        var final_sortida = document.getElementById('final_sortida');
-        var curs = document.getElementById('curs');
-        var num_alumnes = document.getElementById('num_alumnes');
         var lista = document.querySelectorAll('#lista_prof option:checked');
-        var profes = Array.from(lista).map(el => el.value)
-        var prof_asignat = document.getElementById('professor_asignat');
-        var num_vetlladors = document.getElementById('num_vetlladors');
-        var num_acomp = document.getElementById('num_acomp');
-        var prof_apart = document.getElementById('prof_apart');
-        var comentaris_sort = document.getElementById('comentaris_sort');
-        //----------------Activitat----------------------
-        var nom_activitat = document.getElementById('nom_activitat');
-        var lloc_activitat = document.getElementById('lloc_activitat');
-        var tipus_activitat = document.getElementById('tipus_activitat');
-        var ambit_activitat = document.getElementById('ambit_activitat');
-        var jornada_activitat = document.getElementById('jornada_activitat');
-        var comentaris_objectiu = document.getElementById('comentaris_objectiu');
-        var pers_contacte = document.getElementById('pers_contacte');
-        var tlf_contacte = document.getElementById('tlf_contacte');
-        var web_contacte = document.getElementById('web_contacte');
-        var email_contacte = document.getElementById('email_contacte');
-        //----------------Transport----------------------
-        var hora_sortida = document.getElementById('hora_sortida');
-        var hora_arribada = document.getElementById('hora_arribada');
-        var tipus_transport = document.getElementById('tipus_transport');
-        var cost_transport = document.getElementById('cost_transport');
-        var codi_contacte = document.getElementById('codi_contacte');
-        var comentaris_transport = document.getElementById('comentaris_transport');
-        //----------------Costos----------------------
-        var cost_substitucio = document.getElementById('cost_substitucio');
-        var cost_act_ind = document.getElementById('cost_act_ind');
-        var cost_ext_act_prof = document.getElementById('cost_ext_act_prof');
-        var cost_glob_act = document.getElementById('cost_glob_act');
-        var cost_final = document.getElementById('cost_final');
-        var preu_fixe = document.getElementById('preu_fixe');
-        var preu_sense_topal = document.getElementById('preu_sense_topal');
-        var preu_amb_topal = document.getElementById('preu_amb_topal');
-        var preu_gestio = document.getElementById('preu_gestio');
-        var overhead = document.getElementById('overhead');
-        var total_facturar = document.getElementById('total_facturar');
-        var pagament_fraccionat = document.getElementById('fraccionat');
-        var observacions_fraccionat = document.getElementById('observacions_costos');
+        var curso = document.getElementById('curs').value;
+        var profes = Array.from(lista).map(el => el.value) 
         var ajax3 = objetoAjax();
         ajax3.open("POST", "../services/update_form_sortida.php", true);
         ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -355,20 +329,20 @@ function select_professor(profesor) {
             "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
             "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
             "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
-            "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curs.value + "&num_alumnes=" + num_alumnes.value +
+            "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curso + "&num_alumnes=" + num_alumnes.value +
             "&prof_asignat=" + prof_asignat.value + "&id_sortida=" + id_sortida + "&id_del_prof=" + id_sort_prof + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
             "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
             "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
         console.log("id_activitat=" + id_activitat + "&id_contacte_activitat=" + id_contacte_activitat + "&persona_contacte=" + pers_contacte.value + "&tlf_contacte=" + tlf_contacte.value + "&web_contacte=" + web_contacte.value + "&email_contacte=" + email_contacte.value +
-            "&id_preus=" + id_preus + "&cost_substitucio=" + cost_substitucio.value + "&cost_act_ind=" + cost_act_ind.value + "&cost_ext_act_prof=" + cost_ext_act_prof.value + "&cost_glob_act=" + cost_glob_act.value + "&cost_final=" + cost_final.value +
-            "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
-            "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
-            "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
-            "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curs.value + "&num_alumnes=" + num_alumnes.value +
-            "&prof_asignat=" + prof_asignat.value + "&id_sortida" + id_sortida + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
-            "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
-            "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
-
+        "&id_preus=" + id_preus + "&cost_substitucio=" + cost_substitucio.value + "&cost_act_ind=" + cost_act_ind.value + "&cost_ext_act_prof=" + cost_ext_act_prof.value + "&cost_glob_act=" + cost_glob_act.value + "&cost_final=" + cost_final.value +
+        "&preu_fixe=" + preu_fixe.value + "&preu_sense_topal=" + preu_sense_topal.value + "&preu_amb_topal=" + preu_amb_topal.value + "&preu_gestio=" + preu_gestio.value + "&overhead=" + overhead.value +
+        "&total_facturar=" + total_facturar.value + "&pagament_fraccionat=" + pagament_fraccionat.value + "&observacions_fraccionat=" + observacions_fraccionat.value + "&hora_sortida=" + hora_sortida.value + "&hora_arribada=" + hora_arribada.value +
+        "&tipus_transport=" + tipus_transport.value + "&cost_transport=" + cost_transport.value + "&codi_contacte=" + codi_contacte.value + "&comentaris_transport=" + comentaris_transport.value +
+        "&codi_sortida=" + codi_sortida.value + "&inici_sortida=" + inici_sortida.value + "&final_sortida=" + final_sortida.value + "&id_clase=" + curso + "&num_alumnes=" + num_alumnes.value +
+        "&prof_asignat=" + prof_asignat.value + "&id_sortida=" + id_sortida + "&id_del_prof=" + id_sort_prof + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
+        "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
+        "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
+        
     }
 
 
@@ -392,51 +366,6 @@ function select_professor(profesor) {
     var id_sort_prof;
 
     function mostrar_excursion() {
-        //----------------Sortida----------------------
-        var codi_sortida = document.getElementById('codi_sortida');
-        var inici_sortida = document.getElementById('inici_sortida');
-        var final_sortida = document.getElementById('final_sortida');
-        var etapa = document.getElementById('etapa');
-        var curs = document.getElementById('curs');
-        var num_alumnes = document.getElementById('num_alumnes');
-        var lista = document.getElementById('lista_prof');
-        var prof_asignat = document.getElementById('professor_asignat');
-        var num_vetlladors = document.getElementById('num_vetlladors');
-        var num_acomp = document.getElementById('num_acomp');
-        var prof_apart = document.getElementById('prof_apart');
-        var comentaris_sort = document.getElementById('comentaris_sort');
-        //----------------Activitat----------------------
-        var nom_activitat = document.getElementById('nom_activitat');
-        var lloc_activitat = document.getElementById('lloc_activitat');
-        var tipus_activitat = document.getElementById('tipus_activitat');
-        var ambit_activitat = document.getElementById('ambit_activitat');
-        var jornada_activitat = document.getElementById('jornada_activitat');
-        var comentaris_objectiu = document.getElementById('comentaris_objectiu');
-        var pers_contacte = document.getElementById('pers_contacte');
-        var tlf_contacte = document.getElementById('tlf_contacte');
-        var web_contacte = document.getElementById('web_contacte');
-        var email_contacte = document.getElementById('email_contacte');
-        //----------------Transport----------------------
-        var hora_sortida = document.getElementById('hora_sortida');
-        var hora_arribada = document.getElementById('hora_arribada');
-        var tipus_transport = document.getElementById('tipus_transport');
-        var cost_transport = document.getElementById('cost_transport');
-        var codi_contacte = document.getElementById('codi_contacte');
-        var comentaris_transport = document.getElementById('comentaris_transport');
-        //----------------Costos----------------------
-        var cost_substitucio = document.getElementById('cost_substitucio');
-        var cost_act_ind = document.getElementById('cost_act_ind');
-        var cost_ext_act_prof = document.getElementById('cost_ext_act_prof');
-        var cost_glob_act = document.getElementById('cost_glob_act');
-        var cost_final = document.getElementById('cost_final');
-        var preu_fixe = document.getElementById('preu_fixe');
-        var preu_sense_topal = document.getElementById('preu_sense_topal');
-        var preu_amb_topal = document.getElementById('preu_amb_topal');
-        var preu_gestio = document.getElementById('preu_gestio');
-        var overhead = document.getElementById('overhead');
-        var total_facturar = document.getElementById('total_facturar');
-        var pagament_fraccionat = document.getElementById('fraccionat');
-        var observacions_fraccionat = document.getElementById('observacions_costos');
         var ajax3 = objetoAjax();
         ajax3.open("POST", "../services/consulta_form_sortides.php", true);
         ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -518,28 +447,6 @@ function select_professor(profesor) {
 
         }
     }
-
-
-function openTab(evt, tabName, idform) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
 
   //Muestra las paginas del formulario
   function MostrarActivitat(){
@@ -699,6 +606,27 @@ function openTab(evt, tabName, idform) {
 
   function mensaje_insert_ok(){
     toastr["success"]("Ja pots visualitzar la excursió en el apartat corresponent.", "Agregat correctament!")
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+               "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+}
+  }
+  function mensaje_insert_ok_2(){
+    toastr["success"]("Actualitzat correctament!")
 
         toastr.options = {
             "closeButton": false,
