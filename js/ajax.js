@@ -1207,3 +1207,66 @@ function recuperar_pass(id){
 }
 }
 }
+function cambiarClase(){
+    var alumno=document.getElementById('nombrealumno').value;
+    var clase=document.getElementById('clases2').value;
+    
+     if(alumno=="" && clase==""){
+        document.getElementById("nombrealumno").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="red";
+    }else if (alumno=="") {
+        document.getElementById("nombrealumno").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="#ced4da";
+    }else if (clase=="") {
+        document.getElementById("clases2").style.borderColor="red";
+        document.getElementById("nombrealumno").style.borderColor="#ced4da";
+    }else{
+         document.getElementById("nombrealumno").style.borderColor="#ced4da";
+         document.getElementById("clases2").style.borderColor="#ced4da";
+        
+        ajax=objetoAjax();
+        ajax.open('POST', '../services/cambiar_clase.proc.php', true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.send("id_alumno="+alumno+"&id_clase="+clase);
+
+        // Definimos la función que se ejecutará cuando cambie la propiedad readyState
+        ajax.onreadystatechange=function() {
+            if (ajax.readyState==4) {
+                mostraralumnos();
+                document.getElementById('mensaje').innerHTML = "Se ha cambiado de clase al alumno";
+                
+            }else{
+                document.getElementById('mensaje').innerHTML = "Ha ocurrido un error";
+            }
+        }
+    }
+}
+function eliminarAlumno(){
+    var alumno=document.getElementById('nombrealumno').value;
+    
+    
+    
+    if (alumno=="") {
+        document.getElementById("nombrealumno").style.borderColor="red";
+       
+    
+    }else{
+         document.getElementById("nombrealumno").style.borderColor="#ced4da";
+        
+        
+        ajax=objetoAjax();
+        ajax.open('POST', '../services/eliminar_alumno.proc.php', true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.send("id_alumno="+alumno);
+
+        // Definimos la función que se ejecutará cuando cambie la propiedad readyState
+        ajax.onreadystatechange=function() {
+            if (ajax.readyState==4) {
+                mostraralumnos();
+                document.getElementById('mensaje').innerHTML = "Se ha eliminado el alumno correctamente";
+            }else{
+                document.getElementById('mensaje').innerHTML = "Ha ocurrido un error";
+            }
+        }
+    }
+}
