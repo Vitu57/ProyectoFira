@@ -8,9 +8,15 @@ if (isset($_REQUEST['email'])) {
 }
 
 //consulta para saber el email del padre
-$consulta="SELECT usuari, nom_usuari, cognom_usuari, id_usuari FROM tbl_usuari WHERE usuari='$email'";
+$consulta="SELECT usuari, nom_usuari, cognom_usuari, id_usuari FROM tbl_usuari WHERE usuari= ? ";
 
-  $exe=mysqli_query($conn,$consulta);    
+
+if ($stmt = mysqli_prepare($conn, $consulta)){
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            $exe = mysqli_stmt_get_result($stmt);
+
+            
 
 if (mysqli_num_rows($exe)!=0){
 
@@ -57,6 +63,9 @@ mail($to, $subject, $message, implode("\r\n", $headers));
 
   echo "<h3>S'ha enviat l'adreça per fer el canvi de clau al vostre correu electrònic.</h3><br>";
 
+$row_cnt = mysqli_num_rows($exe);
+
+
 }else{
 	?>
 <form action="#" onsubmit="recuperar_password(); return false" method="post">
@@ -66,5 +75,8 @@ mail($to, $subject, $message, implode("\r\n", $headers));
 </form>
 
 <?php
-}     
+} 
+}else{
+  echo "Error en la consulta";
+}   
 ?>

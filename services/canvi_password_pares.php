@@ -10,9 +10,12 @@ if (isset($_REQUEST['dni'])) {
 }
 
 //consulta para saber si es el padre correcto
-$consulta="SELECT email_pares, nom_pares, cognoms_pares FROM tbl_pares WHERE usuari_pares='$dni' AND id_pares='$id'";
+$consulta="SELECT email_pares, nom_pares, cognoms_pares FROM tbl_pares WHERE usuari_pares=? AND id_pares=?";
 
-  $exe=mysqli_query($conn,$consulta);    
+if ($stmt = mysqli_prepare($conn, $consulta)){
+            mysqli_stmt_bind_param($stmt, "ss", $dni, $id);
+            mysqli_stmt_execute($stmt);
+            $exe = mysqli_stmt_get_result($stmt);   
 
 if (mysqli_num_rows($exe)!=0){
 
@@ -75,17 +78,19 @@ mail($to, $subject, $message, implode("\r\n", $headers));
 
 }else{
 	?>
-   <h4 style="color: white;"> El DNI introduït no correspon amb el teu usuari, proba de nou<h4>
-<form action="#" onsubmit="canvi_password_pares(<?php echo $id; ?>); return false" method="post">
-  <h3 style="color: white;">DNI</h3>
-  <input type="text" id="dni" name="dni"><br>
-    <h3 style="color: white;">Nova clau</h3>
-  <input type="pass1" id="pass1" name="pass1"><br>
-    <h3 style="color: white;">Confirmar nova clau</h3>
-  <input type="pass2" id="pass2" name="pass2"><br>
-  <input type="submit" name="enviar">
+   <h4 style="color: red"> El DNI introduït no correspon amb el teu usuari, proba de nou<h4><br>
+<form action="#" onsubmit="recuperar_pass_pares(<?php echo $id; ?>); return false" method="post">
+  <h5>DNI</h5>
+  <input type="text" id="dni" name="dni"><br><br>
+    <h5>Nova clau</h5>
+  <input type="password" id="pass1" name="pass1"><br><br>
+    <h5>Confirmar nova clau</h5>
+  <input type="password" id="pass2" name="pass2"><br><br>
+  <input type="submit" class="btn btn-lg btn-par" name="enviar">
 </form>
-
 <?php
-}     
+}    
+}else{
+  echo "Error en la consulta";
+}    
 ?>

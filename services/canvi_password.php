@@ -10,9 +10,13 @@ if (isset($_REQUEST['email'])) {
 }
 
 //consulta para saber si es el padre correcto
-$consulta="SELECT usuari, nom_usuari, cognom_usuari FROM tbl_usuari WHERE usuari='$email' AND id_usuari='$id'";
+$consulta="SELECT usuari, nom_usuari, cognom_usuari FROM tbl_usuari WHERE usuari=? AND id_usuari=?";
 
-  $exe=mysqli_query($conn,$consulta);    
+
+if ($stmt = mysqli_prepare($conn, $consulta)){
+            mysqli_stmt_bind_param($stmt, "ss", $email, $id);
+            mysqli_stmt_execute($stmt);
+            $exe = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($exe)!=0){
 
@@ -87,5 +91,8 @@ mail($to, $subject, $message, implode("\r\n", $headers));
 </form>
 
 <?php
-}     
+}  
+}else{
+  echo "Error en la consulta";
+}   
 ?>

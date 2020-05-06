@@ -8,9 +8,13 @@ if (isset($_REQUEST['dni'])) {
 }
 
 //consulta para saber el email del padre
-$consulta="SELECT email_pares, nom_pares, cognoms_pares, id_pares FROM tbl_pares WHERE usuari_pares='$dni'";
+$consulta="SELECT email_pares, nom_pares, cognoms_pares, id_pares FROM tbl_pares WHERE usuari_pares=?";
 
-  $exe=mysqli_query($conn,$consulta);    
+
+if ($stmt = mysqli_prepare($conn, $consulta)){
+            mysqli_stmt_bind_param($stmt, "s", $dni);
+            mysqli_stmt_execute($stmt);
+            $exe = mysqli_stmt_get_result($stmt);  
 
 if (mysqli_num_rows($exe)!=0){
 
@@ -66,5 +70,8 @@ mail($to, $subject, $message, implode("\r\n", $headers));
 </form>
 
 <?php
-}     
+}    
+}else{
+  echo "Error en la consulta";
+} 
 ?>
