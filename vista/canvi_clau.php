@@ -30,13 +30,13 @@ $id=$_REQUEST['q4t5ywt62g'];
 <div id="mensaje_pass" class="mensaje_pass">
   <h4 style="margin-top: -4%; float: center;">Introdueix les dades en el formulari per actualitzar la clau.</h4><br>
  <div id="mensaje" style="color: red; margin-bottom: 5%;"></div>
-<form action="#" onsubmit="recuperar_pass_pares(<?php echo $id; ?>); return false" method="post">
-  <h5>DNI</h5>
-  <input type="text" id="dni" name="dni"><br><br>
+<form action="#" onsubmit="recuperar_pass(<?php echo $id; ?>); return false" method="post">
+  <h5>Email</h5>
+  <input type="email" class="email_style" id="email" name="email"><br><br>
     <h5>Nova clau</h5>
-  <input type="password" id="pass1" name="pass1"><br><br>
+  <input type="password" class="email_style" id="pass1" name="pass1"><br><br>
     <h5>Confirmar nova clau</h5>
-  <input type="password" id="pass2" name="pass2"><br><br>
+  <input type="password" class="email_style" id="pass2" name="pass2"><br><br>
   <input type="submit" class="btn btn-lg btn-par" name="enviar">
 </form>
 </div>

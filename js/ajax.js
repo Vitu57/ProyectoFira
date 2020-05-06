@@ -1102,6 +1102,25 @@ function recuperar_password_pares(){
     }
 }
 
+function recuperar_password(){
+     divResultado = document.getElementById('mensaje_pass');
+     var email = document.getElementById("email").value;
+  divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/recuperar_password.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("email="+email);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
 
 //Cambiar contraseña padres
 function canvi_password_pares(id){
@@ -1126,9 +1145,112 @@ divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>
     }
 }
 
+//Cambiar contraseña
+function canvi_password(id){
+     divResultado = document.getElementById('mensaje_pass');
+     var email = document.getElementById("email").value;
+     var pass = document.getElementById("pass1").value;
+
+divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/canvi_password.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("email="+email+"&pass="+pass+"&id="+id);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
 
 //Funcion para validar el formulario
 function recuperar_pass(id){
+//Metemos lo que serían los dos inputs en variables
+   var pass1 = document.getElementById("pass1");
+   var pass2 = document.getElementById("pass2");
+   var email = document.getElementById("email");
+
+   //Comparamos si los valores están rellenos, para que en el caso de que tengan el borde rojo puesto, quitarlo.
+   if(pass1.value != ""){
+    pass1.style.borderColor="";
+   }
+
+   if(pass2.value != ""){
+    pass2.style.borderColor="";
+   }
+   
+   if(email.value != ""){
+    email.style.borderColor="";
+
+   }
+
+//Comparamos si están vacíos y en el caso de que esté, ponemos un borde rojo y hacemos un return false
+   if(pass1.value == "" & pass2.value == "" & email.value == ""){
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+    email.style.borderColor = "red";
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix totes les dades';
+    
+
+    return false;
+   }else{
+
+    //Comprobamos si el usuario está vacío
+       if(pass1.value == ""){
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix la contrasenya';
+
+           pass1.style.borderColor = "red";
+           return false;
+
+    
+       }
+
+       //Comprobamos si la contraseña está vacía
+       if(pass2.value == ""){
+        document.getElementById('mensaje').innerHTML = 'Confirma la contrasenya';
+           pass2.style.borderColor = "red";
+           return false;
+    
+       }
+
+         if(email.value == ""){
+             document.getElementById('mensaje').innerHTML = 'Introdueix el teu email';
+           email.style.borderColor = "red";
+           return false;
+
+   
+           
+       }
+   }
+
+   if(pass1.value != "" & pass2.value != "" & email.value != ""){
+
+    if (pass1.value == pass2.value) {
+    canvi_password(id)
+        
+    }else{
+        
+        document.getElementById('mensaje').innerHTML = 'Les claus no són iguals';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+    return false;
+    
+}
+}
+}
+
+function recuperar_pass_pares(id){
 //Metemos lo que serían los dos inputs en variables
    var pass1 = document.getElementById("pass1");
    var pass2 = document.getElementById("pass2");
@@ -1207,6 +1329,7 @@ function recuperar_pass(id){
 }
 }
 }
+
 function cambiarClase(){
     var alumno=document.getElementById('nombrealumno').value;
     var clase=document.getElementById('clases2').value;

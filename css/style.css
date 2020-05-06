@@ -413,3 +413,9 @@ margin-left: 37.3%;
   color: white; 
   background-color: #367cb3;
 }
+
+.email_style{
+  text-align: center;
+  width: 40%;
+  height: 30px;
+}

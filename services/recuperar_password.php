@@ -1,14 +1,14 @@
 <?php
 include "conexion.php";
 
-if (isset($_REQUEST['dni'])) {
-	$dni=$_REQUEST['dni'];
+if (isset($_REQUEST['email'])) {
+	$email=$_REQUEST['email'];
 }else{
-	header("location: ../vista/home_pares.php");
+	header("location: ../vista/home.php");
 }
 
 //consulta para saber el email del padre
-$consulta="SELECT email_pares, nom_pares, cognoms_pares, id_pares FROM tbl_pares WHERE usuari_pares='$dni'";
+$consulta="SELECT usuari, nom_usuari, cognom_usuari, id_usuari FROM tbl_usuari WHERE usuari='$email'";
 
   $exe=mysqli_query($conn,$consulta);    
 
@@ -36,7 +36,7 @@ $message = "
 </head>
 <body>
   <p>Ha sigut sol·licitat el canvi de clau per al seu usuari.</p>
-  <p>Si vols cambiar la clau fes click al següent enllaç y actualitza la teva contrasenya <a href='http://localhost/daw/ProyectoFira/vista/canvi_clau_pares.php?q4t5ywt62g=".$id."'>Canviar la contrasenya</a>.</p>
+  <p>Si vols cambiar la clau fes click al següent enllaç y actualitza la teva contrasenya <a href='http://localhost/daw/ProyectoFira/vista/canvi_clau.php?q4t5ywt62g=".$id."'>Canviar la contrasenya</a>.</p>
   <p>Si no has sol·licitat el canvi de clau, ignora aquest missatge.</p>
 </body>
 </html>
@@ -59,9 +59,9 @@ mail($to, $subject, $message, implode("\r\n", $headers));
 
 }else{
 	?>
-<form action="#" onsubmit="recuperar_password_pares(); return false" method="post">
-  <h5>El DNI introduït no correspon a cap usuari, proba de nou.</h5><br>
-<input type="text" id="dni" name="dni" placeholder="DNI" required><br><br>
+<form action="#" onsubmit="recuperar_password(); return false" method="post">
+  <h5>El email introduït no correspon a cap usuari, proba de nou.</h5><br>
+<input type="text" id="email"  class="email_style" name="email" placeholder="Email" required><br><br>
   <input type="submit" class="btn btn-par"  name="enviar">
 </form>
 
