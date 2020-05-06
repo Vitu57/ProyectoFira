@@ -55,11 +55,10 @@ if(isset($_REQUEST['us'])){
     
 }
 ?>
-    <!-- Texto Extra -->
+    <!-- Contraseña olvidada -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Si no t'enrecordes de la contrasenya, contacta amb administració</a>
+      <a class="underlineHover" href="../vista/clau_oblidada_pares.html">He oblidat la clau</a>
     </div>
-
   </div>
 </div>
 

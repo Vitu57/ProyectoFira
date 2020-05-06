@@ -11,7 +11,7 @@
         $usernom=$_SESSION['nombre'];
 		$usercognom=$_SESSION['cognom'];
     } else {
-        header("Location: ../index_pares.php");
+        header("Location: ../vista/login_pares.php");
     }
     ?>
 	</div> 

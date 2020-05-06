@@ -78,6 +78,23 @@ a.none{
    background-position: left 95% top 95%;
 background-repeat: no-repeat;
 }
+
+.myBtn_pares{
+  float: left;
+  background-color:#ff8433;
+  padding-bottom: 4%;
+  padding-top: 4%;
+  height: 250px;
+  width:250px;
+  border:0px;
+  border-right:1px solid black;
+  text-align: center;
+   cursor: pointer;
+   background-image: url(../images/icon-content.svg);
+   background-position: left 95% top 95%;
+background-repeat: no-repeat;
+}
+
 .myBtn:hover {
   background-color:#ff8433; 
   opacity: 0.9;
@@ -372,4 +389,27 @@ color: white;
 margin-top: 4%;
 width: 25%;
 margin-left: 37.3%;
+}
+
+/*Padres*/
+.mensaje_pass{
+  text-align: center;
+    background-color: #f1f1f1;
+    padding: 7%;
+    border-radius: 10px;
+    margin-top: 4%;
+    width: 50%;
+    margin-left: 25%;
+      color:#0062ae;
+}
+
+.title_header{
+  margin-left: 43%; 
+  color:#0062ae;
+}
+
+.btn-par{
+  padding: 1%; 
+  color: white; 
+  background-color: #367cb3;
 }

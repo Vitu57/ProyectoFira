@@ -1079,3 +1079,131 @@ function Mostrar_Tipus(fila){
     }
 }
 //------------------------------------------
+
+
+//Enviar mail de recuperación de contraseña
+function recuperar_password_pares(){
+     divResultado = document.getElementById('mensaje_pass');
+     var dni = document.getElementById("dni").value;
+  divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/recuperar_password_pares.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("dni="+dni);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+
+//Cambiar contraseña padres
+function canvi_password_pares(id){
+     divResultado = document.getElementById('mensaje_pass');
+     var dni = document.getElementById("dni").value;
+     var pass = document.getElementById("pass1").value;
+divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/canvi_password_pares.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("dni="+dni+"&pass="+pass+"&id="+id);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+
+//Funcion para validar el formulario
+function recuperar_pass(id){
+//Metemos lo que serían los dos inputs en variables
+   var pass1 = document.getElementById("pass1");
+   var pass2 = document.getElementById("pass2");
+   var dni = document.getElementById("dni");
+
+   //Comparamos si los valores están rellenos, para que en el caso de que tengan el borde rojo puesto, quitarlo.
+   if(pass1.value != ""){
+    pass1.style.borderColor="";
+   }
+
+   if(pass2.value != ""){
+    pass2.style.borderColor="";
+   }
+   
+   if(dni.value != ""){
+    dni.style.borderColor="";
+
+   }
+
+//Comparamos si están vacíos y en el caso de que esté, ponemos un borde rojo y hacemos un return false
+   if(pass1.value == "" & pass2.value == "" & dni.value == ""){
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+    dni.style.borderColor = "red";
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix totes les dades';
+    
+
+    return false;
+   }else{
+
+    //Comprobamos si el usuario está vacío
+       if(pass1.value == ""){
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix la contrasenya';
+
+           pass1.style.borderColor = "red";
+           return false;
+
+    
+       }
+
+       //Comprobamos si la contraseña está vacía
+       if(pass2.value == ""){
+        document.getElementById('mensaje').innerHTML = 'Confirma la contrasenya';
+           pass2.style.borderColor = "red";
+           return false;
+    
+       }
+
+         if(dni.value == ""){
+             document.getElementById('mensaje').innerHTML = 'Introdueix el DNI';
+           dni.style.borderColor = "red";
+           return false;
+
+   
+           
+       }
+   }
+
+   if(pass1.value != "" & pass2.value != "" & dni.value != ""){
+
+    if (pass1.value == pass2.value) {
+    canvi_password_pares(id)
+        
+    }else{
+        
+        document.getElementById('mensaje').innerHTML = 'Les claus no són iguals';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+    return false;
+    
+}
+}
+}
