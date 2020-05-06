@@ -55,6 +55,7 @@ if (isset($accion)){
 
 //------------------------------Para hacer el insert--------------------------------------
     if($accion == "insert"){
+
         if(isset($_REQUEST['titol'])){$titol=$_REQUEST['titol'];}
         if(isset($_REQUEST['descrip'])){$descrip=$_REQUEST['descrip'];}
         if(isset($_REQUEST['id_sortida'])){$id_sortida=$_REQUEST['id_sortida'];}
@@ -66,14 +67,14 @@ if (isset($accion)){
         $nom_fotos = "exc_".$nom_exc."/".$nom_fotos;
         $query = "INSERT INTO tbl_galeria (nom_imatge, desc_imatge, img_path, id_sortida) VALUES (?, ?, ?, ?)";
         if($stmt = mysqli_prepare($conn, $query)){
-            /*$foto = explode(",", $nom_fotos);*/
+            //$foto = explode(",", $nom_fotos);
             echo $titol;
             echo " ";
             echo $descrip;
             echo " ";
             echo $id_sortida;
             echo " ";
-           /* echo $foto[1]; esta iria en el bind_param en vez de nom_fotos*/
+           // echo $foto[1]; esta iria en el bind_param en vez de nom_fotos
            echo $nom_fotos;
             echo " ";
 
@@ -82,6 +83,52 @@ if (isset($accion)){
             mysqli_stmt_execute($stmt);
             //echo "Inserción realizada correctamente";
            echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
+             
+            //Envio de email a los padres
+
+//consulta para saber los padres
+
+// Multiple recipients
+$consulta="SELECT email_pares FROM tbl_pares INNER JOIN tbl_pares_alumnes ON tbl_pares.id_pares=tbl_pares_alumnes.id_pares INNER JOIN tbl_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_alumnes.id_clase INNER JOIN tbl_sortida ON tbl_clase.id_clase=tbl_sortida.id_clase WHERE tbl_sortida.id_sortida='$id_sortida'";
+$query=mysqli_query($conn,$consulta);
+
+$email='';
+
+while ($row=mysqli_fetch_array($query)) {
+
+$email = $email . $row[0].", ";
+
+} 
+
+echo $email;
+
+$to = $email; // note the comma
+
+// Subject
+$subject = 'Ja estan disponibles les fotos de la sortida';
+
+// Message
+$message = '
+<html>
+<body>
+  <p>Ja estan disponibles les fotos de la sortida a (nombre_salida) del seu fill/a!</p>
+  <p>Podeu veure-les clicant al següent enllaç: (link)</p>
+</body>
+</html>
+';
+
+// To send HTML mail, the Content-type header must be set
+$headers[] = 'MIME-Version: 1.0';
+$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+// Additional headers
+$headers[] = 'From: Administració sortides <proyectesortidesdaw2@gmail.com>';
+$headers[] = 'Cc:';
+$headers[] = 'Bcc:';
+
+// Mail it
+mail($to, $subject, $message, implode("\r\n", $headers));
+             
         } else{
             echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
         }
