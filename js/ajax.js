@@ -864,7 +864,7 @@ ajax2.onreadystatechange=function() {
     var tabla='<table class="table table-bordered" <thread>';
         tabla +='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><tr><th>Alumne</th><th>Estat</th><th>Assistència</th></tr><tr>';
         for(var i=0;i<respuesta.length;i++) {
-            tabla += '<tr><td>' + respuesta[i].cognom_usuari+ ', '+ respuesta[i].nom_usuari+'</td>';
+            tabla += '<tr><td>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].nom_alumne+'</td>';
             tabla += '<td>' + respuesta[i].estado_asistencia+'</td>';
             if (respuesta[i].estado_asistencia=="Absent") {
 		tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="32"; onclick="CheckLista('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';
