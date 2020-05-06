@@ -867,9 +867,9 @@ ajax2.onreadystatechange=function() {
             tabla += '<tr><td>' + respuesta[i].cognom_usuari+ ', '+ respuesta[i].nom_usuari+'</td>';
             tabla += '<td>' + respuesta[i].estado_asistencia+'</td>';
             if (respuesta[i].estado_asistencia=="Absent") {
-		tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="32"; onclick="CheckLista('+respuesta[i].id_usuari+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';
+		tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="32"; onclick="CheckLista('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';
             }else{
-		tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="40" width="32"; onclick="CheckLista('+respuesta[i].id_usuari+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';	
+		tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="40" width="32"; onclick="CheckLista('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';	
             }
         }
         tabla+='</thead></table>';
