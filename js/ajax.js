@@ -294,7 +294,7 @@ function CrearTablaProfes(filtro){
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -317,7 +317,7 @@ function CrearTablaProfes(filtro){
             }else{
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a title="Moficar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';

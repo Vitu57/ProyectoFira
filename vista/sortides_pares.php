@@ -73,11 +73,11 @@ echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.
 
 //!!!!!!!!!!!Falta mostrar solo las que tienen fotos!!!!!!!!!!!!!!!!!!!!!
 
-$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase WHERE tbl_alumnes.id_alumne='$id_fill' ORDER BY tbl_sortida.final_sortida DESC";
+$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase WHERE tbl_alumnes.id_alumne='$id_fill' ORDER BY tbl_sortida.final_sortida DESC";
       $exe=mysqli_query($conn,$consulta);
      while ($casos=mysqli_fetch_array($exe)){
 
-echo "<div class='pares_sortides'>";
+echo "<a href='../vista/galeria_fotos.php?id_exc=".$casos[3]."&accion=ver_img'><div class='pares_sortides'>";
 
       echo "<h3>".$casos[0]."</h3><br>";
       echo "<h5>".$casos[1];
@@ -86,7 +86,7 @@ echo "<div class='pares_sortides'>";
        echo " - ".$casos[2];
       }
 
-      echo "</h5></div>";
+      echo "</h5></div></a>";
 }
 
 
