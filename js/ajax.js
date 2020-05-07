@@ -288,13 +288,8 @@ function CrearTablaProfes(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
-<<<<<<< HEAD
     var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
         tabla +='<tr><th data-sort-method="none">Opcions</th><th data-sort-method="none">Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th data-sort-method="none">Transport</th><th data-sort-method="none">Activitat</th><th data-sort-method="none">Contacte</th>';
-=======
-    var tabla='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thead class="thead-dark">';
-        tabla +='<tr><th>Opcions</th><th>Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th></thead>';
->>>>>>> ae9346d3948886bab609f13a7a5ab511d9c1202c
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
