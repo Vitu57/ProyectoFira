@@ -288,14 +288,14 @@ function CrearTablaProfes(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
-    var tabla='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
-        tabla +='<tr><th>Opcions</th><th>Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th>';
+    var tabla='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thead class="thead-dark">';
+        tabla +='<tr><th>Opcions</th><th>Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
                     tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
-					tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
@@ -318,7 +318,7 @@ function CrearTablaProfes(filtro){
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
                     tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
-					tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';

@@ -110,6 +110,10 @@ background-repeat: no-repeat;
 }
 
 
+thead{
+   position: sticky;
+  top: 0;
+}
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
@@ -120,7 +124,7 @@ background-repeat: no-repeat;
 .header2 {
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 20px 10px;
+  padding: 20px 10px 10px 10px;
   border-bottom:#009eff 4px solid;
   border-radius: 15px;
 }
@@ -238,9 +242,20 @@ line-height: 1.5;
 
 /*Más espacio entre los filtros*/
 
-.espacio_filtros{
-margin: 1.2%;
+.espacio_filtros::placeholder{
+color:black;
 }
+.espacio_filtros{
+margin: 0.5%;
+
+  padding: 6px 16px;
+  
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 
 /* botones filtrado admin */
 .filtrado_admin{
