@@ -4,6 +4,7 @@
 <head>
   <title>Sortides</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/tablesort.css">
         <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -105,5 +106,14 @@ Profesor: <input type="text" name="profe" id="profe">
   <img src="../images/logo_fje.svg">
 </div>
 </div>
+<script src='../plugin/tablesort/tablesort.js'></script>
+
+<!-- Include sort types you need -->
+<script src='../plugin/tablesort/sorts/tablesort.dotsep.js'></script>
+<!--<script src='tablesort.date.js'></script>-->
+
+<script>
+  new Tablesort(document.getElementById('table-id'));
+</script>
 </body>
 </html>

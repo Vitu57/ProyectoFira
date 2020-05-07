@@ -23,7 +23,7 @@
   <script src="../plugin/toastr/toastr.min.js"></script>
 
   
-<body class="body_design" onload="select_etapa()">
+<body class="body_design">
    <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
@@ -301,7 +301,7 @@
         <!--<button type="submit" class="btn btn-info btn-block">Afegir Sortida</button> -->
         </form>
         </div><br>
-  <script type="text/javascript" src="../js/codigo.js"></script>
+<script type="text/javascript" src="../js/codigo.js"></script>
 <div class="footer page-footer">
   <img src="../images/logo_fje.svg">
 </div>

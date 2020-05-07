@@ -18,16 +18,16 @@ if(isset($_REQUEST['profe'])){
 	$profe="";
 }
 	//Estos campos se necesitan en la consulta, asi que si no los recibe los pone vacios
-	echo "<table  class='table table-bordered text-center' style='background-color: rgba(255,255,255,1);'>
+	echo "<table id='table-id' class='table table-bordered text-center' style='background-color: rgba(255,255,255,1);'>
 	<thead class='thead-dark'>
-		<tr><th scope='col'>Opcions</th>
+		<tr><th data-sort-method='none' scope='col'>Opcions</th>
 		<th scope='col'>Codi</th>
 		<th scope='col'>Sortida</th>
 		<th scope='col'>Inici</th>
 		<th scope='col'>Final</th>
 		<th scope='col'>Classe</th>
 		<th scope='col'>Etapa</th>
-                <th scope='col'>Jornada</th>
+        <th scope='col'>Jornada</th>
 		<th id='acompanyants' style='display:none;' scope='col'>Acompanyants</th>
 		<th id='alumnes' style='display:none;' scope='col' >Alumnes</th>
 		<th id='proasignat' style='display:none;' scope='col'>Professor assignat</th>
@@ -40,7 +40,7 @@ if(isset($_REQUEST['profe'])){
 		<th id='ambit' style='display:none;' scope='col'>Àmbit</th>
 		
 		<th id='objectiu' scope='col'>Objectiu</th>
-		<th scope='col'>Mostrar més</th>
+		<th data-sort-method='none' scope='col'>Mostrar més</th>
 		</thead>
 		";
 	//Primero hacemos una consulta para saber las excursiones
@@ -54,14 +54,18 @@ if(isset($_REQUEST['profe'])){
 		
 		//Formamos la tabla
 		echo "<tr>
-			<td style='width: 5%;'>";
+			<td style='width: 5%;'>
+			<button type='button' class='btn btn-info' data-trigger='focus' data-toggle='popover' title='Opcions'><i class='fas fa-plus-square fa-2x'></i></button>
+			<div id='popover-content' class='list-group' style='display: none;'>";
 			?>
-			<a title='Eliminar Sortida' href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a><br>
-			<?php  echo "
-			<a title='Modificar Sortida' href='form_update_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-pencil-alt fa-2x' id='modificar' style='color:#3F7FBF;'></i></a><br>";
+			<a class="list-group-item" title='Eliminar Sortida' href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b; margin-left: 2px;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a>
+			<?php  echo 
+			"<a class='list-group-item' title='Modificar Sortida' href='form_update_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-pencil-alt fa-2x' id='modificar' style='color:#3F7FBF;'></i></a>
+			<a class='list-group-item' title='Copiar Sortida' href='form_copy_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-copy fa-2x' id='copiar' style='color:#3F7FBF;'></i></a>";
                         ?>
-                        <a title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>' )"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
-                        <?php echo "
+                        <a class="list-group-item" title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>' )"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
+						<?php echo "
+						</div>
 			</td>
 			<td style='width: 6%;'>".$exe[0]."</td>
 			<td style='width: 12%;'>".$exe[11]."</td>
@@ -105,7 +109,8 @@ if(isset($_REQUEST['profe'])){
 				<td id='obj".$cont."'>".$exe[16]."</td>";
 			?>
 			<td style="width: 5%;">
-
+			<button type='button' class='btn btn-info' data-trigger='focus' data-toggle='popover2' title='Opcions'><i class='fas fa-plus-square fa-2x'></i></button>
+			<div id='popover-content2' class='list-group' style='display: none'>
 				<?php
 				$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";
 				$querycontacto=mysqli_query($conn,$consultacontacto);
@@ -113,7 +118,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-				<a href="#" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');"><i class="fas fa-address-book fa-2x" style="color: #634d0f;  margin: 15%;" id="modal_secretaria"></i></a><br>
+				<a class='list-group-item' href="#" onclick="abrirform1('<?php echo $con[0]; ?>','<?php echo $con[1]; ?>','<?php echo $con[2]; ?>','<?php echo $con[3]; ?>');"><i class="fas fa-address-book fa-2x" style="color: #634d0f;  margin: 15%;" id="modal_secretaria"></i></a>
 
 				<?php
 					 $consultaprecios="select tbl_preus.* from tbl_preus inner join tbl_sortida on tbl_sortida.id_precios=tbl_preus.id_preus where tbl_sortida.id_sortida='".$exe[10]."'";
@@ -122,7 +127,7 @@ if(isset($_REQUEST['profe'])){
 
 				?>
 
-			<a href="#"  onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');"><i class="fas fa-money-bill-wave fa-2x" style="color: darkgreen; margin: 15%;" id="myBtn2"></i></a><br>
+			<a class='list-group-item' href="#"  onclick="abrirform2('<?php echo $pre[1]; ?>','<?php echo $pre[2]; ?>','<?php echo $pre[3]; ?>','<?php echo $pre[4]; ?>','<?php echo $pre[5]; ?>','<?php echo $pre[6]; ?>','<?php echo $pre[7]; ?>','<?php echo $pre[8]; ?>','<?php echo $pre[9]; ?>','<?php echo $pre[10]; ?>','<?php echo $pre[11]; ?>','<?php echo $pre[12]; ?>','<?php echo $pre[13]; ?>');"><i class="fas fa-money-bill-wave fa-2x" style="color: darkgreen; margin: 15%; margin-left: 0px;" id="myBtn2"></i></a>
 
 				<?php
 					 		$consultatransporte="select tbl_transport.hora_sortida,tbl_transport.hora_arribada,tbl_transport.cost_transport,tbl_transport.codi_contacte,tbl_transport.comentaris_transport,tbl_nom_transport.nom_transport from tbl_transport inner join tbl_nom_transport on tbl_nom_transport.id_nom_transport=tbl_transport.id_nom_transport where tbl_transport.id_transport='".$exe[10]."'";
@@ -130,8 +135,8 @@ if(isset($_REQUEST['profe'])){
 					 		$tra=mysqli_fetch_array($querytransporte);
 				?>
 				
-				<a href="#" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');"><i class="fas fa-plane fa-2x" style="color: black; margin: 15%;" id="myBtn3"></i></a>
-				
+				<a class='list-group-item' href="#" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');"><i class="fas fa-plane fa-2x" style="color: black; margin: 15%;" id="myBtn3"></i></a>
+			</div>
 			</td>
 			<div id="resultado2" class="modalmask" style="display:none;">
 
