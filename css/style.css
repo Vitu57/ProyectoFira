@@ -78,6 +78,23 @@ a.none{
    background-position: left 95% top 95%;
 background-repeat: no-repeat;
 }
+
+.myBtn_pares{
+  float: left;
+  background-color:#ff8433;
+  padding-bottom: 4%;
+  padding-top: 4%;
+  height: 250px;
+  width:250px;
+  border:0px;
+  border-right:1px solid black;
+  text-align: center;
+   cursor: pointer;
+   background-image: url(../images/icon-content.svg);
+   background-position: left 95% top 95%;
+background-repeat: no-repeat;
+}
+
 .myBtn:hover {
   background-color:#ff8433; 
   opacity: 0.9;
@@ -93,6 +110,10 @@ background-repeat: no-repeat;
 }
 
 
+thead{
+   position: sticky;
+  top: 0;
+}
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
@@ -103,7 +124,7 @@ background-repeat: no-repeat;
 .header2 {
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 20px 10px;
+  padding: 20px 10px 10px 10px;
   border-bottom:#009eff 4px solid;
   border-radius: 15px;
 }
@@ -209,8 +230,8 @@ line-height: 1.5;
   padding: 20px 10px;
   border:#009eff 4px solid;
   animation-name: animacion2;
-  animation-duration: 0.8s
-  border-radius:5px;
+  animation-duration: 0.8s;
+  border-radius: 5px;
 
 }
 
@@ -221,9 +242,20 @@ line-height: 1.5;
 
 /*Más espacio entre los filtros*/
 
-.espacio_filtros{
-margin: 1.2%;
+.espacio_filtros::placeholder{
+color:black;
 }
+.espacio_filtros{
+margin: 0.5%;
+
+  padding: 6px 16px;
+  
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 
 /* botones filtrado admin */
 .filtrado_admin{
@@ -393,4 +425,33 @@ margin-left: 37.3%;
 }
 .arrow::after, .bs-popover-left .arrow::after{
   border-left-color: rgba(23, 162, 184, 0.7);
+}
+
+/*Padres*/
+.mensaje_pass{
+  text-align: center;
+    background-color: #f1f1f1;
+    padding: 7%;
+    border-radius: 10px;
+    margin-top: 4%;
+    width: 50%;
+    margin-left: 25%;
+      color:#0062ae;
+}
+
+.title_header{
+  margin-left: 43%; 
+  color:#0062ae;
+}
+
+.btn-par{
+  padding: 1%; 
+  color: white; 
+  background-color: #367cb3;
+}
+
+.email_style{
+  text-align: center;
+  width: 40%;
+  height: 30px;
 }

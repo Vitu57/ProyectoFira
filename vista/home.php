@@ -191,6 +191,12 @@ if ($tipus_user==1) {
 
 <?php
 }else if($tipus_user==2){
+  function isMobile() {
+      return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+    }
+    if (isMobile()) {
+      header("location:excursiones_profes.php");
+    }
 ?>
 
 <a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" class="myBtn"><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>

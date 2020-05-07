@@ -89,8 +89,9 @@ $consulta="SELECT tbl_alumnes.nom_alumne, tbl_alumnes.cognom1_alumne, tbl_alumne
 
 echo "<a href='../vista/sortides_pares.php?fill=".$id_fill."'>";
 ?>
-<button  id='myBtn' class="myBtn">
-<i class="fas fa-user fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white"><?php echo $nom_fill." ".$cognom_fill." ".$cognom2_fill; ?></h2>
+
+<button  id='myBtn' class="myBtn_pares">
+<i class="fas fa-user fa-2x ml-2" style="float:left; color:white;"></i><h4 class="text-white"><?php echo $nom_fill."<br> ".$cognom_fill." ".$cognom2_fill; ?></h4>
 </button>
 </a>
 

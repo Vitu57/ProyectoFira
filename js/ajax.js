@@ -288,14 +288,19 @@ function CrearTablaProfes(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
+<<<<<<< HEAD
     var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
         tabla +='<tr><th data-sort-method="none">Opcions</th><th data-sort-method="none">Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th data-sort-method="none">Transport</th><th data-sort-method="none">Activitat</th><th data-sort-method="none">Contacte</th>';
+=======
+    var tabla='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thead class="thead-dark">';
+        tabla +='<tr><th>Opcions</th><th>Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th>Transport</th><th>Activitat</th><th>Contacte</th></thead>';
+>>>>>>> ae9346d3948886bab609f13a7a5ab511d9c1202c
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
                     tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
-					tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
@@ -318,7 +323,7 @@ function CrearTablaProfes(filtro){
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
                     tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
-					tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
                     tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
@@ -864,12 +869,12 @@ ajax2.onreadystatechange=function() {
     var tabla='<table class="table table-bordered" <thread>';
         tabla +='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><tr><th>Alumne</th><th>Estat</th><th>Assistència</th></tr><tr>';
         for(var i=0;i<respuesta.length;i++) {
-            tabla += '<tr><td>' + respuesta[i].cognom_usuari+ ', '+ respuesta[i].nom_usuari+'</td>';
+            tabla += '<tr><td>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].nom_alumne+'</td>';
             tabla += '<td>' + respuesta[i].estado_asistencia+'</td>';
             if (respuesta[i].estado_asistencia=="Absent") {
-		tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="32"; onclick="CheckLista('+respuesta[i].id_usuari+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';
+		tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="32"; onclick="CheckLista('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';
             }else{
-		tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="40" width="32"; onclick="CheckLista('+respuesta[i].id_usuari+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';	
+		tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="40" width="32"; onclick="CheckLista('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="32"></a></td></tr>';	
             }
         }
         tabla+='</thead></table>';
@@ -1079,3 +1084,317 @@ function Mostrar_Tipus(fila){
     }
 }
 //------------------------------------------
+
+
+//Enviar mail de recuperación de contraseña
+function recuperar_password_pares(){
+     divResultado = document.getElementById('mensaje_pass');
+     var dni = document.getElementById("dni").value;
+  divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/recuperar_password_pares.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("dni="+dni);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+function recuperar_password(){
+     divResultado = document.getElementById('mensaje_pass');
+     var email = document.getElementById("email").value;
+  divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/recuperar_password.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("email="+email);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+//Cambiar contraseña padres
+function canvi_password_pares(id){
+     divResultado = document.getElementById('mensaje_pass');
+     var dni = document.getElementById("dni").value;
+     var pass = document.getElementById("pass1").value;
+divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/canvi_password_pares.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("dni="+dni+"&pass="+pass+"&id="+id);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+//Cambiar contraseña
+function canvi_password(id){
+     divResultado = document.getElementById('mensaje_pass');
+     var email = document.getElementById("email").value;
+     var pass = document.getElementById("pass1").value;
+
+divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/canvi_password.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("email="+email+"&pass="+pass+"&id="+id);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+//Funcion para validar el formulario
+function recuperar_pass(id){
+//Metemos lo que serían los dos inputs en variables
+   var pass1 = document.getElementById("pass1");
+   var pass2 = document.getElementById("pass2");
+   var email = document.getElementById("email");
+
+   //Comparamos si los valores están rellenos, para que en el caso de que tengan el borde rojo puesto, quitarlo.
+   if(pass1.value != ""){
+    pass1.style.borderColor="";
+   }
+
+   if(pass2.value != ""){
+    pass2.style.borderColor="";
+   }
+   
+   if(email.value != ""){
+    email.style.borderColor="";
+
+   }
+
+//Comparamos si están vacíos y en el caso de que esté, ponemos un borde rojo y hacemos un return false
+   if(pass1.value == "" & pass2.value == "" & email.value == ""){
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+    email.style.borderColor = "red";
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix totes les dades';
+    
+
+    return false;
+   }else{
+
+    //Comprobamos si el usuario está vacío
+       if(pass1.value == ""){
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix la contrasenya';
+
+           pass1.style.borderColor = "red";
+           return false;
+
+    
+       }
+
+       //Comprobamos si la contraseña está vacía
+       if(pass2.value == ""){
+        document.getElementById('mensaje').innerHTML = 'Confirma la contrasenya';
+           pass2.style.borderColor = "red";
+           return false;
+    
+       }
+
+         if(email.value == ""){
+             document.getElementById('mensaje').innerHTML = 'Introdueix el teu email';
+           email.style.borderColor = "red";
+           return false;
+
+   
+           
+       }
+   }
+
+   if(pass1.value != "" & pass2.value != "" & email.value != ""){
+
+    if (pass1.value == pass2.value) {
+    canvi_password(id)
+        
+    }else{
+        
+        document.getElementById('mensaje').innerHTML = 'Les claus no són iguals';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+    return false;
+    
+}
+}
+}
+
+function recuperar_pass_pares(id){
+//Metemos lo que serían los dos inputs en variables
+   var pass1 = document.getElementById("pass1");
+   var pass2 = document.getElementById("pass2");
+   var dni = document.getElementById("dni");
+
+   //Comparamos si los valores están rellenos, para que en el caso de que tengan el borde rojo puesto, quitarlo.
+   if(pass1.value != ""){
+    pass1.style.borderColor="";
+   }
+
+   if(pass2.value != ""){
+    pass2.style.borderColor="";
+   }
+   
+   if(dni.value != ""){
+    dni.style.borderColor="";
+
+   }
+
+//Comparamos si están vacíos y en el caso de que esté, ponemos un borde rojo y hacemos un return false
+   if(pass1.value == "" & pass2.value == "" & dni.value == ""){
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+    dni.style.borderColor = "red";
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix totes les dades';
+    
+
+    return false;
+   }else{
+
+    //Comprobamos si el usuario está vacío
+       if(pass1.value == ""){
+
+    document.getElementById('mensaje').innerHTML = 'Introdueix la contrasenya';
+
+           pass1.style.borderColor = "red";
+           return false;
+
+    
+       }
+
+       //Comprobamos si la contraseña está vacía
+       if(pass2.value == ""){
+        document.getElementById('mensaje').innerHTML = 'Confirma la contrasenya';
+           pass2.style.borderColor = "red";
+           return false;
+    
+       }
+
+         if(dni.value == ""){
+             document.getElementById('mensaje').innerHTML = 'Introdueix el DNI';
+           dni.style.borderColor = "red";
+           return false;
+
+   
+           
+       }
+   }
+
+   if(pass1.value != "" & pass2.value != "" & dni.value != ""){
+
+    if (pass1.value == pass2.value) {
+    canvi_password_pares(id)
+        
+    }else{
+        
+        document.getElementById('mensaje').innerHTML = 'Les claus no són iguals';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+    return false;
+    
+}
+}
+}
+
+function cambiarClase(){
+    var alumno=document.getElementById('nombrealumno').value;
+    var clase=document.getElementById('clases2').value;
+    
+     if(alumno=="" && clase==""){
+        document.getElementById("nombrealumno").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="red";
+    }else if (alumno=="") {
+        document.getElementById("nombrealumno").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="#ced4da";
+    }else if (clase=="") {
+        document.getElementById("clases2").style.borderColor="red";
+        document.getElementById("nombrealumno").style.borderColor="#ced4da";
+    }else{
+         document.getElementById("nombrealumno").style.borderColor="#ced4da";
+         document.getElementById("clases2").style.borderColor="#ced4da";
+        
+        ajax=objetoAjax();
+        ajax.open('POST', '../services/cambiar_clase.proc.php', true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.send("id_alumno="+alumno+"&id_clase="+clase);
+
+        // Definimos la función que se ejecutará cuando cambie la propiedad readyState
+        ajax.onreadystatechange=function() {
+            if (ajax.readyState==4) {
+                mostraralumnos();
+                document.getElementById('mensaje').innerHTML = "Se ha cambiado de clase al alumno";
+                
+            }else{
+                document.getElementById('mensaje').innerHTML = "Ha ocurrido un error";
+            }
+        }
+    }
+}
+function eliminarAlumno(){
+    var alumno=document.getElementById('nombrealumno').value;
+    
+    
+    
+    if (alumno=="") {
+        document.getElementById("nombrealumno").style.borderColor="red";
+       
+    
+    }else{
+         document.getElementById("nombrealumno").style.borderColor="#ced4da";
+        
+        
+        ajax=objetoAjax();
+        ajax.open('POST', '../services/eliminar_alumno.proc.php', true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.send("id_alumno="+alumno);
+
+        // Definimos la función que se ejecutará cuando cambie la propiedad readyState
+        ajax.onreadystatechange=function() {
+            if (ajax.readyState==4) {
+                mostraralumnos();
+                document.getElementById('mensaje').innerHTML = "Se ha eliminado el alumno correctamente";
+            }else{
+                document.getElementById('mensaje').innerHTML = "Ha ocurrido un error";
+            }
+        }
+    }
+}

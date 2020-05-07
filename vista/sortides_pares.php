@@ -54,12 +54,18 @@ if (mysqli_num_rows($exe)!=0){
 
 <div class='header'>
 
-<h1 style='text-align: left; float:left; width:45%;'></h1><h2 style='text-align: center; float:left; width:10%; color:#0062ae;'>Sortides de <?php echo $nom_fill; ?></h1>
+<h1 style='text-align: left; float:left; width:39%;'></h1><h2 style='text-align: center; width: 12%; margin-left: 4%; float:left; color:#0062ae;'>Sortides de <?php echo $nom_fill; ?></h2>
 
 <?php
-echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.php' style='text-decoration:none;'><img src='../images/icon-logout.svg' style='margin-left:2%; margin-top:-1%;'></a></h3></div>";
+echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.php' style='text-decoration:none;'><img src='../images/icon-logout.svg' style='margin-left:2%; margin-top:-1%;'></a></h3>";
 
+?>
 
+  <a href="../vista/home_pares.php">
+  <i class="fas fa-arrow-circle-left fa-3x" title="Tornar" style="float: left; margin-top: -3.5%; margin-left: 1.3%;  margin-right:80%; color: #071334;" class="btn btn-secondary"></i>
+</a>
+</div>
+<?php
 
 //consulta para mostrar las sortides de su hijo
 
