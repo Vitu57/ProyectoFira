@@ -39,9 +39,21 @@ $clase=$_GET['clase'];
     <a href="pasarlista.php?id_actividad=<?php echo $id_activitat; ?>&clase=<?php echo $clase; ?>">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
-<div id="usuaris" class="text-center border border-light p-5 mt-5 div_form" style="display: block;">
+<?php
+function isMobile() {
+      return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+    }
+if (isMobile()) {
+  ?>
+  <div id="usuaris" class="text-center border border-light p-5 mt-5" style="display: block;background-color: rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.9); border-radius: 5%;">
+  <?php
+}else{
+  ?>
+  <div id="usuaris" class="text-center border border-light p-5 mt-5 div_form" style="display: block;">
+  <?php
+}
+?>
 <form class="text-center" action="#">
-
 <p class="h4 mb-4">Afegir Alumne</p>
 
 <div class="form-row mb-1">
