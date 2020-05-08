@@ -344,6 +344,70 @@ function CrearTablaProfes(filtro){
     }
     }
 }
+function CrearTablaProfes_movil(filtro){
+
+    var profe = "";
+    var clase = document.getElementById("clase").value;
+    var fecha = "";
+    var jornada = "";
+    var etapa = "";
+    var codi = document.getElementById("codi").value;
+    //Fecha de hoy
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    //---------------------
+    divResultado = document.getElementById('resultado');
+    var estado_filtro = document.getElementById("btn_filtro").value;
+    
+
+    if (filtro==1) {
+        var ajax2=objetoAjax();
+    ajax2.open("GET", "../services/consulta_profes.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send(null);
+
+}else{
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/consulta_profes.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada+"&etapa="+etapa+"&codi="+codi);
+}
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+        
+    var respuesta=JSON.parse(this.responseText);
+
+    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
+        tabla +='<tr><th data-sort-method="none"><h1>Codi</h1></th><th data-sort-method="none"><h1>Sortida</h1></th><th><h1>Clase</h1></th><th><h1>Llista</h1></th>';
+        for(var i=0;i<respuesta.length;i++) {
+            if(estado_filtro==1){
+                if(respuesta[i].inici_sortida==today){
+                    tabla += '<tr>';
+                    tabla += '<td><h2>' + respuesta[i].codi_sortida+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_activitat+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_classe+ '</h2></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list fa-3x" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla += '</tr>';
+                }
+            }else{
+                if(respuesta[i].inici_sortida>=today){
+                    tabla += '<tr>';
+                    tabla += '<td><h2>' + respuesta[i].codi_sortida+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_activitat+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_classe+ '</h2></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list fa-3x" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla += '</tr>';
+                }
+            }
+        }
+            tabla+='</thead></table>';
+            divResultado.innerHTML=tabla;
+    }
+    }
+}
 function FiltroProfes(){
     var estado_filtro = document.getElementById("btn_filtro").value;
     if (estado_filtro==0){
