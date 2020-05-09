@@ -118,6 +118,7 @@ function objetoAjax() {
     var tipus = document.getElementById("tipususu");
     var ajax3 = objetoAjax();
     var option;
+    var tipus2 = document.getElementById("tipus_filtre");
     ajax3.open("POST", "../services/consulta_form_usuaris.php", true);
     ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     ajax3.send("accion=" + "tipus");
@@ -130,6 +131,10 @@ function objetoAjax() {
                 option += '<option value="' + respuesta[i].id_tipus_usuari + '">' + respuesta[i].nom_tipus + '</option>';
             }
             tipus.innerHTML = option;
+            if (typeof(tipus2) != 'undefined' && tipus2 != null)
+            {
+                tipus2.innerHTML = option;
+            }
             select_clase();
         }
     }
