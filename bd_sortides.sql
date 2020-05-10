@@ -484,6 +484,34 @@ INSERT INTO `tbl_transport` (`id_transport`, `hora_sortida`, `hora_arribada`, `c
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_feedback`
+--
+
+CREATE TABLE `tbl_feedback` (
+  `id_feedback` int(11) NOT NULL,
+  `usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `estrellas` int(5) NOT NULL,
+  `comentarios` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `id_sortida` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_feedback`
+--
+
+INSERT INTO `tbl_feedback` (`id_feedback`, `usuario`, `estrellas`, `comentarios`, `fecha`, `id_sortida`) VALUES
+(15, 'Mario Carpallo', 3, 'Qualitat de la pel·licula regular, pantalla borrosa\r\n\r\n', '2020-05-08', 24),
+(16, 'Mario Carpallo', 3, 'hola\r\n', '2020-05-09', 24),
+(17, 'Administrador', 3, 'Valoració', '2020-05-09', 24),
+(18, 'Administrador', 4, 'Valoració', '2020-05-09', 24),
+(19, 'Administrador', 5, 'Valoració', '2020-05-09', 24),
+(20, 'Administrador', 3, 'Valoració', '2020-05-09', 24),
+(21, 'Administrador', 3, 'fdsfs', '2020-05-09', 24);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_usuari`
 --
 
@@ -811,6 +839,13 @@ ALTER TABLE `tbl_sortida`
 --
 ALTER TABLE `tbl_transport`
   ADD CONSTRAINT `FK_transport` FOREIGN KEY (`id_nom_transport`) REFERENCES `tbl_nom_transport` (`id_nom_transport`);
+
+--
+-- Filtros para la tabla `tbl_feedback`
+--
+ALTER TABLE `tbl_feedback`
+  ADD CONSTRAINT `tbl_feedback_ibfk_1` FOREIGN KEY (`id_sortida`) REFERENCES `tbl_sortida` (`id_sortida`);
+
 
 --
 -- Filtros para la tabla `tbl_usuari`
