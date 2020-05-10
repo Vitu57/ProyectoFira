@@ -138,7 +138,7 @@ if (isMobile()) {
 ?>
 	
 
-<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0;">
+<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 </div>
 <br>
 <!-- Exportar a CSV !-->

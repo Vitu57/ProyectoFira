@@ -15,7 +15,7 @@
 
 
 </head>
-<body class="home" style="text-align: center; padding: 2%;"> 
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;"> 
 <!--Sweet alert cdn(s)-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="sweetalert2.all.min.js"></script>
@@ -37,16 +37,22 @@ if ($tipo!=1) {
 }
 
 ?>
-
-<div class="header" id="resultado" style=" border-radius: 15px;">
-	<div style="padding: 3%">
-	<a href="../vista/home.php">
-	<i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: -1%; color: #071334;" class="btn btn-secondary"></i>
+<div class='header2'><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+  <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
 </a>
+<a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
+
+  <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Administrador</h1>
+  </div></div>
+<div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
+<div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
+	
 	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
-		Data: <input type="text" class="espacio_filtros" name="fecha" id="fecha">
-        Clase: <select name="clase" class="espacio_filtros" id="clase">
-       		<option value=""></option>
+		<input type="text" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data">
+    <select name="clase" class="espacio_filtros" id="clase">
+       		<option value="">Clase</option>
 			<?php
 
 	$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
@@ -58,24 +64,24 @@ if ($tipo!=1) {
 ?>
 </select>
 
-Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
+<input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor">
 		<input type="submit" class="btn btn-lg filtrado_admin"  name="submit" value="Filtrar">
 		<button class="btn btn-lg filtrado_admin" name="submit" value="Veure tots" action="#" method="POST" onclick="vertodo();return false">
 		Veure Tots</button>
 	</form>
-            <br><br><br><br>
-  <div id="resultadohed" class="scrollhori">
+           
+  <div id="resultadohed" class="scrollhori" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:5%; left: 50%; transform: translateX(-50%);z-index:0;">
   <?php
      include "tabladmin.php";
   ?> 
   </div>
 <!-- Mostrar mas !-->
-<div style="position: absolute; top: 22.5%; right:5.5%;">
+<div style="position: absolute; top: 28.5%; right:8.5%;">
     <button id="btn_profes" class="btn_mos" onclick="Mostrar_Profesores(<?php echo $cont; ?>); return false;" value="0">Profesors i Vetlladors</button>
 <button id="btn_al" class="btn_mos" onclick="Mostrar_Alumnes(<?php echo $cont; ?>); return false;" value="0">Alumnes i Acompanyants</button>
 <button id="btn_tipus"class="btn_mos" onclick="Mostrar_Tipus(<?php echo $cont; ?>); return false;" value="0">Tipus i Ambit</button>
 </div>
-  <br><br>
+  <br>
   
 <!-- Exportar a CSV !-->
    <form action="../services/csv_admin.php" method="POST">

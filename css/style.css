@@ -270,7 +270,7 @@ margin-top: 0.2%;
 /*Barra de scroll horizontal*/
 div.scrollhori{
 background-color: #333;
-  overflow: auto;
+  overflow-y: scroll;
   white-space: nowrap;
 }
 div.scrollhori a{
