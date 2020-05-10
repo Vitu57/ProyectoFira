@@ -153,5 +153,13 @@ $(function() {
   });
 })
 </script>
+<div id="resultado2" class="modalmask" style="display:none;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:2%;">X</a>
+        <h2 id="tituloResultado">TITULO</h2>
+        <div id="contenidoResultado">contenido resultado</div>
+      </div>
+</div>
 </body>
 </html>
