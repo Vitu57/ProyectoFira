@@ -29,6 +29,16 @@
 include "../services/conexion.php";
 include "../services/header.php";
 
+//Pasamos el id del usuario desde el login
+$id=$_SESSION['id'];
+
+//consulta para saber los datos del usuario logeado y el tipo
+$consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
+      $exe=mysqli_query($conn,$consulta);
+      $casos=mysqli_fetch_array($exe);
+        $nom=$casos['nom_usuari'];
+        $cognom=$casos['cognom_usuari'];
+        
 //Comprobar que solo puedan entrar los usuarios designados
 $tipo=$_SESSION['tipo'];
 
@@ -76,7 +86,7 @@ if ($tipo!=1) {
   ?> 
   </div>
 <!-- Mostrar mas !-->
-<div style="position: absolute; top: 28.5%; right:8.5%;">
+<div style="position: absolute; top: 27.5%; right:8.5%;">
     <button id="btn_profes" class="btn_mos" onclick="Mostrar_Profesores(<?php echo $cont; ?>); return false;" value="0">Profesors i Vetlladors</button>
 <button id="btn_al" class="btn_mos" onclick="Mostrar_Alumnes(<?php echo $cont; ?>); return false;" value="0">Alumnes i Acompanyants</button>
 <button id="btn_tipus"class="btn_mos" onclick="Mostrar_Tipus(<?php echo $cont; ?>); return false;" value="0">Tipus i Ambit</button>
