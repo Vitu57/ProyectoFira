@@ -33,7 +33,6 @@ if(isset($_REQUEST['codi'])){
 }
 
 ?>
-<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
   <table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
   <tr>
   

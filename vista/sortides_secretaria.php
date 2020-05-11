@@ -84,10 +84,12 @@ if ($tipo!=3) {
 		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo_secretaria();return false">
 	</form>
 	
-	
+	<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
+
   <?php
     include "tablasecretaria.php";
   ?>
+  </div>
   </div>
    <br>
 <!-- Exportar a CSV !-->

@@ -956,7 +956,7 @@ function filtrar_secretaria(){
        var codi = document.getElementById("codi").value;
     ajax=objetoAjax();
     // 4. Especificamos la solicitud
-    ajax.open('POST', 'sortides_secretaria.php', true);
+    ajax.open('POST', 'tablasecretaria.php', true);
     // 5. Configuramos el encabezado (POST)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     // 6. Enviamos la solicitud
@@ -974,7 +974,7 @@ function vertodo_secretaria(){
     divResultado = document.getElementById('resultado');
     ajax=objetoAjax();
     // 4. Especificamos la solicitud
-    ajax.open('POST', 'sortides_secretaria.php', true);
+    ajax.open('POST', 'tablasecretaria.php', true);
     // 5. Configuramos el encabezado (POST)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     // 6. Enviamos la solicitud
