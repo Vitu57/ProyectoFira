@@ -85,8 +85,8 @@ if (isMobile()) {
 }else{
 	?>
 			<form action="#" method="POST" onsubmit="CrearTablaProfes(2);return false" style="">
-				 <input style="width: 5%;" class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
-				 <input style="width: 9%;" class="espacio_filtros" type="text" name="fecha" id="fecha" placeholder="Data...">
+				 <input  class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
+				 <input  class="espacio_filtros" type="text" name="fecha" id="fecha" placeholder="Data...">
 				 <input type="text" class="espacio_filtros" name="profe" id="profe" placeholder="Professor...">
 				<select class="espacio_filtros" name="etapa" id="etapa" >
 					<option value="" class="placeholder_select"  selected>Etapa...</option>
@@ -141,6 +141,7 @@ if (isMobile()) {
 <div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 </div>
 <br>
+
 <!-- Exportar a CSV !-->
    <form action="../services/csv_profes.php" method="POST">
   	<input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
