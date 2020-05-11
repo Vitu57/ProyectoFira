@@ -776,6 +776,7 @@ function abrirform4(a, b , nom, cognom){
     var modal = document.getElementById("resultado2");
      modal.style.display = "block";
      modal.style.top = "28%";
+	 modal.style.height = "50%";
      var span = document.getElementById("close");
   document.getElementById("tituloResultado").innerHTML="";
   span.onclick = function() {
@@ -815,9 +816,9 @@ function CrearTabla_Feedback(a){
             }else if(respuesta[i].estrellas=="3"){
                 tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>';
             }else if(respuesta[i].estrellas=="4"){
-                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>';
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>';
             }else if(respuesta[i].estrellas=="5"){
-                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>'
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>'
             }
             tabla += '<td>' + respuesta[i].fecha+ '</td>';
             tabla += '<td style="width:70%;">' + respuesta[i].comentarios+ '</td></tr>';
