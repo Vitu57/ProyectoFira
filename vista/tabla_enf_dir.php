@@ -27,8 +27,8 @@ if(isset($_REQUEST['jornada'])){
 $fecha_actual = date('Y-m-d');
 
 ?>
-  <table  class='table table-bordered' style="background-color: rgba(255,255,255,1);">
-  <thead>
+ <div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
+  <table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
       <tr>
    <th scope="col">Codi</th>
 	<th scope="col">Nom Sortida</th>
@@ -44,7 +44,7 @@ $fecha_actual = date('Y-m-d');
    <th scope="col">+ Info</th>
 
   </tr>
-
+</thead>
 <?php
 
     //consulta para saber los datos de las salidas y el transporte
@@ -70,14 +70,7 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
 <i class="fas fa-plus-circle fa-2x" style="color:#367cb3;" id="modal_secretaria" onclick="modal_enf_dir('<?php echo $row['nom_activitat']; ?>','<?php echo $row['profesor_asignat']; ?>','<?php echo $row['nom_transport']; ?>','<?php echo $row['jornada_activitat']; ?>');"></i>
 
 <!-- Modal del contacto--> 
-<div id="resultado2" class="modalmask" style="display:none;">
 
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close">X</a>
-        <h2 id="tituloResultado">TITULO</h2>
-        <div id="contenidoResultado">contenido resultado</div>
-      </div>
-    </div>
 </td>
 </tr>
 
@@ -86,3 +79,4 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
 ?>
 
 </table>
+</div>
