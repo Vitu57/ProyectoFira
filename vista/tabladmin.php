@@ -63,7 +63,7 @@ if(isset($_REQUEST['profe'])){
 			"<a class='list-group-item' title='Modificar Sortida' href='form_update_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-pencil-alt fa-2x' id='modificar' style='color:#3F7FBF;'></i></a>
 			<a class='list-group-item' title='Copiar Sortida' href='form_copy_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-copy fa-2x' id='copiar' style='color:#3F7FBF;'></i></a>";
                         ?>
-                        <a class="list-group-item" title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>' )"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
+                        <a class="list-group-item" title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>', '<?php echo $nom; ?>', '<?php echo $cognom; ?>')"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
 						<?php echo "
 						</div>
 			</td>
@@ -138,14 +138,7 @@ if(isset($_REQUEST['profe'])){
 				<a class='list-group-item' href="#" onclick="abrirform3('<?php echo $tra[0]; ?>','<?php echo $tra[1]; ?>','<?php echo $tra[2]; ?>','<?php echo $tra[3]; ?>','<?php echo $tra[4]; ?>','<?php echo $tra[5]; ?>');"><i class="fas fa-plane fa-2x" style="color: black; margin: 15%;" id="myBtn3"></i></a>
 			</div>
 			</td>
-			<div id="resultado2" class="modalmask" style="display:none;">
-
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:2%;">X</a>
-        <h2 id="tituloResultado">TITULO</h2>
-        <div id="contenidoResultado">contenido resultado</div>
-      </div>
-</div>
+			
 		<?php
 		echo "</tr>";
                 $cont++;

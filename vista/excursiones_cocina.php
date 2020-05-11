@@ -25,7 +25,7 @@ if ($tipo!=4) {
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1){
 
-echo "<body class='home' style='text-align: center; padding: 5%;'  onload='CrearTabla(); cocina_vis();'>";
+echo "<body class='home' style='text-align: center; padding: 5%; padding-top: 2%;'  onload='CrearTabla(); cocina_vis();'>";
 
 ?>
 
@@ -60,53 +60,49 @@ echo "<body class='home' style='text-align: center; padding: 5%;'  onload='Crear
 
 }else{
 
-echo "<body class='home' style='text-align: center; padding: 5%;'  onload='CrearTabla()'>";
+echo "<body class='home' style='text-align: center; padding: 5%; padding-top: 2%;'  onload='CrearTabla()'>";
 
 }
 
 
-include "../vista/header_vista.php";
 
 ?>
 
-<h1 style="text-align: center; margin-bottom: 3%; font-size: 47px; margin-top: -2%;">Sortides Cuina</h1>
+<div class='header2'><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+  <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
+</a>
+<a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
 
-
-<!--Mover al css todo lo del style del div siguiente-->
-
-<div style="padding: 3%">
- <table style="margin-left: 39%;">
- <tr>
- <td> 
+  <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Cuina</h1>
+  </div></div>
+<div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
+<div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
+ 
 
 <?php
 
 //Si es la primera visita carga los modales de esta
 if ($_SESSION['cont_visitas']==1){
  ?>
-  <a href="#" onclick='FiltroCocinaPrimeraVisita()'> <button id='btn_filtro' class="btn btn-lg" style=" color: white; background-color:  #367cb3; padding: 5.8%; margin-left: -10%;" value='0'> Sortides d'avui</button></a>
+  <button id='btn_filtro' class="btn btn-lg" style=" color: white; background-color:  #367cb3; " value='0' onclick='FiltroCocinaPrimeraVisita()'> Sortides d'avui</button>
 <?php
 }else{
   ?>
-		<a href="#" onclick='FiltroCocina()'> <button id='btn_filtro' class="btn btn-lg" style=" color: white; background-color:  #367cb3; 
-    padding: 5.8%; margin-left: -10%;" value='0'> Sortides d'avui</button></a>
+		 <button id='btn_filtro' class="btn btn-lg" style=" color: white; background-color:  #367cb3; " value='0' onclick='FiltroCocina()'> Sortides d'avui</button>
 <?php
 }
 ?>
 	</form>
-</td>
-<td style="width: 9%;"></td>
-<td>      
-<!-- Exportar a CSV !-->
-   <form action="../services/csv_cocina.php" method="POST">
-    <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
-</td></tr></table>
 
-<div id="resultado" class="tablas" style="overflow-y:auto; position:relative; margin-top:6%; left: 50%; transform: translateX(-50%);z-index:9;">
+
+<div id="resultado" class="tablas" style="overflow-y:scroll; height: 28rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 </div>
 <br>
-
+<form action="../services/csv_cocina.php" method="POST">
+    <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
+  </form>
 <div class="footer">
   <img src="../images/logo_fje.svg">
 </div>

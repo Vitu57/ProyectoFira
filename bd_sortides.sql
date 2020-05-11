@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2020 a las 03:24:47
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.1.28
+-- Tiempo de generación: 11-05-2020 a las 06:19:22
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_sortides`
 --
-CREATE DATABASE IF NOT EXISTS `bd_sortides` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `bd_sortides`;
 
 -- --------------------------------------------------------
 
@@ -245,6 +243,34 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nom_etapa`) VALUES
 (6, 'CFGM'),
 (7, 'CFGS'),
 (8, 'PERSONAL');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_feedback`
+--
+
+CREATE TABLE `tbl_feedback` (
+  `id_feedback` int(11) NOT NULL,
+  `usuario` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `estrellas` int(5) NOT NULL,
+  `comentarios` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha` date NOT NULL,
+  `id_sortida` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_feedback`
+--
+
+INSERT INTO `tbl_feedback` (`id_feedback`, `usuario`, `estrellas`, `comentarios`, `fecha`, `id_sortida`) VALUES
+(15, 'Mario Carpallo', 3, 'Qualitat de la pel·licula regular, pantalla borrosa\r\n\r\n', '2020-05-08', 24),
+(16, 'Mario Carpallo', 3, 'hola\r\n', '2020-05-09', 24),
+(17, 'Administrador', 3, 'Valoració', '2020-05-09', 24),
+(18, 'Administrador', 4, 'Valoració', '2020-05-09', 24),
+(19, 'Administrador', 5, 'Valoració', '2020-05-09', 24),
+(20, 'Administrador', 3, 'Valoració', '2020-05-09', 24),
+(21, 'Administrador', 3, 'fdsfs', '2020-05-09', 24);
 
 -- --------------------------------------------------------
 
@@ -497,7 +523,7 @@ CREATE TABLE `tbl_usuari` (
   `computable` enum('si','no','alumne') COLLATE utf8_spanish_ci NOT NULL,
   `id_clase` int(11) NOT NULL,
   `id_tipus_usuari` int(11) NOT NULL,
-  `cont_visitas` int(20) NOT NULL DEFAULT '0'
+  `cont_visitas` int(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -575,6 +601,13 @@ ALTER TABLE `tbl_contacte_activitat`
 --
 ALTER TABLE `tbl_etapa`
   ADD PRIMARY KEY (`id_etapa`);
+
+--
+-- Indices de la tabla `tbl_feedback`
+--
+ALTER TABLE `tbl_feedback`
+  ADD PRIMARY KEY (`id_feedback`),
+  ADD KEY `id_sortida` (`id_sortida`);
 
 --
 -- Indices de la tabla `tbl_galeria`
@@ -694,6 +727,12 @@ ALTER TABLE `tbl_etapa`
   MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_feedback`
+--
+ALTER TABLE `tbl_feedback`
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
 --
 ALTER TABLE `tbl_lista_profesores`
@@ -783,6 +822,12 @@ ALTER TABLE `tbl_clase`
 ALTER TABLE `tbl_clase_user`
   ADD CONSTRAINT `tbl_clase_user_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `tbl_usuari` (`id_usuari`),
   ADD CONSTRAINT `tbl_clase_user_ibfk_2` FOREIGN KEY (`id_clase`) REFERENCES `tbl_clase` (`id_clase`);
+
+--
+-- Filtros para la tabla `tbl_feedback`
+--
+ALTER TABLE `tbl_feedback`
+  ADD CONSTRAINT `tbl_feedback_ibfk_1` FOREIGN KEY (`id_sortida`) REFERENCES `tbl_sortida` (`id_sortida`);
 
 --
 -- Filtros para la tabla `tbl_lista_profesores`

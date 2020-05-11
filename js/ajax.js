@@ -123,8 +123,8 @@ function CrearTabla(){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead>';
-        tabla +='<tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th>';
+    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead>';
+        tabla +='<thead class="thead-dark"><tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
@@ -288,13 +288,13 @@ function CrearTablaProfes(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
-    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thead class="thead-dark">';
-        tabla +='<tr><th data-sort-method="none">Opcions</th><th data-sort-method="none">Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th data-sort-method="none">Transport</th><th data-sort-method="none">Activitat</th><th data-sort-method="none">Contacte</th></thead>';
+    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
+        tabla +='<thead class="thead-dark"><tr><th data-sort-method="none">Opcions</th><th data-sort-method="none">Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th data-sort-method="none">Transport</th><th data-sort-method="none">Activitat</th><th data-sort-method="none">Contacte</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -317,7 +317,7 @@ function CrearTablaProfes(filtro){
             }else{
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a></td>';
+                    tabla +='<td><a title="Moficar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -341,6 +341,70 @@ function CrearTablaProfes(filtro){
             divResultado.innerHTML=tabla;
             
 
+    }
+    }
+}
+function CrearTablaProfes_movil(filtro){
+
+    var profe = "";
+    var clase = document.getElementById("clase").value;
+    var fecha = "";
+    var jornada = "";
+    var etapa = "";
+    var codi = document.getElementById("codi").value;
+    //Fecha de hoy
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    //---------------------
+    divResultado = document.getElementById('resultado');
+    var estado_filtro = document.getElementById("btn_filtro").value;
+    
+
+    if (filtro==1) {
+        var ajax2=objetoAjax();
+    ajax2.open("GET", "../services/consulta_profes.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send(null);
+
+}else{
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/consulta_profes.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada+"&etapa="+etapa+"&codi="+codi);
+}
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+        
+    var respuesta=JSON.parse(this.responseText);
+
+    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
+        tabla +='<tr><th data-sort-method="none"><h1>Codi</h1></th><th data-sort-method="none"><h1>Sortida</h1></th><th><h1>Clase</h1></th><th><h1>Llista</h1></th>';
+        for(var i=0;i<respuesta.length;i++) {
+            if(estado_filtro==1){
+                if(respuesta[i].inici_sortida==today){
+                    tabla += '<tr>';
+                    tabla += '<td><h2>' + respuesta[i].codi_sortida+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_activitat+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_classe+ '</h2></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list fa-3x" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla += '</tr>';
+                }
+            }else{
+                if(respuesta[i].inici_sortida>=today){
+                    tabla += '<tr>';
+                    tabla += '<td><h2>' + respuesta[i].codi_sortida+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_activitat+ '</h2></td>';
+                    tabla += '<td><h2>' + respuesta[i].nom_classe+ '</h2></td>';
+                    tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list fa-3x" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
+                    tabla += '</tr>';
+                }
+            }
+        }
+            tabla+='</thead></table>';
+            divResultado.innerHTML=tabla;
     }
     }
 }
@@ -618,6 +682,7 @@ function modal_enf_dir(nom, profesor, transport, jornada){
 function abrirform1(persona, web, telf, email){
     var modal = document.getElementById("resultado2");
      modal.style.display = "block";
+     modal.style.top = "70%";
      var span = document.getElementById("close");
   document.getElementById("tituloResultado").innerHTML="";
   span.onclick = function() {
@@ -639,6 +704,7 @@ function abrirform1(persona, web, telf, email){
 }
 function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
     var modal = document.getElementById("resultado2");
+    modal.style.top = "70%";
      modal.style.display = "block";
      var span = document.getElementById("close");
   document.getElementById("tituloResultado").innerHTML="";
@@ -680,6 +746,7 @@ function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
 function abrirform3(a,b,c,d,e,f){
     var modal = document.getElementById("resultado2");
      modal.style.display = "block";
+     modal.style.top = "70%";
      var span = document.getElementById("close");
   document.getElementById("tituloResultado").innerHTML="";
   span.onclick = function() {
@@ -703,6 +770,100 @@ function abrirform3(a,b,c,d,e,f){
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
 }
+
+//Feedback
+function abrirform4(a, b , nom, cognom){
+    var modal = document.getElementById("resultado2");
+     modal.style.display = "block";
+     modal.style.top = "28%";
+     var span = document.getElementById("close");
+  document.getElementById("tituloResultado").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal").value=0;
+    }
+                   var contenido ='<h2>Valoració Sortida: '+b+'</h2><br><div id="tabla_feed" style="width:60%; float:right;"></div><div style="text-align:left; padding-bottom:1%;"><b style="visibility:hidden;">""""</b><b id="val2">Valora la Sortida:</b></div>';
+                   contenido +='<div id="valora" class="rate"><input type="radio" id="star5" onchange="MostrarVal(); return false;" name="rate" value="5" />';
+                   contenido +='<label for="star5" title="5">5 stars</label><input type="radio" id="star4" name="rate" value="4" />';
+                   contenido +='<label for="star4" title="4">4 stars</label><input type="radio" id="star3" name="rate" value="3" />';
+                   contenido +='<label for="star3" title="3">3 stars</label><input type="radio" id="star2" name="rate" value="2" />'
+                   contenido +='<label for="star2" title="2">2 stars</label><input type="radio" id="star1" name="rate" value="1" />';
+                   contenido +='<label for="star1" title="1">1 star</label></div><br><br>';
+                   contenido +='<div id="comentarios" style="padding-top:2%; width:50%; text-align:left;" class="form-group purple-border"><b style="visibility:hidden;">""""</b><label for="exampleFormControlTextarea4"><b>Comentaris (Opcional):</b></label><textarea class="form-control" style="width:45%; margin:0.5% 2%;" id="coment_text" rows="3"></textarea>';
+                   contenido +='<button class="btn btn-lg filtrado_admin" style="margin:2.5% 2%;" onclick="feedback('+a+',\''+nom+'\', \''+cognom+'\'); return false;">Enviar</button></div>'
+                    
+            document.getElementById("contenidoResultado").innerHTML=contenido;
+            CrearTabla_Feedback(a);
+}
+
+function CrearTabla_Feedback(a){
+    var ajax2=objetoAjax();
+    ajax2.open('POST', '../services/tabla_feedback.php', true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("id="+a);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<b style="float: right; margin-right:74%;">Valoracions dels usuaris:</b><br><div style="text-align:center; margin-right:5%; margin-left:5%; margin-top:20px; width:92%; height:250px; max-height:100%; max-width:100%; overflow-x:auto; overflow-y:auto;"><table class="table table-bordered" style="background-color:white;">';
+        tabla +='<thead style="color:#fff; background-color:#212529; border-color:32383e;"><tr><th>Usuari</th><th>Valoració</th><th>Data</th><th>Comentaris</th><tr></thead>';
+        for(var i=0;i<respuesta.length;i++) {
+            tabla += '<tr><td>'+respuesta[i].usuario+'</td>';
+            if(respuesta[i].estrellas=="1"){
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"></td>';
+            }else if(respuesta[i].estrellas=="2"){
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>';
+            }else if(respuesta[i].estrellas=="3"){
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>';
+            }else if(respuesta[i].estrellas=="4"){
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>';
+            }else if(respuesta[i].estrellas=="5"){
+                tabla +='<td><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"><img src="../images/star-solid.png" height="11" width="11"></td>'
+            }
+            tabla += '<td>' + respuesta[i].fecha+ '</td>';
+            tabla += '<td style="width:70%;">' + respuesta[i].comentarios+ '</td></tr>';
+        }
+        tabla+='</table></div>';
+    }
+    document.getElementById("tabla_feed").innerHTML=tabla;
+}
+}
+function feedback(id_sortida, nom, cognom){
+    var stars = $("input[name='rate']:checked").val();
+    if(stars== null){
+        alert("Valora del 1 al 5 amb les estels")
+    }else{
+    var text = document.getElementById("coment_text").value;
+    //Fecha de hoy
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    //---------------------
+    if(text==""){
+        text="Sense Comentaris";
+    }
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/consulta_feedback.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("id_sortida="+id_sortida+"&stars="+stars+"&text="+text+"&today="+today+"&nom="+nom+"&cognom="+cognom);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            alert("Subido correctamente")
+            stars.value="";
+            document.getElementById("coment_text").value="";
+            CrearTabla_Feedback(id_sortida);
+            
+        }
+    }
+    }
+}
+//----------------------
 
 //Funcion que filtra resultados de las excursioned de administracion
 function filtrar(){
@@ -877,6 +1038,31 @@ ajax2.onreadystatechange=function() {
         }
 }
 }
+function CrearTabla_Lista2(id_activitat, clase){
+divResultado = document.getElementById('resultado');
+var ajax2=objetoAjax();
+ajax2.open("POST", "../services/consulta_lista.php", true);
+ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+ajax2.send("id_activitat="+id_activitat+"&clase="+clase);
+ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+    var tabla='<table class="table table-bordered" <thread>';
+        tabla +='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><tr><th><h1>Alumne</h1></th><th><h1>Estat</h1></th><th><h1>Assistència</h1></th></tr><tr>';
+        for(var i=0;i<respuesta.length;i++) {
+            tabla += '<tr><td><h2>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].nom_alumne+'</h2></td>';
+            tabla += '<td><h2>' + respuesta[i].estado_asistencia+'</h2></td>';
+            if (respuesta[i].estado_asistencia=="Absent") {
+        tabla += '<td>' + '<a href="#" title="Absent" style="display:inline;"><img src="../images/mal_check.png" width="40"; onclick="CheckLista2('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="42"></a></td></tr>';
+            }else{
+        tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="50" width="40"; onclick="CheckLista2('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="42"></a></td></tr>'; 
+            }
+        }
+        tabla+='</thead></table>';
+        divResultado.innerHTML=tabla;
+        }
+}
+}
 
 function CheckLista(id, estado, id_activitat, clase){
     var ajax2=objetoAjax();
@@ -886,6 +1072,18 @@ function CheckLista(id, estado, id_activitat, clase){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
             CrearTabla_Lista(id_activitat, clase);
+        }
+    }
+}
+
+function CheckLista2(id, estado, id_activitat, clase){
+    var ajax2=objetoAjax();
+    ajax2.open("POST", "../services/check_lista.php", true);
+    ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    ajax2.send("id="+id+"&estado="+estado);
+    ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+            CrearTabla_Lista2(id_activitat, clase);
         }
     }
 }

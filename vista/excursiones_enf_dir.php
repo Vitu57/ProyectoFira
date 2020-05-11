@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 </head>
-<body class="home" style="text-align: center; padding: 2.7%;"> 
+<body class="home" style="text-align: center; padding-top: 2%; padding-left: 5%; padding-right: 5%;"> 
 
 <?php
 include "../services/conexion.php";
@@ -24,18 +24,25 @@ if ($tipo!=5 AND $tipo!=6) {
 
 ?>
 
-<div class="header" id="resultado" style="border-radius: 20px; padding: 2%;">
-
-  <a href="../vista/home.php">
-  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-left: 2%; color: #071334;" class="btn btn-secondary"></i>
+<div class='header2'><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+  <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
 </a>
+<a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
+
+  <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Enfermeria</h1>
+  </div></div>
+<div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
+<div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
   <br><br>
   <form action="#" method="POST" onsubmit="filtrar_enf_dir();return false">
     
-    Data: <input class="espacio_filtros" type="text" name="fecha" id="fecha">
+    <input class="espacio_filtros" type="text" name="fecha" id="fecha" placeholder="Data...">
+    <input class="espacio_filtros" type="text" name="profe" id="profe" placeholder="Professor...">
    
-Clase: <select class="espacio_filtros" name="clase" id="clase">
-          <option value=""></option>
+<select class="espacio_filtros" name="clase" id="clase" >
+          <option value="">Clase...</option>
       <?php
 
   $consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
@@ -48,8 +55,8 @@ Clase: <select class="espacio_filtros" name="clase" id="clase">
 </select>
 
     
-    Jornada: <select class="espacio_filtros" name="jornada" id="jornada">
-      <option value=""></option>
+   <select class="espacio_filtros" name="jornada" id="jornada">
+      <option value="">Jornada...</option>
       <?php
 
   $consulta="SELECT DISTINCT jornada_activitat FROM tbl_activitat";
@@ -61,16 +68,15 @@ Clase: <select class="espacio_filtros" name="clase" id="clase">
 ?>
 </select>
 
-Profesor: <input class="espacio_filtros" type="text" name="profe" id="profe">
-    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Filtrar">
-  </form>
-  <form action="#" method="POST" onsubmit="vertodo_enf_dir();return false">
-    <br>
+
+    <input type="submit" class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%; " name="submit" value="Filtrar">
     <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots">
-    <br>
   </form>
-<br>
-<br>
+  
+    
+    
+  </form>
+
   <?php
     include "tabla_enf_dir.php";
   ?>
@@ -82,7 +88,14 @@ Profesor: <input class="espacio_filtros" type="text" name="profe" id="profe">
   </form>
 
   </div>
+<div id="resultado2" class="modalmask" style="display:none;">
 
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Close" class="close" id="close">X</a>
+        <h2 id="tituloResultado">TITULO</h2>
+        <div id="contenidoResultado">contenido resultado</div>
+      </div>
+    </div>
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>

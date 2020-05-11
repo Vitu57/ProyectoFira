@@ -34,7 +34,14 @@
 
 
 <body class="body_design" onload="cargar_imagenes();">
-   <a href="../vista/home.php">
+<?php
+session_start();
+    if (isset($_SESSION['id_pares'])) {	
+   echo '<a href="../vista/home_pares.php">';
+  }else{ 
+  	echo '<a href="../vista/excursiones_profes.php">';
+  }
+  ?>
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
 
