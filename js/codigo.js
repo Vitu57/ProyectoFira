@@ -382,6 +382,14 @@ function update() {
         "&prof_asignat=" + prof_asignat.value + "&id_sortida=" + id_sortida + "&id_del_prof=" + id_sort_prof + "&profes=" + JSON.stringify(profes) + "&num_vetlladors=" + num_vetlladors.value + "&num_acomp=" + num_acomp.value + "&prof_apart=" + prof_apart.value +
         "&comentaris_sort=" + comentaris_sort.value + "&nom_activitat=" + nom_activitat.value + "&lloc_activitat=" + lloc_activitat.value + "&tipus_activitat=" + tipus_activitat.value + "&ambit_activitat=" + ambit_activitat.value +
         "&jornada_activitat=" + jornada_activitat.value + "&objectiu_activitat=" + comentaris_objectiu.value);
+        ajax3.onreadystatechange = function () {
+            if (ajax3.readyState == 4 && ajax3.status == 200) {
+                //alert("ok")
+                mensaje_insert_ok_2();
+            } else {
+    
+            }
+        }
 
 }
 
@@ -545,9 +553,9 @@ function PaginacionCostes2() {
 
 //Función que valida la inserción de excursiones, si los datos obligatorios
 //no están rellenos, hace un return false y marca los apartados de color rojo
-function validar_insercion() {
+function validar_insercion(ok) {
     //alert("entra");
-    var ok = 1;
+    
     var inici_sort = document.getElementById("inici_sortida");
     var final_sort = document.getElementById("final_sortida");
     var etapa = document.getElementById("etapa");
@@ -636,7 +644,9 @@ function validar_insercion() {
         insert_excursion();
         //alert("Insertaría datos");
 
-    } else if (ok = 0) {
+    } else if (ok = 2) {
+        update();
+    } else {
         return false;
     }
 }

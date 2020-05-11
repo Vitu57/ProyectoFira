@@ -14,6 +14,9 @@
   <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
+<link rel="stylesheet" type="text/css" href="../plugin/toastr/toastr.css">
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../plugin/toastr/toastr.min.js"></script>
   <title>Afegir Sortida</title>
 </head>
 
@@ -22,7 +25,7 @@
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
 </a>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
-        <form action="#" class="needs-validation" id="form_exc" onsubmit="update(); return false">
+        <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(3); return false">
         <div class="card rounded-0">
           <div class="card-header">
             <!--Sortida-->
