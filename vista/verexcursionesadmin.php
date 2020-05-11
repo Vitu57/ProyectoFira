@@ -89,13 +89,10 @@ Profesor: <input type="text" name="profe" class="espacio_filtros" id="profe">
 </div>
 <script src='../plugin/tablesort/tablesort.js'></script>
 
-<!-- Include sort types you need -->
-<script src='../plugin/tablesort/sorts/tablesort.dotsep.js'></script>
-<!--<script src='tablesort.date.js'></script>-->
-
 <script>
   new Tablesort(document.getElementById('table-id'));
-  const slider = document.querySelector('#resultadohed');
+
+const slider = document.querySelector('#resultadohed');
 let isDown = false;
 let startX;
 let scrollLeft;
