@@ -73,13 +73,22 @@ echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.
 
 //!!!!!!!!!!!Falta mostrar solo las que tienen fotos!!!!!!!!!!!!!!!!!!!!!
 
-$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase WHERE tbl_alumnes.id_alumne='$id_fill' ORDER BY tbl_sortida.final_sortida DESC";
-      $exe=mysqli_query($conn,$consulta);
+$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_alumnes.id_alumne='$id_fill' AND tbl_galeria.cont_subidas=1 ORDER BY tbl_sortida.final_sortida DESC";
+     
+     if ($exe=mysqli_query($conn,$consulta)){
+       
+        if (mysqli_num_rows($exe)==0) {
+
+        echo "<div class='div-fotos-pares'><h1 class='nofotos'>No hi han fotos de les sortides</h1>
+        <a href='home_pares.php'><button class='btn btn-lg btn-fotos-pares'>Tornar</button></a></div>";
+
+        }else{
+
      while ($casos=mysqli_fetch_array($exe)){
 
-echo "<a href='../vista/galeria_fotos.php?id_exc=".$casos[3]."&accion=ver_img'><div class='pares_sortides'>";
+echo "<a title='Veure Fotos de ".$casos[0]."' style='color:white; text-decoration:none;' href='../vista/galeria_fotos.php?id_exc=".$casos[3]."&accion=ver_img'><button class='myBtn_sortides_pares'>";
 
-      echo "<h3>".$casos[0]."</h3><br>";
+      echo "<i class='far fa-image fa-3x' style='float:left; margin-top:-11%; margin-left:4%;'></i><h3>".$casos[0]."</h3><br>";
       echo "<h5>".$casos[1];
     //Si la fecha de salida es la misma solo la muestra una vez
       if ($casos[1]!=$casos[2]) {
@@ -88,11 +97,15 @@ echo "<a href='../vista/galeria_fotos.php?id_exc=".$casos[3]."&accion=ver_img'><
 
       echo "</h5></div></a>";
 }
+}
 
+ echo "</button>";
+
+}else{
+  echo "Error en la consulta";
+}
 
 ?>
-
- </div>
 
 <div class="footer">
   <img src="../images/logo_fje.svg">

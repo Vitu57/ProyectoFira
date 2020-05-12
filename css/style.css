@@ -95,6 +95,26 @@ background-repeat: no-repeat;
 background-repeat: no-repeat;
 }
 
+.myBtn_sortides_pares{
+ margin-top:5%;
+  background-color:#ff8433;
+  padding-bottom: 4%;
+  padding-top: 4%;
+  height: 230px;
+  width:30%;
+  border-radius: 25px;
+  border:0px;
+  border-right:1px solid black;
+  text-align: center;
+   cursor: pointer;
+   background-image: url(../images/icon-content.svg);
+   background-position: left 95% top 95%;
+   background-size: 9%;
+background-repeat: no-repeat;
+margin-left: 12.6%;
+}
+
+
 .myBtn:hover {
   background-color:#ff8433; 
   opacity: 0.9;
@@ -501,3 +521,29 @@ margin-left: 37.3%;
     box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
 }
 
+
+.btn-fotos-pares{
+  text-align: center;
+  background-color: #367cb3;
+   color: white; padding: 0.5%;
+   margin-top: 5%;
+   height: 50px;
+  width: 100px;
+}
+
+.div-fotos-pares{
+    margin-top: 8%;
+    background-color:#ff8433;
+    padding: 5%;
+    color: white;
+    text-align: center;
+    width: 42%;
+    border-radius: 20px;
+    margin-left: 28%;
+}
+
+.btn-atras{
+  float: left; 
+  margin-left: 1.3%; 
+  color: #071334;
+}

@@ -91,7 +91,7 @@ echo "<a href='../vista/sortides_pares.php?fill=".$id_fill."'>";
 ?>
 
 <button  id='myBtn' class="myBtn_pares">
-<i class="fas fa-user fa-2x ml-2" style="float:left; color:white;"></i><h4 class="text-white"><?php echo $nom_fill."<br> ".$cognom_fill." ".$cognom2_fill; ?></h4>
+<i class="fas fa-user fa-2x ml-2" style="float:left; color:white;  margin-top:-33%;"></i><h4 class="text-white"><?php echo $nom_fill."<br> ".$cognom_fill." ".$cognom2_fill; ?></h4>
 </button>
 </a>
 

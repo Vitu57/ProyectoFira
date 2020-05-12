@@ -24,6 +24,10 @@ $id=$_REQUEST['q4t5ywt62g'];
 ?>	
 
 <div class='header'>
+
+   <a href="../vista/login_pares.php">
+  <i class="fas fa-arrow-circle-left fa-3x btn-atras" title="Tornar"></i>
+</a>
 <h2 class="title_header">Restableix la clau</h2>
 </div>
 
