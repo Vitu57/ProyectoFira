@@ -19,7 +19,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 </head>
-<body class="home" style="text-align: center; padding: 2%;" onload="ver_usuarios(); select_tipus_usuari();">
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(); select_tipus_usuari();">
 
 <!--Sweet alert-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -41,24 +41,28 @@ if ($tipo!=1) {
 
 ?>
 
-<div class="header" id="resultado"  style="border-radius: 15px;">
-	<div style="padding: 3%">
-	<a href="../vista/home.php">
-	<i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: -1%; color: #071334;" class="btn btn-secondary"></i>
+<div class='header2'><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+  <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
 </a>
-<h2 class="text-center">Veure Usuaris</h2>
+<a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
 
+  <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Professors</h1>
+  </div></div>
+<div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
+<div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 
     <form action="#" method ="POST">
-    <input type="text" id="user_filtre" placeholder="Usuario">
-    <input type="text" id="nom_filtre" placeholder="Nom">
-    <input type="text" id="cognom_filtre" placeholder="Cognom">
-    <select id="tipus_filtre">
+    <input class="espacio_filtros" type="text" id="user_filtre" placeholder="Usuario...">
+    <input class="espacio_filtros" type="text" id="nom_filtre" placeholder="Nom...">
+    <input class="espacio_filtros" type="text" id="cognom_filtre" placeholder="Cognom...">
+    <select class="espacio_filtros" id="tipus_filtre">
       <option selected disabled value="0" class="browser-default custom-select mb-2">Tipus d'usuari</option>
 </select>
 </form>
 
-  <div id="resultado_users" class="">
+  <div id="resultado_users" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 
   </div>
   </div>

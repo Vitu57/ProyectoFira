@@ -16,7 +16,7 @@ echo "<div id='resultado'>";
 
 if ($_SESSION['cont_visitas']==1){
 
-echo "<body class='home' onload='admin_prof();' style='text-align: center; padding: 2%;'>";
+echo "<body class='home' onload='admin_prof();' style='text-align: center; padding: 5%; padding-top: 2%;'>";
 
 //Modales de visita guiada
 ?>
@@ -73,18 +73,26 @@ if ($tipo!=1) {
 	header("location: ../index.php");
 }
 
-include "../vista/header_vista.php";
 
 ?>
 
-<h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Administració Professors</h1>
+<div class='header2'><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+  <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
+</a>
+<a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
 
-<div class="tablas" style="background-color: rgba(255,255,255,1); border-radius: 15px;">
-	<div style="padding: 3%">
+  <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Administració Professors</h1>
+  </div></div>
+<div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
+<div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 
 	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
-		Etapa: <select name="etapa" id="etapa" class="espacio_filtros">
-			<option value=""></option>
+    <input type="text" name="nom_profe" class="espacio_filtros" id="profe" placeholder="Nom Professor">
+<input type="text" name="cog_profe" class="espacio_filtros" id="profe" placeholder="Cognom Professor">
+		<select name="etapa" id="etapa" class="espacio_filtros">
+			<option value="">Etapa...</option>
 
 		<?php
 
@@ -96,8 +104,8 @@ include "../vista/header_vista.php";
 }
 ?>
 </select>
-        Clase: <select name="clase" class="espacio_filtros" id="clase">
-       		<option value=""></option>
+        <select name="clase" class="espacio_filtros" id="clase">
+       		<option value="">Clase...</option>
 			<?php
 
 	$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
@@ -109,26 +117,22 @@ include "../vista/header_vista.php";
 ?>
 </select>
 
-Nom Profesor: <input type="text" name="nom_profe" class="espacio_filtros" id="profe">
-Cognoms Profesor: <input type="text" name="cog_profe" class="espacio_filtros" id="profe">
+
 		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Filtrar">
-	</form>
-	<br>
-	<form action="#" method="POST" onsubmit="vertodo2();return false">
-		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots">
+    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onload="vertodo2();return false">
 	</form>
 
 
 <br>
+<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
   <?php
     include "tabla_admin_profes.php";
   ?>
-  <br>	
+  </div>
 
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>
-</div>
-</div>
+
 </body>
 </html>

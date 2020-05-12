@@ -33,7 +33,7 @@ if (isset($_REQUEST['error'])) {
 }
 
 ?>
-  <table  class="table table-bordered" style="text-align:center"><thead>
+  <table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
   <tr>
 
    <th scope='col'>Professors</th>
@@ -43,7 +43,7 @@ if (isset($_REQUEST['error'])) {
    <th scope='col'>Eliminar clase de professor</th>
 
   </tr>
-
+</thead>
 <?php
 
     //consulta para saber los datos de las salidas, las actividades y el transporte
@@ -153,8 +153,11 @@ echo "<option>".$rows['nom_classe']."</option>";
              </form></td>
 
 </tr>
+
 <?php 
   
 
 
   }
+  ?>
+  </table>

@@ -77,7 +77,7 @@ function ver_usuarios() {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             //console.log(ajax3.responseText); 
             var respuesta = JSON.parse(ajax3.responseText);
-            usuarios += '<table class="table table-hover mt-5"><thead><tr><th scope="col">Opcions</th><th scope="col">UserName</th><th scope="col">Nom</th><th scope="col">Cognom</th><th scope="col">Computable</th><th scope="col">Tipus d\'usuari</th></tr></thead><tbody>';
+            usuarios += '<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread><thead class="thead-dark"><tr><th scope="col">Opcions</th><th scope="col">UserName</th><th scope="col">Nom</th><th scope="col">Cognom</th><th scope="col">Computable</th><th scope="col">Tipus d\'usuari</th></tr></thead><tbody>';
                         for (var i = 0; i < respuesta.length; i++) {
                 usuarios += '<tr><th scope="row"><a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger"></i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }

@@ -150,8 +150,7 @@ if (isMobile()) {
 <div class="footer">
   <img src="../images/logo_fje.svg">
 </div>
-</div>
-</div>
+
 <script src='../plugin/tablesort/tablesort.js'></script>
 
 <!-- Include sort types you need -->
