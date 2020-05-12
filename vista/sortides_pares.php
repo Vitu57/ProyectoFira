@@ -25,6 +25,7 @@ $id=$_SESSION['id_pares'];
 $cognom=$_SESSION['cognom'];
 $nom=$_SESSION['nombre'];
 
+
 //Comprueba que llega el id del hijo
 if (isset($_REQUEST['fill'])) {
    $id_fill=$_REQUEST['fill'];
@@ -88,11 +89,14 @@ $consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_so
 
 echo "<a title='Veure Fotos de ".$casos[0]."' style='color:white; text-decoration:none;' href='../vista/galeria_fotos.php?id_exc=".$casos[3]."&accion=ver_img'><button class='myBtn_sortides_pares'>";
 
+$newDate = date("d/m/Y", strtotime($casos[1]));
+
       echo "<i class='far fa-image fa-3x' style='float:left; margin-top:-11%; margin-left:4%;'></i><h3>".$casos[0]."</h3><br>";
-      echo "<h5>".$casos[1];
+      echo "<h5>".$newDate;
     //Si la fecha de salida es la misma solo la muestra una vez
       if ($casos[1]!=$casos[2]) {
-       echo " - ".$casos[2];
+$newDate = date("d/m/Y", strtotime($casos[2]));        
+       echo " - ".$newDate;
       }
 
       echo "</h5></div></a>";

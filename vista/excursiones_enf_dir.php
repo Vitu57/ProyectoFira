@@ -38,7 +38,7 @@ if ($tipo!=5 AND $tipo!=6) {
   <br><br>
   <form action="#" method="POST" onsubmit="filtrar_enf_dir();return false">
     
-    <input class="espacio_filtros" type="text" name="fecha" id="fecha" placeholder="Data...">
+    <input class="espacio_filtros" type="date" name="fecha" id="fecha" placeholder="Data...">
     <input class="espacio_filtros" type="text" name="profe" id="profe" placeholder="Professor...">
    
 <select class="espacio_filtros" name="clase" id="clase" >

@@ -64,13 +64,20 @@ if(isset($_REQUEST['profe'])){
 			<a class='list-group-item' title='Copiar Sortida' href='form_copy_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-copy fa-2x' id='copiar' style='color:#3F7FBF;'></i></a>";
                         ?>
                         <a class="list-group-item" title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>', '<?php echo $nom; ?>', '<?php echo $cognom; ?>')"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
-						<?php echo "
+						
+						<?php
+
+//Poner las fechas en formato						 
+$data_inici = date("d/m/Y", strtotime($exe[1]));
+$data_final = date("d/m/Y", strtotime($exe[2]));
+						
+						echo "
 						</div>
 			</td>
 			<td style='width: 6%;'>".$exe[0]."</td>
 			<td style='width: 12%;'>".$exe[11]."</td>
-			<td style='width: 7%;'>".$exe[1]."</td>
-			<td style='width: 7%;'>".$exe[2]."</td>
+			<td style='width: 7%;'>".$data_inici."</td>
+			<td style='width: 7%;'>".$data_final."</td>
 			<td style='width: 7%;'>".$exe[3]."</td>
 			<td style='width: 7%;'>".$exe[4]."</td>
                         <td style='width: 8%;'>".$exe[15]."</td>

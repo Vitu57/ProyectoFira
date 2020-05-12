@@ -60,7 +60,7 @@ if ($tipo!=1) {
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 	
 	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
-		<input type="text" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data">
+		<input type="date" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data">
     <select name="clase" class="espacio_filtros" id="clase">
        		<option value="">Clase</option>
 			<?php

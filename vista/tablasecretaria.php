@@ -61,12 +61,16 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
 
      while ($row=mysqli_fetch_array($exe)){
   
+  //Poner las fechas en formato            
+$data_inici = date("d/m/Y", strtotime($row['inici_sortida']));
+$data_final = date("d/m/Y", strtotime($row['final_sortida']));
+
        echo "<tr><td>".$row['codi_sortida']."</td>
             <td>".$row['nom_activitat']."</td>
             <td>".$row['nom_etapa']."</td>
             <td>".$row['nom_classe']."</td>
-            <td>".$row['inici_sortida']."</td>
-            <td>".$row['final_sortida']."</td>
+            <td>".$data_inici."</td>
+            <td>".$data_final."</td>
             <td>".$row['profesor_asignat']."</td>
             <td>".$row['n_vetlladors']."</td>
             <td>".$row['profes_a_part']."</td>

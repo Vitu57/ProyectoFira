@@ -126,13 +126,15 @@ function CrearTabla(){
     var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead>';
         tabla +='<thead class="thead-dark"><tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
+             var fecha_inici = respuesta[i].inici_sortida.split('-').reverse().join('/');
+             var final_inici = respuesta[i].final_sortida.split('-').reverse().join('/');
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr></tr>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
 					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
-                    tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
+                    tabla += '<td>' + fecha_inici + '</td>';
+                    tabla += '<td>' + fecha_final + '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
@@ -149,8 +151,8 @@ function CrearTabla(){
                     tabla += '<tr></tr>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
 					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
-                    tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
+                    tabla += '<td>' + fecha_inici + '</td>';
+                    tabla += '<td>' + fecha_inici + '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';
@@ -291,6 +293,11 @@ function CrearTablaProfes(filtro){
     var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
         tabla +='<thead class="thead-dark"><tr><th data-sort-method="none">Opcions</th><th data-sort-method="none">Llista</th><th>Sortida</th><th>Codi</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Professor asignat</th><th>Acompanyants</th><th>Vetlladors</th><th>Alumnes</th><th data-sort-method="none">Transport</th><th data-sort-method="none">Activitat</th><th data-sort-method="none">Contacte</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
+            
+             //Cambiar formato fecha 
+             var fecha_inici = respuesta[i].inici_sortida.split('-').reverse().join('/');
+             var fecha_final = respuesta[i].final_sortida.split('-').reverse().join('/');
+            
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
@@ -298,8 +305,8 @@ function CrearTablaProfes(filtro){
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
+                    tabla += '<td>' + fecha_inici+ '</td>';
+                    tabla += '<td>' + fecha_final+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].profesor_asignat+'</td>';
@@ -321,8 +328,8 @@ function CrearTablaProfes(filtro){
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].inici_sortida+ '</td>';
-                    tabla += '<td>' + respuesta[i].final_sortida+ '</td>';
+                    tabla += '<td>' + fecha_inici+ '</td>';
+                    tabla += '<td>' + fecha_final+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].profesor_asignat+'</td>';
