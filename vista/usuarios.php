@@ -41,7 +41,7 @@ if ($tipo!=1) {
 
 ?>
 
-<div class='header2'><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
+<div class='header2' id="resultado"><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
 <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
 </a>
@@ -64,6 +64,7 @@ if ($tipo!=1) {
 
   <div id="resultado_users" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 
+  </div>
   </div>
   </div>
   </div>
