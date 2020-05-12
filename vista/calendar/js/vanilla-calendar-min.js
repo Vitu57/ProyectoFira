@@ -313,14 +313,17 @@ function versalida(id_sortida){
       var respuesta2=JSON.parse(ajax2.responseText);
 
        for(var i=0;i<1;i++) {
-
+        
+        //Formato de la fecha
+        var fecha_inici = respuesta2.inici_sortida.split('-').reverse().join('/');
+        
         document.getElementById("tabla_calendario").style.display ="block";
 
         document.getElementById("codi_sortida_cal").innerHTML = respuesta2.nom_activitat;
         document.getElementById("clase_cal").innerHTML = respuesta2.nom_classe;
         document.getElementById("Profe_asignat_cal").innerHTML = respuesta2.profesor_asignat;
         document.getElementById("num_alu_cal").innerHTML = respuesta2.numero_alumnes;
-        document.getElementById("inici_sortida_cal").innerHTML = respuesta2.inici_sortida;
+        document.getElementById("inici_sortida_cal").innerHTML = fecha_inici;
 
         console.log(respuesta2);
 
