@@ -52,7 +52,18 @@ if ($tipo!=2) {
 <a href="../vista/home.php">
 	<i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
 </a>
+<?php
+$id=$_SESSION['id'];
+$conom="select usuari from tbl_usuari where id_usuari='".$id."'";
+$query=mysqli_query($conn,$conom);
+$nombre=mysqli_fetch_array($query);
+?>
 <a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
+<div style="margin-left: 80%;font-size:200%;margin-top: -0.5%;">
+	<?php
+	echo $nombre[0];
+	?>
+</div>
 
 	<div style="padding: 1%; text-align: left;">
 		<h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Professors</h1>
@@ -64,10 +75,10 @@ if ($tipo!=2) {
 if (isMobile()) {
 	?>
 		<form action="#" method="POST" onsubmit="CrearTablaProfes_movil(2);return false" style="">
-				 <input style="width: 25%;" class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
+				 <input style="width: 35%;height: 50px;font-size: 30px;" class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
 				 
-				<select style="width: 25%;" class="espacio_filtros" name="clase" id="clase">
-			       	<option class="placeholder_select" value=""  selected>Clase...</option>
+				<select style="width: 35%;height: 50px;font-size: 30px;" class="espacio_filtros" name="clase" id="clase">
+			       	<option class="placeholder_select" selected>Clase...</option>
 					<?php
 
 					$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
@@ -77,8 +88,8 @@ if (isMobile()) {
 					}
 					?>
 				</select>
-		<input class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%;height: 50px;width: 100px; " type="submit" name="submit" value="Filtrar">
-		<input class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3;height: 50px;width: 100px; " type="submit" name="submit" value="Veure Tots" onclick="CrearTablaProfes_movil(1);return false">
+		<input class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%;height: 50px;width: 100px; font-size: 30px;" type="submit" name="submit" value="Filtrar">
+		<input class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3;height: 50px;width: 150px;font-size: 30px; " type="submit" name="submit" value="Veure Tots" onclick="CrearTablaProfes_movil(1);return false">
 	</form>
 	<a href="#" onclick='FiltroProfes_movil()' style="display: none;"> <button id='btn_filtro' class="btn btn-lg" style="color: white; background-color:  #367cb3;    padding: 5px;" value='0'> Sortides d'avui</button></a>
 	<?php
