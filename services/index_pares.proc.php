@@ -19,6 +19,7 @@
                 $nom = $row["nom_pares"];
 				$cognom = $row["cognoms_pares"];
                 $id = $row["id_pares"];
+                $cont_visitas = $row["cont_visitas"];
             }
             $row_cnt = mysqli_num_rows($res);
         }else{
@@ -28,10 +29,15 @@
         //Comprobar que el usuario está registrado
         if (!empty($stmt) && $row_cnt == 1) {
             session_start();
-
+            
+            $cont_visitas+=1;
             $_SESSION['nombre'] = $nom;
 			$_SESSION['cognom'] = $cognom;
             $_SESSION['id_pares'] = $id;
+            $_SESSION['cont_visitas'] = $cont_visitas;
+
+$upd_cont_visitas="UPDATE tbl_pares SET cont_visitas='$cont_visitas' WHERE id_pares='$id'";
+$exe=mysqli_query($conn,$upd_cont_visitas);    
 
             header("Location: ../vista/home_pares.php");
         }else{

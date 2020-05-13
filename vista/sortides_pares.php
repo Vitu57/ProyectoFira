@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
+        <script type="text/javascript" src="../js/primera_visita.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!--Calendario-->
   <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
@@ -13,7 +14,6 @@
   <script src="calendar/js/vanilla-calendar-min.js"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 </head>
-<body class="home">
 
 <?php
 include "../services/conexion.php";
@@ -24,6 +24,28 @@ include "../services/header_pares.php";
 $id=$_SESSION['id_pares'];
 $cognom=$_SESSION['cognom'];
 $nom=$_SESSION['nombre'];
+
+
+//mostrará el tutorial si es la primera visita
+if ($_SESSION['cont_visitas']==1) {
+  echo "<body class='home' onload='tutorial_sortides_pares();'>";
+
+
+//Modal de visita guiada
+?>
+<div id="resultado4" class="modalmask" style="display:none; margin-top: -9%; width: 32%; margin-left: 23%; height: 25%;">
+
+      <div class="modalbox movedown" id="resultadoContent4">
+        <a href="#" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultado4">TITULO</h2>
+        <div id="contenidoResultado4">contenido resultado</div>
+      </div>
+</div>
+<?php
+
+}else{
+  echo "<body class='home'>";
+}
 
 
 //Comprueba que llega el id del hijo
@@ -69,11 +91,6 @@ echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.
 <?php
 
 //consulta para mostrar las sortides de su hijo
-
-
-
-//!!!!!!!!!!!Falta mostrar solo las que tienen fotos!!!!!!!!!!!!!!!!!!!!!
-
 $consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_alumnes.id_alumne='$id_fill' AND tbl_galeria.cont_subidas=1 ORDER BY tbl_sortida.final_sortida DESC";
      
      if ($exe=mysqli_query($conn,$consulta)){

@@ -36,6 +36,24 @@ function benvinguda2(){
 
 }
 
+function benvinguda_pares(){
+
+    var modal = document.getElementById("resultado4");
+     modal.style.display = "block";
+     var span = document.getElementById("close4");
+  document.getElementById("tituloResultado4").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal4").value=0;
+    }
+                  
+             var mensaje = "<div style='padding: 4%; text-align:center'><i style='margin-bottom:3%;' class='fas fa-arrow-up'></i><br>Benvingut a l'aplicació de sortides.<br>"; 
+             mensaje += " Feu click al botó amb el nom del seu fill <br> si vols veure les seves sortides."; 
+
+            document.getElementById("contenidoResultado4").innerHTML=mensaje;
+
+}
+
 
 function admin1(){
 
@@ -243,5 +261,60 @@ function cocina_vis3(){
                    var mensaje = "<i style='margin-right:3%;' class='fas fa-arrow-left'></i>Fes click a exportar dades per descarregar <br> un excel amb totes les sortides."; 
                 
             document.getElementById("contenidoResultado4").innerHTML=mensaje;
+
+}
+
+function tutorial_sortides_pares(){
+
+    var modal = document.getElementById("resultado4");
+     modal.style.display = "block";
+     var span = document.getElementById("close4");
+  document.getElementById("tituloResultado4").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal4").value=0;
+    }
+                  
+             var mensaje = "<div style='padding: 4%; text-align: center;'>Aquestes son les sortides fetes per el seu fill/a fins el dia d'avui.<br>"; 
+             mensaje += "Feu click al botó amb el nom de la sortida <br> si vols veure la seva galeria de fotos.<br>"; 
+             mensaje += "(Solament apareixen les sortides amb fotos) </div>"; 
+
+            document.getElementById("contenidoResultado4").innerHTML=mensaje;
+
+}
+
+function tutorial_calendario2(){
+
+    var modal = document.getElementById("resultadocalen");
+     modal.style.display = "block";
+     var span = document.getElementById("closecalen");
+  document.getElementById("tituloResultadocalen").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModalcalen").value=0;
+    }
+                  
+             var mensaje = "<div style='padding: 4%; text-align:center;'><i style='margin-right:3%;' class='fas fa-arrow-left'></i>Fes click al botó per veure <br> el calendari de les sortides.</div>"; 
+
+            document.getElementById("contenidoResultadocalen").innerHTML=mensaje;
+
+}
+
+function tutorial_calendario(){
+
+    var modal = document.getElementById("resultadocalen");
+     modal.style.display = "none";
+    var modal = document.getElementById("resultadocalen2");
+    modal.style.display = "block";
+     var span = document.getElementById("closecalen2");
+  document.getElementById("tituloResultadocalen2").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModalcalen2").value=0;
+    }
+                  
+             var mensaje = "<div style='padding: 4%;'> - Verd: Sortides que es fan avui.<br>- Taronja: Sortides pasades.<br>- Blau: Sortides futures.</div>"; 
+
+            document.getElementById("contenidoResultadocalen2").innerHTML=mensaje;
 
 }

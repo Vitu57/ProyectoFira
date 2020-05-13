@@ -36,14 +36,35 @@ $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id
 //Comprueba si es la primera vez que entra el usuario
 if ($cont_visitas==1) {
 
+//primera visita calendario
+?>  
+<div id="resultadocalen" class="modalmask" style="display:none; margin-top: -30%; width: 17%; margin-left: -6%;">
+
+      <div class="modalbox movedown" id="resultadoContent4">
+        <a href="#" title="Close" class="close" id="closecalen" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadocalen">TITULO</h2>
+        <div id="contenidoResultadocalen">contenido resultado</div>
+      </div>
+</div>
+
+
+<div id="resultadocalen2" class="modalmask" style="display:none; margin-top: 1.2%; width: 17%; margin-left: -8%;">
+
+      <div class="modalbox movedown" id="resultadoContent4">
+        <a href="#" title="Close" class="close" id="closecalen2" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadocalen2">TITULO</h2>
+        <div id="contenidoResultadocalen2">contenido resultado</div>
+      </div>
+</div>
+<?php
 //comprueba si el usuario es admin
 if ($tipus_user==1) {
 
-echo "<body class='home' onload='modal(); modal2(); benvinguda();'>";
+echo "<body class='home' onload='modal(); modal2(); benvinguda(); tutorial_calendario2()'>";
 
 }else{
 
-echo "<body class='home' onload='modal(); benvinguda2();'>";
+echo "<body class='home' onload='modal(); benvinguda2(); tutorial_calendario2()'>";
 }
 
 //Modal de visita guiada
@@ -75,7 +96,7 @@ echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout.php' s
 ?>
 </div>
 <input type="hidden" name="botonvisible" id="botonvisible" value="0">
-<div id="cambiocalendar"><div onclick="cambiarboton()"
+<div id="cambiocalendar"><div onclick="cambiarboton(); tutorial_calendario();"
 class="button-calendar" style="position:absolute;"></div></div>
 
 <!-- The Modal -->

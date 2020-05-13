@@ -40,8 +40,7 @@
 
         
 $upd_cont_visitas="UPDATE tbl_usuari SET cont_visitas='$cont_visitas' WHERE id_usuari='$id'";
-$exe=mysqli_query($conn,$upd_cont_visitas);
-      $casos=mysqli_fetch_array($exe);    
+$exe=mysqli_query($conn,$upd_cont_visitas);    
 
             header("Location: ../vista/home.php");
         }else{
