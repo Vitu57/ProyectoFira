@@ -387,7 +387,7 @@ function CrearTablaProfes_movil(filtro){
         
     var respuesta=JSON.parse(this.responseText);
 
-    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
+    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread class="thead-dark">';
         tabla +='<tr><th data-sort-method="none"><h1>Codi</h1></th><th data-sort-method="none"><h1>Sortida</h1></th><th><h1>Clase</h1></th><th><h1>Llista</h1></th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
@@ -1055,9 +1055,8 @@ ajax2.send("id_activitat="+id_activitat+"&clase="+clase);
 ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table class="table table-bordered" <thread>';
-        tabla +='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><tr><th><h1>Alumne</h1></th><th><h1>Estat</h1></th><th><h1>Assistència</h1></th></tr><tr>';
-        for(var i=0;i<respuesta.length;i++) {
+    var tabla ='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th><h2>Alumne</h2></th><th><h2>Estat</h2></th><th><h2>Assistència</h2></th></tr><tr></thead>';
+    for(var i=0;i<respuesta.length;i++) {
             tabla += '<tr><td><h2>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].nom_alumne+'</h2></td>';
             tabla += '<td><h2>' + respuesta[i].estado_asistencia+'</h2></td>';
             if (respuesta[i].estado_asistencia=="Absent") {
@@ -1066,7 +1065,7 @@ ajax2.onreadystatechange=function() {
         tabla += '<td>' + '<a href="#" title="Present" style="display:inline;"><img src="../images/check_cuina.png" height="50" width="40"; onclick="CheckLista2('+respuesta[i].id_alumne+',\'' + respuesta[i].estado_asistencia + '\','+id_activitat+', \''+clase+'\'); return false;" height="42"></a></td></tr>'; 
             }
         }
-        tabla+='</thead></table>';
+        tabla+='</table>';
         divResultado.innerHTML=tabla;
         }
 }
