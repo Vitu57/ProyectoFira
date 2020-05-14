@@ -318,3 +318,55 @@ function tutorial_calendario(){
             document.getElementById("contenidoResultadocalen2").innerHTML=mensaje;
 
 }
+
+function tutorialadmin(){
+
+    var modal = document.getElementById("resultado4");
+     modal.style.display = "block";
+     var span = document.getElementById("close4");
+  document.getElementById("tituloResultado4").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal4").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 4%; text-align: left'>Clica per veure les diferents opcions<br>"; 
+                       mensaje += "d'administració de la sortida.<br><i style='margin-top:2%;' class='fas fa-arrow-down'></i></div>";      
+                
+            document.getElementById("contenidoResultado4").innerHTML=mensaje;
+}
+
+function tutorialadmin2(){
+
+    var modal = document.getElementById("resultadotut");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut");
+  document.getElementById("tituloResultadotut").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 4%;'>Clica per afegir dades<br>"; 
+                       mensaje += "adicionals a la taula.<br><div style='margin-left:-13%;'><i style='margin-top:2%;  margin-right:15%;' class='fas fa-arrow-down'></i><i style='margin-top:2%; margin-right:15%;' class='fas fa-arrow-down'></i><i style='margin-top:2%;' class='fas fa-arrow-down'></i></div></div>";      
+                
+            document.getElementById("contenidoResultadotut").innerHTML=mensaje;
+}
+
+function tutorialadmin3(){
+
+    var modal = document.getElementById("resultadotut2");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut2");
+  document.getElementById("tituloResultadotut2").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut2").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 4%; text-align: left'><i style='margin-right:4%;' class='fas fa-arrow-left'></i>Clica per descarregar un Excel<br>"; 
+                       mensaje += "amb les dades de la taula.</div>";      
+                
+            document.getElementById("contenidoResultadotut2").innerHTML=mensaje;
+}
+
