@@ -899,7 +899,7 @@ function vertodo(){
     divResultado = document.getElementById('resultado');
     ajax=objetoAjax();
     // 4. Especificamos la solicitud
-    ajax.open('POST', 'verexcursionesadmin.php', true);
+    ajax.open('POST', 'tabladmin.php', true);
     // 5. Configuramos el encabezado (POST)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     // 6. Enviamos la solicitud

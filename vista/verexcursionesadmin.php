@@ -80,7 +80,7 @@ if ($tipo!=1) {
 		Veure Tots</button>
 	</form>
            
-  <div id="resultadohed" class="scrollhori" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:5%; left: 50%; transform: translateX(-50%);z-index:0;">
+  <div id="resultado" class="scrollhori" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:5%; left: 50%; transform: translateX(-50%);z-index:0;">
   <?php
      include "tabladmin.php";
   ?> 
