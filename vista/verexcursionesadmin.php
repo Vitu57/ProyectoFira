@@ -59,7 +59,7 @@ if ($tipo!=1) {
 <div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 	
-	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
+	<form action="#" method="POST" onsubmit="return false;">
 		<input type="date" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data">
     <select name="clase" class="espacio_filtros" id="clase">
        		<option value="">Clase</option>
@@ -75,7 +75,7 @@ if ($tipo!=1) {
 </select>
 
 <input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor">
-		<input type="submit" class="btn btn-lg filtrado_admin"  name="submit" value="Filtrar">
+		<input type="submit" class="btn btn-lg filtrado_admin"  name="submit" value="Filtrar" onclick="filtrar();return false;">
 		<button class="btn btn-lg filtrado_admin" name="submit" value="Veure tots" action="#" method="POST" onclick="vertodo();return false">
 		Veure Tots</button>
 	</form>

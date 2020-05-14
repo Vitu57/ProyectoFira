@@ -278,7 +278,12 @@ function CrearTablaProfes(filtro){
     ajax2.open("GET", "../services/consulta_profes.php", true);
     ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     ajax2.send(null);
-
+	document.getElementById("profe").value="";
+    document.getElementById("clase").value="";
+    document.getElementById("fecha").value="";
+    document.getElementById("jornada").value="";
+    document.getElementById("etapa").value="";
+    document.getElementById("codi").value="";
 }else{
     var ajax2=objetoAjax();
     ajax2.open("POST", "../services/consulta_profes.php", true);
@@ -881,7 +886,7 @@ function filtrar(){
     var fecha = document.getElementById("fecha").value;
     ajax=objetoAjax();
     // 4. Especificamos la solicitud
-    ajax.open('POST', 'verexcursionesadmin.php', true);
+    ajax.open('POST', 'tabladmin.php', true);
     // 5. Configuramos el encabezado (POST)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     // 6. Enviamos la solicitud
@@ -948,6 +953,28 @@ function eliminar(id_s,id_a,id_p,id_c,id_t){
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
+function filtrar_enf_dir(){
+    divResultado = document.getElementById('resultado');
+    var profe = document.getElementById("profe").value;
+    var clase = document.getElementById("clase").value;
+    var fecha = document.getElementById("fecha").value;
+     var jornada = document.getElementById("jornada").value;
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'tabla_enf_dir.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada);
+    // 7. Definimos la funciÃ³n que se ejecutarÃ¡ cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
         }
     }
 }

@@ -95,7 +95,7 @@ if (isMobile()) {
 	<?php
 }else{
 	?>
-			<form action="#" method="POST" onsubmit="CrearTablaProfes(2);return false" style="">
+			<form action="#" method="POST" onsubmit="return false" style="">
 				 <input  class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
 				 <input  class="espacio_filtros" type="text" name="fecha" id="fecha" placeholder="Data...">
 				 <input type="text" class="espacio_filtros" name="profe" id="profe" placeholder="Professor...">
@@ -139,7 +139,7 @@ if (isMobile()) {
 		</select>
 
 
-		<input class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%; " type="submit" name="submit" value="Filtrar">
+		<input class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%; " type="submit" name="submit" value="Filtrar" onclick="CrearTablaProfes(2);">
 		<input class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " type="submit" name="submit" value="Veure Tots" onclick="CrearTablaProfes(1);return false">
 	</form>
 	<br>

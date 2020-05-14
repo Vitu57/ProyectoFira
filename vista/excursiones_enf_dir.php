@@ -36,7 +36,7 @@ if ($tipo!=5 AND $tipo!=6) {
 <div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
   <br><br>
-  <form action="#" method="POST" onsubmit="filtrar_enf_dir();return false">
+  <form action="#" onsubmit="return false">
     
     <input class="espacio_filtros" type="date" name="fecha" id="fecha" placeholder="Data...">
     <input class="espacio_filtros" type="text" name="profe" id="profe" placeholder="Professor...">
@@ -69,17 +69,18 @@ if ($tipo!=5 AND $tipo!=6) {
 </select>
 
 
-    <input type="submit" class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%; " name="submit" value="Filtrar">
-    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots">
+    <input type="submit" class="btn btn-lg" style="background-color: #367cb3; color: white; padding: 0.5%; margin: 1%; " name="submit" value="Filtrar" onclick="filtrar_enf_dir(); return false;">
+    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo(); return false;">
   </form>
   
     
     
   </form>
-
+ <div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
   <?php
     include "tabla_enf_dir.php";
   ?>
+ </div>
   <br>
  
 <!-- Exportar a CSV !-->
