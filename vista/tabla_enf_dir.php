@@ -28,7 +28,7 @@ $fecha_actual = date('Y-m-d');
 
 ?>
 
-  <table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
+  <table id="enfermerias" class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
       <tr>
    <th scope="col">Codi</th>
 	<th scope="col">Nom Sortida</th>

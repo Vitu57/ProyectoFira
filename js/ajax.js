@@ -398,7 +398,7 @@ function CrearTablaProfes_movil(filtro){
     var respuesta=JSON.parse(this.responseText);
 
     var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread class="thead-dark">';
-        tabla +='<tr><th data-sort-method="none"><h1>Codi</h1></th><th data-sort-method="none"><h1>Sortida</h1></th><th><h1>Clase</h1></th><th><h1>Llista</h1></th>';
+        tabla +='<tr><th><h1>Codi</h1></th><th><h1>Sortida</h1></th><th><h1>Clase</h1></th><th><h1>Llista</h1></th>';
         for(var i=0;i<respuesta.length;i++) {
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
@@ -835,8 +835,8 @@ function CrearTabla_Feedback(a){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<b style="float: right; margin-right:74%;">Valoracions dels usuaris:</b><br><div style="text-align:center; margin-right:5%; margin-left:5%; margin-top:20px; width:92%; height:250px; max-height:100%; max-width:100%; overflow-x:auto; overflow-y:auto;"><table class="table table-bordered" style="background-color:white;">';
-        tabla +='<thead style="color:#fff; background-color:#212529; border-color:32383e;"><tr><th>Usuari</th><th>Valoració</th><th>Data</th><th>Comentaris</th><tr></thead>';
+    var tabla='<b style="float: right; margin-right:74%;">Valoracions dels usuaris:</b><br><div style="text-align:center; margin-right:5%; margin-left:5%; margin-top:20px; width:92%; height:250px; max-height:100%; max-width:100%; overflow-x:auto; overflow-y:auto;"><table id="feedbacks" class="table table-bordered" style="background-color:white;">';
+        tabla +='<thead style="color:#fff; background-color:#212529; border-color:32383e;"><tr><th>Usuari</th><th>Valoració</th><th>Data</th><th>Comentaris</th></tr></thead>';
         for(var i=0;i<respuesta.length;i++) {
             tabla += '<tr><td>'+respuesta[i].usuario+'</td>';
             if(respuesta[i].estrellas=="1"){
@@ -856,6 +856,7 @@ function CrearTabla_Feedback(a){
         tabla+='</table></div>';
     }
     document.getElementById("tabla_feed").innerHTML=tabla;
+    new Tablesort(document.getElementById('feedbacks'));
 }
 }
 function feedback(id_sortida, nom, cognom){
@@ -992,7 +993,8 @@ function filtrar_enf_dir(){
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
-            divResultado.innerHTML = ajax.responseText
+            divResultado.innerHTML = ajax.responseText;
+            new Tablesort(document.getElementById('enfermerias'));
         }
     }
 }
@@ -1018,6 +1020,7 @@ function filtrar_secretaria(){
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
             divResultado.innerHTML = ajax.responseText
+            new Tablesort(document.getElementById('secretarias'));
         }
     }
 }
@@ -1035,7 +1038,8 @@ function vertodo_secretaria(){
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
-            divResultado.innerHTML = ajax.responseText
+            divResultado.innerHTML = ajax.responseText;
+            new Tablesort(document.getElementById('secretarias'));
         }
     }
 }
