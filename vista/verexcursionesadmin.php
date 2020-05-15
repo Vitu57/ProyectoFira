@@ -13,8 +13,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
   
-
-
 </head>
 <!--Sweet alert cdn(s)-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -31,7 +29,7 @@ include "../services/header.php";
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1) {
 ?>
-<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="tutorialadmin(); tutorialadmin2(); tutorialadmin3();">
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="tutorialadmin(); tutorialadmin2(); tutorialCSV();">
 
 <div id="resultado4" class="modalmask" style="display:none; margin-top: -25.7%; width: 19%; margin-left: -1.4%;">
 
@@ -51,12 +49,12 @@ if ($_SESSION['cont_visitas']==1) {
       </div>
 </div>
 
-<div id="resultadotut2" class="modalmask" style="display:none; margin-top: 0.9%; width: 18%; margin-left: 46%;">
+<div id="resultadoCSV" class="modalmask" style="display:none; margin-top: 0.9%; width: 18%; margin-left: 46%;">
 
-      <div class="modalbox movedown" id="resultadoContenttut2">
-        <a href="#" title="Close4" class="close" id="closetut2" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultadotut2">TITULO</h2>
-        <div id="contenidoResultadotut2">contenido resultado</div>
+      <div class="modalbox movedown" id="resultadoContentCSV">
+        <a href="#" title="Close4" class="close" id="closeCSV" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadoCSV">TITULO</h2>
+        <div id="contenidoResultadoCSV">contenido resultado</div>
       </div>
 </div>
 <?php
@@ -132,7 +130,7 @@ if ($tipo!=1) {
   
 <!-- Exportar a CSV !-->
    <form action="../services/csv_admin.php" method="POST">
-  	<input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
+  	<a href="../services/csv_admin.php"><input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades"><
   </form>
  
 

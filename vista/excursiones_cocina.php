@@ -34,13 +34,13 @@ echo "<body class='home' style='text-align: center; padding: 5%; padding-top: 2%
 <div id="resultado2" class="modalmask" style="display:none; margin-top: -29%; width: 40%; margin-left: 19%;">
 
       <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="cocina_vis2(); cocina_vis3();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="cocina_vis2(); cocina_vis3(); tutorialCSV();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado">TITULO</h2>
         <div id="contenidoResultado">contenido resultado</div>
       </div>
 </div>
 
-<div id="resultado3" class="modalmask" style="display:none; margin-top: -16%; width: 24%; margin-left: 3%;">
+<div id="resultado3" class="modalmask" style="display:none; margin-top: -26%; width: 24%; margin-left: 8%;">
 
       <div class="modalbox movedown" id="resultadoContent">
         <a href="#close3" title="Close3" class="close" id="close3" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style=" padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
@@ -49,12 +49,21 @@ echo "<body class='home' style='text-align: center; padding: 5%; padding-top: 2%
       </div>
 </div>
 
-<div id="resultado4" class="modalmask" style="display:none; margin-top: -16%; width: 25%; margin-left: 52%;">
+<div id="resultado4" class="modalmask" style="display:none; margin-top: -27.5%; width: 18%; margin-left: 62.5%;">
 
       <div class="modalbox movedown" id="resultadoContent">
         <a href="#close4" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado4">TITULO</h2>
         <div id="contenidoResultado4">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadoCSV" class="modalmask" style="display:none; margin-top: 3%; width: 18%; margin-left: 46%;">
+
+      <div class="modalbox movedown" id="resultadoContentCSV">
+        <a href="#" title="Close4" class="close" id="closeCSV" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadoCSV">TITULO</h2>
+        <div id="contenidoResultadoCSV">contenido resultado</div>
       </div>
 </div>
 

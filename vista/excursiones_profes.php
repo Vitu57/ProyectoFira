@@ -97,7 +97,7 @@ if (isMobile()) {
 	?>
 			<form action="#" method="POST" onsubmit="return false" style="">
 				 <input  class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
-				 <input  class="espacio_filtros" type="text" name="fecha" id="fecha" placeholder="Data...">
+				 <input  class="espacio_filtros" type="date" name="fecha" id="fecha" placeholder="Data...">
 				 <input type="text" class="espacio_filtros" name="profe" id="profe" placeholder="Professor...">
 				<select class="espacio_filtros" name="etapa" id="etapa" >
 					<option value="" class="placeholder_select"  selected>Etapa...</option>

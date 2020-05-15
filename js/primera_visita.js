@@ -228,6 +228,41 @@ function admin_prof4(){
             document.getElementById("contenidoResultado5").innerHTML=mensaje;
 }
 
+function dir_enf_vis(){
+
+    var modal = document.getElementById("resultadotut2");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut2");
+  document.getElementById("tituloResultadotut2").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut2").value=0;
+    }
+                  
+                   var mensaje = "Aquesta és la pàgina d'administració de sortides.<br>"; 
+                       mensaje += "Aqui podràs veure totes les sortides.<br>";  
+                
+            document.getElementById("contenidoResultadotut2").innerHTML=mensaje;
+
+}
+
+function dir_enf_vis2(){
+
+    var modal = document.getElementById("resultadotut");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut");
+  document.getElementById("tituloResultadotut").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut").value=0;
+    }
+                  
+                   var mensaje = "Fes click al + per veure <br> mes dades de la taula. <br> <i style='margin-top:3%; margin-left:40%;' class='fas fa-arrow-down'></i>"; 
+                
+            document.getElementById("contenidoResultadotut").innerHTML=mensaje;
+
+}
+
 
 function cocina_vis(){
 
@@ -258,7 +293,7 @@ function cocina_vis3(){
   document.getElementById("comprobarModal4").value=0;
     }
                   
-                   var mensaje = "<i style='margin-right:3%;' class='fas fa-arrow-left'></i>Fes click a exportar dades per descarregar <br> un excel amb totes les sortides."; 
+                   var mensaje = "Fes click al check per <br> marcar les comandes fetes. <br> <i style='margin-top:3%; margin-left:40%;' class='fas fa-arrow-down'></i>"; 
                 
             document.getElementById("contenidoResultado4").innerHTML=mensaje;
 
@@ -353,20 +388,36 @@ function tutorialadmin2(){
             document.getElementById("contenidoResultadotut").innerHTML=mensaje;
 }
 
-function tutorialadmin3(){
+function tutorialCSV(){
 
-    var modal = document.getElementById("resultadotut2");
+    var modal = document.getElementById("resultadoCSV");
      modal.style.display = "block";
-     var span = document.getElementById("closetut2");
-  document.getElementById("tituloResultadotut2").innerHTML="";
+     var span = document.getElementById("closeCSV");
+  document.getElementById("tituloResultadoCSV").innerHTML="";
   span.onclick = function() {
   modal.style.display = "none";
-  document.getElementById("comprobarModaltut2").value=0;
+  document.getElementById("comprobarModalCSV").value=0;
     }
                   
                    var mensaje = "<div style='padding: 4%; text-align: left'><i style='margin-right:4%;' class='fas fa-arrow-left'></i>Clica per descarregar un Excel<br>"; 
                        mensaje += "amb les dades de la taula.</div>";      
                 
-            document.getElementById("contenidoResultadotut2").innerHTML=mensaje;
+            document.getElementById("contenidoResultadoCSV").innerHTML=mensaje;
 }
 
+function tutorialsecre(){
+
+    var modal = document.getElementById("resultadotut");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut");
+  document.getElementById("tituloResultadotut").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 4%;'>Clica els botons +<br>"; 
+                       mensaje += "per veure mes dades.<br><div style='margin-left:-13%;'><i style='margin-top:2%;  margin-right:15%;' class='fas fa-arrow-down'></i><i style='margin-top:2%; margin-right:15%;' class='fas fa-arrow-down'></i><i style='margin-top:2%;' class='fas fa-arrow-down'></i></div></div>";      
+                
+            document.getElementById("contenidoResultadotut").innerHTML=mensaje;
+}

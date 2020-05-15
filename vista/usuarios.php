@@ -66,8 +66,14 @@ if ($tipo!=1) {
 
   </div>
   </div>
+  <br>
+      <!-- Exportar a CSV !-->
+  <form action="../services/csv_usuarios.php" method="POST">
+  <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
+  </form>
   </div>
   </div>
+
 <!---------------------------------------------Form de modificar-------------------------------------->
   <div id="form_modificar" class="d-none">
   <div id="usuaris" class="text-center border border-light p-5 mt-5 div_form" style="display: block;">

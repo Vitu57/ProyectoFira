@@ -29,7 +29,7 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
       </div>
 </div>
 
-<div id="resultado3" class="modalmask" style="display:none;  margin-top: -14%; width: 22%; margin-left: 39.5%;;">
+<div id="resultado3" class="modalmask" style="display:none;  margin-top: -25%; width: 22%; margin-left: 38.5%;;">
 
       <div class="modalbox movedown" id="resultadoContent3">
         <a href="#close2" title="Close2" class="close" id="close2" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
@@ -48,7 +48,7 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
 </div>
 
 
-<div id="resultado5" class="modalmask" style="display:none;  margin-top: -14%; width: 22%; margin-left: 61.3%;;">
+<div id="resultado5" class="modalmask" style="display:none;  margin-top: -25%; width: 22%; margin-left: 60.3%;;">
 
       <div class="modalbox movedown" id="resultadoContent3">
         <a href="#close5" title="Close5" class="close" id="close5" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
