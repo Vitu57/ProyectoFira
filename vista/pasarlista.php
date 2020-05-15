@@ -54,7 +54,17 @@ $clase=$_REQUEST['clase'];
             
         </div>
         <div id="resultado" style="margin-right: 5%; margin-left: 5%; overflow-y:auto; position:relative; z-index:9;"></div>
-        <button class="btn btn-lg" onclick="location.href='form_alumne.php?id_actividad=<?php echo $id_activitat; ?>&clase=<?php echo $clase; ?>'" style="margin-top: 2%; margin-right:1%; padding: 0.5%; color: white; background-color: #367cb3; ">Afegir Alumne</button>
+        <?php
+            if (isMobile()) {
+              ?>
+                <button class="btn btn-lg" onclick="location.href='form_alumne.php?id_actividad=<?php echo $id_activitat; ?>&clase=<?php echo $clase; ?>'" style="margin-top: 2%; margin-right:1%; padding: 0.5%; color: white; background-color: #367cb3;width: 300px; height: 70px;font-size: 40px;">Afegir Alumne</button>
+              <?php
+            }else{
+              ?>
+              <button class="btn btn-lg" onclick="location.href='form_alumne.php?id_actividad=<?php echo $id_activitat; ?>&clase=<?php echo $clase; ?>'" style="margin-top: 2%; margin-right:1%; padding: 0.5%; color: white; background-color: #367cb3; ">Afegir Alumne</button>
+              <?php
+            }
+            ?>
     </div>
 </body>
 </html>
