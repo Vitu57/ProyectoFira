@@ -11,6 +11,8 @@ $clase=$_REQUEST['clase'];
 <html>
 <head>
   <title>Llista</title>
+  <link rel="stylesheet" type="text/css" href="../css/tablesort.css">
+  <script src='../plugin/tablesort/tablesort.js'></script>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="image/png" href="../images/logo_pag.ico">
     <script type="text/javascript" src="../js/ajax.js"></script>

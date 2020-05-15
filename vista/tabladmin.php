@@ -55,7 +55,7 @@ if(isset($_REQUEST['profe'])){
 		//Formamos la tabla
 		echo "<tr>
 			<td style='width: 5%;'>
-			<button type='button' class='btn btn-info' data-trigger='focus' data-toggle='popover' title='Opcions'><i class='fas fa-plus-square fa-2x'></i></button>
+			<button type='button' class='btn btn-info' data-trigger='focus' data-toggle='popover' title='Opcions'><i class='fas fa-plus-circle fa-2x'></i></button>
 			<div id='popover-content' class='list-group' style='display: none;'>";
 			?>
 			<a class="list-group-item" title='Eliminar Sortida' href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b; margin-left: 2px;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a>
@@ -116,7 +116,7 @@ $data_final = date("d/m/Y", strtotime($exe[2]));
 				<td id='obj".$cont."'>".$exe[16]."</td>";
 			?>
 			<td style="width: 5%;">
-			<button type='button' class='btn btn-info' data-trigger='focus' data-toggle='popover2' title='Opcions'><i class='fas fa-plus-square fa-2x'></i></button>
+			<button type='button' class='btn btn-info' data-trigger='focus' data-toggle='popover2' title='Opcions'><i class='fas fa-plus-circle fa-2x'></i></button>
 			<div id='popover-content2' class='list-group' style='display: none'>
 				<?php
 				$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";

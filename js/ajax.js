@@ -123,14 +123,14 @@ function CrearTabla(){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead>';
+    var tabla='<table id="cocinas" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead>';
         tabla +='<thead class="thead-dark"><tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
              var fecha_inici = respuesta[i].inici_sortida.split('-').reverse().join('/');
              var final_inici = respuesta[i].final_sortida.split('-').reverse().join('/');
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
-                    tabla += '<tr></tr>';
+                    tabla += '<tr>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
 					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + fecha_inici + '</td>';
@@ -145,10 +145,11 @@ function CrearTabla(){
                     }else{
                         tabla += '<td>' + '<a href="#" title="Fet" style="display:inline;"><img src="../images/check_cuina.png" width="25" onclick="CheckComanda('+respuesta[i].id_sortida+","+respuesta[i].comanda_menu+'); return false;" height="32"></a></td>';
                     }
+                    tabla += '</tr>';
                 }
             }else{
                 if(respuesta[i].inici_sortida>=today){
-                    tabla += '<tr></tr>';
+                    tabla += '<tr>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
 					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + fecha_inici + '</td>';
@@ -163,11 +164,13 @@ function CrearTabla(){
                     }else{
                         tabla += '<td>' + '<a href="#" title="Fet" style="display:inline;"><img src="../images/check_cuina.png" width="25" onclick="CheckComanda('+respuesta[i].id_sortida+","+respuesta[i].comanda_menu+'); return false;" height="32"></a></td>';
                     }
+                    tabla += '</tr>';
                 }
             }
         }
             tabla+='</thead></table>';
             divResultado.innerHTML=tabla;
+            new Tablesort(document.getElementById('cocinas'));
     }
     }
 }
@@ -351,6 +354,8 @@ function CrearTablaProfes(filtro){
         }
             tabla+='</thead></table>';
             divResultado.innerHTML=tabla;
+            new Tablesort(document.getElementById('table-id'));
+
             
 
     }
@@ -503,8 +508,8 @@ function modal_profes_transport(transport){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
-        tabla +='<tr><th>Transport</th><th>Sortida</th><th>Arribada</th><th>Comentari</th>';
+    var tabla='<table id="transports" class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+        tabla +='<tr><th>Transport</th><th>Sortida</th><th >Arribada</th><th>Comentari</th>';
         
             tabla += '<tr>';
                     
@@ -518,6 +523,7 @@ function modal_profes_transport(transport){
         
         tabla+='</thead></table>';
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            new Tablesort(document.getElementById('transports'));
     }
 }
 }
@@ -546,7 +552,7 @@ function modal_profes_contacte(contacte){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+    var tabla='<table id="contactes" class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
         tabla +='<tr><th>Persona</th><th>Email</th><th>Telefon</th><th>Web contacte</th>';
         
             tabla += '<tr>';
@@ -561,6 +567,7 @@ function modal_profes_contacte(contacte){
         
         tabla+='</thead></table>';
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            new Tablesort(document.getElementById('contactes'));
     }
 }
 }
@@ -1057,7 +1064,7 @@ ajax2.send("id_activitat="+id_activitat+"&clase="+clase);
 ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-        var tabla ='<table class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th>Alumne</th><th>Estat</th><th>Assistència</th></tr><tr></thead>';
+        var tabla ='<table id="asistencias" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th>Alumne</th><th>Estat</th><th>Assistència</th></tr><tr></thead>';
         for(var i=0;i<respuesta.length;i++) {
             tabla += '<tr><td>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].nom_alumne+'</td>';
             tabla += '<td>' + respuesta[i].estado_asistencia+'</td>';
@@ -1069,6 +1076,7 @@ ajax2.onreadystatechange=function() {
         }
         tabla+='</table>';
         divResultado.innerHTML=tabla;
+        new Tablesort(document.getElementById('asistencias'));
         }
 }
 }

@@ -3,6 +3,8 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <head>
   <title>Sortides</title>
+  <link rel="stylesheet" type="text/css" href="../css/tablesort.css">
+  <script src='../plugin/tablesort/tablesort.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
      <script type="text/javascript" src="../js/primera_visita.js"></script>
         <link rel="icon" type="image/png" href="../images/logo_pag.ico">
