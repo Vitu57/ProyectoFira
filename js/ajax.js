@@ -463,7 +463,7 @@ function modal_profes(actividad){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+    var tabla='<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark">';
         tabla +='<tr><th>Activitat</th><th>Lloc</th><th>Tipus</th><th>Ambit</th><th>Jornada</th><th>Objectiu</th>';
         
             tabla += '<tr>';
@@ -479,6 +479,7 @@ function modal_profes(actividad){
         
         tabla+='</thead></table>';
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Activitat";
     }
 }
 }
@@ -508,8 +509,8 @@ function modal_profes_transport(transport){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table id="transports" class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
-        tabla +='<tr><th>Transport</th><th>Sortida</th><th >Arribada</th><th>Comentari</th>';
+    var tabla='<table id="transports" class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark">';
+        tabla +='<tr><th>Transport</th><th>Sortida</th><th>Arribada</th><th>Comentari</th>';
         
             tabla += '<tr>';
                     
@@ -523,6 +524,7 @@ function modal_profes_transport(transport){
         
         tabla+='</thead></table>';
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Transport";
             new Tablesort(document.getElementById('transports'));
     }
 }
@@ -552,7 +554,7 @@ function modal_profes_contacte(contacte){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
     var respuesta=JSON.parse(this.responseText);
-    var tabla='<table id="contactes" class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead>';
+    var tabla='<table id="contactes" class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark">';
         tabla +='<tr><th>Persona</th><th>Email</th><th>Telefon</th><th>Web contacte</th>';
         
             tabla += '<tr>';
@@ -567,6 +569,7 @@ function modal_profes_contacte(contacte){
         
         tabla+='</thead></table>';
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Contacte";
             new Tablesort(document.getElementById('contactes'));
     }
 }
@@ -589,7 +592,7 @@ function modal_secretaria(persona, web, telf, email){
   document.getElementById("comprobarModal").value=0;
 }
                   
-                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
                     tabla += '<th>Persona de contacte</th>';
                     tabla += '<th>Web de contacte</th>';
                     tabla += '<th>Telefon de contacte</th>';
@@ -600,6 +603,7 @@ function modal_secretaria(persona, web, telf, email){
                     tabla += '<td>' + email + '</td></tr><thread></table>';
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+             document.getElementById("tituloResultado").innerHTML="Contacte";
     }
 
 function modal_secretaria2(nom, lloc, tipus, ambit, jornada, objectiu){
@@ -619,7 +623,7 @@ function modal_secretaria2(nom, lloc, tipus, ambit, jornada, objectiu){
   document.getElementById("comprobarModal").value=0;
 }
                   
-                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
                     tabla += '<th>Activitat</th>';
                     tabla += '<th>Lloc</th>';
                     tabla += '<th>Jornada</th>';
@@ -634,6 +638,7 @@ function modal_secretaria2(nom, lloc, tipus, ambit, jornada, objectiu){
                     tabla += '<td>' + objectiu + '</td></tr><thread></table>';
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+             document.getElementById("tituloResultado").innerHTML="Activitat";
     }
 
 function modal_secretaria3(nom, sortida, arribada, comentari){
@@ -653,7 +658,7 @@ function modal_secretaria3(nom, sortida, arribada, comentari){
   document.getElementById("comprobarModal").value=0;
 }
                   
-                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
                     tabla += '<th>Transport</th>';
                     tabla += '<th>Sortida</th>';
                     tabla += '<th>Arribada</th>';
@@ -664,6 +669,7 @@ function modal_secretaria3(nom, sortida, arribada, comentari){
                     tabla += '<td>' + comentari + '</td></tr><thread></table>';
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+             document.getElementById("tituloResultado").innerHTML="Transport";
     }
 
 function modal_enf_dir(nom, profesor, transport, jornada){
@@ -683,7 +689,7 @@ function modal_enf_dir(nom, profesor, transport, jornada){
   document.getElementById("comprobarModal").value=0;
 }
                   
-                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
                     tabla += '<th>Activitat</th>';
                     tabla += '<th>Jornada</th>';
                     tabla += '<th>Transport</th>';
@@ -694,6 +700,8 @@ function modal_enf_dir(nom, profesor, transport, jornada){
                     tabla += '<td>' + profesor + '</td></tr><thread></table>';
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Informació";
+
     }
 
 //--------------------------------------------------------------------
@@ -709,7 +717,7 @@ function abrirform1(persona, web, telf, email){
   document.getElementById("comprobarModal").value=0;
     }
                   
-                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
                     tabla += '<th>Persona de contacte</th>';
                     tabla += '<th>Web de contacte</th>';
                     tabla += '<th>Telefon de contacte</th>';
@@ -720,6 +728,7 @@ function abrirform1(persona, web, telf, email){
                     tabla += '<td>' + email + '</td></tr><thread></table>';       
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Contacte";
 }
 function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
     var modal = document.getElementById("resultado2");
@@ -732,20 +741,20 @@ function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
   document.getElementById("comprobarModal").value=0;
     }
                   
-                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
-                    tabla += '<th>Cost de substitucio</th>';
-                    tabla += '<th>Cost activitat individual</th>';
-                    tabla += '<th>Cost extra activitat profe</th>';
-                    tabla += '<th>Cost global activitat</th>';
-                    tabla += '<th>Cost final</th>';
-                    tabla += '<th>Cost fixe</th>';
-                    tabla += '<th>Preu sense topal</th>';
-                    tabla += '<th>Preu amb topal</th>';
-                    tabla += '<th>Preu gestio</th>';
-                    tabla += '<th>Overhead</th>';
-                    tabla += '<th>Total a facturar</th>';
-                    tabla += '<th>Pagament fraccionat</th>';
-                    tabla += '<th>Observacio</th></tr>';
+                    tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
+                    tabla += '<th style="padding-bottom:25px;">Substitució</th>';
+                    tabla += '<th >Activitat individual</th>';
+                    tabla += '<th >Extra activitat profe</th>';
+                    tabla += '<th >Global activitat</th>';
+                    tabla += '<th style="padding-bottom:25px;">Final</th>';
+                    tabla += '<th style="padding-bottom:25px;">Fixe</th>';
+                    tabla += '<th >Sense topal</th>';
+                    tabla += '<th >Amb topal</th>';
+                    tabla += '<th style="padding-bottom:25px;">Gestio</th>';
+                    tabla += '<th style="padding-bottom:25px;">Overhead</th>';
+                    tabla += '<th >Total a facturar</th>';
+                    tabla += '<th >Pagament fraccionat</th>';
+                    tabla += '<th style="padding-bottom:25px;">Observació</th></tr>';
                     tabla += '<td>' + a + '</td>';  
                     tabla += '<td>' + b + '</td>';
                     tabla += '<td>' + c + '</td>';
@@ -761,6 +770,7 @@ function abrirform2(a,b,c,d,e,f,g,h,i,j,k,l,m){
                     tabla += '<td>' + m + '</td></tr><thread></table>'; 
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Preus";
 }
 function abrirform3(a,b,c,d,e,f){
     var modal = document.getElementById("resultado2");
@@ -772,7 +782,7 @@ function abrirform3(a,b,c,d,e,f){
   modal.style.display = "none";
   document.getElementById("comprobarModal").value=0;
     }
-                   tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead><tr>';
+                   tabla = '<table class="table table-bordered" style="text-align:center; margin-left:5%; width:90%;"><thead class="thead-dark"><tr>';
                     tabla += '<th>Nombre del transporte</th>';
                     tabla += '<th>Hora de salida</th>';
                     tabla += '<th>Hora de llegada</th>';
@@ -788,6 +798,7 @@ function abrirform3(a,b,c,d,e,f){
                     
                     
             document.getElementById("contenidoResultado").innerHTML=tabla;
+            document.getElementById("tituloResultado").innerHTML="Transport";
 }
 
 //Feedback
