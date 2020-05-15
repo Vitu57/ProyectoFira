@@ -145,7 +145,7 @@ if ($tipo!=1) {
 <script>
   new Tablesort(document.getElementById('table-id'));
 
-const slider = document.querySelector('#resultadohed');
+const slider = document.querySelector('#resultado');
 let isDown = false;
 let startX;
 let scrollLeft;
