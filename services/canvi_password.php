@@ -53,7 +53,6 @@ $subject = "S'ha canviat la vostra clau";
 $message = "
 <html>
 <body>
-  <p>La seva clau s'ha canviat correctament.</p>
   <p>La seva contrasenya ha estat canviada correctament.</p>
   <p>Ja pots <a href='http://localhost/daw/ProyectoFira/vista/login.php'>inicar sessió</a> amb la teva nova contrasenya.</p>
   <p>Si no has estat tu, siusplau contacta amb administració immediatament.</p>
