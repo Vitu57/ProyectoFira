@@ -1,6 +1,5 @@
 <?php
 //Si la sesión está iniciada redirigirá al home
-session_start();
 if(isset($_SESSION['id_pares'])){
     header("Location: home_pares.php");
 }
