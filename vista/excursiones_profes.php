@@ -4,6 +4,7 @@
 <head>
   <title>Sortides</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+       <script type="text/javascript" src="../js/primera_visita.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/tablesort.css">
         <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
@@ -11,22 +12,66 @@
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 
 <?php
-include "../services/conexion.php";
-include "../services/header.php";
+
 function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
 
+include "../services/conexion.php";
+include "../services/header.php";
+
 if (isMobile()) {
-	?>
-	<body class="home"  style="text-align: center; padding-top: 2%;width: 100%;margin-top: -3%;height: 200%;" onload="CrearTablaProfes_movil(1);">
-	</head>
-	<?php
+?>
+<body class="home"  style="text-align: center; padding-top: 2%;width: 100%;margin-top: -3%;height: 200%;" onload="CrearTablaProfes_movil(1);">
+<?php
 }else{
-	?>
-	<body class="home"  style="text-align: center; padding: 5%; padding-top: 2%;" onload="CrearTablaProfes(1);">
+//Comprueba si es la primera vez que entra el usuario
+if ($_SESSION['cont_visitas']==1) {
+?>
+<body class="home"  style="text-align: center; padding-top: 2%;width: 100%;margin-top: -3%;height: 200%;" onload="CrearTablaProfes(1); tutorialsecre(); tutorialprofes(); tutorialprofes2(); tutorialCSV();">
+
+<div id="resultadotut" class="modalmask" style="display:none; margin-top: -25.5%; width: 15%; margin-left: 63%;">
+
+      <div class="modalbox movedown" id="resultadoContenttut">
+        <a href="#" title="Close4" class="close" id="closetut" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadotut">TITULO</h2>
+        <div id="contenidoResultadotut">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadotut2" class="modalmask" style="display:none; text-align: left; margin-top: -28.5%; width: 11%; margin-left: 78.5%;">
+
+      <div class="modalbox movedown" id="resultadoContenttut2">
+        <a href="#" title="Close4" class="close" id="closetut2" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadotut2">TITULO</h2>
+        <div id="contenidoResultadotut2">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadotut3" class="modalmask" style="display:none; text-align: left; margin-top: -26.3%; width: 19.6%; margin-left: -6%;">
+
+      <div class="modalbox movedown" id="resultadoContenttut3">
+        <a href="#" title="Close4" class="close" id="closetut3" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadotut3">TITULO</h2>
+        <div id="contenidoResultadotut3">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadoCSV" class="modalmask" style="display:none; margin-top: 0.9%; width: 18%; margin-left: 46%;">
+
+      <div class="modalbox movedown" id="resultadoContentCSV">
+        <a href="#" title="Close4" class="close" id="closeCSV" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadoCSV">TITULO</h2>
+        <div id="contenidoResultadoCSV">contenido resultado</div>
+      </div>
+</div>
+<?php
+}else{
+?>
+	<body class="home"  style="text-align: center; padding-top: 2%;width: 100%;margin-top: -3%;height: 200%;" onload="CrearTablaProfes(1);">
 	</head>
 	<?php
+}
 }
 
 //Comprobar que solo puedan entrar los usuarios designados
@@ -143,8 +188,18 @@ if (isMobile()) {
 		<input class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " type="submit" name="submit" value="Veure Tots" onclick="CrearTablaProfes(1);return false">
 	</form>
 	<br>
-		<a href="#" onclick='FiltroProfes()' style="float: right;"> <button id='btn_filtro' class="btn btn-lg" style="color: white; background-color:  #367cb3;    padding: 5px;" value='0'> Sortides d'avui</button></a>
+
+<?php
+//Comprueba si es la primera vez que entra el usuario
+if ($_SESSION['cont_visitas']==1) {
+?>
+		<a href="#" onclick='FiltroProfes(0)' style="float: right;"> <button id='btn_filtro' class="btn btn-lg" style="color: white; background-color:  #367cb3;    padding: 5px;" value='0'> Sortides d'avui</button></a>
+<?php
+}else{
+	?>
+			<a href="#" onclick='FiltroProfes(1)' style="float: right;"> <button id='btn_filtro' class="btn btn-lg" style="color: white; background-color:  #367cb3;    padding: 5px;" value='0'> Sortides d'avui</button></a>
 	<?php
+}
 }
 ?>
 	

@@ -425,18 +425,34 @@ function CrearTablaProfes_movil(filtro){
     }
     }
 }
-function FiltroProfes(){
+function FiltroProfes(visita){
     var estado_filtro = document.getElementById("btn_filtro").value;
+
+    if (visita==0) {
+
+  var modal = document.getElementById("resultadotut2");
     if (estado_filtro==0){
         document.getElementById("btn_filtro").style.backgroundColor="green";
         document.getElementById("btn_filtro").value=1;
+          modal.style.display = "none";
+
+    }else{
+        document.getElementById("btn_filtro").style.backgroundColor="#367cb3";
+        document.getElementById("btn_filtro").value=0;
+    }
+    CrearTablaProfes();
+    }else{
+    if (estado_filtro==0){
+        document.getElementById("btn_filtro").style.backgroundColor="green";
+        document.getElementById("btn_filtro").value=1;
+
     }else{
         document.getElementById("btn_filtro").style.backgroundColor="#367cb3";
         document.getElementById("btn_filtro").value=0;
     }
     CrearTablaProfes();
 }
-
+}
 
 function modal_profes(actividad){
 

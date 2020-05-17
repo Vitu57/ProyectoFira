@@ -421,3 +421,42 @@ function tutorialsecre(){
                 
             document.getElementById("contenidoResultadotut").innerHTML=mensaje;
 }
+
+function tutorialprofes(){
+
+    var modal = document.getElementById("resultadotut2");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut2");
+  document.getElementById("tituloResultadotut2").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut2").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 2%;'>Clica per veure<br>"; 
+                       mensaje += " les sortides que <br> es fan avui.<br><i style='margin-top:2%;' class='fas fa-arrow-down'></i></div>";      
+                
+            document.getElementById("contenidoResultadotut2").innerHTML=mensaje;
+}
+
+
+function tutorialprofes2(){
+
+    var modal = document.getElementById("resultadotut3");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut3");
+  document.getElementById("tituloResultadotut3").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut3").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 2%;'>- Clica <i class='fas fa-pencil-alt fa-1x' style='color:#3F7FBF;' aria-hidden='true'></i> per modificar la sortida.<br>"; 
+                       mensaje += "- Clica <i class='fas fa-image fa-1x' style='color:#3F7FBF;' aria-hidden='true'></i> per anar a la galeria de la sortida.<br>";
+                       mensaje += "- Clica <i class='fas fa-list fa-1x' style='color:#3F7FBF;' aria-hidden='true'></i> per pasar llista de la sortida.<br></div>";      
+                
+            document.getElementById("contenidoResultadotut3").innerHTML=mensaje;
+}
+
+
+
