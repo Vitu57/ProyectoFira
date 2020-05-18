@@ -50,8 +50,77 @@ if (isset($accion)){
             echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
         }
     }
+//------------------------------Para comprobar clase de los padres--------------------------------------
 
+    if($accion == "c_clase"){
+        if(isset($_REQUEST['id_sortida'])){$id_exc=$_REQUEST['id_sortida'];}
 
+        if(isset($_REQUEST['id_alumne'])){$id_alumne=$_REQUEST['id_alumne'];}
+
+        if(isset($_REQUEST['id_pares'])){$id_pares=$_REQUEST['id_pares'];}
+        
+        /*echo $id_exc;
+        echo $id_alumne;*/
+        $id_clase1 = "0";
+        $id_clase2 = "1";
+        $resultado_padre = "";
+        $query = "SELECT id_pares_alumnes FROM `tbl_pares_alumnes` WHERE id_pares = ? AND id_alumne = ?";
+        if ($stmt = mysqli_prepare($conn, $query)){
+
+            mysqli_stmt_bind_param($stmt, "ss", $id_pares, $id_alumne);
+
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+            while ($row = $res->fetch_assoc()) {
+                $resultado_padre = $row['id_pares_alumnes'];
+            }
+            //echo $resultado_padre;
+            //echo $id_clase1;
+        }else{
+            echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
+        }
+
+        $query = "SELECT id_clase FROM `tbl_alumnes` WHERE id_alumne = ?";
+        if ($stmt = mysqli_prepare($conn, $query)){
+
+            mysqli_stmt_bind_param($stmt, "s", $id_alumne);
+
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+            while ($row = $res->fetch_assoc()) {
+                $id_clase1 = $row['id_clase'];
+            }
+            //echo $id_clase1;
+        }else{
+            echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
+        }
+
+        $query = "SELECT id_clase FROM `tbl_sortida` WHERE id_sortida = ?";
+        if ($stmt = mysqli_prepare($conn, $query)){
+
+            mysqli_stmt_bind_param($stmt, "s", $id_exc);
+
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+            while ($row = $res->fetch_assoc()) {
+                $id_clase2 = $row['id_clase'];
+            }
+            //echo $id_clase2;
+            
+        }else{
+            echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
+        }
+        
+        if ($id_clase1 == $id_clase2){
+            if ($resultado_padre >= 1){
+            echo 1;
+            }else{
+                echo 0;
+            }
+        }else{
+            echo 0;
+        }
+    }
 
 //------------------------------Para hacer el insert--------------------------------------
     if($accion == "insert"){

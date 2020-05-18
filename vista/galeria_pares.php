@@ -33,13 +33,19 @@
 
 
 
-<body class="body_design" onload="cargar_imagenes(); minimizar();">
+<body class="body_design" onload="cargar_imagenes(); minimizar(); comprobar_clase();">
 <?php
 session_start();
     if (isset($_SESSION['id_pares'])) {	
-   echo '<a href="../vista/home_pares.php">';
+   echo '<a href="../vista/home_pares.php"/>';
+   echo '<input type="hidden" id="id_pares" value="'.$_SESSION['id_pares'].'">';
   }else{ 
-  	echo '<a href="../vista/excursiones_profes.php">';
+  	echo '<a href="../vista/excursiones_profes.php"/>';
+  }
+  if (isset($_REQUEST['id_alumne'])) {	
+    echo '<input type="hidden" id="id_alumne_pare" value="'.$_REQUEST["id_alumne"].'">';
+  }else{
+    header("location: ../vista/home_pares.php");
   }
   ?>
 </a>  

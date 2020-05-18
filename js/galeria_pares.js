@@ -1,4 +1,26 @@
 
+function comprobar_clase() {
+    id_alumne = document.getElementById("id_alumne_pare");
+    id_pares = document.getElementById("id_pares");
+    id_excursion = document.getElementById("id_sortida");
+
+    var ajax3 = objetoAjax();
+    ajax3.open("POST", "../services/consulta_galeria.php", true);
+    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajax3.send("accion=c_clase&id_sortida="+id_excursion.value+"&id_alumne="+id_alumne.value+"&id_pares="+id_pares.value);
+    ajax3.onreadystatechange = function () {
+        if (ajax3.readyState == 4 && ajax3.status == 200) {
+            console.log(ajax3.responseText); 
+            if(ajax3.responseText == 1){
+                alert("todo bien");
+            }else{
+                alert("El padre no tiene permisos");
+            }
+
+        }
+    }
+}
+
 
 function cargar_imagenes() {
     var contenedor_img = document.getElementById("div_img");
