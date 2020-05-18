@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 include "conexion.php";
 
 if(isset($_REQUEST['dia']) && isset($_REQUEST['mes']) && isset($_REQUEST['anyo'])){
