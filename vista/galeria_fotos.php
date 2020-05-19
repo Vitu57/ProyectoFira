@@ -35,7 +35,7 @@
 
 <body class="body_design" onload="cargar_imagenes();">
 <?php
-session_start();
+
     if (isset($_SESSION['id_pares'])) {	
    echo '<a href="../vista/home_pares.php">';
   }else{ 

@@ -28,7 +28,7 @@ if (isMobile()) {
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1) {
 ?>
-<body class="home"  style="text-align: center; padding-top: 2%;width: 100%;margin-top: -3%;height: 200%;" onload="CrearTablaProfes(1); tutorialsecre(); tutorialprofes(); tutorialprofes2(); tutorialCSV();">
+<body class="home"  style="text-align: center; padding-top: 2%; padding-left: 5%; padding-right: 5%;" onload="CrearTablaProfes(1); tutorialsecre(); tutorialprofes(); tutorialprofes2(); tutorialCSV();">
 
 <div id="resultadotut" class="modalmask" style="display:none; margin-top: -25.5%; width: 15%; margin-left: 63%;">
 
@@ -68,7 +68,7 @@ if ($_SESSION['cont_visitas']==1) {
 <?php
 }else{
 ?>
-	<body class="home"  style="text-align: center; padding-top: 2%;width: 100%;margin-top: -3%;height: 200%;" onload="CrearTablaProfes(1);">
+	<body class="home"  style="text-align: center; padding-top: 2%; padding-left: 5%; padding-right: 5%;" onload="CrearTablaProfes(1);">
 	</head>
 	<?php
 }
