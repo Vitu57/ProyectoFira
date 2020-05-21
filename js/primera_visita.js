@@ -494,4 +494,55 @@ function tutorialprofes2(){
 }
 
 
+function tutorialSortida(){
 
+alert("2");
+    var modal = document.getElementById("resultadotut");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut");
+  document.getElementById("tituloResultadotut").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 4%;'>Aquí podràs afegir i modificar sortides</div>"; 
+                       
+                
+            document.getElementById("contenidoResultadotut").innerHTML=mensaje;
+}
+
+function tutorialSortida(){
+
+    var modal = document.getElementById("resultadotut2");
+     modal.style.display = "block";
+     var span = document.getElementById("closetut2");
+  document.getElementById("tituloResultadotut2").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModaltut2").value=0;
+    }
+                  
+                   var mensaje = "<div style='padding: 4%;'>Has d'omplir com a mínim els camps marcats amb <span style='color:red;'>*</span></div>"; 
+              
+                
+            document.getElementById("contenidoResultadotut2").innerHTML=mensaje;
+}
+
+
+function tutorialadminusers(){
+
+    var modal = document.getElementById("resultado4");
+     modal.style.display = "block";
+     var span = document.getElementById("close4");
+  document.getElementById("tituloResultado4").innerHTML="";
+  span.onclick = function() {
+  modal.style.display = "none";
+  document.getElementById("comprobarModal4").value=0;
+    }
+                  
+               var mensaje = "<div style='padding: 4%; text-align: left'>- Clica <i class='fas fa-1x fa-trash-alt text-danger'></i> per eliminar l'usuari.<br>"; 
+                   mensaje += "- Clica <i class='fa-1x text-info fas fa-user-edit'></i> per modificar l'usuari.<br><i style='margin-top:2%;margin-left:16%;' class='fas fa-arrow-down'></i><i style='margin-top:5%; margin-left:7%;' class='fas fa-arrow-down'></i></div>";      
+                
+            document.getElementById("contenidoResultado4").innerHTML=mensaje;
+}

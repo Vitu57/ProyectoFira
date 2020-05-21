@@ -1,5 +1,6 @@
 <header>
 <script type="text/javascript" src="../js/primera_visita.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </header>
 
 <?php

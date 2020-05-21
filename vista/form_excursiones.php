@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/style_form.css">
+  <script type="text/javascript" src="../js/primera_visita.js"></script>
   <!-- JQuery -->
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap CSS -->
@@ -22,9 +23,53 @@
 </head>
 <!--Enlace js para toastr-->
 
+<?php
+//Comprueba si es la primera vez que entra el usuario
+if ($_SESSION['cont_visitas']==1) {
+?>
+<body class="body_design" onload="tutorialSortida(); tutorialSortida2();">
 
-  
+     <div id="resultadoreturn" class="modalmask" style="display:none; margin-top: -31.7%; width: 12%; margin-left: 2%;">
+
+      <div class="modalbox movedown" id="resultadoContentreturn">
+        <a href="#" title="Tancar" class="close close-tutorial" id="closereturn"><button class="btn btn-lg btn-tutorial">OK</button></a>
+        <h2 id="tituloResultadoreturn">TITULO</h2>
+        <div id="contenidoResultadoreturn">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadotut2" class="modalmask" style="display:none; margin-top: -27.5%; width: 40%; margin-left: 19%;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Tancar" class="close close-tutorial" id="closetut2"><button class="btn btn-lg btn-tutorial">OK</button></a>
+        <h2 id="tituloResultadotut2">TITULO</h2>
+        <div id="contenidoResultadotut2">contenido resultado</div>
+      </div>
+</div>
+
+
+
+<div id="resultadotut" class="modalmask" style="display:none; margin-top: -23.5%; width: 18%; margin-left: 65.5%;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Tancar" class="close close-tutorial" id="closetut"><button class="btn btn-lg btn-tutorial">OK</button></a>
+        <h2 id="tituloResultadotut">TITULO</h2>
+        <div id="contenidoResultadotut">contenido resultado</div>
+      </div>
+</div>
+
+<?php
+
+}else{
+
+?>  
+
 <body class="body_design">
+
+<?php
+}
+?>  
+
    <a href="../vista/verexcursionesadmin.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  

@@ -19,8 +19,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 </head>
-<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(); select_tipus_usuari();">
 
+
+<?php
+//Comprueba si es la primera vez que entra el usuario
+if ($_SESSION['cont_visitas']==1) {
+?>
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;"  onload="ver_usuarios(); select_tipus_usuari(); tutorialadminusers();  tutorialCSV(); tutoriallogout(); tutorialreturn();">
+<?php
+
+include "../services/tutorial.proc.php";
+
+}else{
+  ?>
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(); select_tipus_usuari();">
+<?php
+}
+?>
 <!--Sweet alert-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
