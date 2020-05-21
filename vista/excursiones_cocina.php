@@ -6,7 +6,6 @@
   <link rel="stylesheet" type="text/css" href="../css/tablesort.css">
   <script src='../plugin/tablesort/tablesort.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-     <script type="text/javascript" src="../js/primera_visita.js"></script>
         <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -27,47 +26,9 @@ if ($tipo!=4) {
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1){
 
-echo "<body class='home' style='text-align: center; padding: 5%; padding-top: 2%;'  onload='CrearTabla(); cocina_vis();'>";
+echo "<body class='home' style='text-align: center; padding: 5%; padding-top: 2%;'  onload='CrearTabla(); cocina_vis(); tutoriallogout(); tutorialreturn(); '>";
 
-?>
-
-<div id="resultado2" class="modalmask" style="display:none; margin-top: -29%; width: 40%; margin-left: 19%;">
-
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="cocina_vis2(); cocina_vis3(); tutorialCSV();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultado">TITULO</h2>
-        <div id="contenidoResultado">contenido resultado</div>
-      </div>
-</div>
-
-<div id="resultado3" class="modalmask" style="display:none; margin-top: -26%; width: 24%; margin-left: 8%;">
-
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close3" title="Close3" class="close" id="close3" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style=" padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultado3">TITULO</h2>
-        <div id="contenidoResultado3">contenido resultado</div>
-      </div>
-</div>
-
-<div id="resultado4" class="modalmask" style="display:none; margin-top: -27.5%; width: 18%; margin-left: 62.5%;">
-
-      <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close4" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultado4">TITULO</h2>
-        <div id="contenidoResultado4">contenido resultado</div>
-      </div>
-</div>
-
-<div id="resultadoCSV" class="modalmask" style="display:none; margin-top: 3%; width: 18%; margin-left: 46%;">
-
-      <div class="modalbox movedown" id="resultadoContentCSV">
-        <a href="#" title="Close4" class="close" id="closeCSV" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultadoCSV">TITULO</h2>
-        <div id="contenidoResultadoCSV">contenido resultado</div>
-      </div>
-</div>
-
-<?php
+include "../services/tutorial.proc.php";
 
 }else{
 

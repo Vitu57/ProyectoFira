@@ -38,6 +38,16 @@ if ($cont_visitas==1) {
 
 //primera visita calendario
 ?>  
+
+<div id="resultadologout" class="modalmask" style="display:none; margin-top: -34.5%; width: 16%; margin-left: 69%;">
+
+      <div class="modalbox movedown" id="resultadoContentlogout">
+        <a href="#" title="Tancar" class="close" id="closelogout" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadologout">TITULO</h2>
+        <div id="contenidoResultadologout">contenido resultado</div>
+      </div>
+</div>
+
 <div id="resultadocalen" class="modalmask" style="display:none; margin-top: -30%; width: 17%; margin-left: -6%;">
 
       <div class="modalbox movedown" id="resultadoContent4">
@@ -60,11 +70,11 @@ if ($cont_visitas==1) {
 //comprueba si el usuario es admin
 if ($tipus_user==1) {
 
-echo "<body class='home' onload='modal(); modal2(); benvinguda(); tutorial_calendario2()'>";
+echo "<body class='home' onload='modal(); modal2(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
 
 }else{
 
-echo "<body class='home' onload='modal(); benvinguda2(); tutorial_calendario2()'>";
+echo "<body class='home' onload='modal(); benvinguda2(); tutorial_calendario2(); tutoriallogout();'>";
 }
 
 //Modal de visita guiada

@@ -4,7 +4,6 @@
   <title>Sortides</title>
   <link rel="stylesheet" type="text/css" href="../css/tablesort.css">
   <script src='../plugin/tablesort/tablesort.js'></script>
-    <script type="text/javascript" src="../js/primera_visita.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
@@ -18,26 +17,12 @@ include "../services/header.php";
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1) {
 ?>
-<body class="home" style="text-align: center; padding-top: 2%; padding-left: 5%; padding-right: 5%;" onload="tutorialsecre(); tutorialCSV();">
+<body class="home" style="text-align: center; padding-top: 2%; padding-left: 5%; padding-right: 5%;" onload="tutorialsecre(); tutorialCSV(); tutoriallogout(); tutorialreturn();">
 
-<div id="resultadotut" class="modalmask" style="display:none; margin-top: -26.5%; width: 15%; margin-left: 63.5%;">
-
-      <div class="modalbox movedown" id="resultadoContenttut">
-        <a href="#" title="Close4" class="close" id="closetut" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultadotut">TITULO</h2>
-        <div id="contenidoResultadotut">contenido resultado</div>
-      </div>
-</div>
-
-<div id="resultadoCSV" class="modalmask" style="display:none; margin-top: 0.9%; width: 18%; margin-left: 46%;">
-
-      <div class="modalbox movedown" id="resultadoContentCSV">
-        <a href="#" title="Close4" class="close" id="closeCSV" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultadoCSV">TITULO</h2>
-        <div id="contenidoResultadoCSV">contenido resultado</div>
-      </div>
-</div>
 <?php
+
+include "../services/tutorial.proc.php";
+
 }else{
 ?>
 <body class="home" style="text-align: center; padding-top: 2%; padding-left: 5%; padding-right: 5%;"> 

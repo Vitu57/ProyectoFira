@@ -16,14 +16,32 @@ echo "<div id='resultado'>";
 
 if ($_SESSION['cont_visitas']==1){
 
-echo "<body class='home' onload='admin_prof();' style='text-align: center; padding: 5%; padding-top: 2%;'>";
+echo "<body class='home' onload='admin_prof(); admin_prof3(); tutoriallogout(); tutorialreturn(); ' style='text-align: center; padding: 5%; padding-top: 2%;'>";
 
 //Modales de visita guiada
 ?>
-<div id="resultado2" class="modalmask" style="display:none; margin-top: -32.5%; width: 28%; margin-left: 25%;">
+<div id="resultadologout" class="modalmask" style="display:none; margin-top: -32%; width: 16%; margin-left: 62%;">
+
+      <div class="modalbox movedown" id="resultadoContentlogout">
+        <a href="#" title="Tancar" class="close" id="closelogout" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadologout">TITULO</h2>
+        <div id="contenidoResultadologout">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadoreturn" class="modalmask" style="display:none; margin-top: -31.7%; width: 12%; margin-left: 2%;">
+
+      <div class="modalbox movedown" id="resultadoContentreturn">
+        <a href="#" title="Tancar" class="close" id="closereturn" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <h2 id="tituloResultadoreturn">TITULO</h2>
+        <div id="contenidoResultadoreturn">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultado2" class="modalmask" style="display:none; margin-top: -32.5%; width: 28%; margin-left: 26.1%;">
 
       <div class="modalbox movedown" id="resultadoContent">
-        <a href="#close" title="Close" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof3();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#close" title="Tancar" class="close" id="close" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado">TITULO</h2>
         <div id="contenidoResultado">contenido resultado</div>
       </div>
@@ -32,7 +50,7 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
 <div id="resultado3" class="modalmask" style="display:none;  margin-top: -25%; width: 22%; margin-left: 38.5%;;">
 
       <div class="modalbox movedown" id="resultadoContent3">
-        <a href="#close2" title="Close2" class="close" id="close2" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#close2" title="Tancar" class="close" id="close2" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado3">TITULO</h2>
         <div id="contenidoResultado3">contenido resultado</div>
       </div>
@@ -41,7 +59,7 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
 <div id="resultado4" class="modalmask" style="display:none;  margin-top: -22.5%; width: 34%; margin-left: 22.2%;">
 
       <div class="modalbox movedown" id="resultadoContent4">
-       <a href="#close4" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof2(); admin_prof4();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+       <a href="#close4" title="Tancar" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof2(); admin_prof4();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado4">TITULO</h2>
         <div id="contenidoResultado4">contenido resultado</div>
       </div>
@@ -51,7 +69,7 @@ echo "<body class='home' onload='admin_prof();' style='text-align: center; paddi
 <div id="resultado5" class="modalmask" style="display:none;  margin-top: -25%; width: 22%; margin-left: 60.3%;;">
 
       <div class="modalbox movedown" id="resultadoContent3">
-        <a href="#close5" title="Close5" class="close" id="close5" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#close5" title="Tancar" class="close" id="close5" style="color:black; background-color:#f1f1f1; margin-right:10%;  margin-top: 1.3%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado5">TITULO</h2>
         <div id="contenidoResultado5">contenido resultado</div>
       </div>

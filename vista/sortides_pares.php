@@ -5,7 +5,6 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
-        <script type="text/javascript" src="../js/primera_visita.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!--Calendario-->
   <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
@@ -25,23 +24,14 @@ $id=$_SESSION['id_pares'];
 $cognom=$_SESSION['cognom'];
 $nom=$_SESSION['nombre'];
 
+//tutorial
+$_SESSION['pag']="hijo";
 
 //mostrará el tutorial si es la primera visita
 if ($_SESSION['cont_visitas']==1) {
-  echo "<body class='home' onload='tutorial_sortides_pares();'>";
+  echo "<body class='home' onload='tutorial_sortides_pares(); tutoriallogout(); tutorialreturn();'>";
 
-
-//Modal de visita guiada
-?>
-<div id="resultado4" class="modalmask" style="display:none; margin-top: -9%; width: 32%; margin-left: 23%; height: 25%;">
-
-      <div class="modalbox movedown" id="resultadoContent4">
-        <a href="#" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
-        <h2 id="tituloResultado4">TITULO</h2>
-        <div id="contenidoResultado4">contenido resultado</div>
-      </div>
-</div>
-<?php
+include "../services/tutorial.proc.php";
 
 }else{
   echo "<body class='home'>";
