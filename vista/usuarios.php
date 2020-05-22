@@ -82,10 +82,10 @@ if ($tipo!=1) {
   </div>
   </div>
   <br>
-      <!-- Exportar a CSV !-->
-  <form action="../services/csv_usuarios.php" method="POST">
-  <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
+
+<!-- Exportar a CSV !-->
+    <a href="../services/csv.php?users=1"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
+  
   </div>
   </div>
 

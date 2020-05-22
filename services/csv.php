@@ -5,8 +5,13 @@ if (isset($_SESSION['tipo'])) {
 include "../services/conexion.php";
 
         //El nombre del fichero tendrá el nombre de "usuarios_dia-mes-anio hora_minutos_segundos.csv"
-        $ficheroExcel="dades de sortides ".date("d-m-Y H:i:s").".csv";
-        
+       
+       if (isset($_REQUEST['users'])) {
+        $ficheroExcel="dades d'usuaris ".date("d-m-Y H:i:s").".csv";
+        }else{
+        $ficheroExcel="dades de sortides ".date("d-m-Y H:i:s").".csv";	
+        }
+
         //Indicamos que vamos a tratar con un fichero CSV
         header("Content-type: text/csv");
         header("Content-Disposition: attachment; filename=".$ficheroExcel);
@@ -20,6 +25,29 @@ switch ($_SESSION['tipo']) {
 
 case '1':
 	//Admin
+
+if (isset($_REQUEST['users'])) {
+	
+
+	  // Vamos a mostrar en las celdas las columnas que queremos que aparezcan en la primera fila, separadas por ; 
+        echo "Usuari;Nom;Cognoms;Departament\n";    
+            
+            //consulta para saber los datos de las salidas y el transporte
+$consulta="SELECT tbl_usuari.usuari, tbl_usuari.nom_usuari, tbl_usuari.cognom_usuari, tbl_tipus_usuari.nom_tipus FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_tipus_usuari.id_tipus_usuari=tbl_usuari.id_tipus_usuari ORDER BY tbl_tipus_usuari.nom_tipus";
+
+      $exe=mysqli_query($conn,$consulta);
+     while ($val=mysqli_fetch_array($exe)){
+
+     echo    $val[0].";"
+            .$val[1].";"
+            .$val[2].";"
+            .$val[3]."\n";
+
+}
+
+
+}else{
+
         // Vamos a mostrar en las celdas las columnas que queremos que aparezcan en la primera fila, separadas por ; 
         echo "Codi;Sortida;Inici;Final;Clase;Etapa;Acompanyants;Alumnes;Professor Assignat;Vetlladors;SIEI;Professors;Professors Computables;Lloc;Tipus;Àmbit;Jornada;Objectiu\n";    
             
@@ -84,7 +112,8 @@ case '1':
                 .$exe[15].";"
                 .$exe[16]." \n";
     
-    }            
+    } 
+    }           
     
 break;
 
@@ -253,6 +282,7 @@ $consulta="SELECT * FROM tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.i
 	break;
 
 }
+
      exit;    
 }else{
 	header("location: ../vista/home.php");
