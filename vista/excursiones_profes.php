@@ -176,9 +176,7 @@ if ($_SESSION['cont_visitas']==1) {
 <br>
 
 <!-- Exportar a CSV !-->
-   <form action="../services/csv_profes.php" method="POST">
-  	<input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
+  	<a href="../services/csv.php"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
 
 <div class="footer">
   <img src="../images/logo_fje.svg">

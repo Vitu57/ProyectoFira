@@ -72,9 +72,10 @@ if ($_SESSION['cont_visitas']==1){
 <div id="resultado" class="tablas" style="overflow-y:scroll; height: 28rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 </div>
 <br>
-<form action="../services/csv_cocina.php" method="POST">
-    <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
+
+<!-- Exportar a CSV !-->
+    <a href="../services/csv.php"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
+
 <div class="footer">
   <img src="../images/logo_fje.svg">
 </div>

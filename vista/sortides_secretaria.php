@@ -107,10 +107,9 @@ if ($tipo!=3) {
   </div>
   </div>
    <br>
+   
 <!-- Exportar a CSV !-->
-   <form action="../services/csv_secretaria.php" method="POST">
-  	<input class="btn btn-lg filtrado_admin" style="margin-bottom: 2.5%" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
+  	<a href="../services/csv.php"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
 
   </div>
   <!-- Modal del contacto--> 

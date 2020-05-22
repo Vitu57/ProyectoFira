@@ -99,9 +99,7 @@ if ($tipo!=5 AND $tipo!=6) {
   <br>
  
 <!-- Exportar a CSV !-->
-   <form action="../services/csv_enf_dir.php" method="POST">
-    <input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
+    <a href="../services/csv.php"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
 
   </div>
 <div id="resultado2" class="modalmask" style="display:none;">

@@ -104,10 +104,7 @@ if ($tipo!=1) {
   <br>
   
 <!-- Exportar a CSV !-->
-   <form action="../services/csv_admin.php" method="POST">
-  	<a href="../services/csv_admin.php"><input class="btn btn-lg filtrado_admin" type="submit" name="exportarCSV" value="Exportar dades">
-  </form>
- 
+  	<a href="../services/csv.php"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
 
 <div class="footer">
  <img src="../images/logo_fje.svg">
