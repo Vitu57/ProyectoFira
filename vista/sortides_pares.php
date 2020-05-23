@@ -81,7 +81,7 @@ echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.
 <?php
 
 //consulta para mostrar las sortides de su hijo
-$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_alumnes.id_alumne='$id_fill' AND tbl_galeria.cont_subidas=1 ORDER BY tbl_sortida.final_sortida DESC";
+$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida, tbl_alumnes.id_alumne FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_alumnes.id_alumne='$id_fill' AND tbl_galeria.cont_subidas=1 ORDER BY tbl_sortida.final_sortida DESC";
      
      if ($exe=mysqli_query($conn,$consulta)){
        
@@ -94,7 +94,7 @@ $consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_so
 
      while ($casos=mysqli_fetch_array($exe)){
 
-echo "<a title='Veure Fotos de ".$casos[0]."' style='color:white; text-decoration:none;' href='../vista/galeria_fotos.php?id_exc=".$casos[3]."&accion=ver_img'><button class='myBtn_sortides_pares'>";
+echo "<a title='Veure Fotos de ".$casos[0]."' style='color:white; text-decoration:none;' href='../vista/galeria_pares.php?id_sortida=".$casos[3]."&id_alumne=".$casos[4]."'><button class='myBtn_sortides_pares'>";
 
 $newDate = date("d/m/Y", strtotime($casos[1]));
 

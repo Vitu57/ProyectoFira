@@ -10,11 +10,11 @@ function comprobar_clase() {
     ajax3.send("accion=c_clase&id_sortida="+id_excursion.value+"&id_alumne="+id_alumne.value+"&id_pares="+id_pares.value);
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
-            console.log(ajax3.responseText); 
-            if(ajax3.responseText == 1){
-                alert("todo bien");
-            }else{
-                alert("El padre no tiene permisos");
+            console.log(ajax3.responseText);
+
+            //Si el id_excursion y el id_usuari no es correcto redirige a home
+            if(ajax3.responseText != 1){
+                window.location.replace("../vista/home_pares.php");
             }
 
         }
