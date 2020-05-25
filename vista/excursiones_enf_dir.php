@@ -43,7 +43,16 @@ if ($tipo!=5 AND $tipo!=6) {
 <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
 </a>
-<a style='color:#d60909; float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><i class='fas fa-power-off fa-3x'></i></a>
+<?php
+$id=$_SESSION['id'];
+$conom="select usuari from tbl_usuari where id_usuari='".$id."'";
+$query=mysqli_query($conn,$conom);
+$nombre=mysqli_fetch_array($query);
+?>
+<a style=' float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><img src='../images/icon-logout.svg' style='width: 3rem;margin-left:2%; margin-top:-1%;'></a>
+<?php
+  echo "<p style='position:relative; float:right; margin-right:2%;font-size:1.5rem;'>".$nombre[0]."</p>";
+  ?>
 
   <div style="padding: 1%; text-align: left;">
     <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Enfermeria</h1>
