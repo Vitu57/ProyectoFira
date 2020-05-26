@@ -80,6 +80,7 @@ $data_final = date("d/m/Y", strtotime($exe[2]));
 			<td style='width: 7%;'>".$data_final."</td>
 			<td style='width: 7%;'>".$exe[3]."</td>
 			<td style='width: 7%;'>".$exe[4]."</td>
+			<td style='width: 7%;'><a href='verlista.php?id=".$exe[17]."'><i style='color:#367cb3;' class='fas fa-list'></i></a></td>
                         <td style='width: 8%;'>".$exe[15]."</td>
 			<td id='acom".$cont."' style='display:none;'>".$exe[5]."</td>
 			<td id='al".$cont."' style='display:none;'>".$exe[6]."</td>
