@@ -1664,3 +1664,30 @@ function eliminarAlumno(){
         }
     }
 }
+//Crear la tabla de administracion para listas
+function verlista(id_activitat){
+divResultado = document.getElementById('resultado');
+var ajax2=objetoAjax();
+ajax2.open("POST", "../services/consulta_lista_admin.php", true);
+ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+ajax2.send("id_activitat="+id_activitat);
+ajax2.onreadystatechange=function() {
+    if (ajax2.readyState==4 && ajax2.status==200) {
+    var respuesta=JSON.parse(this.responseText);
+        var tabla ='<table id="lista" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th>Cognoms</th><th>Nom</th><th>Clase</th><th>Assistència</th></tr><tr></thead>';
+        for(var i=0;i<respuesta.length;i++) {
+            tabla += '<tr><td>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].cognom2_alumne+'</td>';
+            tabla += '<td>' + respuesta[i].nom_alumne+'</td>';
+            tabla += '<td>' + respuesta[i].nom_classe+'</td>';
+            if (respuesta[i].estado_asistencia=="Absent") {
+        tabla += '<td>' + '<img src="../images/mal_check.png" width="32"; height="32"></a></td></tr>';
+            }else{
+        tabla += '<td>' + '<img src="../images/check_cuina.png" height="40" width="32";></a></td></tr>'; 
+            }
+        }
+        tabla+='</table>';
+        divResultado.innerHTML=tabla;
+        new Tablesort(document.getElementById('lista'));
+        }
+    }
+}
