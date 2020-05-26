@@ -49,8 +49,8 @@ window.onclick = function(event) {
 function modal2(){
 
 
-    // Get the modal
-    var modal2 = document.getElementById("myModal");
+// Get the modal
+var modal2 = document.getElementById("myModal");
 var modal = document.getElementById("myModal2");
 
 // Get the button that opens the modal
@@ -262,9 +262,11 @@ function CrearTablaProfes(filtro){
     var profe = document.getElementById("profe").value;
     var clase = document.getElementById("clase").value;
     var fecha = document.getElementById("fecha").value;
-     var jornada = document.getElementById("jornada").value;
-      var etapa = document.getElementById("etapa").value;
-       var codi = document.getElementById("codi").value;
+    var jornada = document.getElementById("jornada").value;
+    var etapa = document.getElementById("etapa").value;
+    var codi = document.getElementById("codi").value;
+	var nom = document.getElementById("nom").value;
+	var cognom = document.getElementById("cognom").value;
     //Fecha de hoy
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -309,7 +311,7 @@ function CrearTablaProfes(filtro){
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a></td>';
+                    tabla +='<td><a title="Modificar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a><a title="Valoració" href="#" onclick="abrirform4('+respuesta[i].id_sortida+', \''+respuesta[i].observacions_sortida+'\', \'' + nom + '\', \'' + cognom + '\')"><i class="fas fa-star fa-2x" id="modificar" style="color:#FF8C00;"></i></a></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -332,7 +334,7 @@ function CrearTablaProfes(filtro){
             }else{
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
-                    tabla +='<td><a title="Moficar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a></td>';
+                    tabla +='<td><a title="Modificar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><br><a href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a><a title="Valoració" href="#" onclick="abrirform4('+respuesta[i].id_sortida+', \''+respuesta[i].observacions_sortida+'\', \'' + nom + '\', \'' + cognom + '\')"><i class="fas fa-star fa-2x" id="modificar" style="color:#FF8C00;"></i></a></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -831,10 +833,10 @@ function abrirform4(a, b , nom, cognom){
     }
                    var contenido ='<h2>Valoració Sortida: '+b+'</h2><br><div id="tabla_feed" style="width:60%; float:right;"></div><div style="text-align:left; padding-bottom:1%;"><b style="visibility:hidden;">""""</b><b id="val2">Valora la Sortida:</b></div>';
                    contenido +='<div id="valora" class="rate"><input type="radio" id="star5" onchange="MostrarVal(); return false;" name="rate" value="5" />';
-                   contenido +='<label for="star5" title="5">5 stars</label><input type="radio" id="star4" name="rate" value="4" />';
-                   contenido +='<label for="star4" title="4">4 stars</label><input type="radio" id="star3" name="rate" value="3" />';
-                   contenido +='<label for="star3" title="3">3 stars</label><input type="radio" id="star2" name="rate" value="2" />'
-                   contenido +='<label for="star2" title="2">2 stars</label><input type="radio" id="star1" name="rate" value="1" />';
+                   contenido +='<label for="star5" title="5">5 stars</label><input class="messageCheckbox" type="radio" id="star4" name="rate" value="4" />';
+                   contenido +='<label for="star4" title="4">4 stars</label><input class="messageCheckbox" type="radio" id="star3" name="rate" value="3" />';
+                   contenido +='<label for="star3" title="3">3 stars</label><input class="messageCheckbox" type="radio" id="star2" name="rate" value="2" />'
+                   contenido +='<label for="star2" title="2">2 stars</label><input class="messageCheckbox" type="radio" id="star1" name="rate" value="1" />';
                    contenido +='<label for="star1" title="1">1 star</label></div><br><br>';
                    contenido +='<div id="comentarios" style="padding-top:2%; width:50%; text-align:left;" class="form-group purple-border"><b style="visibility:hidden;">""""</b><label for="exampleFormControlTextarea4"><b>Comentaris (Opcional):</b></label><textarea class="form-control" style="width:45%; margin:0.5% 2%;" id="coment_text" rows="3"></textarea>';
                    contenido +='<button class="btn btn-lg filtrado_admin" style="margin:2.5% 2%;" onclick="feedback('+a+',\''+nom+'\', \''+cognom+'\'); return false;">Enviar</button></div>'
@@ -876,7 +878,14 @@ function CrearTabla_Feedback(a){
 }
 }
 function feedback(id_sortida, nom, cognom){
-    var stars = $("input[name='rate']:checked").val();
+    var stars = null; 
+	var inputElements = document.getElementsByClassName('messageCheckbox');
+	for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           stars = inputElements[i].value;
+           break;
+      }
+	}
     if(stars== null){
         alert("Valora del 1 al 5 amb les estels")
     }else{

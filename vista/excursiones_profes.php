@@ -11,12 +11,22 @@
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
 
 <?php
-
+include "../services/conexion.php";
+$id=$_SESSION['id'];
+//nom i cognom
+$consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
+      $exe=mysqli_query($conn,$consulta);
+      $casos=mysqli_fetch_array($exe);
+        $nom=$casos['nom_usuari'];
+        $cognom=$casos['cognom_usuari'];
+?>
+<input id="nom" type="hidden" value="<?php echo $nom ?>">
+<input id="cognom" type="hidden" value="<?php echo $cognom ?>">
+<?php		
 function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
 
-include "../services/conexion.php";
 include "../services/header.php";
 
 if (isMobile()) {
