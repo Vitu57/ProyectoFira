@@ -832,7 +832,7 @@ function abrirform4(a, b , nom, cognom){
   document.getElementById("comprobarModal").value=0;
     }
                    var contenido ='<h2>Valoració Sortida: '+b+'</h2><br><div id="tabla_feed" style="width:60%; float:right;"></div><div style="text-align:left; padding-bottom:1%;"><b style="visibility:hidden;">""""</b><b id="val2">Valora la Sortida:</b></div>';
-                   contenido +='<div id="valora" class="rate"><input type="radio" id="star5" onchange="MostrarVal(); return false;" name="rate" value="5" />';
+                   contenido +='<div id="valora" class="rate"><input type="radio" id="star5" class="messageCheckbox" name="rate" value="5" />';
                    contenido +='<label for="star5" title="5">5 stars</label><input class="messageCheckbox" type="radio" id="star4" name="rate" value="4" />';
                    contenido +='<label for="star4" title="4">4 stars</label><input class="messageCheckbox" type="radio" id="star3" name="rate" value="3" />';
                    contenido +='<label for="star3" title="3">3 stars</label><input class="messageCheckbox" type="radio" id="star2" name="rate" value="2" />'
