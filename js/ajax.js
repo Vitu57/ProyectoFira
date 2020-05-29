@@ -1630,7 +1630,7 @@ function cambiarClase(){
         ajax=objetoAjax();
         ajax.open('POST', '../services/cambiar_clase.proc.php', true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.send("id_alumno="+alumno+"&id_clase="+clase);
+        ajax.send("id_alumno="+alumno+"&id_clase="+clase+"&nom="+nom+"&cognom="+cognom+"siei="+siei);
 
         // Definimos la función que se ejecutará cuando cambie la propiedad readyState
         ajax.onreadystatechange=function() {
