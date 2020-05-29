@@ -35,7 +35,7 @@ if (!$_SESSION['id']) {
 <script type="text/javascript" src="../js/ajax.js"></script>
 
 <body class="body_design">
-    <a href="../home.php">
+    <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
 

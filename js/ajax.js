@@ -21,6 +21,7 @@ function modal(){
     // Get the modal
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 
@@ -31,6 +32,7 @@ var span = document.getElementById("close");
 btn.onclick = function() {
   modal.style.display = "block";
   modal2.style.display = "none";
+  modal3.style.display = "none";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -52,6 +54,7 @@ function modal2(){
 // Get the modal
 var modal2 = document.getElementById("myModal");
 var modal = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn2");
@@ -63,6 +66,7 @@ var span = document.getElementById("close2");
 btn.onclick = function() {
   modal.style.display = "block";
   modal2.style.display = "none";
+  modal3.style.display = "none";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -74,6 +78,40 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+}
+}
+
+function modal3(){
+
+
+// Get the modal
+var modal2 = document.getElementById("myModal");
+var modal = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn3");
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("close3");
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal3.style.display = "block";
+  modal.style.display = "none";
+  modal2.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal3.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal3.style.display = "none";
   }
 }
 }

@@ -70,7 +70,7 @@ if ($cont_visitas==1) {
 //comprueba si el usuario es admin
 if ($tipus_user==1) {
 
-echo "<body class='home' onload='modal(); modal2(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
+echo "<body class='home' onload='modal(); modal2(); modal3(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
 
 }else{
 
@@ -92,7 +92,7 @@ echo "<body class='home' onload='modal(); benvinguda2(); tutorial_calendario2();
 
 }else{
 
-echo "<body class='home' onload='modal(); modal2();'>";
+echo "<body class='home' onload='modal(); modal2(); modal3();'>";
 
 }
 echo "<div class='header'>";
@@ -200,7 +200,7 @@ if ($tipus_user==1) {
 <div id="myModal2" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content" style=" background-color:#ff7a32!important;">
     <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
     <div class="separator" style="background-color:white;"></div>
 <div class="margen_botones_modal">
@@ -211,9 +211,30 @@ if ($tipus_user==1) {
 </div>
 
 </div>
+<!-- The Modal -->
+<div id="myModal3" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="background-color:#ff7033!important;">
+    <span id="close3" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
+    <div class="separator" style="background-color:white;"></div>
+<div class="margen_botones_modal">
+   
+
+    <a class="none" href="../vista/editar_alumno.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Editar Alumne</h3></button></a>
+      <a class="none" href="../vista/eliminar_alumno.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Eliminar Alumne</h3></button></a>
+</div>
+</div>
+
+</div>
 <div onclick="admin2();">
 <button id="myBtn2" class="myBtn" style="margin-left:1%;">
 <i class="fas fa-users fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Usuaris</h2>
+</button>
+</div>
+<div onclick="admin3();">
+<button id="myBtn3" class="myBtn" style="margin-left:2%;">
+<i class="fas fa-users fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Alumnes</h2>
 </button>
 </div>
 
