@@ -25,7 +25,7 @@ a.none{
   background-color:#f63!important;
   /*margin: 15% auto;*/ /* 15% from the top and centered */
   padding: 1%;
-  border: 4px solid #071334!important;
+  border: 1px solid white!important;
   height: 100%;
   width: 100%; /* Could be more or less, depending on screen size */
   animation-name: animacion;
@@ -127,11 +127,14 @@ margin-left: 12.6%;
   height: 5rem;
   background-color: #0966ce;
   border:1px solid black;
-  padding-top: 1.2rem;
+  padding-top: 0.5rem;
   width: 25%;
   float:left;
 }
-
+.margen_botones_modal{
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+}
 
 thead{
    position: sticky;
