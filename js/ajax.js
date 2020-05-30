@@ -1317,6 +1317,7 @@ function mostraralumnos2(){
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
             divResultado.innerHTML = ajax.responseText
+            rellenar_datos();
         }
     }
 }
@@ -1746,7 +1747,8 @@ function recuperar_pass_pares(id){
 function cambiarClase(){
     var alumno=document.getElementById('nombrealumno').value;
     var clase=document.getElementById('clases2').value;
-    
+    var nom=document.getElementById('nombreusu').value;
+    var cognom=document.getElementById('apellidosusu').value;
      if(alumno=="" && clase==""){
         document.getElementById("nombrealumno").style.borderColor="red";
         document.getElementById("clases2").style.borderColor="red";
@@ -1763,7 +1765,7 @@ function cambiarClase(){
         ajax=objetoAjax();
         ajax.open('POST', '../services/cambiar_clase.proc.php', true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.send("id_alumno="+alumno+"&id_clase="+clase+"&nom="+nom+"&cognom="+cognom+"siei="+siei);
+        ajax.send("id_alumno="+alumno+"&id_clase="+clase+"&nom="+nom+"&cognom="+cognom);
 
         // Definimos la función que se ejecutará cuando cambie la propiedad readyState
         ajax.onreadystatechange=function() {

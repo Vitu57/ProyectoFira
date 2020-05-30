@@ -95,7 +95,7 @@ if (!$_SESSION['id']) {
 
 <!-- Sign up button -->
 <?php
-echo '<button class="btn btn-info mt-4 btn-block" type="submit" id="anadir" onclick="cambiarClase();return false;">Eliminar</button>'
+echo '<button class="btn btn-info mt-4 btn-block" type="submit" id="anadir" onclick="cambiarClase();return false;">Editar</button>'
 ?>
 <div id="mensaje">
   
