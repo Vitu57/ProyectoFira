@@ -88,7 +88,7 @@ echo "<body class='home' style='text-align: center; padding: 2%;'>";
 $tipo=$_SESSION['tipo'];
 
 if ($tipo!=1) {
-	header("location: ../index.php");
+  header("location: ../index.php");
 }
 
 
@@ -118,43 +118,41 @@ $nombre=mysqli_fetch_array($query);
 <div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 
-	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
-    <input type="text" name="nom_profe" class="espacio_filtros" id="profe" placeholder="Nom Professor">
-<input type="text" name="cog_profe" class="espacio_filtros" id="profe" placeholder="Cognom Professor">
-		<select name="etapa" id="etapa" class="espacio_filtros">
-			<option value="">Etapa...</option>
+  <form action="#" method="POST" onchange="filtrar_admin_prof();return false">
+    <input type="text" name="nom_profe" class="espacio_filtros" id="nom_profe" placeholder="Nom Professor">
+<input type="text" name="cog_profe" class="espacio_filtros" id="cog_profe" placeholder="Cognom Professor">
+    <select name="etapa" id="etapa" class="espacio_filtros">
+      <option value="">Etapa...</option>
 
-		<?php
+    <?php
 
-	$consulta="SELECT nom_etapa FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
-	$exe=mysqli_query($conn,$consulta);
+  $consulta="SELECT nom_etapa FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
+  $exe=mysqli_query($conn,$consulta);
     while ($casos=mysqli_fetch_array($exe)){
 
-	echo "<option>".$casos['nom_etapa']."</option>";
+  echo "<option>".$casos['nom_etapa']."</option>";
 }
 ?>
 </select>
         <select name="clase" class="espacio_filtros" id="clase">
-       		<option value="">Clase...</option>
-			<?php
+          <option value="">Clase...</option>
+      <?php
 
-	$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
-	$exe=mysqli_query($conn,$consulta);
+  $consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
+  $exe=mysqli_query($conn,$consulta);
     while ($casos=mysqli_fetch_array($exe)){
 
-	echo "<option>".$casos['nom_classe']."</option>";
+  echo "<option>".$casos['nom_classe']."</option>";
 }
 ?>
 </select>
 
-
-		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Filtrar">
-    <input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onload="vertodo2();return false">
-	</form>
+    <input type="submit" class="btn btn-lg" style="margin-right:4%; margin-left: 1%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo_admin_prof();return false">
+  </form>
 
 
 <br>
-<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
+<div id="resultado2" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
   <?php
     include "tabla_admin_profes.php";
   ?>

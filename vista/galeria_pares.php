@@ -54,6 +54,7 @@
   <?php
   echo "<a href='../vista/sortides_pares.php?fill=".$_REQUEST["id_alumne"]."'>";
   ?>
+  
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 1%; color: white; position:absolute; margin-left:4%;" class="btn btn-secondary"></i>
 </a>  
 

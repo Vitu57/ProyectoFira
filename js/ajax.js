@@ -1088,6 +1088,7 @@ function filtrar_secretaria(){
     }
 }
 
+
 function vertodo_secretaria(){
     divResultado = document.getElementById('resultado');
     ajax=objetoAjax();
@@ -1106,6 +1107,51 @@ function vertodo_secretaria(){
         }
     }
 }
+
+
+function filtrar_admin_prof(){
+    divResultado = document.getElementById('resultado2');
+    var nom_profe = document.getElementById("nom_profe").value;
+    var cog_profe = document.getElementById("cog_profe").value;
+    var clase = document.getElementById("clase").value;
+    var etapa = document.getElementById("etapa").value;
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'tabla_admin_profes.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("nom_profe="+nom_profe+"&clase="+clase+"&cog_profe="+cog_profe+"&etapa="+etapa);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText;
+            new Tablesort(document.getElementById('admin_profe_table'));
+        }
+    }
+}
+
+function vertodo_admin_prof(){
+    divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'admin_prof.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send();
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText;
+            new Tablesort(document.getElementById('admin_profe_table'));
+        }
+    }
+}
+
 
 function delete_confirm(id_s,id_a,id_p,id_c,id_t){
     

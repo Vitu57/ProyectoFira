@@ -25,7 +25,7 @@ if(isset($_REQUEST['profe'])){
 		<th scope='col'>Sortida</th>
 		<th scope='col'>Inici</th>
 		<th scope='col'>Final</th>
-		<th scope='col'>Classe</th>
+		<th scope='col'>Clase</th>
 		<th scope='col'>Etapa</th>
 		<th>Llista</th>
         <th scope='col'>Jornada</th>

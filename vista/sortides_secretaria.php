@@ -62,7 +62,7 @@ $nombre=mysqli_fetch_array($query);
 <div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 	
-	<form action="#" method="POST" onsubmit="filtrar_secretaria();return false">
+	<form action="#" method="POST" onchange="filtrar_secretaria();return false">
 		<input type="text" class="espacio_filtros" name="codi" id="codi" placeholder="Codi...">
 		<input type="date" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data...">
 		 <input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor...">
@@ -106,9 +106,7 @@ $nombre=mysqli_fetch_array($query);
 ?>
 </select>
 
-		
-		<input type="submit" class="btn btn-lg" style=" background-color: #367cb3; color: white; padding: 0.5%; margin: 1%; " name="submit" value="Filtrar">
-		<input type="submit" class="btn btn-lg" style="margin-right:4%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo_secretaria();return false">
+		<input type="submit" class="btn btn-lg" style="margin-right:4%; margin-left: 1%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo_secretaria();return false">
 	</form>
 	
 	<div id="resultado" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
