@@ -1,3 +1,8 @@
+
+function event_listener(){
+    var alumneid = document.getElementById("nombrealumno");
+    alumneid.addEventListener("change", rellenar_datos);
+}
 function objetoAjax(){
     var xmlhttp=false;
     try {
@@ -15,12 +20,38 @@ function objetoAjax(){
     return xmlhttp;
 }
 
+function rellenar_datos(){
+    id_alumno = document.getElementById("nombrealumno").value;
+
+    var ajax3 = objetoAjax();
+    var option;
+    ajax3.open("POST", "../services/consulta_editar_alumnos.php", true);
+    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajax3.send("accion=ver_datos_alumno&id_alumno="+id_alumno);
+    ajax3.onreadystatechange = function () {
+        if (ajax3.readyState == 4 && ajax3.status == 200) {
+            //console.log(ajax3.responseText); 
+            var respuesta = JSON.parse(ajax3.responseText);
+            for (var i = 0; i < respuesta.length; i++) {
+                apellidos=respuesta[i].cognom1_alumne+" "+respuesta[i].cognom2_alumne;
+                document.getElementById("clases2").selectedIndex=respuesta[i].id_clase;
+                document.getElementById("nombreusu").value=respuesta[i].nom_alumne;
+                document.getElementById("apellidosusu").value=apellidos;
+                //option += '<option value="' + respuesta[i].id_tipus_usuari + '">' + respuesta[i].nom_tipus + '</option>';
+            }
+           // tipus.innerHTML = option;
+            
+        }
+    }
+}
+
 
 function modal(){
 
     // Get the modal
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 
@@ -31,6 +62,7 @@ var span = document.getElementById("close");
 btn.onclick = function() {
   modal.style.display = "block";
   modal2.style.display = "none";
+  modal3.style.display = "none";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -52,6 +84,7 @@ function modal2(){
 // Get the modal
 var modal2 = document.getElementById("myModal");
 var modal = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn2");
@@ -63,6 +96,7 @@ var span = document.getElementById("close2");
 btn.onclick = function() {
   modal.style.display = "block";
   modal2.style.display = "none";
+  modal3.style.display = "none";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -74,6 +108,40 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+}
+}
+
+function modal3(){
+
+
+// Get the modal
+var modal2 = document.getElementById("myModal");
+var modal = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn3");
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("close3");
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal3.style.display = "block";
+  modal.style.display = "none";
+  modal2.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal3.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal3.style.display = "none";
   }
 }
 }
@@ -832,7 +900,7 @@ function abrirform4(a, b , nom, cognom){
   document.getElementById("comprobarModal").value=0;
     }
                    var contenido ='<h2>Valoració Sortida: '+b+'</h2><br><div id="tabla_feed" style="width:60%; float:right;"></div><div style="text-align:left; padding-bottom:1%;"><b style="visibility:hidden;">""""</b><b id="val2">Valora la Sortida:</b></div>';
-                   contenido +='<div id="valora" class="rate"><input type="radio" id="star5" onchange="MostrarVal(); return false;" name="rate" value="5" />';
+                   contenido +='<div id="valora" class="rate"><input type="radio" id="star5" class="messageCheckbox" name="rate" value="5" />';
                    contenido +='<label for="star5" title="5">5 stars</label><input class="messageCheckbox" type="radio" id="star4" name="rate" value="4" />';
                    contenido +='<label for="star4" title="4">4 stars</label><input class="messageCheckbox" type="radio" id="star3" name="rate" value="3" />';
                    contenido +='<label for="star3" title="3">3 stars</label><input class="messageCheckbox" type="radio" id="star2" name="rate" value="2" />'
@@ -1050,6 +1118,7 @@ function filtrar_secretaria(){
     }
 }
 
+
 function vertodo_secretaria(){
     divResultado = document.getElementById('resultado');
     ajax=objetoAjax();
@@ -1068,6 +1137,51 @@ function vertodo_secretaria(){
         }
     }
 }
+
+
+function filtrar_admin_prof(){
+    divResultado = document.getElementById('resultado2');
+    var nom_profe = document.getElementById("nom_profe").value;
+    var cog_profe = document.getElementById("cog_profe").value;
+    var clase = document.getElementById("clase").value;
+    var etapa = document.getElementById("etapa").value;
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'tabla_admin_profes.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("nom_profe="+nom_profe+"&clase="+clase+"&cog_profe="+cog_profe+"&etapa="+etapa);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText;
+            new Tablesort(document.getElementById('admin_profe_table'));
+        }
+    }
+}
+
+function vertodo_admin_prof(){
+    divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'admin_prof.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send();
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText;
+            new Tablesort(document.getElementById('admin_profe_table'));
+        }
+    }
+}
+
 
 function delete_confirm(id_s,id_a,id_p,id_c,id_t){
     
@@ -1188,6 +1302,26 @@ function mostraralumnos(){
         }
     }
 }
+function mostraralumnos2(){
+    var clase=document.getElementById('clases').value;
+    divResultado = document.getElementById('alumnos_clase');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/consulta_editar_alumnos.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("accion=mostrar&id_clase="+clase);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+            rellenar_datos();
+        }
+    }
+}
+
 
 function anadirlista(activitat){
     var alumno=document.getElementById('nombrealumno').value;
@@ -1613,7 +1747,8 @@ function recuperar_pass_pares(id){
 function cambiarClase(){
     var alumno=document.getElementById('nombrealumno').value;
     var clase=document.getElementById('clases2').value;
-    
+    var nom=document.getElementById('nombreusu').value;
+    var cognom=document.getElementById('apellidosusu').value;
      if(alumno=="" && clase==""){
         document.getElementById("nombrealumno").style.borderColor="red";
         document.getElementById("clases2").style.borderColor="red";
@@ -1630,7 +1765,7 @@ function cambiarClase(){
         ajax=objetoAjax();
         ajax.open('POST', '../services/cambiar_clase.proc.php', true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.send("id_alumno="+alumno+"&id_clase="+clase);
+        ajax.send("id_alumno="+alumno+"&id_clase="+clase+"&nom="+nom+"&cognom="+cognom);
 
         // Definimos la función que se ejecutará cuando cambie la propiedad readyState
         ajax.onreadystatechange=function() {

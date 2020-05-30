@@ -11,7 +11,7 @@ if(isset($_REQUEST['nom_profe'])){
 }else{
 	$nom_profe="";
 }
-if(isset($_REQUEST['nom_profe'])){
+if(isset($_REQUEST['cog_profe'])){
   $cog_profe=$_REQUEST['cog_profe'];
 }else{
   $cog_profe="";
@@ -33,7 +33,7 @@ if (isset($_REQUEST['error'])) {
 }
 
 ?>
-  <table class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
+  <table id="admin_profe_table" class="table table-bordered" style="text-align:center; background-color: rgba(255,255,255,1);"><thead class="thead-dark">
   <tr>
 
    <th scope='col'>Professors</th>

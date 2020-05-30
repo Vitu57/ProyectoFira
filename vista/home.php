@@ -71,7 +71,7 @@ if ($cont_visitas==1) {
 //comprueba si el usuario es admin
 if ($tipus_user==1) {
 
-echo "<body class='home' onload='modal(); modal2(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
+echo "<body class='home' onload='modal(); modal2(); modal3(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
 
 }else{
 
@@ -93,7 +93,7 @@ echo "<body class='home' onload='modal(); benvinguda2(); tutorial_calendario2();
 
 }else{
 
-echo "<body class='home' onload='modal(); modal2();'>";
+echo "<body class='home' onload='modal(); modal2(); modal3();'>";
 
 }
 echo "<div class='header'>";
@@ -179,7 +179,7 @@ if ($tipus_user==1) {
 
 ?>
 
-<div>
+<div class="margen_botones_modal">
 <a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 
 <a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
@@ -192,6 +192,7 @@ if ($tipus_user==1) {
 </div>
 
 <div onclick="admin1();">
+
 <button  id='myBtn' class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
 
@@ -206,15 +207,19 @@ if ($tipus_user==1) {
 <div id="myModal2" class="modal">
 
   <!-- Modal content -->
+<<<<<<< HEAD
   <div class="modal-content d-flex flex-row">
   <div id="detalles_modal">
   <div class="m-detalles"><i class="fas fa-users fa-2x"></i></div>
   <div><h5>Usuaris</h5></div> 
   </div>
   <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
+=======
+  <div class="modal-content" style=" background-color:#ff7a32!important;">
+>>>>>>> 68d3ea62c01166bf825c0da9bfdc8a9afeae32ec
     <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
     <div class="separator" style="background-color:white;"></div>
-<div>
+<div class="margen_botones_modal">
     <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" ><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
 
     <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:10%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
@@ -223,9 +228,30 @@ if ($tipus_user==1) {
 </div>
 
 </div>
+<!-- The Modal -->
+<div id="myModal3" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="background-color:#ff7033!important;">
+    <span id="close3" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
+    <div class="separator" style="background-color:white;"></div>
+<div class="margen_botones_modal">
+   
+
+    <a class="none" href="../vista/editar_alumno.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Editar Alumne</h3></button></a>
+      <a class="none" href="../vista/eliminar_alumno.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Eliminar Alumne</h3></button></a>
+</div>
+</div>
+
+</div>
 <div onclick="admin2();">
 <button id="myBtn2" class="myBtn" style="margin-left:1%;">
 <i class="fas fa-users fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Usuaris</h2>
+</button>
+</div>
+<div onclick="admin3();">
+<button id="myBtn3" class="myBtn" style="margin-left:2%;">
+<i class="fas fa-users fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Alumnes</h2>
 </button>
 </div>
 
@@ -241,7 +267,7 @@ if ($tipus_user==1) {
       header("location:excursiones_profes.php");
     }
 ?>
-<div>
+<div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 
 <a class="none" href="../vista/form_excursiones_profes.php" ><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
@@ -268,6 +294,7 @@ echo "<div onclick='profesores()''>";
 <?php
 }else if($tipus_user==3){       
     ?>
+    <div class="margen_botones_modal">
 <a class="none" href="../vista/sortides_secretaria.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 </div>
 </div>
@@ -289,6 +316,7 @@ echo "<div onclick='secretaria()''>";
 <?php
 }else if($tipus_user==4){
 ?>
+<div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_cocina.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 </div>
 </div>
@@ -310,6 +338,7 @@ echo "<div onclick='cocina()''>";
 <?php
 }else if($tipus_user==5 || $tipus_user==6){
 ?>
+<div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_enf_dir.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 </div>
 </div>
@@ -334,6 +363,7 @@ echo "<div onclick='enf_dir()''>";
 <?php
 }else if($tipus_user==7){
 ?>
+<div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_alu.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 </div>
 </div>

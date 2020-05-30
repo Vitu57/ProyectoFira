@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2020 a las 06:19:22
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 29-05-2020 a las 23:53:46
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_sortides`
 --
+CREATE DATABASE IF NOT EXISTS `bd_sortides` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `bd_sortides`;
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,7 @@ CREATE TABLE `tbl_alumnes` (
 INSERT INTO `tbl_alumnes` (`id_alumne`, `nom_alumne`, `cognom1_alumne`, `cognom2_alumne`, `id_clase`, `siei`) VALUES
 (1, 'Luis Miguel', 'EnBuena', 'BD', 1, 'si'),
 (2, 'Sofia', 'Gimenez', 'Sanchez', 21, 'no'),
-(3, 'Paco', 'Perez', 'Gonzalez', 20, 'no'),
+(3, 'Paco', 'Perez', 'Gonzalez', 1, 'no'),
 (4, 'Sara', 'Lopez', 'Lopez', 1, 'no'),
 (5, 'Carlos', 'Sanchez', 'Jimenez', 27, 'no');
 
@@ -88,6 +90,13 @@ CREATE TABLE `tbl_asistencia` (
   `id_activitat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tbl_asistencia`
+--
+
+INSERT INTO `tbl_asistencia` (`id_asistencia`, `estado_asistencia`, `id_usuario`, `id_activitat`) VALUES
+(1, 'Present', 2, 26);
+
 -- --------------------------------------------------------
 
 --
@@ -96,7 +105,7 @@ CREATE TABLE `tbl_asistencia` (
 
 CREATE TABLE `tbl_clase` (
   `id_clase` int(11) NOT NULL,
-  `nom_classe` enum('1-2PRI','1-4PRIM','1AF','1BATX','1EAS','1ESO','1PRIM','2BATX','2ESO','2PRIM','3-4ESO/1BATX','3-4PRI','3ESO','3PRIM','4ESO','4PRIM','5PRIM','6PRIM','CAFEM','CAI','EAS','EDIN','P3','P3-P4','P3-P4-P5','P4','P5','PERSONAL') COLLATE utf8_spanish_ci NOT NULL,
+  `nom_classe` enum('1AF','1BATX','1EAS','1ESO','1PRIM','2BATX','2ESO','2PRIM','3ESO','3PRIM','4ESO','4PRIM','5PRIM','6PRIM','CAFEM','CAI','EAS','EDIN','P3','P4','P5','PERSONAL') COLLATE utf8_spanish_ci NOT NULL,
   `id_etapa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -108,32 +117,27 @@ INSERT INTO `tbl_clase` (`id_clase`, `nom_classe`, `id_etapa`) VALUES
 (1, 'P3', 1),
 (2, 'P4', 1),
 (3, 'P5', 1),
-(4, 'P3-P4', 1),
-(5, 'P3-P4-P5', 1),
-(6, '1PRIM', 2),
-(7, '2PRIM', 2),
-(8, '3PRIM', 2),
-(9, '4PRIM', 2),
-(10, '5PRIM', 2),
-(11, '6PRIM', 2),
-(12, '1-2PRI', 2),
-(13, '1-4PRIM', 2),
-(14, '3-4PRI', 2),
-(15, '1ESO', 3),
-(16, '2ESO', 3),
-(17, '3ESO', 3),
-(18, '4ESO', 3),
-(19, '3-4ESO/1BATX', 4),
-(20, '1BATX', 5),
-(21, '2BATX', 5),
+(4, '1PRIM', 2),
+(5, '2PRIM', 2),
+(6, '3PRIM', 2),
+(7, '4PRIM', 2),
+(8, '5PRIM', 2),
+(9, '6PRIM', 2),
+(10, '1ESO', 3),
+(11, '2ESO', 3),
+(12, '3ESO', 3),
+(13, '4ESO', 3),
+(14, '1BATX', 5),
+(15, '2BATX', 5),
+(16, 'CAFEM', 6),
+(17, 'CAI', 6),
+(18, 'CAFEM', 7),
+(19, 'CAI', 7),
+(20, 'EAS', 7),
+(21, 'EDIN', 7),
 (22, '1AF', 7),
 (23, '1EAS', 7),
-(24, 'EAS', 7),
-(25, 'EDIN', 7),
-(26, '1AF', 7),
-(27, 'CAFEM', 6),
-(28, 'CAI', 6),
-(29, 'PERSONAL', 8);
+(24, 'PERSONAL', 8);
 
 -- --------------------------------------------------------
 
@@ -153,22 +157,17 @@ CREATE TABLE `tbl_clase_user` (
 
 INSERT INTO `tbl_clase_user` (`id_clase_usuari`, `id_clase`, `id_usuari`) VALUES
 (5, 21, 28),
-(7, 24, 28),
-(20, 15, 29),
-(86, 11, 1),
-(94, 18, 2),
-(99, 1, 29),
-(100, 18, 29),
-(107, 1, 1),
-(110, 8, 1),
-(111, 20, 29),
-(112, 27, 1),
-(113, 24, 1),
-(114, 17, 1),
-(115, 21, 1),
+(7, 7, 28),
+(20, 3, 29),
+(94, 1, 2),
+(99, 2, 29),
+(100, 10, 29),
+(111, 13, 29),
+(113, 12, 1),
 (116, 20, 1),
-(118, 1, 2),
-(119, 2, 2);
+(120, 13, 2),
+(123, 1, 1),
+(125, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -238,7 +237,6 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nom_etapa`) VALUES
 (1, 'INF'),
 (2, 'PRIM'),
 (3, 'ESO'),
-(4, 'ESO/BATX'),
 (5, 'BATX'),
 (6, 'CFGM'),
 (7, 'CFGS'),
@@ -270,7 +268,16 @@ INSERT INTO `tbl_feedback` (`id_feedback`, `usuario`, `estrellas`, `comentarios`
 (18, 'Administrador', 4, 'Valoració', '2020-05-09', 24),
 (19, 'Administrador', 5, 'Valoració', '2020-05-09', 24),
 (20, 'Administrador', 3, 'Valoració', '2020-05-09', 24),
-(21, 'Administrador', 3, 'fdsfs', '2020-05-09', 24);
+(21, 'Administrador', 3, 'fdsfs', '2020-05-09', 24),
+(22, 'Mario Carpallo', 4, 'buena salida', '2020-05-28', 25),
+(23, 'Mario Carpallo', 2, 'Sense Comentaris', '2020-05-28', 25),
+(24, 'Admin Admin', 3, 'perfecta', '2020-05-28', 24),
+(25, 'Admin Admin', 3, 'Sense Comentaris', '2020-05-28', 24),
+(26, 'Admin Admin', 3, 'Sense Comentaris', '2020-05-28', 24),
+(27, 'Admin Admin', 3, 's', '2020-05-28', 24),
+(28, 'Admin Admin', 4, 'qwd', '2020-05-28', 24),
+(29, 'Admin Admin', 3, 'mu bien', '2020-05-28', 24),
+(30, 'Admin Admin', 4, 'sqx njl', '2020-05-28', 24);
 
 -- --------------------------------------------------------
 
@@ -283,18 +290,19 @@ CREATE TABLE `tbl_galeria` (
   `nom_imatge` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `desc_imatge` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `img_path` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `id_sortida` int(11) NOT NULL
+  `id_sortida` int(11) NOT NULL,
+  `cont_subidas` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_galeria`
 --
 
-INSERT INTO `tbl_galeria` (`id_galeria`, `nom_imatge`, `desc_imatge`, `img_path`, `id_sortida`) VALUES
-(0, 'hola', 'hola', 'exc_/IMG_2019-01-27-11084007.png', 0),
-(89, 'asdasdasdasd', '', 'exc_Mobile_Congress/17092017-DSC08285.jpg', 26),
-(90, 'sdfsdfgsdfg', '', 'exc_Mobile_Congress/tour-cusco-y-machu-picchu-en-tren-4-dias-pisac.jpg', 26),
-(91, 'salida x', '', 'exc_Mobile_Congress/machu-picchu-2.jpg', 26);
+INSERT INTO `tbl_galeria` (`id_galeria`, `nom_imatge`, `desc_imatge`, `img_path`, `id_sortida`, `cont_subidas`) VALUES
+(0, 'hola', 'hola', 'exc_/IMG_2019-01-27-11084007.png', 0, 0),
+(89, 'asdasdasdasd', '', 'exc_Mobile_Congress/17092017-DSC08285.jpg', 24, 1),
+(90, 'sdfsdfgsdfg', '', 'exc_Mobile_Congress/tour-cusco-y-machu-picchu-en-tren-4-dias-pisac.jpg', 26, 1),
+(91, 'salida x', '', 'exc_Mobile_Congress/machu-picchu-2.jpg', 25, 1);
 
 -- --------------------------------------------------------
 
@@ -351,18 +359,19 @@ CREATE TABLE `tbl_pares` (
   `password_pares` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `nom_pares` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `cognoms_pares` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `email_pares` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `email_pares` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `cont_visitas` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_pares`
 --
 
-INSERT INTO `tbl_pares` (`id_pares`, `usuari_pares`, `password_pares`, `nom_pares`, `cognoms_pares`, `email_pares`) VALUES
-(1, '56734565M', '81dc9bdb52d04dc20036dbd8313ed055', 'Federico', 'Gimenez Lopez', 'fedegimelope@gmail.com'),
-(2, '79252073F', '81dc9bdb52d04dc20036dbd8313ed055', 'Patricia', 'Gonzalez Martinez', 'pagoma@gmail.com'),
-(3, '85638492Q', '81dc9bdb52d04dc20036dbd8313ed055', 'Julian', 'Lopez Casado', 'julilope@yahoo.com'),
-(4, '46234567J', '81dc9bdb52d04dc20036dbd8313ed055', 'Pablo', 'Sanchez Sorre ', 'pablo77@hotmail.com');
+INSERT INTO `tbl_pares` (`id_pares`, `usuari_pares`, `password_pares`, `nom_pares`, `cognoms_pares`, `email_pares`, `cont_visitas`) VALUES
+(1, '56734565M', '81dc9bdb52d04dc20036dbd8313ed055', 'Federico', 'Gimenez Lopez', 'fedegimelope@gmail.com', 6),
+(2, '79252073F', '81dc9bdb52d04dc20036dbd8313ed055', 'Patricia', 'Gonzalez Martinez', 'pagoma@gmail.com', 0),
+(3, '85638492Q', '81dc9bdb52d04dc20036dbd8313ed055', 'Julian', 'Lopez Casado', 'julilope@yahoo.com', 0),
+(4, '46234567J', '81dc9bdb52d04dc20036dbd8313ed055', 'Pablo', 'Sanchez Sorre ', 'pablo77@hotmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -449,9 +458,9 @@ CREATE TABLE `tbl_sortida` (
 --
 
 INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_clase`, `id_transport`, `id_precios`, `comanda_menu`) VALUES
-(24, 'RP-3444', '2020-05-07', '2020-05-07', 'Sortida al cinema', 43, 2, 2, 1, 'Jesus Mellado', 1, 24, 24, 0),
-(25, 'RP-2213', '2020-04-22', '2020-04-23', 'Sortida al camp', 123, 2, 1, 2, 'Sergio', 21, 25, 25, 0),
-(26, 'RP-4743', '2020-05-04', '2020-05-04', 'Res.', 65, 2, 1, 1, 'Sergio Jimenez', 21, 26, 26, 1);
+(24, 'RP-3444', '2020-06-01', '2020-06-01', 'Sortida al cinema', 43, 2, 2, 1, 'Jesus Mellado', 1, 24, 24, 0),
+(25, 'RP-2213', '2020-06-22', '2020-06-26', 'Sortida al camp', 123, 2, 1, 2, 'Sergio', 13, 25, 25, 1),
+(26, 'RP-4743', '2020-06-17', '2020-05-19', 'Res.', 65, 2, 1, 1, 'Sergio Jimenez', 4, 26, 26, 1);
 
 -- --------------------------------------------------------
 
@@ -515,38 +524,38 @@ INSERT INTO `tbl_transport` (`id_transport`, `hora_sortida`, `hora_arribada`, `c
 
 CREATE TABLE `tbl_usuari` (
   `id_usuari` int(11) NOT NULL,
-  `usuari` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `usuari` varchar(75) COLLATE utf8_spanish_ci NOT NULL,
   `contrasenya` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `nom_usuari` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `cognom_usuari` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `email_usuari` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `siei` enum('si','no') COLLATE utf8_spanish_ci NOT NULL,
   `computable` enum('si','no','alumne') COLLATE utf8_spanish_ci NOT NULL,
   `id_clase` int(11) NOT NULL,
   `id_tipus_usuari` int(11) NOT NULL,
-  `cont_visitas` int(20) NOT NULL DEFAULT 0
+  `cont_visitas` int(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_usuari`
 --
 
-INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `siei`, `computable`, `id_clase`, `id_tipus_usuari`, `cont_visitas`) VALUES
-(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'no', 'si', 1, 2, 2),
-(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'no', 'no', 2, 2, 3),
-(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'no', 'alumne', 3, 7, 0),
-(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'no', 'alumne', 4, 7, 0),
-(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'no', 'alumne', 5, 7, 0),
-(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'si', 'alumne', 21, 7, 0),
-(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'si', 'alumne', 21, 7, 0),
-(8, 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'Admin', 'si', 'no', 29, 1, 5),
-(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'si', 'no', 29, 3, 2),
-(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'si', 'no', 29, 4, 2),
-(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'si', 'no', 29, 5, 1),
-(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'si', 'no', 29, 6, 4),
-(28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'no', 'si', 27, 2, 1),
-(29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'no', 'no', 21, 2, 1),
-(30, 'Ap3', '81dc9bdb52d04dc20036dbd8313ed055', 'up3', 'cgnm', 'si', 'alumne', 1, 7, 0),
-(31, 'AP4', '81dc9bdb52d04dc20036dbd8313ed055', 'up4', 'cgnm', 'no', 'alumne', 2, 7, 0);
+INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `email_usuari`, `siei`, `computable`, `id_clase`, `id_tipus_usuari`, `cont_visitas`) VALUES
+(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 1, 2, 10),
+(2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 2, 2, 3),
+(3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 3, 7, 0),
+(4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 4, 7, 0),
+(5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 5, 7, 0),
+(6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'proyectesortidesdaw2@gmail.com', 'si', 'alumne', 21, 7, 0),
+(7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'proyectesortidesdaw2@gmail.com', 'si', 'alumne', 21, 7, 0),
+(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 3, 0),
+(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 4, 5),
+(11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 5, 1),
+(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 6, 2),
+(13, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'admin', 'admin', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 13, 1, 9),
+(28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 27, 2, 1),
+(29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 21, 2, 1),
+(30, 'fedegimelope@gmail.com', '76d80224611fc919a5d54f0ff9fba446', 'up3', 'cgnm', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 1, 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -706,13 +715,13 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT de la tabla `tbl_clase`
 --
 ALTER TABLE `tbl_clase`
-  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_clase_user`
 --
 ALTER TABLE `tbl_clase_user`
-  MODIFY `id_clase_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id_clase_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_contacte_activitat`
@@ -730,7 +739,7 @@ ALTER TABLE `tbl_etapa`
 -- AUTO_INCREMENT de la tabla `tbl_feedback`
 --
 ALTER TABLE `tbl_feedback`
-  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
@@ -784,7 +793,7 @@ ALTER TABLE `tbl_transport`
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restricciones para tablas volcadas

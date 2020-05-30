@@ -24,12 +24,17 @@ a.none{
 .modal-content {
   background: rgba(0,43,78,.9);
   /*margin: 15% auto;*/ /* 15% from the top and centered */
+<<<<<<< HEAD
   /*padding: 1%;*/
   -webkit-transition: .6s left ease-out,.4s .6s background ease-out;
   -moz-transition: .6s left ease-out,.4s .6s background ease-out;
   -o-transition: .6s left ease-out,.4s .6s background ease-out;
   transition: .6s left ease-out,.4s .6s background ease-out;
   border: 4px solid #071334!important;
+=======
+  padding: 1%;
+  border: 1px solid white!important;
+>>>>>>> 68d3ea62c01166bf825c0da9bfdc8a9afeae32ec
   height: 100%;
   width: 100%; /* Could be more or less, depending on screen size */
   animation-name: animacion;
@@ -126,16 +131,26 @@ margin-left: 12.6%;
 #myBtn2{
   background-color:#ff7a32!important;
 }
+#myBtn3{
+  background-color:#ff7033!important;
+}
 #myBtnModal{
   position: relative;
   margin-right: 0.5rem;
   height: 5rem;
   background-color: #0966ce;
   border:1px solid black;
+<<<<<<< HEAD
+=======
+  padding-top: 0.5rem;
+>>>>>>> 68d3ea62c01166bf825c0da9bfdc8a9afeae32ec
   width: 25%;
   float:left;
 }
-
+.margen_botones_modal{
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+}
 
 thead{
    position: sticky;
