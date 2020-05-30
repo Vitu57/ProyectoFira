@@ -34,7 +34,7 @@ if (!$_SESSION['id']) {
 <!--Enlace js para ajax.js-->
 <script type="text/javascript" src="../js/ajax.js"></script>
 
-<body class="body_design">
+<body class="body_design" >
     <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
@@ -47,7 +47,7 @@ if (!$_SESSION['id']) {
 
 <div class="form-row mb-1">
   <div class="col">
-    <select class="browser-default custom-select mb-2" id="clases" onchange="mostraralumnos();">
+    <select class="browser-default custom-select mb-2" id="clases" onchange="mostraralumnos2();">
       <option value="" selected disabled>Clase</option>
       <?php
         $consultaclases="select tbl_clase.id_clase,tbl_clase.nom_classe from tbl_clase where nom_classe!='PERSONAL'";
@@ -67,7 +67,7 @@ if (!$_SESSION['id']) {
 </div>
 <p class="h4 mb-4">Noves Dades</p>
 
-<select class="browser-default custom-select mb-2" id="clases2" onchange="mostraralumnos();">
+<select class="browser-default custom-select mb-2" id="clases2">
       <option value="" selected disabled>Clase</option>
       <?php
         $consultaclases="select tbl_clase.id_clase,tbl_clase.nom_classe from tbl_clase where nom_classe!='PERSONAL'";

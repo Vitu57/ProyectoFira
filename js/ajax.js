@@ -1,3 +1,8 @@
+
+function event_listener(){
+    var alumneid = document.getElementById("nombrealumno");
+    alumneid.addEventListener("change", rellenar_datos);
+}
 function objetoAjax(){
     var xmlhttp=false;
     try {
@@ -13,6 +18,31 @@ function objetoAjax(){
       xmlhttp = new XMLHttpRequest();
     }
     return xmlhttp;
+}
+
+function rellenar_datos(){
+    id_alumno = document.getElementById("nombrealumno").value;
+
+    var ajax3 = objetoAjax();
+    var option;
+    ajax3.open("POST", "../services/consulta_editar_alumnos.php", true);
+    ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajax3.send("accion=ver_datos_alumno&id_alumno="+id_alumno);
+    ajax3.onreadystatechange = function () {
+        if (ajax3.readyState == 4 && ajax3.status == 200) {
+            //console.log(ajax3.responseText); 
+            var respuesta = JSON.parse(ajax3.responseText);
+            for (var i = 0; i < respuesta.length; i++) {
+                apellidos=respuesta[i].cognom1_alumne+" "+respuesta[i].cognom2_alumne;
+                document.getElementById("clases2").selectedIndex=respuesta[i].id_clase;
+                document.getElementById("nombreusu").value=respuesta[i].nom_alumne;
+                document.getElementById("apellidosusu").value=apellidos;
+                //option += '<option value="' + respuesta[i].id_tipus_usuari + '">' + respuesta[i].nom_tipus + '</option>';
+            }
+           // tipus.innerHTML = option;
+            
+        }
+    }
 }
 
 
@@ -1272,6 +1302,25 @@ function mostraralumnos(){
         }
     }
 }
+function mostraralumnos2(){
+    var clase=document.getElementById('clases').value;
+    divResultado = document.getElementById('alumnos_clase');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/consulta_editar_alumnos.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("accion=mostrar&id_clase="+clase);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
 
 function anadirlista(activitat){
     var alumno=document.getElementById('nombrealumno').value;
