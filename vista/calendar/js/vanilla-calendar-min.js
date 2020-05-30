@@ -317,7 +317,7 @@ function versalida(id_sortida){
         //Formato de la fecha
         var fecha_inici = respuesta2.inici_sortida.split('-').reverse().join('/');
         
-        document.getElementById("tabla_calendario").style.display ="block";
+        document.getElementById("tabla_calendario").style.display ="table";
 
         document.getElementById("codi_sortida_cal").innerHTML = respuesta2.nom_activitat;
         document.getElementById("clase_cal").innerHTML = respuesta2.nom_classe;

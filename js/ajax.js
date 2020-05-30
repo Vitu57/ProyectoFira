@@ -1700,3 +1700,21 @@ ajax2.onreadystatechange=function() {
         }
     }
 }
+window.addEventListener('orientationchange', orientation);
+ function orientation() {
+     
+    if (screen.orientation.angle == 90 || screen.mozOrientation == 'portrait-primary') 
+    {  
+        document.getElementById("resultadosalida").className = "col-sm-6 table-responsive";
+        document.getElementById("myCalendar").classList.remove('col-sm-12');
+        document.getElementById("myCalendar").classList.add('col-sm-6');
+        document.getElementById("logout-header").className ='col-sm-4 offset-8';
+    }else{
+        document.getElementById("resultadosalida").className = "col-sm-12 table-responsive";
+        document.getElementById("myCalendar").classList.remove('col-sm-6');
+        document.getElementById("myCalendar").classList.add('col-sm-12');
+        document.getElementById("logout-header").className ='col-sm-7 offset-5';
+       
+    }
+  }
+  document.addEventListener("DOMContentLoaded", orientation);

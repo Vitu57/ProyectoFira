@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    
     <script type="text/javascript" src="../js/primera_visita.js"></script>
     <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <!--Calendario-->
   <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
   
@@ -155,7 +156,12 @@ class="button-calendar" style="position:absolute;"></div></div>
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content" style="background-color:#ff8433!important;">
+  <div class="modal-content d-flex flex-row">
+  <div id="detalles_modal">
+  <div class="m-detalles"><i class="fas fa-hiking fa-2x"></i></div>
+  <div><h5>Sortides</h5></div> 
+  </div>
+  <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
     <span id="close" class="close far fa-times-circle fa-2x text-white" style="z-index:1;"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Sortides</h3>
     
     <div class="separator" style="background-color:white;">
@@ -178,6 +184,7 @@ if ($tipus_user==1) {
 
 <a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
 </div>
+</div>
 
 
 </div>
@@ -199,13 +206,19 @@ if ($tipus_user==1) {
 <div id="myModal2" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content d-flex flex-row">
+  <div id="detalles_modal">
+  <div class="m-detalles"><i class="fas fa-users fa-2x"></i></div>
+  <div><h5>Usuaris</h5></div> 
+  </div>
+  <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
     <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
     <div class="separator" style="background-color:white;"></div>
 <div>
     <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" ><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
 
-    <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
+    <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:10%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
+</div>
 </div>
 </div>
 
@@ -233,9 +246,7 @@ if ($tipus_user==1) {
 
 <a class="none" href="../vista/form_excursiones_profes.php" ><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
 </div>
-
-
-
+</div>
 </div>
 </div>
 <?php
@@ -258,7 +269,7 @@ echo "<div onclick='profesores()''>";
 }else if($tipus_user==3){       
     ?>
 <a class="none" href="../vista/sortides_secretaria.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
-
+</div>
 </div>
 </div>
 <?php
@@ -279,7 +290,7 @@ echo "<div onclick='secretaria()''>";
 }else if($tipus_user==4){
 ?>
 <a class="none" href="../vista/excursiones_cocina.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
-
+</div>
 </div>
 </div>
 <?php
@@ -300,7 +311,7 @@ echo "<div onclick='cocina()''>";
 }else if($tipus_user==5 || $tipus_user==6){
 ?>
 <a class="none" href="../vista/excursiones_enf_dir.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
-
+</div>
 </div>
 </div>
 
@@ -324,7 +335,7 @@ echo "<div onclick='enf_dir()''>";
 }else if($tipus_user==7){
 ?>
 <a class="none" href="../vista/excursiones_alu.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
-
+</div>
 </div>
 </div>
 <button id="myBtn" class="myBtn">

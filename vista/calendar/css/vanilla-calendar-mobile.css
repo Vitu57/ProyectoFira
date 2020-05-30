@@ -1,0 +1,82 @@
+.modal-content-calendar {
+    height: unset;
+    width: unset;
+}
+
+
+@media screen and (max-width:768px) and (orientation: portrait) {
+    body{
+        font-size: 1rem;
+    }
+    .table td, .table th {
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    body{
+        font-size: 0.5rem;
+    }
+    .table td, .table th {
+        padding: 0.5rem;
+    }
+    
+ }
+ body{
+    font-size: 1rem;
+}
+.home{
+    background-color:white !important;
+}
+table{
+font-size: 13px;
+}
+
+.vanilla-calendar{
+    position: unset;
+    margin-left: 0 !important;
+}
+modal-content-calendar{
+    height: unset;
+}
+.vanilla-calendar .vanilla-calendar-date {
+    padding: 2px 0;
+}
+.col-sm-12{
+padding-right: 0;
+padding-left: 0;
+}
+.txtnotificaciones{
+    margin-left: 76px;
+}
+#resultadosalida{
+    padding-left: 0;
+}
+
+.modalCalendar-mobile {
+    align-items: center;
+    background-color: white;
+    height: 85%;
+    position: absolute;
+    float: left;
+    border-right: white 1px solid;
+    height: 100vh;
+  }
+  
+  @media (max-width: 544px) {  
+    #tabla_calendario {font-size:1rem;} /*1rem = 16px*/
+  }
+  @media (max-width: 768px) {  
+    tabla_calendario {font-size:1rem;} /*1rem = 16px*/
+  }
+  #tabla_calendario thead{
+    background-color: white;
+  }
+  
+  .txthead{
+  width: unset;
+  padding-top: 0;
+  padding-right: 20;
+  text-align: unset;
+  float: none;
+  }
