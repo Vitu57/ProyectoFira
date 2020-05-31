@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2020 a las 23:53:46
+-- Tiempo de generación: 31-05-2020 a las 02:24:40
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.1.28
 
@@ -131,8 +131,6 @@ INSERT INTO `tbl_clase` (`id_clase`, `nom_classe`, `id_etapa`) VALUES
 (15, '2BATX', 5),
 (16, 'CAFEM', 6),
 (17, 'CAI', 6),
-(18, 'CAFEM', 7),
-(19, 'CAI', 7),
 (20, 'EAS', 7),
 (21, 'EDIN', 7),
 (22, '1AF', 7),
@@ -459,7 +457,7 @@ CREATE TABLE `tbl_sortida` (
 
 INSERT INTO `tbl_sortida` (`id_sortida`, `codi_sortida`, `inici_sortida`, `final_sortida`, `observacions_sortida`, `numero_alumnes`, `n_vetlladors`, `n_acompanyants`, `profes_a_part`, `profesor_asignat`, `id_clase`, `id_transport`, `id_precios`, `comanda_menu`) VALUES
 (24, 'RP-3444', '2020-06-01', '2020-06-01', 'Sortida al cinema', 43, 2, 2, 1, 'Jesus Mellado', 1, 24, 24, 0),
-(25, 'RP-2213', '2020-06-22', '2020-06-26', 'Sortida al camp', 123, 2, 1, 2, 'Sergio', 13, 25, 25, 1),
+(25, 'RP-2213', '2020-06-26', '2020-06-26', 'Sortida al camp', 123, 2, 1, 2, 'Sergio', 13, 25, 25, 1),
 (26, 'RP-4743', '2020-06-17', '2020-05-19', 'Res.', 65, 2, 1, 1, 'Sergio Jimenez', 4, 26, 26, 1);
 
 -- --------------------------------------------------------
@@ -541,18 +539,18 @@ CREATE TABLE `tbl_usuari` (
 --
 
 INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `email_usuari`, `siei`, `computable`, `id_clase`, `id_tipus_usuari`, `cont_visitas`) VALUES
-(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 1, 2, 10),
+(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 1, 2, 11),
 (2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 2, 2, 3),
 (3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 3, 7, 0),
 (4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 4, 7, 0),
 (5, 'Junevo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jose', 'Nuevo', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 5, 7, 0),
 (6, 'JMellado', '81dc9bdb52d04dc20036dbd8313ed055', 'Jesus', 'Mellado', 'proyectesortidesdaw2@gmail.com', 'si', 'alumne', 21, 7, 0),
 (7, 'JPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Juanma', 'Perez', 'proyectesortidesdaw2@gmail.com', 'si', 'alumne', 21, 7, 0),
-(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 3, 0),
-(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 4, 5),
+(9, 'PSecre', '81dc9bdb52d04dc20036dbd8313ed055', 'Pancracia', 'Gomez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 3, 2),
+(10, 'PCocina', '81dc9bdb52d04dc20036dbd8313ed055', 'Agnes', 'Gonzalez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 4, 7),
 (11, 'PEnfermeria', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Mel', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 5, 1),
-(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 6, 2),
-(13, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'admin', 'admin', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 13, 1, 9),
+(12, 'PDireccion', '81dc9bdb52d04dc20036dbd8313ed055', 'Paco', 'Perez', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 29, 6, 3),
+(13, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'admin', 'admin', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 13, 1, 14),
 (28, 'SGimenez', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Gimenez', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 27, 2, 1),
 (29, 'DLarrea', '81dc9bdb52d04dc20036dbd8313ed055', 'Danny', 'Larrea', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 21, 2, 1),
 (30, 'fedegimelope@gmail.com', '76d80224611fc919a5d54f0ff9fba446', 'up3', 'cgnm', 'proyectesortidesdaw2@gmail.com', 'si', 'no', 1, 2, 1);
@@ -721,7 +719,7 @@ ALTER TABLE `tbl_clase`
 -- AUTO_INCREMENT de la tabla `tbl_clase_user`
 --
 ALTER TABLE `tbl_clase_user`
-  MODIFY `id_clase_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id_clase_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_contacte_activitat`
@@ -793,7 +791,7 @@ ALTER TABLE `tbl_transport`
 -- AUTO_INCREMENT de la tabla `tbl_usuari`
 --
 ALTER TABLE `tbl_usuari`
-  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
