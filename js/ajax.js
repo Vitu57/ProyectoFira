@@ -1696,7 +1696,7 @@ function recuperar_pass(id){
        }
 
          if(email.value == ""){
-             document.getElementById('mensaje').innerHTML = 'Introdueix el teu email';
+             document.getElementById('mensaje').innerHTML = 'Introdueix el teu usuari';
            email.style.borderColor = "red";
            return false;
 
@@ -1704,6 +1704,19 @@ function recuperar_pass(id){
            
        }
    }
+
+//mínimo de 4 caracteres de contraseña
+if (pass1.value.length<4) {
+
+    document.getElementById('mensaje').innerHTML = 'La contrasenya ha de tenir com a mínim 4 caràcters.';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+return false;
+
+}else{ 
 
    if(pass1.value != "" & pass2.value != "" & email.value != ""){
 
@@ -1720,6 +1733,7 @@ function recuperar_pass(id){
 
     return false;
     
+}
 }
 }
 }
@@ -1785,6 +1799,19 @@ function recuperar_pass_pares(id){
        }
    }
 
+//mínimo de 4 caracteres de contraseña
+if (pass1.value.length<4) {
+
+    document.getElementById('mensaje').innerHTML = 'La contrasenya ha de tenir com a mínim 4 caràcters.';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+return false;
+
+}else{ 
+
    if(pass1.value != "" & pass2.value != "" & dni.value != ""){
 
     if (pass1.value == pass2.value) {
@@ -1799,7 +1826,7 @@ function recuperar_pass_pares(id){
     pass2.style.borderColor = "red";
 
     return false;
-    
+}    
 }
 }
 }

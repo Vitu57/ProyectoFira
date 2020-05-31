@@ -8,7 +8,7 @@ if (isset($_REQUEST['email'])) {
 }
 
 //consulta para saber el email del padre
-$consulta="SELECT usuari, nom_usuari, cognom_usuari, id_usuari FROM tbl_usuari WHERE usuari= ? ";
+$consulta="SELECT email_usuari, nom_usuari, cognom_usuari, id_usuari, usuari FROM tbl_usuari WHERE usuari= ? ";
 
 
 if ($stmt = mysqli_prepare($conn, $consulta)){
@@ -26,6 +26,7 @@ if (mysqli_num_rows($exe)!=0){
      $nom=$casos[1];
      $cognoms=$casos[2];
      $id=$casos[3];
+     $usuari=$casos[4];
 
 
 // Multiple recipients
@@ -37,11 +38,8 @@ $subject = 'Has oblidat la clau?';
 // Message
 $message = "
 <html>
-<head>
-  <title>Ha sigut sol·licitat el canvi de clau per al seu usuari.</title>
-</head>
 <body>
-  <p>Ha sigut sol·licitat el canvi de clau per al seu usuari.</p>
+  <p>Ha sigut sol·licitat el canvi de clau per al seu usuari ".$usuari.".</p>
   <p>Si vols cambiar la clau fes click al següent enllaç y actualitza la teva contrasenya <a href='http://localhost/daw/ProyectoFira/vista/canvi_clau.php?q4t5ywt62g=".$id."'>Canviar la contrasenya</a>.</p>
   <p>Si no has sol·licitat el canvi de clau, ignora aquest missatge.</p>
 </body>
@@ -69,7 +67,7 @@ $row_cnt = mysqli_num_rows($exe);
 }else{
 	?>
 <form action="#" onsubmit="recuperar_password(); return false" method="post">
-  <h5>El email introduït no correspon a cap usuari, proba de nou.</h5><br>
+  <h5>L'usuari introduït no correspon a cap usuari de la web, proba de nou.</h5><br>
 <input type="text" id="email"  class="email_style" name="email" placeholder="Email" required><br><br>
   <input type="submit" class="btn btn-par"  name="enviar">
 </form>

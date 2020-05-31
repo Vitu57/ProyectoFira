@@ -34,8 +34,8 @@ $id=$_REQUEST['q4t5ywt62g'];
   <h4 style="margin-top: -4%; float: center;">Introdueix les dades en el formulari per actualitzar la clau.</h4><br>
  <div id="mensaje" style="color: red; margin-bottom: 5%;"></div>
 <form action="#" onsubmit="recuperar_pass(<?php echo $id; ?>); return false" method="post">
-  <h5>Email</h5>
-  <input type="email" class="email_style" id="email" name="email"><br><br>
+  <h5>Usuari</h5>
+  <input type="text" class="email_style" id="email" name="email"><br><br>
     <h5>Nova clau</h5>
   <input type="password" class="email_style" id="pass1" name="pass1"><br><br>
     <h5>Confirmar nova clau</h5>
