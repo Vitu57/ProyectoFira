@@ -16,5 +16,5 @@ Galería:
 - No se añaden nuevas fotos
 - aparecen varios alerts
 
-Editar alumne:
-- No aparecen los alumnos al seleccionar la clase
+Enfermeria/Dirección:
+- Siempre muestra sortides enfermeria aunque esté logueado dirección
