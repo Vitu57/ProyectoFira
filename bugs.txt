@@ -15,3 +15,6 @@ Sortides Administrador:
 Galería:
 - No se añaden nuevas fotos
 - aparecen varios alerts
+
+Editar alumne:
+- No aparecen los alumnos al seleccionar la clase
