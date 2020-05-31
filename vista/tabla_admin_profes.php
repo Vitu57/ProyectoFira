@@ -1,11 +1,6 @@
 <?php
 include "../services/conexion.php";
 //Estos son los valores que tiene el filtro, si no los encuentra los pone vacios
-if(isset($_REQUEST['clase'])){
-	$clase=$_REQUEST['clase'];
-}else{
-	$clase="";
-}
 if(isset($_REQUEST['nom_profe'])){
 	$nom_profe=$_REQUEST['nom_profe'];
 }else{
@@ -20,6 +15,18 @@ if(isset($_REQUEST['etapa'])){
   $etapa=$_REQUEST['etapa'];
 }else{
   $etapa="";
+}
+
+if ($etapa=="") {
+  $clase="";
+
+}else{
+
+if(isset($_REQUEST['clase'])){
+  $clase=$_REQUEST['clase'];
+}else{
+  $clase="";
+}
 }
 
 

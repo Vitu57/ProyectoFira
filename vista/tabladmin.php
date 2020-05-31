@@ -7,10 +7,23 @@ if(isset($_REQUEST['fecha'])){
 }else{
 	$fecha="";
 }
-if(isset($_REQUEST['clase'])){
-	$clase=$_REQUEST['clase'];
+
+if(isset($_REQUEST['etapa'])){
+  $etapa=$_REQUEST['etapa'];
 }else{
-	$clase="";
+  $etapa="";
+}
+
+if ($etapa=="") {
+  $clase="";
+
+}else{
+
+if(isset($_REQUEST['clase'])){
+  $clase=$_REQUEST['clase'];
+}else{
+  $clase="";
+}
 }
 if(isset($_REQUEST['profe'])){
 	$profe=$_REQUEST['profe'];
@@ -46,7 +59,7 @@ if(isset($_REQUEST['profe'])){
 		";
 	//Primero hacemos una consulta para saber las excursiones
 	
-	$consultaexcursion="select tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida,tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_activitat.id_activitat,tbl_sortida.id_precios,tbl_activitat.id_contacte_activitat,tbl_sortida.id_transport from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase inner join tbl_activitat on tbl_sortida.id_sortida=tbl_activitat.id_sortida where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
+	$consultaexcursion="SELECT tbl_sortida.codi_sortida,tbl_sortida.inici_sortida,tbl_sortida.final_sortida,tbl_clase.nom_classe,tbl_etapa.nom_etapa,tbl_sortida.n_acompanyants,tbl_sortida.numero_alumnes,tbl_sortida.profesor_asignat,tbl_sortida.n_vetlladors,tbl_sortida.id_clase,tbl_sortida.id_sortida,tbl_activitat.nom_activitat,tbl_activitat.lloc_activitat,tbl_activitat.tipus_activitat,tbl_activitat.ambit_activitat,tbl_activitat.jornada_activitat,tbl_activitat.objectiu_activitat,tbl_activitat.id_activitat,tbl_sortida.id_precios,tbl_activitat.id_contacte_activitat,tbl_sortida.id_transport from tbl_etapa inner join tbl_clase on tbl_etapa.id_etapa=tbl_clase.id_etapa inner join tbl_sortida on tbl_clase.id_clase=tbl_sortida.id_clase inner join tbl_activitat on tbl_sortida.id_sortida=tbl_activitat.id_sortida where tbl_sortida.inici_sortida like '%".$fecha."%' and tbl_etapa.nom_etapa like '%".$etapa."%' and tbl_clase.nom_classe like '%".$clase."%' and tbl_sortida.profesor_asignat like '%".$profe."%'";
 	//ejecutamos la consulta
 	$consulta=mysqli_query($conn,$consultaexcursion);
 	//Por cada resultado, metemos en una variable de tipo array

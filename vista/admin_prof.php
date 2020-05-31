@@ -135,16 +135,7 @@ $nombre=mysqli_fetch_array($query);
 ?>
 </select>
         <select name="clase" class="espacio_filtros" id="clase">
-          <option value="">Clase...</option>
-      <?php
-
-  $consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
-  $exe=mysqli_query($conn,$consulta);
-    while ($casos=mysqli_fetch_array($exe)){
-
-  echo "<option>".$casos['nom_classe']."</option>";
-}
-?>
+          <option selected disabled value="">Clase...</option>
 </select>
 
     <input type="submit" class="btn btn-lg" style="margin-right:4%; margin-left: 1%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo_admin_prof();return false">

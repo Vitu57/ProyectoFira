@@ -79,17 +79,21 @@ $nombre=mysqli_fetch_array($query);
 	
 	<form action="#" method="POST" onsubmit="return false;" onchange="filtrar();return false;">
 		<input type="date" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data">
-    <select name="clase" class="espacio_filtros" id="clase">
-       		<option value="">Clase</option>
-			<?php
+       <select name="etapa" id="etapa" class="espacio_filtros">
+      <option value="">Etapa...</option>
 
-	$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
-	$exe=mysqli_query($conn,$consulta);
+    <?php
+
+  $consulta="SELECT nom_etapa FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
+  $exe=mysqli_query($conn,$consulta);
     while ($casos=mysqli_fetch_array($exe)){
 
-	echo "<option>".$casos['nom_classe']."</option>";
+  echo "<option>".$casos['nom_etapa']."</option>";
 }
 ?>
+</select>
+        <select name="clase" class="espacio_filtros" id="clase">
+          <option selected disabled value="">Clase...</option>
 </select>
 
 <input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor">
