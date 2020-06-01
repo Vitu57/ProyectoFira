@@ -55,7 +55,15 @@ $nombre=mysqli_fetch_array($query);
   ?>
 
   <div style="padding: 1%; text-align: left;">
-    <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides Enfermeria</h1>
+  <h1 style="text-align: center; margin-bottom: 4%; font-size: 47px; margin-top: -2%;">Sortides
+  <?php
+  if ($tipo==5) {
+  	echo "Enfermeria";
+  }else{
+    echo "Dirección";
+  }
+  ?>
+</h1>
   </div></div>
 <div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">

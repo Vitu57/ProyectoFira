@@ -90,6 +90,14 @@ function ver_usuarios() {
 
 function eliminar(id_user){
     
+    var message = document.getElementById("message");
+
+    if (id_user==13) {
+        
+        var mensaje = "<h5 style='color:red'>No es pot esborrar l'administrador</h5>";
+
+    }else{
+    var mensaje = "<h5 style='color:green'>Esborrat correctament</h5>";
     var ajax3 = objetoAjax();
     ajax3.open("POST", "../services/consulta_veure_usuaris.php", true);
     ajax3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -98,9 +106,11 @@ function eliminar(id_user){
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             console.log(ajax3.responseText);
             ver_usuarios();
-            alert("Borrado correctamente");
         }
     }
+
+}
+message.innerHTML=mensaje;
 }
 
 

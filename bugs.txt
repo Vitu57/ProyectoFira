@@ -1,6 +1,5 @@
 
 adminisitración:
-- el admin se puede eliminar a si mismo
 - formulario de edición de usuario no vuelve a la tabla
 - aparecen alerts en edición de usuario.
 
@@ -15,6 +14,3 @@ Sortides Administrador:
 Galería:
 - No se añaden nuevas fotos
 - aparecen varios alerts
-
-Enfermeria/Dirección:
-- Siempre muestra sortides enfermeria aunque esté logueado dirección

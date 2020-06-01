@@ -94,6 +94,8 @@ $nombre=mysqli_fetch_array($query);
       <option selected disabled value="0" class="browser-default custom-select mb-2">Tipus d'usuari</option>
 </select>
 </form>
+<br>
+<div id="message" style="text-align: center; height: 5px;"></div>
 
   <div id="resultado_users" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 
