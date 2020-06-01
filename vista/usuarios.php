@@ -15,6 +15,12 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
+      <!--Importar datos jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
   <!--Popper y Fontawesome-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
@@ -97,6 +103,12 @@ $nombre=mysqli_fetch_array($query);
 
 <!-- Exportar a CSV !-->
     <a href="../services/csv.php?users=1"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
+    <form  method="post" enctype="multipart/form-data" id="filesForm">
+            <div class="col-md-4 offset-md-4">
+                <input class="form-control" type="file" name="fileSortides" >
+                <button type="button" onclick="uploadContacts()" class="btn btn-lg filtrado_admin" >Importar dades</button>
+            </div>
+        </form>
   
   </div>
   </div>
@@ -195,3 +207,24 @@ $nombre=mysqli_fetch_array($query);
 </div>
 </body>
 </html>
+<script type="text/javascript">
+
+    function uploadContacts()
+    {
+
+        var Form = new FormData($('#filesForm')[0]);
+        $.ajax({
+
+            url: "../services/importar.php",
+            type: "post",
+            data : Form,
+            processData: false,
+            contentType: false,
+            success: function(data)
+            {
+                alert('Registros Agregados!');
+            }
+        });
+    }
+
+</script>
