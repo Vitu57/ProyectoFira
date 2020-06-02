@@ -40,6 +40,7 @@ function filtroautomatico(){
             }
             usuarios += '</tbody></table>';
             resultado.innerHTML = usuarios;
+            
         }
     }
     }
@@ -83,6 +84,7 @@ function ver_usuarios() {
             }
             usuarios += '</tbody></table>';
             resultado.innerHTML = usuarios;
+            new Tablesort(document.getElementById('table-id'));
         }
     }
 

@@ -114,8 +114,8 @@ echo "</div>";
 ?>
 </div>
 <input type="hidden" name="botonvisible" id="botonvisible" value="0">
-<div id="cambiocalendar"><div onclick="cambiarboton(); tutorial_calendario();"
-class="button-calendar" style="position:absolute;"></div></div>
+<!-- <div id="cambiocalendar"><div onclick="cambiarboton(); tutorial_calendario();"
+class="button-calendar" style="position:absolute;"></div></div> -->
 
 <!-- The Modal -->
 <div id="modalCalendar-mobile" class="modalCalendar-mobile container-fluid h-100" style="margin: 0;">
@@ -135,14 +135,7 @@ class="button-calendar" style="position:absolute;"></div></div>
       <th scope="col" width="17.5%">Inici sortida</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td id="codi_sortida_cal"></td>
-      <td id="clase_cal"></td>
-      <td id="Profe_asignat_cal"></td>
-      <td id="num_alu_cal"></td>
-      <td width="20%" id="inici_sortida_cal"></td>
-    </tr>
+  <tbody id="tbodys">
   </tbody>
 </table>
   </div>

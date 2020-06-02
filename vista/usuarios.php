@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="../css/tablesort.css">
+  <script src='../plugin/tablesort/tablesort.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/style_form.css">
     <link rel="stylesheet" type="text/css" href="../css/style_form_usuaris.css">

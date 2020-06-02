@@ -121,5 +121,8 @@ $nombre=mysqli_fetch_array($query);
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>
+<script>
+  new Tablesort(document.getElementById('enfermerias'));
+</script>
 </body>
 </html>

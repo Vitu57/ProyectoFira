@@ -15,6 +15,7 @@ th[role=columnheader]:not(.no-sort):after {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	user-select: none;
+	margin-right: -10px
 }
 
 th[aria-sort=ascending]:not(.no-sort):after {

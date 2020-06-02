@@ -21,7 +21,7 @@
 </head>
 
 <body class="body_design"> >
-   <a href="../vista/home.php">
+   <a href="../vista/excursiones_profes.php">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
 </a>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">

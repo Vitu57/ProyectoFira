@@ -127,14 +127,7 @@ class="button-calendar" style="position:absolute;"></div></div>
       <th width="15%" scope="col">Inici sortida</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td id="codi_sortida_cal"></td>
-      <td id="clase_cal"></td>
-      <td id="Profe_asignat_cal"></td>
-      <td id="num_alu_cal"></td>
-      <td width="20%" id="inici_sortida_cal"></td>
-    </tr>
+  <tbody id="tbodys">
   </tbody>
 </table>
   </div>
@@ -157,15 +150,14 @@ class="button-calendar" style="position:absolute;"></div></div>
 
   <!-- Modal content -->
   <div class="modal-content d-flex flex-row">
-  <div id="detalles_modal">
-  <div class="m-detalles"><i class="fas fa-hiking fa-2x"></i></div>
-  <div><h5>Sortides</h5></div> 
-  </div>
-  <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
-    <span id="close" class="close far fa-times-circle fa-2x text-white" style="z-index:1;"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Sortides</h3>
-    
-    <div class="separator" style="background-color:white;">
+    <div id="detalles_modal">
+      <div class="m-detalles"><i class="fas fa-hiking fa-2x"></i></div>
+        <div><h5>Sortides</h5></div> 
     </div>
+      <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
+      <span id="close" class="close far fa-times-circle fa-2x text-white" style="z-index:1;"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Sortides</h3>
+        <div class="separator" style="background-color:white;">
+        </div>
   
 
 
@@ -173,7 +165,9 @@ class="button-calendar" style="position:absolute;"></div></div>
 
 
 <?php
-
+function isMobile() {
+  return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
 //ifs que según el tipo de usuario mostrará una tabla u otra
 if ($tipus_user==1) {
 
@@ -207,42 +201,40 @@ if ($tipus_user==1) {
 <div id="myModal2" class="modal">
 
   <!-- Modal content -->
-<<<<<<< HEAD
   <div class="modal-content d-flex flex-row">
-  <div id="detalles_modal">
-  <div class="m-detalles"><i class="fas fa-users fa-2x"></i></div>
-  <div><h5>Usuaris</h5></div> 
+    <div id="detalles_modal">
+      <div class="m-detalles"><i class="fas fa-users fa-2x"></i></div>
+      <div><h5>Usuaris</h5></div> 
+      </div>
+      <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
+        <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
+        <div class="separator" style="background-color:white;"></div>
+    <div class="margen_botones_modal">
+        <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" ><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
+
+        <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:10%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
+    </div>
+    </div>
   </div>
-  <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
-=======
-  <div class="modal-content" style=" background-color:#ff7a32!important;">
->>>>>>> 68d3ea62c01166bf825c0da9bfdc8a9afeae32ec
-    <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
-    <div class="separator" style="background-color:white;"></div>
-<div class="margen_botones_modal">
-    <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" ><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
-
-    <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:10%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
-</div>
-</div>
-</div>
-
 </div>
 <!-- The Modal -->
 <div id="myModal3" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content" style="background-color:#ff7033!important;">
-    <span id="close3" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
-    <div class="separator" style="background-color:white;"></div>
-<div class="margen_botones_modal">
-   
-
-    <a class="none" href="../vista/editar_alumno.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Editar Alumne</h3></button></a>
-      <a class="none" href="../vista/eliminar_alumno.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Eliminar Alumne</h3></button></a>
-</div>
-</div>
-
+  <div class="modal-content d-flex flex-row">
+    <div id="detalles_modal">
+      <div class="m-detalles"><i class="fas fa-users fa-2x"></i></div>
+      <div><h5>Alumnes</h5></div> 
+      </div>
+      <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
+        <span id="close3" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Alumnes</h3>
+        <div class="separator" style="background-color:white;"></div>
+    <div class="margen_botones_modal">
+    <a class="none" href="../vista/editar_alumno.php"><button id="myBtnModal"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Editar Alumne</h4></button></a>
+    <a class="none" href="../vista/eliminar_alumno.php"><button id="myBtnModal"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Eliminar Alumne</h4></button></a> 
+  </div>
+    </div>
+  </div>
 </div>
 <div onclick="admin2();">
 <button id="myBtn2" class="myBtn" style="margin-left:1%;">
@@ -260,11 +252,8 @@ if ($tipus_user==1) {
 
 <?php
 }else if($tipus_user==2){
-  function isMobile() {
-      return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-    }
     if (isMobile()) {
-      header("location:excursiones_profes.php");
+      header("location:mobile_menu.html");
     }
 ?>
 <div class="margen_botones_modal">
@@ -292,10 +281,14 @@ echo "<div onclick='profesores()''>";
 
 
 <?php
-}else if($tipus_user==3){       
+}else if($tipus_user==3){
+  if (isMobile()) {
+    header("location:calendario.php");
+  }       
     ?>
     <div class="margen_botones_modal">
 <a class="none" href="../vista/sortides_secretaria.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
+</div>
 </div>
 </div>
 </div>
@@ -315,9 +308,13 @@ echo "<div onclick='secretaria()''>";
 
 <?php
 }else if($tipus_user==4){
+  if (isMobile()) {
+    header("location:calendario.php");
+  }  
 ?>
 <div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_cocina.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
+</div>
 </div>
 </div>
 </div>
@@ -337,9 +334,13 @@ echo "<div onclick='cocina()''>";
 
 <?php
 }else if($tipus_user==5 || $tipus_user==6){
+  if (isMobile()) {
+    header("location:calendario.php");
+  }  
 ?>
 <div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_enf_dir.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
+</div>
 </div>
 </div>
 </div>
@@ -362,9 +363,13 @@ echo "<div onclick='enf_dir()''>";
 
 <?php
 }else if($tipus_user==7){
+  if (isMobile()) {
+    header("location:calendario.php");
+  }  
 ?>
 <div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_alu.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
+</div>
 </div>
 </div>
 </div>

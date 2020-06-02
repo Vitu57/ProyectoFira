@@ -137,4 +137,7 @@ $nombre=mysqli_fetch_array($query);
 </div>
 </div>
 </body>
+<script>
+new Tablesort(document.getElementById('secretarias'));
+</script>
 </html>
