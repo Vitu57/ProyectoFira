@@ -366,6 +366,12 @@ function CrearTablaProfes(filtro){
     ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
         
+        if (etapa!='' && clase=='') {
+            filtro_clase(1);
+        }else if (etapa=='' && clase!=''){
+            filtro_clase(2);
+        } 
+        
     var respuesta=JSON.parse(this.responseText);
 
     var tabla='<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread>';
@@ -1004,6 +1010,7 @@ function feedback(id_sortida, nom, cognom){
 function filtrar(){
     divResultado = document.getElementById('resultado');
     var profe = document.getElementById("profe").value;
+    var etapa = document.getElementById("etapa").value;
     var clase = document.getElementById("clase").value;
     var fecha = document.getElementById("fecha").value;
     ajax=objetoAjax();
@@ -1012,12 +1019,19 @@ function filtrar(){
     // 5. Configuramos el encabezado (POST)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     // 6. Enviamos la solicitud
-    ajax.send("profe="+profe+"&clase="+clase+"&fecha="+fecha);
+    ajax.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&etapa="+etapa);
     // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
             divResultado.innerHTML = ajax.responseText
+
+            if (etapa!='' && clase=='') {
+            filtro_clase(1);
+        }else if (etapa=='' && clase!=''){
+            filtro_clase(2);
+        }    
+
         }
     }
 }
@@ -1083,6 +1097,7 @@ function filtrar_enf_dir(){
     divResultado = document.getElementById('resultado');
     var profe = document.getElementById("profe").value;
     var clase = document.getElementById("clase").value;
+    var etapa = document.getElementById("etapa").value;
     var fecha = document.getElementById("fecha").value;
      var jornada = document.getElementById("jornada").value;
     ajax=objetoAjax();
@@ -1091,16 +1106,48 @@ function filtrar_enf_dir(){
     // 5. Configuramos el encabezado (POST)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     // 6. Enviamos la solicitud
-    ajax.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada);
+    ajax.send("profe="+profe+"&clase="+clase+"&fecha="+fecha+"&jornada="+jornada+"&etapa="+etapa);
     // 7. Definimos la funciÃ³n que se ejecutarÃ¡ cuando cambie la propiedad readyState
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
             divResultado.innerHTML = ajax.responseText;
+
+            if (etapa!='' && clase=='') {
+            filtro_clase(1);
+        }else if (etapa=='' && clase!=''){
+            filtro_clase(2);
+        }    
+
             new Tablesort(document.getElementById('enfermerias'));
         }
     }
 }
+
+
+//Funcion que filtra resultados de las excursioned de secretaria
+function filtro_clase(tipo){
+    var clase = document.getElementById("clase");
+    var etapa = document.getElementById("etapa").value;
+
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', '../services/filtro_clase.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send("etapa="+etapa+"&tipo="+tipo);
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            clase.innerHTML = ajax.responseText;
+
+        }
+    }
+}
+
+
 
 //Funcion que filtra resultados de las excursioned de secretaria
 function filtrar_secretaria(){
@@ -1123,6 +1170,12 @@ function filtrar_secretaria(){
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
             divResultado.innerHTML = ajax.responseText
+
+            if (etapa!='' && clase=='') {
+            filtro_clase(1);
+        }else if (etapa=='' && clase!=''){
+            filtro_clase(2);
+        }    
             new Tablesort(document.getElementById('secretarias'));
         }
     }
@@ -1168,6 +1221,13 @@ function filtrar_admin_prof(){
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
             divResultado.innerHTML = ajax.responseText;
+
+            if (etapa!='' && clase=='') {
+            filtro_clase(1);
+        }else if (etapa=='' && clase!=''){
+            filtro_clase(2);
+        }    
+
             new Tablesort(document.getElementById('admin_profe_table'));
         }
     }
@@ -1646,7 +1706,7 @@ function recuperar_pass(id){
        }
 
          if(email.value == ""){
-             document.getElementById('mensaje').innerHTML = 'Introdueix el teu email';
+             document.getElementById('mensaje').innerHTML = 'Introdueix el teu usuari';
            email.style.borderColor = "red";
            return false;
 
@@ -1654,6 +1714,19 @@ function recuperar_pass(id){
            
        }
    }
+
+//mínimo de 4 caracteres de contraseña
+if (pass1.value.length<4) {
+
+    document.getElementById('mensaje').innerHTML = 'La contrasenya ha de tenir com a mínim 4 caràcters.';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+return false;
+
+}else{ 
 
    if(pass1.value != "" & pass2.value != "" & email.value != ""){
 
@@ -1670,6 +1743,7 @@ function recuperar_pass(id){
 
     return false;
     
+}
 }
 }
 }
@@ -1735,6 +1809,19 @@ function recuperar_pass_pares(id){
        }
    }
 
+//mínimo de 4 caracteres de contraseña
+if (pass1.value.length<4) {
+
+    document.getElementById('mensaje').innerHTML = 'La contrasenya ha de tenir com a mínim 4 caràcters.';
+        
+
+    pass1.style.borderColor="red";
+    pass2.style.borderColor = "red";
+
+return false;
+
+}else{ 
+
    if(pass1.value != "" & pass2.value != "" & dni.value != ""){
 
     if (pass1.value == pass2.value) {
@@ -1749,7 +1836,7 @@ function recuperar_pass_pares(id){
     pass2.style.borderColor = "red";
 
     return false;
-    
+}    
 }
 }
 }

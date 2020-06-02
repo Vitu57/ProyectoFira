@@ -17,6 +17,12 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
+      <!--Importar datos jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
   <!--Popper y Fontawesome-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
@@ -27,14 +33,14 @@
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1) {
 ?>
-<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;"  onload="ver_usuarios(); select_tipus_usuari(); tutorialadminusers();  tutorialCSV(); tutoriallogout(); tutorialreturn();">
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;"  onload="ver_usuarios(<?php echo $_SESSION['id']; ?>); select_tipus_usuari(); tutorialadminusers();  tutorialCSV(); tutoriallogout(); tutorialreturn();">
 <?php
 
 include "../services/tutorial.proc.php";
 
 }else{
   ?>
-<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(); select_tipus_usuari();">
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(<?php echo $_SESSION['id']; ?>); select_tipus_usuari();">
 <?php
 }
 ?>
@@ -57,7 +63,7 @@ if ($tipo!=1) {
 }
 
 ?>
-
+<input type="hidden" id="id_user" value="<?php echo $_SESSION['id']; ?>">
 <div class='header2' id="resultado"><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
 <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
@@ -90,6 +96,8 @@ $nombre=mysqli_fetch_array($query);
       <option selected disabled value="0" class="browser-default custom-select mb-2">Tipus d'usuari</option>
 </select>
 </form>
+<br>
+<div id="message" style="text-align: center; height: 5px;"></div>
 
   <div id="resultado_users" class="tablas" style="overflow-y:scroll; height: 22rem;position:relative; margin-top:3%; left: 50%; transform: translateX(-50%);z-index:0; background-color: #333;">
 
@@ -99,6 +107,12 @@ $nombre=mysqli_fetch_array($query);
 
 <!-- Exportar a CSV !-->
     <a href="../services/csv.php?users=1"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
+    <form  method="post" enctype="multipart/form-data" id="filesForm">
+            <div class="col-md-4 offset-md-4">
+                <input class="form-control" type="file" name="fileSortides" >
+                <button type="button" onclick="uploadContacts()" class="btn btn-lg filtrado_admin" >Importar dades</button>
+            </div>
+        </form>
   
   </div>
   </div>
@@ -197,3 +211,24 @@ $nombre=mysqli_fetch_array($query);
 </div>
 </body>
 </html>
+<script type="text/javascript">
+
+    function uploadContacts()
+    {
+
+        var Form = new FormData($('#filesForm')[0]);
+        $.ajax({
+
+            url: "../services/importar.php",
+            type: "post",
+            data : Form,
+            processData: false,
+            contentType: false,
+            success: function(data)
+            {
+                alert('Registros Agregados!');
+            }
+        });
+    }
+
+</script>

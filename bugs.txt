@@ -1,6 +1,5 @@
 
 adminisitración:
-- el admin se puede eliminar a si mismo
 - formulario de edición de usuario no vuelve a la tabla
 - aparecen alerts en edición de usuario.
 
@@ -8,9 +7,8 @@ cocina:
 - sortides d'avui de cocina no funciona si hay salidas en el día de hoy.
 
 Sortides Administrador:
-- editar salidas debería volver a administar salidas no al home
 - si se filtra no funcionan los modales
-- filtro de profesores no funciona
+- Error al mostrar profesores (muestra profesores incorrectos)
 
 Galería:
 - No se añaden nuevas fotos

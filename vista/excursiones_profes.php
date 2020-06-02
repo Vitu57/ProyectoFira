@@ -125,30 +125,23 @@ if (isMobile()) {
 				 <input  class="espacio_filtros" type="text" name="codi" id="codi" placeholder="Codi...">
 				 <input  class="espacio_filtros" type="date" name="fecha" id="fecha" placeholder="Data...">
 				 <input type="text" class="espacio_filtros" name="profe" id="profe" placeholder="Professor...">
-				<select class="espacio_filtros" name="etapa" id="etapa" >
-					<option value="" class="placeholder_select"  selected>Etapa...</option>
-				<?php
+	       <select name="etapa" id="etapa" class="espacio_filtros">
+      <option value="">Etapa...</option>
 
-			$consulta="SELECT nom_etapa FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
-			$exe=mysqli_query($conn,$consulta);
-		    while ($casos=mysqli_fetch_array($exe)){
+    <?php
 
-			echo "<option>".$casos['nom_etapa']."</option>";
-		}
-		?>
-		</select>
-		<select class="espacio_filtros" name="clase" id="clase">
-		       		<option class="placeholder_select" value=""  selected>Clase...</option>
-					<?php
+  $consulta="SELECT nom_etapa FROM tbl_etapa WHERE nom_etapa<>'PERSONAL'";
+  $exe=mysqli_query($conn,$consulta);
+    while ($casos=mysqli_fetch_array($exe)){
 
-			$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
-			$exe=mysqli_query($conn,$consulta);
-		    while ($casos=mysqli_fetch_array($exe)){
+  echo "<option>".$casos['nom_etapa']."</option>";
+}
+?>
+</select>
+        <select name="clase" class="espacio_filtros" id="clase">
+          <option selected disabled value="">Clase...</option>
+</select>
 
-			echo "<option>".$casos['nom_classe']."</option>";
-		}
-		?>
-		</select>
 
 				
 				<select class="espacio_filtros" name="jornada" id="jornada" >

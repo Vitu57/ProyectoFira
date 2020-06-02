@@ -217,7 +217,7 @@ line-height: 1.5;
 .vanilla-calendar{
   margin-left: 1%!important;
   width: 19%;
-  position: absolute; 
+  position: none; 
   float:left;
   margin-top: 2px!important;
 
@@ -344,7 +344,7 @@ width: 10%;
   display: none;
   align-items: center;
   background-color: white;
-  height: 85%;
+  /* height: 85%; */
   width: 21%;
   position: absolute; 
   float:left;
@@ -392,7 +392,7 @@ background-repeat: no-repeat;
   position: absolute;
   width: 3.5rem;
   height: 3.5rem;
-  z-index: 2;
+  z-index: 3;
   border:0px;
   border-style: none;
   cursor: pointer;
@@ -652,4 +652,11 @@ margin-top: 1.5%;
     box-shadow: 0 0 0 70px rgb(255, 255, 255, 0);
   }
 }
-
+.vanilla-calendar{
+  position: none;
+}
+.centrado{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 85%;
+}

@@ -80,18 +80,8 @@ $nombre=mysqli_fetch_array($query);
 ?>
 </select>
 <select name="clase" class="espacio_filtros" id="clase" >
-       		<option value="">Clase...</option>
-			<?php
-
-	$consulta="SELECT nom_classe FROM tbl_clase Where nom_classe<>'PERSONAL'";
-	$exe=mysqli_query($conn,$consulta);
-    while ($casos=mysqli_fetch_array($exe)){
-
-	echo "<option>".$casos['nom_classe']."</option>";
-}
-?>
+       		<option selected disabled value="">Clase...</option>
 </select>
-
 		
 		<select name="jornada" class="espacio_filtros" id="jornada">
 			<option value="">Jornada...</option>

@@ -10,7 +10,7 @@ if (isset($_REQUEST['email'])) {
 }
 
 //consulta para saber si es el padre correcto
-$consulta="SELECT usuari, nom_usuari, cognom_usuari FROM tbl_usuari WHERE usuari=? AND id_usuari=?";
+$consulta="SELECT usuari, nom_usuari, cognom_usuari, contrasenya FROM tbl_usuari WHERE usuari=? AND id_usuari=?";
 
 
 if ($stmt = mysqli_prepare($conn, $consulta)){
@@ -25,11 +25,30 @@ if (mysqli_num_rows($exe)!=0){
      $email=$casos[0];
      $nom=$casos[1];
      $cognoms=$casos[2];
-
+     $pass2=$casos[3];
 
    //Si es el padre correcto cambia la contraseña
 
 $pass=md5($pass);
+
+if ($pass==$pass2) {
+  ?>
+
+    <h4 style="margin-top: -4%; float: center;">Introdueix les dades en el formulari per actualitzar la clau.</h4><br>
+ <div id="mensaje" style="color: red; margin-bottom: 5%;"></div>
+<form action="#" onsubmit="recuperar_pass(<?php echo $id; ?>); return false" method="post">
+  <p style="color: red;">La nova contrasenya no pot ser igual a l'actual.</p>
+  <h5>Usuari</h5>
+  <input type="text" class='email_style' id="email" name="email" value="<?php echo $email ?>"><br><br>
+    <h5>Nova clau</h5>
+  <input type="password" class='email_style' id="pass1" name="pass1"><br><br>
+    <h5>Confirmar nova clau</h5>
+  <input type="password" class='email_style' id="pass2" name="pass2"><br><br>
+  <input type="submit" class="btn btn-lg btn-par" name="enviar">
+</form>
+
+<?php
+}else{
 
 $consulta="UPDATE tbl_usuari SET contrasenya = '$pass' WHERE id_usuari = '$id'";
 
@@ -73,15 +92,15 @@ $headers[] = 'Bcc:';
 // Mail it
 mail($to, $subject, $message, implode("\r\n", $headers));
 
-
+}
 }else{
 	?>
   <h4 style="margin-top: -4%; float: center;">Introdueix les dades en el formulari per actualitzar la clau.</h4><br>
  <div id="mensaje" style="color: red; margin-bottom: 5%;"></div>
 <form action="#" onsubmit="recuperar_pass(<?php echo $id; ?>); return false" method="post">
-  <p style="color: red;">El email introduït no correspon amb el teu usuari</p>
-  <h5>Email</h5>
-  <input type="email" class='email_style' id="email" name="email"><br><br>
+  <p style="color: red;">El usuari introduït no correspon amb l'usuari sol·licitant</p>
+  <h5>Usuari</h5>
+  <input type="text" class='email_style' id="email" name="email" value="<?php echo $email ?>"><br><br>
     <h5>Nova clau</h5>
   <input type="password" class='email_style' id="pass1" name="pass1"><br><br>
     <h5>Confirmar nova clau</h5>

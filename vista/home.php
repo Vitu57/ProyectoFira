@@ -4,6 +4,8 @@
   <title>Home</title>
     
     <script type="text/javascript" src="../js/primera_visita.js"></script>
+    <script type="text/javascript" src="../js/piechart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
     <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <script type="text/javascript" src="../js/ajax.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -133,6 +135,10 @@ class="button-calendar" style="position:absolute;"></div></div>
   </div>
 <div id="myCalendar" class="vanilla-calendar" style="width:98%; margin-top:70%;">
 </div>
+<div style="margin-top:100%; max-width:75%;" class="text-center centrado">
+  <h5 class="text-center">Estadística Sortides per clase</h5>
+  <canvas id="myChart" width="90" height="75"></canvas>
+  </div>
     </div>
   
 </div>

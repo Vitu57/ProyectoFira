@@ -10,7 +10,7 @@ if (isset($_REQUEST['dni'])) {
 }
 
 //consulta para saber si es el padre correcto
-$consulta="SELECT email_pares, nom_pares, cognoms_pares FROM tbl_pares WHERE usuari_pares=? AND id_pares=?";
+$consulta="SELECT email_pares, nom_pares, cognoms_pares, usuari_pares, password_pares FROM tbl_pares WHERE usuari_pares=? AND id_pares=?";
 
 if ($stmt = mysqli_prepare($conn, $consulta)){
             mysqli_stmt_bind_param($stmt, "ss", $dni, $id);
@@ -24,12 +24,30 @@ if (mysqli_num_rows($exe)!=0){
      $email=$casos[0];
      $nom=$casos[1];
      $cognoms=$casos[2];
+     $dni=$casos[3];
+     $pass_bd=$casos[4];
 
 
    //Si es el padre correcto cambia la contraseña
 
 $pass=md5($pass);
 
+if ($pass==$pass_bd) {
+  
+  ?>
+   <p style="color: red">La nova contrasenya no pot ser igual a l'actual.<p><br>
+<form action="#" onsubmit="recuperar_pass_pares(<?php echo $id; ?>); return false" method="post">
+  <h5>DNI</h5>
+  <input type="text" id="dni" name="dni" value="<?php echo $dni; ?>"><br><br>
+    <h5>Nova clau</h5>
+  <input type="password" id="pass1" name="pass1"><br><br>
+    <h5>Confirmar nova clau</h5>
+  <input type="password" id="pass2" name="pass2"><br><br>
+  <input type="submit" class="btn btn-lg btn-par" name="enviar">
+</form>
+<?php
+
+}else{
 $consulta="UPDATE tbl_pares SET password_pares = '$pass' WHERE id_pares='$id'";
 
   $exe=mysqli_query($conn,$consulta);
@@ -75,13 +93,13 @@ $headers[] = 'Bcc:';
 // Mail it
 mail($to, $subject, $message, implode("\r\n", $headers));
 
-
+}
 }else{
 	?>
-   <h4 style="color: red"> El DNI introduït no correspon amb el teu usuari, proba de nou<h4><br>
+   <p style="color: red"> El DNI introduït no correspon amb el teu usuari, proba de nou<p><br>
 <form action="#" onsubmit="recuperar_pass_pares(<?php echo $id; ?>); return false" method="post">
   <h5>DNI</h5>
-  <input type="text" id="dni" name="dni"><br><br>
+  <input type="text" id="dni" name="dni" value="<?php echo $dni; ?>"><br><br>
     <h5>Nova clau</h5>
   <input type="password" id="pass1" name="pass1"><br><br>
     <h5>Confirmar nova clau</h5>

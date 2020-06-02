@@ -6,11 +6,7 @@ if(isset($_REQUEST['fecha'])){
 }else{
 	$fecha="";
 }
-if(isset($_REQUEST['clase'])){
-	$clase=$_REQUEST['clase'];
-}else{
-	$clase="";
-}
+
 if(isset($_REQUEST['profe'])){
 	$profe=$_REQUEST['profe'];
 }else{
@@ -26,6 +22,18 @@ if(isset($_REQUEST['etapa'])){
 }else{
   $etapa="";
 }
+
+if ($etapa=="") {
+   $clase="";
+}else{
+
+if(isset($_REQUEST['clase'])){
+  $clase=$_REQUEST['clase'];
+}else{
+  $clase="";
+}
+}
+
 if(isset($_REQUEST['codi'])){
   $codi=$_REQUEST['codi'];
 }else{
