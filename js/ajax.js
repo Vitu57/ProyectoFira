@@ -195,7 +195,7 @@ function CrearTabla(){
         tabla +='<thead class="thead-dark"><tr><th>Codi</th><th>Nom Sortida</th><th>Inici Sortida</th><th>Final Sortida</th><th>Clase</th><th>Etapa</th><th>Acompanyants</th><th>Alumnes</th><th>Profesor asignat</th><th>Estat Comanda</th></thead>';
         for(var i=0;i<respuesta.length;i++) {
              var fecha_inici = respuesta[i].inici_sortida.split('-').reverse().join('/');
-             var final_inici = respuesta[i].final_sortida.split('-').reverse().join('/');
+             var fecha_final = respuesta[i].final_sortida.split('-').reverse().join('/');
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
@@ -221,7 +221,7 @@ function CrearTabla(){
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
 					tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + fecha_inici + '</td>';
-                    tabla += '<td>' + fecha_inici + '</td>';
+                    tabla += '<td>' + fecha_final + '</td>';
                     tabla += '<td>' + respuesta[i].nom_classe+ '</td>';
                     tabla += '<td>' + respuesta[i].nom_etapa+ '</td>';
                     tabla += '<td>' + respuesta[i].n_acompanyants+ '</td>';

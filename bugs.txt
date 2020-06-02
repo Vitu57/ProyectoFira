@@ -3,9 +3,6 @@ adminisitración:
 - formulario de edición de usuario no vuelve a la tabla
 - aparecen alerts en edición de usuario.
 
-cocina:
-- sortides d'avui de cocina no funciona si hay salidas en el día de hoy.
-
 Sortides Administrador:
 - si se filtra no funcionan los modales
 - Error al mostrar profesores (muestra profesores incorrectos)
