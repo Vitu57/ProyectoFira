@@ -31,14 +31,14 @@
 //Comprueba si es la primera vez que entra el usuario
 if ($_SESSION['cont_visitas']==1) {
 ?>
-<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;"  onload="ver_usuarios(); select_tipus_usuari(); tutorialadminusers();  tutorialCSV(); tutoriallogout(); tutorialreturn();">
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;"  onload="ver_usuarios(<?php echo $_SESSION['id']; ?>); select_tipus_usuari(); tutorialadminusers();  tutorialCSV(); tutoriallogout(); tutorialreturn();">
 <?php
 
 include "../services/tutorial.proc.php";
 
 }else{
   ?>
-<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(); select_tipus_usuari();">
+<body class="home" style="text-align: center; padding: 5%; padding-top: 2%;" onload="ver_usuarios(<?php echo $_SESSION['id']; ?>); select_tipus_usuari();">
 <?php
 }
 ?>
@@ -61,7 +61,7 @@ if ($tipo!=1) {
 }
 
 ?>
-
+<input type="hidden" id="id_user" value="<?php echo $_SESSION['id']; ?>">
 <div class='header2' id="resultado"><div style='padding-top:2%; padding-right: 2%; padding-left: 2%; margin-bottom: -3%;'>
 <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>

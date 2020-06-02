@@ -1,4 +1,5 @@
 //Listeners para el filtro de la tabla de usuarios al onkeydown
+var id_user;
 
 window.addEventListener("load", function(event) {
     var user_filtre = document.getElementById("user_filtre");
@@ -15,6 +16,8 @@ window.addEventListener("load", function(event) {
 
 
 function filtroautomatico(){
+    var id_user2 = document.getElementById("id_user").value;
+
     var user = document.getElementById("user_filtre").value;
     var nom = document.getElementById("nom_filtre").value;
     var cognom = document.getElementById("cognom_filtre").value;
@@ -32,11 +35,17 @@ function filtroautomatico(){
     ajax3.send("accion=filtrar&user="+user+"&nom="+nom+"&cognom="+cognom+"&tipus="+tipusx);
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
-            console.log(ajax3.responseText); 
+            //console.log(ajax3.responseText); 
             var respuesta = JSON.parse(ajax3.responseText);
             usuarios += '<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread><thead class="thead-dark"><tr><th scope="col">Opcions</th><th scope="col">UserName</th><th scope="col">Nom</th><th scope="col">Cognom</th><th scope="col">Computable</th><th scope="col">Tipus d\'usuari</th></tr></thead><tbody>';
-                        for (var i = 0; i < respuesta.length; i++) {
-                usuarios += '<tr><th scope="row"><a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger"></i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
+                                    for (var i = 0; i < respuesta.length; i++) {
+                usuarios += '<tr><th scope="row">';
+            if(id_user2 == respuesta[i].id_usuari){
+                usuarios +='<a><i class="fas fa-2x fa-trash-alt text-secondary">';
+            }else{
+                usuarios +='<a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
+            }
+            usuarios +='</i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }
             usuarios += '</tbody></table>';
             resultado.innerHTML = usuarios;
@@ -64,9 +73,10 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function ver_usuarios() {
+function ver_usuarios(id_user) {
     /*código a implementar*/
-    
+    id_user = id_user;
+   
     var resultado = document.getElementById("resultado_users");
     var ajax3 = objetoAjax();
     var usuarios = "";
@@ -79,7 +89,13 @@ function ver_usuarios() {
             var respuesta = JSON.parse(ajax3.responseText);
             usuarios += '<table id="table-id" class="table table-bordered" style="background-color: rgba(255,255,255,1);"> <thread><thead class="thead-dark"><tr><th scope="col">Opcions</th><th scope="col">UserName</th><th scope="col">Nom</th><th scope="col">Cognom</th><th scope="col">Computable</th><th scope="col">Tipus d\'usuari</th></tr></thead><tbody>';
                         for (var i = 0; i < respuesta.length; i++) {
-                usuarios += '<tr><th scope="row"><a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger"></i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
+                usuarios += '<tr><th scope="row">';
+            if(id_user == respuesta[i].id_usuari){
+                usuarios +='<a><i class="fas fa-2x fa-trash-alt text-secondary">';
+            }else{
+                usuarios +='<a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
+            }
+            usuarios +='</i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }
             usuarios += '</tbody></table>';
             resultado.innerHTML = usuarios;
