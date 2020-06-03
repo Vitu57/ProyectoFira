@@ -1932,6 +1932,61 @@ ajax2.onreadystatechange=function() {
         }
     }
 }
+function InsertarAlumno(){
+
+    var clase=document.getElementById('clases2').value;
+    var nom=document.getElementById('nombreusu').value;
+    var cognom=document.getElementById('apellidosusu').value;
+     if (nom=="" && clase=="" && cognom=="") {
+         document.getElementById("nombreusu").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="red";
+        document.getElementById('apellidosusu').style.borderColor="red";
+     }else if(nom=="" && clase==""){
+        document.getElementById("nombreusu").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="red";
+        document.getElementById('apellidosusu').style.borderColor="#ced4da";
+    }else if(nom=="" && cognom==""){
+        document.getElementById("nombreusu").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="#ced4da";
+        document.getElementById('apellidosusu').style.borderColor="red";
+    }else if(clase=="" && cognom==""){
+        document.getElementById("nombreusu").style.borderColor="#ced4da";
+        document.getElementById("clases2").style.borderColor="red";
+        document.getElementById('apellidosusu').style.borderColor="red";
+    }else if (nom=="") {
+        document.getElementById("nombreusu").style.borderColor="red";
+        document.getElementById("clases2").style.borderColor="#ced4da";
+        document.getElementById('apellidosusu').style.borderColor="#ced4da";
+    }else if (cognom=="") {
+        document.getElementById("nombreusu").style.borderColor="#ced4da";
+        document.getElementById("clases2").style.borderColor="#ced4da";
+         document.getElementById('apellidosusu').style.borderColor="red";
+    }else if (clase=="") {
+        document.getElementById("clases2").style.borderColor="red";
+        document.getElementById("nombreusu").style.borderColor="#ced4da";
+        document.getElementById('apellidosusu').style.borderColor="#ced4da";
+    }else{
+         document.getElementById("nombreusu").style.borderColor="#ced4da";
+         document.getElementById("clases2").style.borderColor="#ced4da";
+         document.getElementById('apellidosusu').style.borderColor="#ced4da";
+        
+        ajax=objetoAjax();
+        ajax.open('POST', '../services/Insert_alumno.php', true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.send("clase="+clase+"&nom="+nom+"&cognom="+cognom);
+
+        // Definimos la función que se ejecutará cuando cambie la propiedad readyState
+        ajax.onreadystatechange=function() {
+            if (ajax.readyState==4) {
+                mostraralumnos();
+                document.getElementById('mensaje').innerHTML = "Insertat correctament";
+                
+            }else{
+                document.getElementById('mensaje').innerHTML = "No s'ha insertat correctament";
+            }
+        }
+    }
+}
 window.addEventListener('orientationchange', orientation);
  function orientation() {
      
