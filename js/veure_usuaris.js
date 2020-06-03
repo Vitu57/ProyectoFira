@@ -72,7 +72,7 @@ function filtroautomatico(){
                 'success',
                 
               )
-              eliminar(id_usuari);
+
             }
             
           })
@@ -158,6 +158,7 @@ message.innerHTML=mensaje;
 
 
 function modificar(id_usu, id_tipus_usu){
+
     var form_modificar = document.getElementById("form_modificar");
     var resultado_users = document.getElementById("resultado");
 
@@ -174,6 +175,7 @@ function modificar(id_usu, id_tipus_usu){
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             respuesta = JSON.parse(ajax3.responseText);
             console.log(respuesta);
+            document.getElementById("nomusuarii").innerHTML+=respuesta[0].usuari;
             document.getElementById("nombreusu").value = respuesta[0].nom_usuari;
             document.getElementById("apellidosusu").value = respuesta[0].cognom_usuari;
             document.getElementById("mailusu").value = respuesta[0].usuari;

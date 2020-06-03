@@ -124,7 +124,7 @@ $nombre=mysqli_fetch_array($query);
   <div id="usuaris" class="text-center border border-light p-5 mt-5 div_form" style="display: block;">
 <form class="text-center" action="#" autocomplete="off" onsubmit="return validar_form_users2();" >
 
-<p class="h4 mb-4">Editar L'usuari X</p>
+<p class="h4 mb-4" id="nomusuarii">Editar L'usuari </p>
 
 <div class="form-row mb-1">
     <div class="col">
