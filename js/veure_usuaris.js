@@ -43,7 +43,7 @@ function filtroautomatico(){
             if(id_user2 == respuesta[i].id_usuari){
                 usuarios +='<a><i class="fas fa-2x fa-trash-alt text-secondary">';
             }else{
-                usuarios +='<a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
+                usuarios +='<a href=# onclick="delete_confirm('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
             }
             usuarios +='</i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }
@@ -52,6 +52,31 @@ function filtroautomatico(){
             
         }
     }
+    }
+
+    function delete_confirm(id_usuari){
+    
+        Swal.fire({
+            title: 'Estás segur/a?',
+            text: "No podrás recuperar res d'aquest usuari!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar-la!'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Eliminat!',
+                'L\'usuari s\'ha eliminat correctament.',
+                'success',
+                
+              )
+              eliminar(id_usuari);
+            }
+            
+          })
+    
     }
 
 
@@ -94,7 +119,7 @@ function ver_usuarios(id_user) {
             if(id_user == respuesta[i].id_usuari){
                 usuarios +='<a><i class="fas fa-2x fa-trash-alt text-secondary">';
             }else{
-                usuarios +='<a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
+                usuarios +='<a href=# onclick="delete_confirm('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
             }
             usuarios +='</i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }
