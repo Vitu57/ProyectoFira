@@ -96,7 +96,7 @@ $nombre=mysqli_fetch_array($query);
           <option selected disabled value="">Clase...</option>
 </select>
 
-<input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor">
+<input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor asignat" onkeyup="filtrar();return false;">
 		<button class="btn btn-lg filtrado_admin" style="margin-left: 1%;" name="submit" value="Veure tots" action="#" method="POST" onclick="vertodo();return false">
 		Veure Tots</button>
 	</form>
