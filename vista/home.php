@@ -182,7 +182,7 @@ if ($tipus_user==1) {
 <div class="margen_botones_modal">
 <a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 
-<a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
+<a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal" style="background-color:#1d66ac;"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
 </div>
 </div>
 
@@ -216,9 +216,13 @@ if ($tipus_user==1) {
         <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
         <div class="separator" style="background-color:white;"></div>
     <div class="margen_botones_modal">
-        <a class="none" href="../vista/usuarios.php"><button id="myBtnModal" ><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
 
-        <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" ><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:10%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
+      <a class="none" href="../vista/form_usuarios.php"><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Insertar usuaris</h4></button></a>
+
+
+        <a class="none" href="../vista/usuarios.php"><button id="myBtnModal"  style="background-color:#1d66ac;" ><i class="far fa-eye fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure usuaris</h4></button></a>
+        
+        <a class="none" href="../vista/admin_prof.php"><button id="myBtnModal" style="background-color:#1e5fa5;"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:10%; color:white;"></i><h4 class="text-white">Administració profesors</h3></button></a>
     </div>
     </div>
   </div>
@@ -236,8 +240,9 @@ if ($tipus_user==1) {
         <span id="close3" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Alumnes</h3>
         <div class="separator" style="background-color:white;"></div>
     <div class="margen_botones_modal">
-    <a class="none" href="../vista/editar_alumno.php"><button id="myBtnModal"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Editar Alumne</h4></button></a>
-    <a class="none" href="../vista/eliminar_alumno.php"><button id="myBtnModal"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Eliminar Alumne</h4></button></a> 
+      <a class="none" href="../vista/insert_alumne.php"><button id="myBtnModal"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Nou Alumne</h4></button></a>
+    <a class="none" href="../vista/editar_alumno.php"><button id="myBtnModal" style="background-color:#1d66ac;"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Editar Alumne</h4></button></a>
+    <a class="none" href="../vista/eliminar_alumno.php"><button id="myBtnModal" style="background-color:#1e5fa5;"><i class="fas fa-user-cog fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Eliminar Alumne</h4></button></a> 
   </div>
     </div>
   </div>
@@ -265,7 +270,7 @@ if ($tipus_user==1) {
 <div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 
-<a class="none" href="../vista/form_excursiones_profes.php" ><button id="myBtnModal" ><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
+<a class="none" href="../vista/form_excursiones_profes.php" ><button id="myBtnModal"  style="background-color:#1d66ac;"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
 </div>
 </div>
 </div>

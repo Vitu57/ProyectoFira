@@ -5,6 +5,20 @@ a.none{
   text-decoration: none;
   color: black;
 }
+.insertarcsv{
+margin-top: 0.5%;
+margin-right: 0.5%;
+width: auto;
+padding: 5px;
+font-size: 1rem;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -98,6 +112,7 @@ a.none{
    background-image: url(../images/icon-content.svg);
    background-position: left 95% top 95%;
 background-repeat: no-repeat;
+
 }
 
 .myBtn_pares{
@@ -138,6 +153,7 @@ margin-left: 12.6%;
 .myBtn:hover {
   background-color:#ff8433; 
   opacity: 0.9;
+
 }
 #myBtn2{
   background-color:#ff7a32!important;
@@ -147,13 +163,19 @@ margin-left: 12.6%;
 }
 #myBtnModal{
   position: relative;
-  margin-right: 0.5rem;
+  cursor: pointer;
   height: 5rem;
   background-color: #0966ce;
-  border:1px solid black;
+  border:0px solid black;
   padding-top: 0.5rem;
   width: 225px;
   float:left;
+  border-left:0px;
+  border: 1px solid rgba(0,0,0,.1);
+}
+#myBtnModal:hover{
+  background-color:#86a0e8;
+  transition: .4s all ease-in-out;
 }
 .margen_botones_modal{
   margin-left: 1rem;
@@ -341,6 +363,7 @@ width: 10%;
 }
 
 .modalCalendar{
+  height: 90%;
   display: none;
   align-items: center;
   background-color: white;

@@ -43,7 +43,7 @@ function filtroautomatico(){
             if(id_user2 == respuesta[i].id_usuari){
                 usuarios +='<a><i class="fas fa-2x fa-trash-alt text-secondary">';
             }else{
-                usuarios +='<a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
+                usuarios +='<a href=# onclick="delete_confirm('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
             }
             usuarios +='</i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }
@@ -52,6 +52,31 @@ function filtroautomatico(){
             
         }
     }
+    }
+
+    function delete_confirm(id_usuari){
+    
+        Swal.fire({
+            title: 'Estás segur/a?',
+            text: "No podrás recuperar res d'aquest usuari!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar-la!'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Eliminat!',
+                'L\'usuari s\'ha eliminat correctament.',
+                'success',
+                
+              )
+
+            }
+            
+          })
+    
     }
 
 
@@ -94,7 +119,7 @@ function ver_usuarios(id_user) {
             if(id_user == respuesta[i].id_usuari){
                 usuarios +='<a><i class="fas fa-2x fa-trash-alt text-secondary">';
             }else{
-                usuarios +='<a href=# onclick="eliminar('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
+                usuarios +='<a href=# onclick="delete_confirm('+respuesta[i].id_usuari+')"><i class="fas fa-2x fa-trash-alt text-danger">';
             }
             usuarios +='</i></a><a href=# onclick="modificar('+respuesta[i].id_usuari+','+respuesta[i].id_tipus_usuari+')" class="ml-2 "><i class="fa-2x text-info fas fa-user-edit"></i></a></th><td>'+respuesta[i].usuari+'</td><td>'+respuesta[i].nom_usuari+'</td><td>'+respuesta[i].cognom_usuari+'</td><td>'+respuesta[i].computable+'</td><td>'+respuesta[i].nom_tipus+'</td></tr>';
             }
@@ -133,6 +158,7 @@ message.innerHTML=mensaje;
 
 
 function modificar(id_usu, id_tipus_usu){
+
     var form_modificar = document.getElementById("form_modificar");
     var resultado_users = document.getElementById("resultado");
 
@@ -149,6 +175,7 @@ function modificar(id_usu, id_tipus_usu){
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             respuesta = JSON.parse(ajax3.responseText);
             console.log(respuesta);
+            document.getElementById("nomusuarii").innerHTML+=respuesta[0].usuari;
             document.getElementById("nombreusu").value = respuesta[0].nom_usuari;
             document.getElementById("apellidosusu").value = respuesta[0].cognom_usuari;
             document.getElementById("mailusu").value = respuesta[0].usuari;
