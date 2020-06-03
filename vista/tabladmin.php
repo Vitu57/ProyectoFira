@@ -63,14 +63,14 @@ if(isset($_REQUEST['profe'])){
 	//ejecutamos la consulta
 	$consulta=mysqli_query($conn,$consultaexcursion);
 	//Por cada resultado, metemos en una variable de tipo array
-	
+	$contadoor_fila = 1;
 	while ($exe=mysqli_fetch_array($consulta)) {
-		
+	
 		//Formamos la tabla
 		echo "<tr>
 			<td style='width: 5%;'>
-			<a href='#' class='primary' data-trigger='focus' data-toggle='popover' title='Opcions'><i style='color:#367cb3;' class='fas fa-plus-circle fa-2x'></i></a>
-			<div id='popover-content' class='list-group' style='display: none;'>";
+			<a href='#' class='primary' data-trigger='focus' data-toggle='popover' data-popover-target='#popover-content-".$contadoor_fila."'  title='Opcions'><i style='color:#367cb3;' class='fas fa-plus-circle fa-2x'></i></a>
+			<div id='popover-content-".$contadoor_fila."' class='list-group' style='display: none;'>";
 			?>
 			<a class="list-group-item" title='Eliminar Sortida' href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b; margin-left: 2px;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a>
 			<?php  echo 
@@ -129,11 +129,12 @@ $data_final = date("d/m/Y", strtotime($exe[2]));
 				<td id='tipus".$cont."' style='display:none;'>".$exe[13]."</td>
 				<td id='ambit".$cont."' style='display:none;'>".$exe[14]."</td>
 				<td id='obj".$cont."'>".$exe[16]."</td>";
-			?>
-			<td style="width: 5%;">
-			<a href='#' class='primary' data-trigger='focus' data-toggle='popover2' title='Opcions'><i style='color:#367cb3;' class='fas fa-plus-circle fa-2x'></i></a>
-			<div id='popover-content2' class='list-group' style='display: none'>
-				<?php
+		
+			
+			echo "<td style='width: 5%;'>
+			<a href='#' class='primary' data-trigger='focus' data-toggle='popover' data-popover-target='#popover-content2-".$contadoor_fila."' title='Opcions'><i style='color:#367cb3;' class='fas fa-plus-circle fa-2x'></i></a>
+			<div id='popover-content2-".$contadoor_fila."' class='list-group' style='display: none'>";
+				
 				$consultacontacto="select tbl_contacte_activitat.persona_contacte,tbl_contacte_activitat.web_contacte,tbl_contacte_activitat.telefon_contacte,tbl_contacte_activitat.email_contacte from tbl_contacte_activitat inner join tbl_activitat on tbl_contacte_activitat.id_contacte_activitat=tbl_activitat.id_contacte_activitat where tbl_activitat.id_activitat='".$exe[17]."'";
 				$querycontacto=mysqli_query($conn,$consultacontacto);
 				$con=mysqli_fetch_array($querycontacto);
@@ -163,6 +164,7 @@ $data_final = date("d/m/Y", strtotime($exe[2]));
 			
 		<?php
 		echo "</tr>";
+		$contadoor_fila++;
                 $cont++;
 	}
 	echo "</table>";

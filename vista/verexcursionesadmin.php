@@ -152,10 +152,21 @@ slider.addEventListener('mousemove', (e) => {
 });
 
 $(function() {
+  $('[data-toggle="popover"]').each(function(i, obj) {
+    var popover_target = $(this).data('popover-target');
+    $(this).popover({
+        html: true,
+        content: function(obj) {
+            return $(popover_target).html();
+        }
+    });
+  });
+});
+/* $(function() {
   $('[data-toggle="popover"]').popover({
 		html: true,
     content: function() {
-      return $('#popover-content').html();
+      return $('.popover-content').html();
     }
   });
 })
@@ -166,7 +177,7 @@ $(function() {
       return $('#popover-content2').html();
     }
   });
-})
+}) */
 </script>
 <div id="resultado2" class="modalmask" style="display:none;">
 
