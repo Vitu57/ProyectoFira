@@ -96,6 +96,13 @@ $nombre=mysqli_fetch_array($query);
       <option selected disabled value="0" class="browser-default custom-select mb-2">Tipus d'usuari</option>
 </select>
 </form>
+<form  method="post" enctype="multipart/form-data" id="filesForm">
+            <div >
+              <button style="float: right;"type="button" onclick="uploadContacts()" class="btn btn-lg filtrado_admin" >Importar dades</button>
+                <input style="float: right;"class="insertarcsv" type="file" name="fileSortides" id="fileSortides" >
+                
+            </div>
+        </form>
 <br>
 <div id="message" style="text-align: center; height: 5px;"></div>
 
@@ -107,12 +114,7 @@ $nombre=mysqli_fetch_array($query);
 
 <!-- Exportar a CSV !-->
     <a href="../services/csv.php?users=1"><button class="btn btn-lg filtrado_admin">Exportar dades</button></a>
-    <form  method="post" enctype="multipart/form-data" id="filesForm">
-            <div class="col-md-4 offset-md-4">
-                <input class="form-control" type="file" name="fileSortides" >
-                <button type="button" onclick="uploadContacts()" class="btn btn-lg filtrado_admin" >Importar dades</button>
-            </div>
-        </form>
+    
   
   </div>
   </div>
@@ -215,7 +217,11 @@ $nombre=mysqli_fetch_array($query);
 
     function uploadContacts()
     {
-
+     
+      if (document.getElementById("fileSortides").files.length == 0) {
+        document.getElementById("fileSortides").style.borderColor="red";
+      }else{
+         document.getElementById("fileSortides").style.borderColor="#ced4da";
         var Form = new FormData($('#filesForm')[0]);
         $.ajax({
 
@@ -230,5 +236,5 @@ $nombre=mysqli_fetch_array($query);
             }
         });
     }
-
+}
 </script>
