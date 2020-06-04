@@ -56,9 +56,8 @@ if ($casos['id_tipus_usuari']==2) {
     <h1 style="text-align: center; font-size: 47px; margin-top: -2%;">Afegir Sortida</h1>
   </div></div>
 <div class="headerform" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
-   <a href="../vista/home.php">
-  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
-</a>  
+</div>
+</div>
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
         <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(1); return false">
         <div class="card rounded-0">
@@ -384,8 +383,7 @@ if ($casos['id_tipus_usuari']==2) {
         </form>
         </div><br>
   <script type="text/javascript" src="../js/codigo.js"></script>
-              </div>
-              </div>
+              
 <div class="footer page-footer">
   <img src="../images/logo_fje.svg">
 </div>

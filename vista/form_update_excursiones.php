@@ -57,9 +57,8 @@ if ($casos['id_tipus_usuari']==2) {
    <div style="padding: 1%; text-align: left;">
     <h1 style="text-align: center; font-size: 47px; margin-top: -2%;">Modificar Sortida</h1>
   </div></div>
-<div class="headerform" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
-  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
-</a>  
+</div>
+</div>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
         <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(3); return false">
         <div class="card rounded-0">
@@ -354,8 +353,6 @@ if ($casos['id_tipus_usuari']==2) {
         <!--<button type="submit" class="btn btn-info btn-block">Afegir Sortida</button> -->
         </form>
         </div><br>
-</div>
-</div>
   <script type="text/javascript" src="../js/codigo.js"></script>
 <div class="footer page-footer">
   <img src="../images/logo_fje.svg">
