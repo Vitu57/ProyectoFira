@@ -55,10 +55,10 @@ function filtroautomatico(){
     }
 
     function delete_confirm(id_usuari){
-    
+    //alert(id_usuari);
         Swal.fire({
             title: 'Estás segur/a?',
-            text: "No podrás recuperar res d'aquest usuari!",
+            text: "No podrás recuperar res d'aquesta sortida!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -68,11 +68,11 @@ function filtroautomatico(){
             if (result.value) {
               Swal.fire(
                 'Eliminat!',
-                'L\'usuari s\'ha eliminat correctament.',
+                'La sortida ha sigut eliminada correctament.',
                 'success',
                 
               )
-
+              eliminar(id_usuari);
             }
             
           })
@@ -325,7 +325,8 @@ return false;
 
 
 function actualizar_user(id_usu, nom, cognom, mail, tipus, pass, siei, computable, clase){
-
+    var form_modificar = document.getElementById("form_modificar");
+    var resultado_users = document.getElementById("resultado");
     var ajax3 = objetoAjax();
 
     //alert (nom, cognom, mail, tipus, pass, siei, computable, clase);
@@ -336,8 +337,33 @@ function actualizar_user(id_usu, nom, cognom, mail, tipus, pass, siei, computabl
         if (ajax3.readyState == 4 && ajax3.status == 200) {
             console.log(ajax3.responseText);
             ver_usuarios();
-            alert("Metido correctamente");
+            func_editado();
+           // alert("Metido correctamente");
+           form_modificar.classList.add("d-none");
+           resultado_users.classList.remove("d-none");
         }
     }
 
+}
+
+function func_editado(){
+    toastr["success"]("Usuari modificat correctament!", "Correcte!");
+
+    toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+    }
 }
