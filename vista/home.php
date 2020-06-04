@@ -73,7 +73,13 @@ if ($cont_visitas==1) {
 //comprueba si el usuario es admin
 if ($tipus_user==1) {
 
-echo "<body class='home' onload='modal(); modal2(); modal3(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
+echo "<body class='home' onload='modal(); modal2(); modal3(); benvinguda(); tutorial_calendario2(); tutoriallogout(); benvinguda_pares();'>";
+
+}else if($tipus_user==9){
+
+$_SESSION['pag']="home";
+
+echo "<body class='home' onload='modal(); benvinguda_pares(); tutorial_calendario2(); tutoriallogout();'>";
 
 }else{
 
@@ -387,7 +393,39 @@ echo "<div onclick='enf_dir()''>";
 <button id="myBtn" class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
   </button>
+
 <?php
+}else if ($tipus_user==9) {
+  if (isMobile()) {
+    header("location:calendario.php");
+  }  
+?>
+<div class="margen_botones_modal">
+</div>
+</div>
+</div>
+</div>
+<?php
+
+$consulta="SELECT tbl_alumnes.nom_alumne, tbl_alumnes.cognom1_alumne, tbl_alumnes.cognom2_alumne, tbl_alumnes.id_alumne FROM tbl_alumnes INNER JOIN tbl_pares_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_usuari ON tbl_usuari.id_usuari=tbl_pares_alumnes.id_pares WHERE tbl_usuari.id_usuari='$id'";
+      $exe=mysqli_query($conn,$consulta);
+     while ($casos=mysqli_fetch_array($exe)){
+        $nom_fill=$casos[0];
+        $cognom_fill=$casos[1];  
+        $cognom2_fill=$casos[2];  
+        $id_fill=$casos[3];   
+
+
+echo "<a class='none' href='../vista/sortides_pares.php?fill=".$id_fill."'>";
+?>
+
+<button id="myBtn" class="myBtn">
+<i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h4 class="text-white"><?php echo $nom_fill." ".$cognom_fill." ".$cognom2_fill; ?></h4>
+  </button></a>
+<div class="margen_botones_modal">
+</div>
+<?php
+}
 }
 ?>
  </div>

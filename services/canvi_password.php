@@ -10,7 +10,7 @@ if (isset($_REQUEST['email'])) {
 }
 
 //consulta para saber si es el padre correcto
-$consulta="SELECT usuari, nom_usuari, cognom_usuari, contrasenya FROM tbl_usuari WHERE usuari=? AND id_usuari=?";
+$consulta="SELECT email_usuari, nom_usuari, cognom_usuari, contrasenya FROM tbl_usuari WHERE usuari=? AND id_usuari=?";
 
 
 if ($stmt = mysqli_prepare($conn, $consulta)){

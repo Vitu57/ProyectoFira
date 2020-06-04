@@ -1566,25 +1566,6 @@ function Mostrar_Tipus(fila){
 
 
 //Enviar mail de recuperación de contraseña
-function recuperar_password_pares(){
-     divResultado = document.getElementById('mensaje_pass');
-     var dni = document.getElementById("dni").value;
-  divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
-    ajax=objetoAjax();
-    // 4. Especificamos la solicitud
-    ajax.open('POST', '../services/recuperar_password_pares.php', true);
-    // 5. Configuramos el encabezado (POST)
-    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    // 6. Enviamos la solicitud
-    ajax.send("dni="+dni);
-    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
-    ajax.onreadystatechange=function() {
-        if (ajax.readyState==4) {
-            // 8. Cambiamos el bloque del paso 2.
-            divResultado.innerHTML = ajax.responseText
-        }
-    }
-}
 
 function recuperar_password(){
      divResultado = document.getElementById('mensaje_pass');
@@ -1606,28 +1587,6 @@ function recuperar_password(){
     }
 }
 
-//Cambiar contraseña padres
-function canvi_password_pares(id){
-     divResultado = document.getElementById('mensaje_pass');
-     var dni = document.getElementById("dni").value;
-     var pass = document.getElementById("pass1").value;
-divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
-
-    ajax=objetoAjax();
-    // 4. Especificamos la solicitud
-    ajax.open('POST', '../services/canvi_password_pares.php', true);
-    // 5. Configuramos el encabezado (POST)
-    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    // 6. Enviamos la solicitud
-    ajax.send("dni="+dni+"&pass="+pass+"&id="+id);
-    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
-    ajax.onreadystatechange=function() {
-        if (ajax.readyState==4) {
-            // 8. Cambiamos el bloque del paso 2.
-            divResultado.innerHTML = ajax.responseText
-        }
-    }
-}
 
 //Cambiar contraseña
 function canvi_password(id){

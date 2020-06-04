@@ -20,6 +20,9 @@ include "../services/header_pares.php";
 
 
 //Pasamos el id del usuario desde el login
+if (!isset($_SESSION['id_pares'])) {
+  header("location: ../vista/home.php");
+}
 $id=$_SESSION['id_pares'];
 $cognom=$_SESSION['cognom'];
 $nom=$_SESSION['nombre'];
@@ -42,11 +45,11 @@ include "../services/tutorial.proc.php";
 if (isset($_REQUEST['fill'])) {
    $id_fill=$_REQUEST['fill'];
 }else{
-  header("location: home_pares.php");
+  header("location: home.php");
 }
 
 //consulta para comprobar si es su hijo realmente y saber su nombre
-$consulta="SELECT tbl_alumnes.nom_alumne FROM tbl_alumnes INNER JOIN tbl_pares_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_pares ON tbl_pares_alumnes.id_pares=tbl_pares.id_pares WHERE tbl_pares_alumnes.id_pares='$id' AND tbl_pares_alumnes.id_alumne='$id_fill'";
+$consulta="SELECT tbl_alumnes.nom_alumne FROM tbl_alumnes INNER JOIN tbl_pares_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_usuari ON tbl_pares_alumnes.id_pares=tbl_usuari.id_usuari WHERE tbl_pares_alumnes.id_pares='$id' AND tbl_pares_alumnes.id_alumne='$id_fill'";
 
   $exe=mysqli_query($conn,$consulta);    
 
@@ -59,7 +62,7 @@ if (mysqli_num_rows($exe)!=0){
 }else{
 
 //Si no es su hijo reenvia a home
-  header("location: home_pares.php");
+  header("location: home.php");
 }
 
 
@@ -70,11 +73,11 @@ if (mysqli_num_rows($exe)!=0){
 <h1 style='text-align: left; float:left; width:39%;'></h1><h2 style='text-align: center; width: 12%; margin-left: 4%; float:left; color:#0062ae;'>Sortides de <?php echo $nom_fill; ?></h2>
 
 <?php
-echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout_pares.php' style='text-decoration:none;'><img src='../images/icon-logout.svg' style='margin-left:2%; margin-top:-1%;'></a></h3>";
+echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout.php' style='text-decoration:none;'><img src='../images/icon-logout.svg' style='margin-left:2%; margin-top:-1%;'></a></h3>";
 
 ?>
 
-  <a href="../vista/home_pares.php">
+  <a href="../vista/home.php">
   <i class="fas fa-arrow-circle-left fa-3x" title="Tornar" style="float: left; margin-top: -3.5%; margin-left: 1.3%;  margin-right:80%; color: #071334;" class="btn btn-secondary"></i>
 </a>
 </div>
@@ -88,7 +91,7 @@ $consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_so
         if (mysqli_num_rows($exe)==0) {
 
         echo "<div class='div-fotos-pares'><h1 class='nofotos'>No hi han fotos de les sortides</h1>
-        <a href='home_pares.php'><button class='btn btn-lg btn-fotos-pares'>Tornar</button></a></div>";
+        <a href='home.php'><button class='btn btn-lg btn-fotos-pares'>Tornar</button></a></div>";
 
         }else{
 
