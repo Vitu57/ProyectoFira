@@ -1962,6 +1962,8 @@ function InsertarAlumno(){
                 mostraralumnos();
                 toastr_insertar_alumne();
                 
+            }else{
+              toastr_insertar_alumne();
             }
         }
     }
