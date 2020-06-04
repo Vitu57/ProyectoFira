@@ -16,7 +16,7 @@
 
 <?php
 include "../services/conexion.php";
-include "../services/header_pares.php";
+include "../services/header.php";
 
 
 //Pasamos el id del usuario desde el login
@@ -84,7 +84,7 @@ echo "<h3 class='txthead'>".$nom." ".$cognom."<a href='../services/logout.php' s
 <?php
 
 //consulta para mostrar las sortides de su hijo
-$consulta="SELECT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida, tbl_alumnes.id_alumne FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_alumnes.id_alumne='$id_fill' AND tbl_galeria.cont_subidas=1 ORDER BY tbl_sortida.final_sortida DESC";
+$consulta="SELECT DISTINCT tbl_activitat.nom_activitat, tbl_sortida.inici_sortida, tbl_sortida.final_sortida, tbl_sortida.id_sortida, tbl_alumnes.id_alumne FROM tbl_activitat INNER JOIN tbl_sortida ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_alumnes.id_alumne='$id_fill' AND tbl_galeria.id_sortida=tbl_sortida.id_sortida ORDER BY tbl_sortida.final_sortida DESC";
      
      if ($exe=mysqli_query($conn,$consulta)){
        

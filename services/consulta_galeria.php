@@ -153,10 +153,20 @@ if (isset($accion)){
             //echo "Inserción realizada correctamente";
            echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
              
+   
             //Envio de email a los padres
 
+//Comprueba que sea la primera vez que se sube una foto
+
+$consultaxa="SELECT id_sortida FROM tbl_galeria WHERE id_sortida='$id_sortida'";
+if ($queryxa=mysqli_query($conn,$consultaxa)){
+
+$filasT = mysqli_num_rows($queryxa);
+
+if ($filasT==1) {
+
 //consulta para saber los padres y el nombre de la excursión
-$consulta="SELECT tbl_pares.email_pares, tbl_activitat.nom_activitat, tbl_clase.nom_classe, tbl_galeria.cont_subidas, tbl_galeria.id_galeria FROM tbl_pares INNER JOIN tbl_pares_alumnes ON tbl_pares.id_pares=tbl_pares_alumnes.id_pares INNER JOIN tbl_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_alumnes.id_clase INNER JOIN tbl_sortida ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida INNER JOIN tbl_galeria ON tbl_galeria.id_sortida=tbl_sortida.id_sortida WHERE tbl_sortida.id_sortida='$id_sortida'";
+$consulta="SELECT tbl_usuari.email_usuari, tbl_activitat.nom_activitat, tbl_clase.nom_classe, tbl_alumnes.nom_alumne FROM tbl_usuari INNER JOIN tbl_pares_alumnes ON tbl_usuari.id_usuari=tbl_pares_alumnes.id_pares INNER JOIN tbl_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_alumnes.id_clase INNER JOIN tbl_sortida INNER JOIN tbl_activitat ON tbl_activitat.id_sortida=tbl_sortida.id_sortida WHERE tbl_sortida.id_sortida='$id_sortida'";
 $query=mysqli_query($conn,$consulta);
 
 $email='';
@@ -166,12 +176,8 @@ while ($row=mysqli_fetch_array($query)) {
 $email = $email . $row[0].", ";
 $nom_activitat=$row[1];
 $nom_clase=$row[2];
-$cont_subidas=$row[3];
-$id_galeria=$row[4];
+$nom_fill_alumne=$row[3];
 } 
-
-//Enviar el mail solo cuando se sube las fotos por primera vez
-if ($cont_subidas==0) {
 
 $to = $email; // note the comma
 
@@ -182,8 +188,8 @@ $subject = 'Ja estan disponibles les fotos de la sortida';
 $message = '
 <html>
 <body>
-  <p>Ja estan disponibles les fotos de la sortida a '.$nom_activitat.' de '.$nom_clase.'!</p>
-  <p>Podeu veure-les clicant al següent enllaç: <a href="http://localhost/daw/ProyectoFira/vista/galeria_fotos.php?id_sortida='.$id_sortida.'">veure fotos</a></p>
+  <p>Ja estan disponibles les fotos de la sortida de '.$nom_clase.' a '.$nom_activitat.' en la va participar el seu fill/a '.$nom_fill_alumne.'</p>
+  <p>Podeu veure-les clicant al següent enllaç: <a href="http://localhost/daw/ProyectoFira/vista/galeria_pares.php?id_sortida='.$id_sortida.'">veure fotos</a></p>
 </body>
 </html>
 ';
@@ -199,12 +205,9 @@ $headers[] = 'Bcc:';
 
 // Mail it
 mail($to, $subject, $message, implode("\r\n", $headers));
-    
-$consulta="UPDATE tbl_galeria SET cont_subidas = 1 WHERE id_galeria=".$id_galeria;
-
-$query=mysqli_query($conn,$consulta);
-
-    }         
+  
+}
+}
         } else{
             echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);
         }
