@@ -302,10 +302,45 @@ function insertar_user(nom, cognom, mail, tipus, pass, siei, computable, clase){
     ajax3.send("accion="+accion+"&nom="+nom+"&cognom="+cognom+"&mail="+mail+"&tipus="+tipus+"&pass="+pass+"&siei="+siei+"&computable="+computable+"&clase="+clase);
     ajax3.onreadystatechange = function () {
         if (ajax3.readyState == 4 && ajax3.status == 200) {
-            alert("Funcionando"); 
+            toastr_msg(); 
+            clean_form();
         console.log(ajax3.responseText); 
 
         }
     }
     //alert("nom = "+nom+" cognom = "+cognom+" mail = "+mail+" tipus = "+tipus+" pass = "+pass+" siei = "+siei+" computable = "+computable);
+}
+
+function clean_form(){
+    document.getElementById("nombreusu").value = "";   
+    document.getElementById("apellidosusu").value = "";
+    document.getElementById("mailusu").value = "";
+    document.getElementById("passwd1").value = "";
+    document.getElementById("passwd2").value = "";
+    document.getElementById("selectclass").selectedIndex=0;
+    document.getElementById("tipususu").selectedIndex=0;
+    document.getElementById("sieiusu").checked = false;
+    document.getElementById("computableusu").checked = false;
+}
+
+function toastr_msg(){
+    toastr["success"]("Usuari Introduit correctament!", "Tot Correcte!");
+
+    toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+    }
 }
