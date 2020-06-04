@@ -29,7 +29,6 @@
 
         //Comprobar que el usuario está registrado
         if (!empty($stmt) && $row_cnt == 1) {
-            session_start();
 
             $cont_visitas+=1;
             $_SESSION['nombre'] = $nom;
@@ -37,6 +36,11 @@
             $_SESSION['id'] = $id;
             $_SESSION['tipo'] = $id_tipo;
             $_SESSION['cont_visitas'] = $cont_visitas;
+
+        if ($id_tipo==9) {
+            $_SESSION['id_pares'] = $id;
+        }
+
 
         
 $upd_cont_visitas="UPDATE tbl_usuari SET cont_visitas='$cont_visitas' WHERE id_usuari='$id'";

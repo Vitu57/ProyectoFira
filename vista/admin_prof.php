@@ -148,7 +148,7 @@ $nombre=mysqli_fetch_array($query);
     include "tabla_admin_profes.php";
   ?>
   </div>
-
+<br><br>
 <div class="footer">
  <img src="../images/logo_fje.svg">
 </div>

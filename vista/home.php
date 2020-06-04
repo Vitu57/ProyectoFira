@@ -45,7 +45,7 @@ if ($cont_visitas==1) {
 <div id="resultadologout" class="modalmask" style="display:none; margin-top: -34.5%; width: 16%; margin-left: 69%;">
 
       <div class="modalbox movedown" id="resultadoContentlogout">
-        <a href="#" title="Tancar" class="close" id="closelogout" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#" title="Tancar" class="closehome" id="closelogout" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultadologout">TITULO</h2>
         <div id="contenidoResultadologout">contenido resultado</div>
       </div>
@@ -54,7 +54,7 @@ if ($cont_visitas==1) {
 <div id="resultadocalen" class="modalmask" style="display:none; margin-top: -30%; width: 17%; margin-left: -6%;">
 
       <div class="modalbox movedown" id="resultadoContent4">
-        <a href="#" title="Close" class="close" id="closecalen" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#" title="Close" class="closehome" id="closecalen" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultadocalen">TITULO</h2>
         <div id="contenidoResultadocalen">contenido resultado</div>
       </div>
@@ -64,7 +64,7 @@ if ($cont_visitas==1) {
 <div id="resultadocalen2" class="modalmask" style="display:none; margin-top: 1.2%; width: 17%; margin-left: -8%;">
 
       <div class="modalbox movedown" id="resultadoContent4">
-        <a href="#" title="Close" class="close" id="closecalen2" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#" title="Close" class="closehome" id="closecalen2" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultadocalen2">TITULO</h2>
         <div id="contenidoResultadocalen2">contenido resultado</div>
       </div>
@@ -73,7 +73,13 @@ if ($cont_visitas==1) {
 //comprueba si el usuario es admin
 if ($tipus_user==1) {
 
-echo "<body class='home' onload='modal(); modal2(); modal3(); benvinguda(); tutorial_calendario2(); tutoriallogout();'>";
+echo "<body class='home' onload='modal(); modal2(); modal3(); benvinguda(); tutorial_calendario2(); tutoriallogout(); benvinguda_pares();'>";
+
+}else if($tipus_user==9){
+
+$_SESSION['pag']="home";
+
+echo "<body class='home' onload='modal(); benvinguda_pares(); tutorial_calendario2(); tutoriallogout();'>";
 
 }else{
 
@@ -85,7 +91,7 @@ echo "<body class='home' onload='modal(); benvinguda2(); tutorial_calendario2();
 <div id="resultado4" class="modalmask" style="display:none; margin-top: -5%; width: 30%; margin-left: 13%;">
 
       <div class="modalbox movedown" id="resultadoContent4">
-        <a href="#" title="Close4" class="close" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof3();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
+        <a href="#" title="Close4" class="closehome" id="close4" style="color:black; background-color:#f1f1f1; margin-right:6%; margin-top: 1.5%;"><button onclick="admin_prof3();" class="btn btn-lg" style="padding: 6px; color: white; background-color:#2da0fa; ">OK</button></a>
         <h2 id="tituloResultado4">TITULO</h2>
         <div id="contenidoResultado4">contenido resultado</div>
       </div>
@@ -161,7 +167,7 @@ class="button-calendar" style="position:absolute;"></div></div>
         <div><h5>Sortides</h5></div> 
     </div>
       <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
-      <span id="close" class="close far fa-times-circle fa-2x text-white" style="z-index:1;"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Sortides</h3>
+      <span id="close" class="closehome far fa-times-circle fa-2x text-white" style="z-index:1;"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Sortides</h3>
         <div class="separator" style="background-color:white;">
         </div>
   
@@ -182,7 +188,7 @@ if ($tipus_user==1) {
 <div class="margen_botones_modal">
 <a class="none" href="../vista/verexcursionesadmin.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 
-<a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal" style="background-color:#1d66ac;"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
+<a class="none" href="../vista/form_excursiones.php"><button id="myBtnModal"  style="background-color:#1d66ac;"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
 </div>
 </div>
 
@@ -213,7 +219,7 @@ if ($tipus_user==1) {
       <div><h5>Usuaris</h5></div> 
       </div>
       <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
-        <span id="close2" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
+        <span id="close2" class="closehome far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Usuaris</h3>
         <div class="separator" style="background-color:white;"></div>
     <div class="margen_botones_modal">
 
@@ -237,7 +243,7 @@ if ($tipus_user==1) {
       <div><h5>Alumnes</h5></div> 
       </div>
       <div class="w-100 modal-detail" style="background-color:#ff8433!important;">
-        <span id="close3" class="close far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Alumnes</h3>
+        <span id="close3" class="closehome far fa-times-circle fa-2x text-white"></span><h3 class="text-center text-white" style="margin-top:-3.7%;">Alumnes</h3>
         <div class="separator" style="background-color:white;"></div>
     <div class="margen_botones_modal">
       <a class="none" href="../vista/insert_alumne.php"><button id="myBtnModal"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;" aria-hidden="true"></i><h4 class="text-white">Nou Alumne</h4></button></a>
@@ -387,7 +393,39 @@ echo "<div onclick='enf_dir()''>";
 <button id="myBtn" class="myBtn">
 <i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h2 class="text-white">Sortides</h2>
   </button>
+
 <?php
+}else if ($tipus_user==9) {
+  if (isMobile()) {
+    header("location:calendario.php");
+  }  
+?>
+<div class="margen_botones_modal">
+</div>
+</div>
+</div>
+</div>
+<?php
+
+$consulta="SELECT tbl_alumnes.nom_alumne, tbl_alumnes.cognom1_alumne, tbl_alumnes.cognom2_alumne, tbl_alumnes.id_alumne FROM tbl_alumnes INNER JOIN tbl_pares_alumnes ON tbl_alumnes.id_alumne=tbl_pares_alumnes.id_alumne INNER JOIN tbl_usuari ON tbl_usuari.id_usuari=tbl_pares_alumnes.id_pares WHERE tbl_usuari.id_usuari='$id'";
+      $exe=mysqli_query($conn,$consulta);
+     while ($casos=mysqli_fetch_array($exe)){
+        $nom_fill=$casos[0];
+        $cognom_fill=$casos[1];  
+        $cognom2_fill=$casos[2];  
+        $id_fill=$casos[3];   
+
+
+echo "<a class='none' href='../vista/sortides_pares.php?fill=".$id_fill."'>";
+?>
+
+<button id="myBtn" class="myBtn">
+<i class="fas fa-hiking fa-2x ml-2" style="float:left; color:white;"></i><h4 class="text-white"><?php echo $nom_fill." ".$cognom_fill." ".$cognom2_fill; ?></h4>
+  </button></a>
+<div class="margen_botones_modal">
+</div>
+<?php
+}
 }
 ?>
  </div>

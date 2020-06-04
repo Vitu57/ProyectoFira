@@ -24,6 +24,39 @@ if ($stmt = mysqli_prepare($conn, $query)){
 
 if($accion == "eliminar"){
     if(isset($_REQUEST['id_user'])){$id_user=$_REQUEST['id_user'];}
+
+    $query1 = "UPDATE tbl_lista_profesores SET id_profesor = 0 WHERE id_profesor = ?";
+
+     if ($stmt = mysqli_prepare($conn, $query1)){
+
+        mysqli_stmt_bind_param($stmt, "s", $id_user);
+
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+
+        echo "Alter 1 realizado correctamente";
+    } else{
+        echo "ERROR: Could not prepare query: $query1. " . mysqli_error($conn);
+    }
+    
+
+    $query2 = "UPDATE tbl_clase_user SET id_usuari = 0 WHERE id_usuari = ?";
+    
+    if ($stmt = mysqli_prepare($conn, $query2)){
+
+        mysqli_stmt_bind_param($stmt, "s", $id_user);
+
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        
+        echo "Alter 2 realizado correctamente";
+    } else{
+        echo "ERROR: Could not prepare query: $query2. " . mysqli_error($conn);
+    }
+
+
+
+
     $query = "DELETE FROM tbl_usuari WHERE id_usuari = ?;";
     
     if ($stmt = mysqli_prepare($conn, $query)){
@@ -32,10 +65,7 @@ if($accion == "eliminar"){
 
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
-        $usuaris=array();
-        while($row = mysqli_fetch_assoc($res)){
-        $usuaris[]=$row;
-         }
+
         echo "Delete realizado correctamente";
     } else{
         echo "ERROR: Could not prepare query: $query. " . mysqli_error($conn);

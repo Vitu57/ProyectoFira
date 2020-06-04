@@ -10,7 +10,6 @@ if(isset($_REQUEST['dia']) && isset($_REQUEST['mes']) && isset($_REQUEST['anyo']
 
 if (isset($_SESSION['id_pares'])) {
 	$id_pares=$_SESSION['id_pares'];
-    echo "id pares";
     $sql = mysqli_query($conn, "SELECT id_sortida as result FROM tbl_sortida INNER JOIN tbl_clase ON tbl_clase.id_clase=tbl_sortida.id_clase INNER JOIN tbl_alumnes ON tbl_alumnes.id_clase=tbl_clase.id_clase INNER JOIN tbl_pares_alumnes ON tbl_pares_alumnes.id_alumne=tbl_alumnes.id_alumne WHERE tbl_pares_alumnes.id_pares='$id_pares' AND tbl_sortida.inici_sortida = '$fechatotal'");
 
 }else{

@@ -1088,7 +1088,7 @@ function eliminar(id_s,id_a,id_p,id_c,id_t){
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
-           divResultado.innerHTML = ajax.responseText
+           vertodo();
         }
     }
 }
@@ -1566,25 +1566,6 @@ function Mostrar_Tipus(fila){
 
 
 //Enviar mail de recuperación de contraseña
-function recuperar_password_pares(){
-     divResultado = document.getElementById('mensaje_pass');
-     var dni = document.getElementById("dni").value;
-  divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
-    ajax=objetoAjax();
-    // 4. Especificamos la solicitud
-    ajax.open('POST', '../services/recuperar_password_pares.php', true);
-    // 5. Configuramos el encabezado (POST)
-    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    // 6. Enviamos la solicitud
-    ajax.send("dni="+dni);
-    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
-    ajax.onreadystatechange=function() {
-        if (ajax.readyState==4) {
-            // 8. Cambiamos el bloque del paso 2.
-            divResultado.innerHTML = ajax.responseText
-        }
-    }
-}
 
 function recuperar_password(){
      divResultado = document.getElementById('mensaje_pass');
@@ -1606,28 +1587,6 @@ function recuperar_password(){
     }
 }
 
-//Cambiar contraseña padres
-function canvi_password_pares(id){
-     divResultado = document.getElementById('mensaje_pass');
-     var dni = document.getElementById("dni").value;
-     var pass = document.getElementById("pass1").value;
-divResultado.innerHTML = "<img style='width:100px;' src='../images/loading.gif'>";
-
-    ajax=objetoAjax();
-    // 4. Especificamos la solicitud
-    ajax.open('POST', '../services/canvi_password_pares.php', true);
-    // 5. Configuramos el encabezado (POST)
-    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    // 6. Enviamos la solicitud
-    ajax.send("dni="+dni+"&pass="+pass+"&id="+id);
-    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
-    ajax.onreadystatechange=function() {
-        if (ajax.readyState==4) {
-            // 8. Cambiamos el bloque del paso 2.
-            divResultado.innerHTML = ajax.responseText
-        }
-    }
-}
 
 //Cambiar contraseña
 function canvi_password(id){
@@ -1914,7 +1873,10 @@ ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 ajax2.send("id_activitat="+id_activitat);
 ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
-    var respuesta=JSON.parse(this.responseText);
+		var respuesta=JSON.parse(this.responseText);
+		if(respuesta.length==0){
+        tabla = "<h3>No hi ha llista creada en aquesta sortida</h3>";
+    }else{
         var tabla ='<table id="lista" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th>Cognoms</th><th>Nom</th><th>Clase</th><th>Assistència</th></tr><tr></thead>';
         for(var i=0;i<respuesta.length;i++) {
             tabla += '<tr><td>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].cognom2_alumne+'</td>';
@@ -1927,6 +1889,7 @@ ajax2.onreadystatechange=function() {
             }
         }
         tabla+='</table>';
+	}
         divResultado.innerHTML=tabla;
         new Tablesort(document.getElementById('lista'));
         }
