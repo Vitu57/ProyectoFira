@@ -13,10 +13,12 @@ require 'cn.php';
 $v1=$_GET['id_excursion'];
 $consulta="SELECT * from tbl_sortida INNER JOIN tbl_activitat ON tbl_sortida.id_sortida=tbl_activitat.id_sortida INNER JOIN tbl_clase ON tbl_sortida.id_clase=tbl_clase.id_clase WHERE tbl_sortida.id_sortida=$v1";
 $resultado = $mysqli->query($consulta);
+	$mpdf->writeHtml("<center><h1>Dades de la sortida</h1></center>", \Mpdf\HTMLParserMode::HTML_BODY);
 
-while ($row = $resultado->fetch_assoc()) {
-	$mpdf->writeHtml("<p>ID SORTIDA</p>", \Mpdf\HTMLParserMode::HTML_BODY);
-	$mpdf->Cell(40, 10, $row['codi_sortida'], 1, 1, 'C', 0);
+
+while ($row = $resultado->fetch_assoc()) {	
+
+	$mpdf->Cell(40, 10, $row['codi_sortida'], 2, 1, '', 0);
 	$mpdf->writeHtml("<br><p>NOM ACTIVITAT</p>", \Mpdf\HTMLParserMode::HTML_BODY);
 	$mpdf->Cell(40, 10, $row['nom_activitat'], 1, 1, 'C', 0);
 	$mpdf->writeHtml("<br><p>INICI SORTIDA</p>", \Mpdf\HTMLParserMode::HTML_BODY);
