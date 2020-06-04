@@ -60,7 +60,7 @@ $nombre=mysqli_fetch_array($query);
   if ($tipo==5) {
   	echo "Enfermeria";
   }else{
-    echo "Dirección";
+    echo "Direcció";
   }
   ?>
 </h1>
@@ -105,7 +105,7 @@ $nombre=mysqli_fetch_array($query);
 ?>
 </select>
 
-    <input type="submit" class="btn btn-lg" style="margin-right:4%; margin-left: 1.5%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo(); return false;">
+    <input type="submit" class="btn btn-lg" style="margin-right:4%; margin-left: 1.5%; padding: 0.5%; color: white; background-color: #367cb3; " name="submit" value="Veure tots" onclick="vertodo3(); return false;">
   </form>
   
     
