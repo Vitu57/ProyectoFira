@@ -77,7 +77,7 @@ $nombre=mysqli_fetch_array($query);
 <div class="header" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
 <div style="padding: 3%;padding-top: 0%; padding-bottom: 0%;">
 	
-	<form action="#" method="POST" onsubmit="return false;" onchange="filtrar();return false;">
+	<form action="#" method="POST" onsubmit="return false;" onchange="filtrar(); return false;">
 		<input type="date" class="espacio_filtros" name="fecha" id="fecha" placeholder="Data">
        <select name="etapa" id="etapa" class="espacio_filtros">
       <option value="">Etapa...</option>
@@ -96,7 +96,7 @@ $nombre=mysqli_fetch_array($query);
           <option selected disabled value="">Clase...</option>
 </select>
 
-<input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor">
+<input type="text" name="profe" class="espacio_filtros" id="profe" placeholder="Professor asignat" onkeyup="filtrar();return false;">
 		<button class="btn btn-lg filtrado_admin" style="margin-left: 1%;" name="submit" value="Veure tots" action="#" method="POST" onclick="vertodo();return false">
 		Veure Tots</button>
 	</form>
@@ -150,8 +150,11 @@ slider.addEventListener('mousemove', (e) => {
   slider.scrollLeft = scrollLeft - walk;
   console.log(walk);
 });
-
-$(function() {
+document.body.addEventListener('DOMSubtreeModified', function () {
+  popover();
+}, false);
+popover();
+function popover() {
   $('[data-toggle="popover"]').each(function(i, obj) {
     var popover_target = $(this).data('popover-target');
     $(this).popover({
@@ -161,23 +164,7 @@ $(function() {
         }
     });
   });
-});
-/* $(function() {
-  $('[data-toggle="popover"]').popover({
-		html: true,
-    content: function() {
-      return $('.popover-content').html();
-    }
-  });
-})
-$(function() {
-  $('[data-toggle="popover2"]').popover({
-		html: true,
-    content: function() {
-      return $('#popover-content2').html();
-    }
-  });
-}) */
+};
 </script>
 <div id="resultado2" class="modalmask" style="display:none;">
 

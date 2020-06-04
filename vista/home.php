@@ -270,7 +270,7 @@ if ($tipus_user==1) {
 <div class="margen_botones_modal">
 <a class="none" href="../vista/excursiones_profes.php"><button id="myBtnModal" ><i class="fas fa-search fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Veure sortides</h4></button></a>
 
-<a class="none" href="../vista/form_excursiones_profes.php" ><button id="myBtnModal"  style="background-color:#1d66ac;"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
+<a class="none" href="../vista/form_excursiones.php" ><button id="myBtnModal"  style="background-color:#1d66ac;"><i class="fas fa-plus-circle fa-1x ml-1" style="float:left; margin-top:4%; color:white;"></i><h4 class="text-white">Afegir Sortida</h4></button></a>
 </div>
 </div>
 </div>

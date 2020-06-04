@@ -210,7 +210,7 @@ thead{
   padding: 20px 10px;
   border-top:#009eff 4px solid;
   text-align: center;
-  z-index: 2;
+  z-index: 0;
 
 }
 .txthead{
@@ -683,3 +683,29 @@ margin-top: 1.5%;
   margin-right: auto;
   margin-top: 85%;
 }
+
+.headerform{
+  margin-top: 3.5%;
+  padding-top: 3%;
+  padding-bottom: 1.5%;
+  }
+  @media screen and (max-width: 1200px) {
+    .headerform2{
+    margin-right: 1%!important;
+    margin-left: 1%!important;
+    }
+    .div_form{
+      width: 85%!important;
+    }
+    }
+
+  .headerform2{
+    overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px 10px 10px;
+  border-radius: 15px;
+  margin-top: 2%;
+  padding-bottom: 3%;
+  margin-right: 15%;
+  margin-left: 15%;
+  }

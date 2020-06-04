@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+<?php
+include "../services/conexion.php";
+include "../services/header.php";
+$id=$_SESSION['id'];
+//nom i cognom
+$consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
+      $exe=mysqli_query($conn,$consulta);
+      $casos=mysqli_fetch_array($exe);
+        $nom=$casos['nom_usuari'];
+        $cognom=$casos['cognom_usuari'];
+?>
+<input id="nom" type="hidden" value="<?php echo $nom ?>">
+<input id="cognom" type="hidden" value="<?php echo $cognom ?>">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,11 +30,34 @@
 <link rel="stylesheet" type="text/css" href="../plugin/toastr/toastr.css">
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../plugin/toastr/toastr.min.js"></script>
-  <title>Afegir Sortida</title>
+  <title>Modificar Sortida</title>
 </head>
 
-<body class="body_design"> >
-   <a href="../vista/excursiones_profes.php">
+<body class="body_design">
+<div class='headerform2'><div id="headerint" style='padding-top:2%; padding-right: 2%; padding-left: 1.5%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+<?php
+$id=$_SESSION['id'];
+$conom="select usuari from tbl_usuari where id_usuari='".$id."'";
+$query=mysqli_query($conn,$conom);
+$nombre=mysqli_fetch_array($query);
+if ($casos['id_tipus_usuari']==2) {
+  echo '<a href="../vista/excursiones_profes.php">';
+            
+  }else{
+  echo '<a href="../vista/verexcursionesadmin.php">';
+                }
+?>
+	<i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
+</a>
+<a style=' float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><img src='../images/icon-logout.svg' style='width: 3rem;margin-left:2%; margin-top:-1%;'></a>
+<?php
+  echo "<p style='position:relative; float:right; margin-right:2%;font-size:1.5rem;'>".$nombre[0]."</p>";
+  ?>
+   <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; font-size: 47px; margin-top: -2%;">Modificar Sortida</h1>
+  </div></div>
+<div class="headerform" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
   <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
 </a>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
@@ -89,15 +125,35 @@
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
+          <div class="col-md-4 ">
             <div style="margin-left: 1%; margin-top: 2%;">
                 <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
                 <button id="btn2-1" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
                 <button id="btn3-1" class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
-                <button id="btn4-1" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>
+                <?php
+
+                  include "../services/conexion.php";
+                  $id=$_SESSION['id'];
+                  $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
+                    $exe=mysqli_query($conn,$consulta);
+                    $casos=mysqli_fetch_array($exe);
+                    
+
+                  if ($casos['id_tipus_usuari']==2) {
+                    echo'<button id="btn1-2" class="btn btn-secondary" title="Costos" disabled>4</button>';
+                    
+
+                  }else{
+                    echo'<button id="btn4-1" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>';
+                  }
+?>
             </div>
-            <div style="margin-left:490px; margin-top:-5.5%;">
+                </div>
+                <div class="col-md-4 offset-md-4 offset-sm-0">
+            <div>
                 <button class="btn btn-info" disabled>Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="MostrarActivitat(); return false;">Següent</button>
             </div>
+                </div>
         </div>
 		</div>
         <!--Activitat-->
@@ -298,6 +354,8 @@
         <!--<button type="submit" class="btn btn-info btn-block">Afegir Sortida</button> -->
         </form>
         </div><br>
+</div>
+</div>
   <script type="text/javascript" src="../js/codigo.js"></script>
 <div class="footer page-footer">
   <img src="../images/logo_fje.svg">

@@ -33,6 +33,9 @@ if(isset($_SESSION['id'])){
     -->
   <h3>Login Sortides</h3>
   </div>
+  <div id="logavatar">
+  <img src="../images/logobackpack.gif" alt="Avatar" class="logolog">
+  </div>
 
     <!-- Formulario login -->
 

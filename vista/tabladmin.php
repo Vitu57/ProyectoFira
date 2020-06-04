@@ -13,9 +13,9 @@ if(isset($_REQUEST['etapa'])){
 }else{
   $etapa="";
 }
-
 if ($etapa=="") {
   $clase="";
+
 
 }else{
 
@@ -165,7 +165,7 @@ $data_final = date("d/m/Y", strtotime($exe[2]));
 		<?php
 		echo "</tr>";
 		$contadoor_fila++;
-                $cont++;
+				$cont++;
 	}
 	echo "</table>";
 ?>

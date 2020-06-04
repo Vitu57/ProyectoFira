@@ -8,21 +8,101 @@
   <link rel="icon" type="image/png" href="../images/logo_pag.ico">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/style_form.css">
+  <script type="text/javascript" src="../js/primera_visita.js"></script>
   <!-- JQuery -->
   <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap CSS -->
   <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/8876df5dfb.js"></script>
-<link rel="stylesheet" type="text/css" href="../plugin/toastr/toastr.css">
+  <title>Afegir Sortida</title>
+<!--Enlace css para toastr-->
+  <link rel="stylesheet" type="text/css" href="../plugin/toastr/toastr.css">
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../plugin/toastr/toastr.min.js"></script>
-  <title>Afegir Sortida</title>
 </head>
+<!--Enlace js para toastr-->
 
-<body class="body_design" onload="select_etapa()">
-   <a href="../vista/home.php">
-  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white;" class="btn btn-secondary"></i>
+<?php
+include "../services/conexion.php";
+include "../services/header.php";
+$id=$_SESSION['id'];
+//nom i cognom
+$consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
+      $exe=mysqli_query($conn,$consulta);
+      $casos=mysqli_fetch_array($exe);
+        $nom=$casos['nom_usuari'];
+        $cognom=$casos['cognom_usuari'];
+?>
+<input id="nom" type="hidden" value="<?php echo $nom ?>">
+<input id="cognom" type="hidden" value="<?php echo $cognom ?>">
+		
+<?php
+//Comprueba si es la primera vez que entra el usuario
+if ($_SESSION['cont_visitas']==1) {
+?>
+<body class="body_design" onload="tutorialSortida(); tutorialSortida2();">
+
+     <div id="resultadoreturn" class="modalmask" style="display:none; margin-top: -31.7%; width: 12%; margin-left: 2%;">
+
+      <div class="modalbox movedown" id="resultadoContentreturn">
+        <a href="#" title="Tancar" class="close close-tutorial" id="closereturn"><button class="btn btn-lg btn-tutorial">OK</button></a>
+        <h2 id="tituloResultadoreturn">TITULO</h2>
+        <div id="contenidoResultadoreturn">contenido resultado</div>
+      </div>
+</div>
+
+<div id="resultadotut2" class="modalmask" style="display:none; margin-top: -27.5%; width: 40%; margin-left: 19%;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Tancar" class="close close-tutorial" id="closetut2"><button class="btn btn-lg btn-tutorial">OK</button></a>
+        <h2 id="tituloResultadotut2">TITULO</h2>
+        <div id="contenidoResultadotut2">contenido resultado</div>
+      </div>
+</div>
+
+
+
+<div id="resultadotut" class="modalmask" style="display:none; margin-top: -23.5%; width: 18%; margin-left: 65.5%;">
+
+      <div class="modalbox movedown" id="resultadoContent">
+        <a href="#close" title="Tancar" class="close close-tutorial" id="closetut"><button class="btn btn-lg btn-tutorial">OK</button></a>
+        <h2 id="tituloResultadotut">TITULO</h2>
+        <div id="contenidoResultadotut">contenido resultado</div>
+      </div>
+</div>
+
+<?php
+
+}else{
+
+?>  
+
+<body class="body_design">
+<div class='headerform2'><div id="headerint" style='padding-top:2%; padding-right: 2%; padding-left: 1.5%; margin-bottom: -3%;'>
+<a href="../vista/home.php">
+<?php
+$id=$_SESSION['id'];
+$conom="select usuari from tbl_usuari where id_usuari='".$id."'";
+$query=mysqli_query($conn,$conom);
+$nombre=mysqli_fetch_array($query);
+?>
+	<i class="fas fa-arrow-circle-left fa-4x" title="Tornar" style="  margin-top:-1%;color: #071334; float:left;" class="btn btn-secondary"></i>
+</a>
+<a style=' float: right; margin-top: -0.5%;' title="Tanca la sessió" href='../services/logout.php'><img src='../images/icon-logout.svg' style='width: 3rem;margin-left:2%; margin-top:-1%;'></a>
+<?php
+  echo "<p style='position:relative; float:right; margin-right:2%;font-size:1.5rem;'>".$nombre[0]."</p>";
+  ?>
+   <div style="padding: 1%; text-align: left;">
+    <h1 style="text-align: center; font-size: 47px; margin-top: -2%;">Afegir Sortida</h1>
+  </div></div>
+<div class="headerform" style=" background-color: rgba(255,255,255,1);border-radius: 15px; border-bottom: 0px;">
+<?php
+}
+?>  
+
+   <a href="../vista/verexcursionesadmin.php">
+  <i class="fas fa-arrow-circle-left fa-3x" style="float: left; margin-top: 2%; color: white; position:absolute; margin-left:2%;" class="btn btn-secondary"></i>
 </a>  
         <div id="sortides" class="text-center border border-light p-5 div_form" style="display: block;">
         <form action="#" class="needs-validation" id="form_exc" onsubmit="validar_insercion(1); return false">
@@ -89,31 +169,19 @@
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
+          <div class="col-md-4 ">
             <div style="margin-left: 1%; margin-top: 2%;">
-                <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
+                <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides" onclick="return false">1</button>
                 <button id="btn2-1" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
                 <button id="btn3-1" class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="PaginacionSortida3(); return false;" value="0">3</button>
-                <?php
-
-                include "../services/conexion.php";
-                $id=$_SESSION['id'];
-                $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
-                  $exe=mysqli_query($conn,$consulta);
-                  $casos=mysqli_fetch_array($exe);
-                  
-        
-                if ($casos['id_tipus_usuari']==2) {
-                  echo'<button id="btn1-2" class="btn btn-secondary" title="Costos" disabled>4</button>';
-                  
-
-                }else{
-                  echo'<button id="btn4-1" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>';
-                }
-                ?>
+                <button id="btn4-1" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionSortida4(); return false;" value="0">4</button>
             </div>
-            <div style="margin-left:490px; margin-top:-5.5%;">
+        </div>
+        <div class="col-md-4 offset-md-4 offset-sm-0">
+            <div style="margin-top: 2%;">
                 <button class="btn btn-info" disabled>Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="MostrarActivitat(); return false;">Següent</button>
             </div>
+</div>
         </div>
 		</div>
         <!--Activitat-->
@@ -184,23 +252,7 @@
                 <button id="btn1-2" class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="ActivitatEnrere(); return false;">1</button>
                 <button id="btn2-2" class="btn btn-secondary active" title="Activitat" style="margin-right: 2px;" onclick="return false">2</button>
                 <button id="btn3-2" class="btn btn-secondary" title="Transport" style="margin-right: 2px;" onclick="ActivitatSeg(); return false;">3</button>
-                <?php
-
-                include "../services/conexion.php";
-                $id=$_SESSION['id'];
-                $consulta="SELECT * FROM tbl_usuari INNER JOIN tbl_tipus_usuari ON tbl_usuari.id_tipus_usuari=tbl_tipus_usuari.id_tipus_usuari WHERE id_usuari='$id'";
-                  $exe=mysqli_query($conn,$consulta);
-                  $casos=mysqli_fetch_array($exe);
-                  
-        
-                if ($casos['id_tipus_usuari']==2) {
-                  echo'<button id="btn1-2" class="btn btn-secondary" title="Costos" disabled>4</button>';
-                  
-
-                }else{
-                  echo'<button id="btn1-2" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionActivitat4(); return false;">4</button>';
-                }
-                ?>
+                <button id="btn1-2" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="PaginacionActivitat4(); return false;">4</button>
             </div>
             <div style="margin-left:490px; margin-top:-5.5%;">
                 <button class="btn btn-info" onclick="ActivitatEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="ActivitatSeg(); return false;">Següent</button>
@@ -247,32 +299,12 @@
                 <button id="btn1-3" class="btn btn-secondary" style="margin-right: 2px;" title="Sortides" onclick="PaginacionTransport(); return false;">1</button>
                 <button id="btn2-3" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="TransportEnrere(); return false;">2</button>
                 <button id="btn3-3" class="btn btn-secondary active" title="Transport" style="margin-right: 2px;" onclick="return false">3</button>
-                <?php
-
-                include "../services/conexion.php";
-                $id=$_SESSION['id'];
-                
-                $consulta="SELECT id_tipus_usuari FROM tbl_usuari WHERE id_usuari='$id'";
-                  $exe=mysqli_query($conn,$consulta);
-                  $casos=mysqli_fetch_array($exe);
-                 
-                  
-                if ( $casos['id_tipus_usuari']==2) {
-                 echo'<button id="btn3-4" class="btn btn-secondary" title="Costos" disabled>4</button>
-                 </div>
-            <div style="margin-left:400px; margin-top:-5.5%;">
-                <button class="btn btn-info" onclick="CostesEnrere(); return false;">Enrere</button><button type="submit" class="btn btn-info" style="margin-left: 20px;">Afegir sortida</button>
-            </div>';
-
-                }else{
-                  echo'<button id="btn4-3" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="TransportSeg(); return false;">4</button>
-</div>
+                <button id="btn4-3" class="btn btn-secondary" title="Costos" style="margin-right: 2px;" onclick="TransportSeg(); return false;">4</button>
+          </div>
           <div style="margin-left:490px; margin-top:-5.5%">
                 <button class="btn btn-info" onclick="TransportEnrere(); return false;">Enrere</button><button class="btn btn-info" style="margin-left: 20px;" onclick="TransportSeg(); return false;">Següent</button>
-            </div>';
-                }
-                ?>
-          </div>
+            </div>
+        </div>
         <!--Costes-->
         <div id="costes" class="text-center border border-light p-5 div_form" style="display:none;">
         <div class="card rounded-0">
@@ -350,7 +382,9 @@
         <!--<button type="submit" class="btn btn-info btn-block">Afegir Sortida</button> -->
         </form>
         </div><br>
-  <script type="text/javascript" src="../js/codigo.js"></script>
+<script type="text/javascript" src="../js/codigo.js"></script>
+</div>
+</div>
 <div class="footer page-footer">
   <img src="../images/logo_fje.svg">
 </div>
