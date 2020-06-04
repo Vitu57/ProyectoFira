@@ -75,9 +75,10 @@ if(isset($_REQUEST['profe'])){
 			<a class="list-group-item" title='Eliminar Sortida' href="#"><i class="fas fa-trash-alt fa-2x" id="modal_secretaria" style="color:#c4081b; margin-left: 2px;" onclick="delete_confirm('<?php echo $exe[10]; ?>','<?php echo $exe[17]; ?>','<?php echo $exe[18]; ?>','<?php echo $exe[19]; ?>','<?php echo $exe[20]; ?>');"></i></a>
 			<?php  echo 
 			"<a class='list-group-item' title='Modificar Sortida' href='form_update_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-pencil-alt fa-2x' id='modificar' style='color:#3F7FBF;'></i></a>
+			<a class='list-group-item' title='Imprimir Sortida' href='./app/form_imp_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-print fa-2x' id='imprimir' style='color:#3F7FBF;'></i></a>
 			<a class='list-group-item' title='Copiar Sortida' href='form_copy_excursiones.php?id_excursion=".$exe[10]."'><i class='fas fa-copy fa-2x' id='copiar' style='color:#3F7FBF;'></i></a>";
                         ?>
-                        <a class="list-group-item" title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>', '<?php echo $nom; ?>', '<?php echo $cognom; ?>')"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
+                        <a class="list-group-item" title='Valoració' href='#' onclick="abrirform4('<?php echo $exe[10]; ?>', '<?php echo $exe[11]; ?>', 'Administrador', '')"><i class='fas fa-star fa-2x' id='modificar' style='color:#FF8C00;'></i></a>
 						
 						<?php
 

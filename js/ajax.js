@@ -1078,6 +1078,24 @@ function vertodo2(){
     }
 }
 
+function vertodo3(){
+    divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+    // 4. Especificamos la solicitud
+    ajax.open('POST', 'tabla_enf_dir.php', true);
+    // 5. Configuramos el encabezado (POST)
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    // 6. Enviamos la solicitud
+    ajax.send();
+    // 7. Definimos la función que se ejecutará cuando cambie la propiedad readyState
+    ajax.onreadystatechange=function() {
+        if (ajax.readyState==4) {
+            // 8. Cambiamos el bloque del paso 2.
+            divResultado.innerHTML = ajax.responseText
+        }
+    }
+}
+
 
 //Funcion que elimina una excursion
 function eliminar(id_s,id_a,id_p,id_c,id_t){
@@ -1832,10 +1850,8 @@ function cambiarClase(){
         ajax.onreadystatechange=function() {
             if (ajax.readyState==4) {
                 mostraralumnos();
-                document.getElementById('mensaje').innerHTML = "Se ha cambiado de clase al alumno";
+                toastr_modificar_alumne();
                 
-            }else{
-                document.getElementById('mensaje').innerHTML = "Ha ocurrido un error";
             }
         }
     }
@@ -1862,11 +1878,8 @@ function eliminarAlumno(){
         ajax.onreadystatechange=function() {
             if (ajax.readyState==4) {
                 mostraralumnos();
-                document.getElementById('mensaje').innerHTML = "Se ha eliminado el alumno correctamente";
-            }else{
-                document.getElementById('mensaje').innerHTML = "Ha ocurrido un error";
-            }
-        }
+                toastr_eliminar_alumne();
+            }        }
     }
 }
 //Crear la tabla de administracion para listas
@@ -1947,14 +1960,80 @@ function InsertarAlumno(){
         ajax.onreadystatechange=function() {
             if (ajax.readyState==4) {
                 mostraralumnos();
-                document.getElementById('mensaje').innerHTML = "Insertat correctament";
+                toastr_insertar_alumne();
                 
             }else{
-                document.getElementById('mensaje').innerHTML = "No s'ha insertat correctament";
+              toastr_insertar_alumne();
             }
         }
     }
 }
+function toastr_insertar_alumne() {
+    toastr["success"]("Alumne insertat correctament!")
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+}
+
+function toastr_modificar_alumne() {
+    toastr["success"]("Alumne modificat correctament!")
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+}
+
+function toastr_eliminar_alumne() {
+    toastr["success"]("Alumne esborrat correctament!")
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+}
+
 window.addEventListener('orientationchange', orientation);
  function orientation() {
      

@@ -14,8 +14,9 @@ function cargar_imagenes() {
             //console.log(ajax3.responseText); 
             var respuesta = JSON.parse(ajax3.responseText);
             ver_nombre_exc();
-            imagen += '<h2 class="mt-5 pt-3 text-center">Sortida '+nom_exc+'</h2>';
-            imagen += '<center><button class="text-center" onclick="maximizar();">Maximizar</button></center><br>'
+            imagen += '<h2 class="mt-5 pt-3 text-center">Sortida '+nom_exc+'';
+            imagen += '<a class="float-right mr-3" href=# onclick="maximizar();"> <i class="far fa-1x fa-times-circle text-dark"></i> </a></h2><br>'
+            
             for (var i = 0; i < respuesta.length; i++) {
                 console.log(respuesta[i]);
                 imagen += '<a data-fancybox="gallery" href="../images/galeria/'+respuesta[i].img_path +'"><img class="img_galeria img-fluid" src="../images/galeria/'+respuesta[i].img_path+'"></a>';
