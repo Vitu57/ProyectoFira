@@ -45,6 +45,17 @@ function rellenar_datos(){
     }
 }
 
+function popover() {
+    $('[data-toggle="popover"]').each(function(i, obj) {
+      var popover_target = $(this).data('popover-target');
+      $(this).popover({
+          html: true,
+          content: function(obj) {
+              return $(popover_target).html();
+          }
+      });
+    });
+  };
 
 function modal(){
 
@@ -345,7 +356,7 @@ function CrearTablaProfes(filtro){
     divResultado = document.getElementById('resultado');
     var estado_filtro = document.getElementById("btn_filtro").value;
     
-
+var contadorfila =1;
     if (filtro==1) {
         var ajax2=objetoAjax();
     ajax2.open("GET", "../services/consulta_profes.php", true);
@@ -385,8 +396,8 @@ function CrearTablaProfes(filtro){
             if(estado_filtro==1){
                 if(respuesta[i].inici_sortida==today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="#" class="primary" data-trigger="focus" data-toggle="popover" title="Opcions"><i style="color:#367cb3;" class="fas fa-plus-circle fa-2x"></i></a>'
-                    +'<div id="popover-content" class="list-group" style="display: none;"><a class="list-group-item" title="Modificar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><a class="list-group-item" href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a><a class="list-group-item" title="Valoració" href="#" onclick="abrirform4('+respuesta[i].id_sortida+', \''+respuesta[i].observacions_sortida+'\', \'' + nom + '\', \'' + cognom + '\')"><i class="fas fa-star fa-2x" id="modificar" style="color:#FF8C00;"></i></a></div></td>';
+                    tabla +='<td><a href="#" class="primary" data-trigger="focus" data-toggle="popover" data-popover-target="#popover-content-'+contadorfila+'" title="Opcions"><i style="color:#367cb3;" class="fas fa-plus-circle fa-2x"></i></a>'
+                    +'<div id="popover-content-'+contadorfila+'" class="list-group" style="display: none;"><a class="list-group-item" title="Modificar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><a class="list-group-item" href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a><a class="list-group-item" title="Valoració" href="#" onclick="abrirform4('+respuesta[i].id_sortida+', \''+respuesta[i].observacions_sortida+'\', \'' + nom + '\', \'' + cognom + '\')"><i class="fas fa-star fa-2x" id="modificar" style="color:#FF8C00;"></i></a></div></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td >' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -409,8 +420,8 @@ function CrearTablaProfes(filtro){
             }else{
                 if(respuesta[i].inici_sortida>=today){
                     tabla += '<tr>';
-                    tabla +='<td><a href="#" class="primary" data-trigger="focus" data-toggle="popover" title="Opcions"><i style="color:#367cb3;" class="fas fa-plus-circle fa-2x"></i></a>'
-                    +'<div id="popover-content" class="list-group" style="display: none;"><a class="list-group-item" title="Modificar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><a class="list-group-item" href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a><a class="list-group-item" title="Valoració" href="#" onclick="abrirform4('+respuesta[i].id_sortida+', \''+respuesta[i].observacions_sortida+'\', \'' + nom + '\', \'' + cognom + '\')"><i class="fas fa-star fa-2x" id="modificar" style="color:#FF8C00;"></i></a></div></td>';
+                    tabla +='<td><a href="#" class="primary" data-trigger="focus" data-toggle="popover" data-popover-target="#popover-content-'+contadorfila+'" title="Opcions"><i style="color:#367cb3;" class="fas fa-plus-circle fa-2x"></i></a>'
+                    +'<div id="popover-content-'+contadorfila+'" class="list-group" style="display: none;"><a class="list-group-item" title="Modificar sortida" href="form_update_excursiones.php?id_excursion='+respuesta[i].id_sortida+'"><i class="fas fa-pencil-alt fa-2x" id="modificar" style="color:#3F7FBF;"></i></a><a class="list-group-item" href="galeria_fotos.php?id_sortida='+respuesta[i].id_sortida+'" title="Afegir Fotos"><i style="color:#3F7FBF;" class="far fa-image fa-2x"></i></a><a class="list-group-item" title="Valoració" href="#" onclick="abrirform4('+respuesta[i].id_sortida+', \''+respuesta[i].observacions_sortida+'\', \'' + nom + '\', \'' + cognom + '\')"><i class="fas fa-star fa-2x" id="modificar" style="color:#FF8C00;"></i></a></div></td>';
                     tabla +='<td><a href="pasarlista.php?id_actividad='+respuesta[i].id_activitat+'&clase='+respuesta[i].nom_classe+'"><i class="fas fa-list" id="pasarlista" style="color:#3F7FBF;"></i></a></td>';
                     tabla += '<td>' + respuesta[i].nom_activitat+ '</td>';
                     tabla += '<td>' + respuesta[i].codi_sortida+ '</td>';
@@ -429,18 +440,12 @@ function CrearTablaProfes(filtro){
                     
                 }
             }
+            contadorfila++;
         }
             tabla+='</thead></table>';
             divResultado.innerHTML=tabla;
             new Tablesort(document.getElementById('table-id'));
-            $(function() {
-                $('[data-toggle="popover"]').popover({
-                      html: true,
-                  content: function() {
-                    return $('#popover-content').html();
-                  }
-                });
-              })
+            popover();
 
             
 
