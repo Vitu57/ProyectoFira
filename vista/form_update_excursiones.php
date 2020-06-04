@@ -124,7 +124,7 @@ if ($casos['id_tipus_usuari']==2) {
             <label for="exampleFormControlTextarea1">Observacions de sortida</label>
             <textarea name="comentaris" class="form-control" id="comentaris_sort" rows="3"></textarea>
           </div>
-          <div class="col-md-4 ">
+          <div class="col-md-4">
             <div style="margin-left: 1%; margin-top: 2%;">
                 <button id="btn1-1" class="btn btn-secondary active" style="margin-right: 2px;" title="Sortides">1</button>
                 <button id="btn2-1" class="btn btn-secondary" title="Activitat" style="margin-right: 2px;" onclick="MostrarActivitat(); return false;">2</button>
