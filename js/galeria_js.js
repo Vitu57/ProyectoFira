@@ -19,7 +19,7 @@ function cargar_imagenes() {
             
             for (var i = 0; i < respuesta.length; i++) {
                 console.log(respuesta[i]);
-                imagen += '<a data-fancybox="gallery" href="../images/galeria/'+respuesta[i].img_path +'"><img class="img_galeria img-fluid" src="../images/galeria/'+respuesta[i].img_path+'"></a>';
+                imagen += '<a data-fancybox="gallery" href="../images/galeria/'+respuesta[i].img_path +'"><img class="img_galeria img-fluid" src="../images/galeria/'+respuesta[i].img_path+'"></a><button><a href="../images/galeria/'+respuesta[i].img_path +'" download="'+respuesta[i].img_path +'">Descargar Foto</a></button>';
             }
             contenedor_img.innerHTML = imagen;
         }
