@@ -2,11 +2,11 @@
 adminisitración:
 - formulario de edición de usuario no vuelve a la tabla
 - aparecen alerts en edición de usuario.
+*- si se filtra se vuelven a esconder las columnas
+   pero se queda el botón en verde
 
 Sortides Administrador:
 - si se filtra no funcionan los modales
-- Error al mostrar profesores (muestra profesores incorrectos)
 
-Galería:
-- No se añaden nuevas fotos
-- aparecen varios alerts
+Archivos
+*- /services/Insert_alumno.php comienza en mayúscula.
