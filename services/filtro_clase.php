@@ -6,6 +6,10 @@ if (isset($_REQUEST['etapa'])) {
 	echo "<select name='clase' class='espacio_filtros' id='clase' >";
 	if ($_REQUEST['tipo']==2) {
 		echo "<option value='' selected disabled>Clase...</option>";
+
+	}else if ($_REQUEST['etapa']=="") {
+		echo "<option value='' selected disabled>Clase...</option>";
+
 	}else{
 	?>
        		<option value="">Clase...</option>

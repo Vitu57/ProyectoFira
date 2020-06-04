@@ -68,14 +68,7 @@ class="button-calendar" style="position:absolute;"></div></div>
       <th width="15%" scope="col">Inici sortida</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td id="codi_sortida_cal"></td>
-      <td id="clase_cal"></td>
-      <td id="Profe_asignat_cal"></td>
-      <td id="num_alu_cal"></td>
-      <td width="20%" id="inici_sortida_cal"></td>
-    </tr>
+  <tbody id="tbodys">
   </tbody>
 </table>
   </div>
