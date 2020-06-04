@@ -1088,7 +1088,7 @@ function eliminar(id_s,id_a,id_p,id_c,id_t){
     ajax.onreadystatechange=function() {
         if (ajax.readyState==4) {
             // 8. Cambiamos el bloque del paso 2.
-           divResultado.innerHTML = ajax.responseText
+           vertodo();
         }
     }
 }
@@ -1914,6 +1914,9 @@ ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 ajax2.send("id_activitat="+id_activitat);
 ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
+		if(respuesta.length==0){
+        tabla = "<h3>No hi ha llista creada en aquesta sortida</h3>";
+    }else{
     var respuesta=JSON.parse(this.responseText);
         var tabla ='<table id="lista" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th>Cognoms</th><th>Nom</th><th>Clase</th><th>Assistència</th></tr><tr></thead>';
         for(var i=0;i<respuesta.length;i++) {
@@ -1927,6 +1930,7 @@ ajax2.onreadystatechange=function() {
             }
         }
         tabla+='</table>';
+	}
         divResultado.innerHTML=tabla;
         new Tablesort(document.getElementById('lista'));
         }
