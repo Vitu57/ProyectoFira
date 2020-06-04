@@ -1914,10 +1914,10 @@ ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 ajax2.send("id_activitat="+id_activitat);
 ajax2.onreadystatechange=function() {
     if (ajax2.readyState==4 && ajax2.status==200) {
+		var respuesta=JSON.parse(this.responseText);
 		if(respuesta.length==0){
         tabla = "<h3>No hi ha llista creada en aquesta sortida</h3>";
     }else{
-    var respuesta=JSON.parse(this.responseText);
         var tabla ='<table id="lista" class="table table-bordered" style="background-color: rgba(255,255,255,1);"><thead class="thead-dark"><tr><th>Cognoms</th><th>Nom</th><th>Clase</th><th>Assistència</th></tr><tr></thead>';
         for(var i=0;i<respuesta.length;i++) {
             tabla += '<tr><td>' + respuesta[i].cognom1_alumne+ ', '+ respuesta[i].cognom2_alumne+'</td>';
