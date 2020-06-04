@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2020 a las 14:28:22
+-- Tiempo de generación: 04-06-2020 a las 14:43:26
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.1.28
 
@@ -297,10 +297,10 @@ CREATE TABLE `tbl_galeria` (
 --
 
 INSERT INTO `tbl_galeria` (`id_galeria`, `nom_imatge`, `desc_imatge`, `img_path`, `id_sortida`, `cont_subidas`) VALUES
-(0, 'hola', 'hola', 'exc_/IMG_2019-01-27-11084007.png', 0, 0),
-(89, 'asdasdasdasd', '', 'exc_Mobile_Congress/17092017-DSC08285.jpg', 24, 1),
-(90, 'sdfsdfgsdfg', '', 'exc_Mobile_Congress/tour-cusco-y-machu-picchu-en-tren-4-dias-pisac.jpg', 26, 1),
-(91, 'salida x', '', 'exc_Mobile_Congress/machu-picchu-2.jpg', 25, 1);
+(1, 'hola', 'hola', 'exc_/IMG_2019-01-27-11084007.png', 0, 1),
+(89, 'asdasdasdasd', '', 'exc_Mobile_Congress/17092017-DSC08285.jpg', 24, 2),
+(90, 'sdfsdfgsdfg', '', 'exc_Mobile_Congress/tour-cusco-y-machu-picchu-en-tren-4-dias-pisac.jpg', 26, 2),
+(91, 'salida x', '', 'exc_Mobile_Congress/machu-picchu-2.jpg', 25, 3);
 
 -- --------------------------------------------------------
 
@@ -514,7 +514,7 @@ CREATE TABLE `tbl_usuari` (
 --
 
 INSERT INTO `tbl_usuari` (`id_usuari`, `usuari`, `contrasenya`, `nom_usuari`, `cognom_usuari`, `email_usuari`, `siei`, `computable`, `id_clase`, `id_tipus_usuari`, `cont_visitas`) VALUES
-(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 1, 2, 14),
+(1, 'MCarpallo', '81dc9bdb52d04dc20036dbd8313ed055', 'Mario', 'Carpallo', 'proyectesortidesdaw2@gmail.com', 'no', 'si', 1, 2, 15),
 (2, 'JCarcedo', '81dc9bdb52d04dc20036dbd8313ed055', 'Jaime', 'Carcedo', 'proyectesortidesdaw2@gmail.com', 'no', 'no', 2, 2, 3),
 (3, 'VPerez', '81dc9bdb52d04dc20036dbd8313ed055', 'Victor', 'Perez', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 3, 7, 0),
 (4, 'SRueda', '81dc9bdb52d04dc20036dbd8313ed055', 'Sergio', 'Rueda', 'proyectesortidesdaw2@gmail.com', 'no', 'alumne', 4, 7, 0),
@@ -711,6 +711,12 @@ ALTER TABLE `tbl_etapa`
 --
 ALTER TABLE `tbl_feedback`
   MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_galeria`
+--
+ALTER TABLE `tbl_galeria`
+  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_lista_profesores`
